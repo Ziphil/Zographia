@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+
+@function schemed-color($scheme, $level, $alpha: 1) {
+  @if $alpha < 1 {
+    @return rgb(var(#{"--zp-color-" + $scheme + "-" + $level}), $alpha);
+  } @else {
+    @return rgb(var(#{"--zp-color-" + $scheme + "-" + $level}));
+  }
+}
+
+@function single-color($scheme, $alpha: 1) {
+  @if $alpha < 1 {
+    @return rgb(var(#{"--zp-color-" + $scheme}), $alpha);
+  } @else {
+    @return rgb(var(#{"--zp-color-" + $scheme}));
+  }
+}
