@@ -3,42 +3,21 @@
 import qixColor from "color";
 
 
-export const LEVELED_COLOR_SCHEMES = [
-  "primary",
-  "secondary",
-  "blue",
-  "red",
-  "green",
-  "pink",
-  "yellow",
-  "purple",
-  "orange",
-  "gray",
-  "gold",
-  "silver",
-  "bronze"
-] as const;
-export const UNLEVELED_COLOR_SCHEMES = [
-  "white",
-  "black",
-  "whiteText",
-  "blackText",
-  "background",
-  "deepBackground"
-] as const;
+type IsLeveled<K extends keyof ColorScheme> = ColorScheme[K] extends Record<ColorLevel, string> ? K : never;
+type IsUnleveled<K extends keyof ColorScheme> = ColorScheme[K] extends Record<ColorLevel, string> ? never : K;
+type LeveledColorSchemeBranch<K extends keyof ColorScheme> = K extends IsLeveled<K> ? K : never;
+type UnleveledColorSchemeBranch<K extends keyof ColorScheme> = K extends IsUnleveled<K> ? K : never;
 
-export type LeveledColorScheme = (typeof LEVELED_COLOR_SCHEMES)[number];
-export type UnleveledColorScheme = (typeof UNLEVELED_COLOR_SCHEMES)[number];
-export type ColorScheme = LeveledColorScheme | UnleveledColorScheme;
+export type ColorScheme = typeof DEFAULT_COLOR_DEFINITIONS;
+export type LeveledColorScheme = LeveledColorSchemeBranch<keyof ColorScheme>;
+export type UnleveledColorScheme = UnleveledColorSchemeBranch<keyof ColorScheme>;
 
 export type ColorLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 export type ColorDefinition = Record<ColorLevel, string>;
 export type ColorDefinitions = Partial<Record<LeveledColorScheme, ColorDefinition>> & Partial<Record<UnleveledColorScheme, string>>;
 
-export type ColorDefinitionSetting = Record<"dark" | "light", {mix: number, saturation: number}>;
-
-export const createColorDefinition = (colorString: string, setting: ColorDefinitionSetting): ColorDefinition => {
+export const createColorDefinition = (colorString: string, setting: Record<"dark" | "light", {mix: number, saturation: number}>): ColorDefinition => {
   const color = qixColor(colorString);
 
   const blackColor = qixColor("black");
@@ -105,4 +84,4 @@ export const DEFAULT_COLOR_DEFINITIONS = {
   blackText: qixColor("hsl(203, 0%, 27%)").hex(),
   background: qixColor("hsl(203, 20%, 98%)").hex(),
   deepBackground: qixColor("hsl(203, 20%, 96%)").hex()
-} as Required<ColorDefinitions>;
+};

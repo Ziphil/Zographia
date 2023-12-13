@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 
-@function schemed-color($scheme, $level, $alpha: 1) {
+@function leveled-color($scheme, $level, $alpha: 1) {
   @if $alpha < 1 {
     @return rgb(var(#{"--zp-color-" + $scheme + "-" + $level}), $alpha);
   } @else {
