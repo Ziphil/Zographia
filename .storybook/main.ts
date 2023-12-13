@@ -2,6 +2,7 @@
 
 import type {StorybookConfig} from "@storybook/react-webpack5";
 import {readCsf} from "@storybook/csf-tools";
+import {Indexer} from "@storybook/types"
 import pathUtil from "path";
 
 
@@ -92,14 +93,15 @@ const config = {
         "/client": pathUtil.join(process.cwd(), "client"),
       },
     }
-  }),
-  "experimental_indexers": (indexers, option) => {
-    const indexer = {
-      test: /story\/(atom|module)\/(.+)\.tsx?$/,
-      createIndex: (fileName, options) => readCsf(fileName, options).then((file) => file.parse().indexInputs),
-    };
-    return [...indexers, indexer];
-  }
+  })
 } as StorybookConfig;
+
+config["experimental_indexers"] = function (indexers: Array<Indexer>, option: any): Array<Indexer> {
+  const indexer = {
+    test: /story\/(atom|module)\/(.+)\.tsx?$/,
+    createIndex: (fileName, options) => readCsf(fileName, options).then((file) => file.parse().indexInputs),
+  } as Indexer;
+  return [...indexers, indexer];
+}
 
 export default config;

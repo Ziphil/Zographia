@@ -1,14 +1,14 @@
 //
 
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
-import {Button} from "../../component";
+import {Button} from "/source/component";
 
 
 type Meta = RawMeta<typeof Button>;
 type Story = RawStory<typeof Button>;
 
 export default {
-  title: "Atoms/Button/Button",
+  title: "Atom/Button",
   component: Button
 } as Meta;
 
