@@ -2,6 +2,7 @@
 
 import {ReactElement} from "react";
 import {create} from "/source/component/create";
+import {AdditionalProps} from "/source/module/data";
 
 
 export const Button = create(
@@ -9,15 +10,16 @@ export const Button = create(
   function ({
     foo,
     bar = 3,
-    onClick
+    onClick,
+    ...rest
   }: {
     foo: string,
     bar?: number,
     onClick?: () => void
-  }): ReactElement {
+  } & AdditionalProps): ReactElement {
 
     return (
-      <div styleName="root" onClick={onClick}>
+      <div styleName="root" onClick={onClick} {...rest}>
         Hello! {foo} & {bar}
       </div>
     );

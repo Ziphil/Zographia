@@ -2,7 +2,8 @@
 
 import {Preview} from "@storybook/react";
 import {Title, Subtitle, Description, Controls, Stories, ArgsTable} from "@storybook/blocks";
-import React, {Fragment, ReactElement, useEffect} from "react"
+import React, {Fragment, ReactElement, createElement, useEffect} from "react"
+import {Root} from "../source/component"
 
 
 export const preview = {
@@ -26,7 +27,16 @@ export const preview = {
         </Fragment>
       ),
     }
-  }
+  },
+  decorators: [
+    (story) => {
+      return (
+        <Root>
+          {createElement(story)}
+        </Root>
+      )
+    }
+  ]
 } as Preview
 
 export default preview;
