@@ -2,6 +2,7 @@
 
 import {ReactElement} from "react";
 import {create} from "/source/component/create";
+import {useTrans} from "/source/hook/translation";
 import {AdditionalProps} from "/source/module/data";
 
 
@@ -18,9 +19,11 @@ export const Button = create(
     onClick?: () => void
   } & AdditionalProps): ReactElement {
 
+    const {trans} = useTrans("test");
+
     return (
       <div styleName="root" onClick={onClick} {...rest}>
-        Hello! {foo} & {bar}
+        Hello! {foo} & {bar}, {trans("hello")}
       </div>
     );
 
