@@ -16,3 +16,10 @@
     @return rgb(var(#{"--zp-color-" + $scheme}));
   }
 }
+
+
+@mixin theme($theme) {
+  html[data-theme="#{$theme}"] & {
+    @content;
+  }
+}

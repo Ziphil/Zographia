@@ -1,6 +1,7 @@
 //
 
 import {Preview} from "@storybook/react";
+import {withThemeByDataAttribute} from "@storybook/addon-themes";
 import {Title, Subtitle, Description, Controls, Stories, ArgsTable} from "@storybook/blocks";
 import React, {Fragment, ReactElement, createElement, useEffect} from "react"
 import {Root} from "../source/component"
@@ -29,6 +30,14 @@ export const preview = {
     }
   },
   decorators: [
+    withThemeByDataAttribute({
+      themes: {
+        light: "light",
+        dark: "dark",
+      },
+      defaultTheme: "light",
+      attributeName: "data-theme",
+    }),
     (story) => {
       return (
         <Root>

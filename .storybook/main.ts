@@ -11,8 +11,9 @@ const config = {
     "../source/story/**/*.@(js|jsx|ts|tsx)"
   ],
   addons: [
-    "@storybook/addon-links",
     "@storybook/addon-essentials",
+    "@storybook/addon-themes",
+    "@storybook/addon-links",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
   ],

@@ -4,5 +4,14 @@
 
 
 .root {
-  color: leveled-color("primary", 5);
+  @include theme(light) {
+    --text-color: #{leveled-color("primary", 5)};
+  }
+  @include theme(dark) {
+    --text-color: #{leveled-color("primary", 1)};
+  }
+}
+
+.root {
+  color: var(--text-color);
 }
