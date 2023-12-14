@@ -17,6 +17,10 @@ body {
     --background-color: #{single-color(background-light)};
     --background-stain-color: #{single-color(background-stain-light)};
   }
+  @include theme(dark) {
+    --background-color: #{single-color(background-dark)};
+    --background-stain-color: #{single-color(background-stain-dark)};
+  }
 }
 
 body {

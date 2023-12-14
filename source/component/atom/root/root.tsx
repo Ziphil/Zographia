@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 import {RecoilRoot} from "recoil";
 import {InnerRoot} from "/source/component/atom/root/inner-root";
 import {create} from "/source/component/create";
-import {MessageInventory} from "/source/hook/locale";
+import {Locale, MessageInventory} from "/source/hook/locale";
 import {ColorDefinitions} from "/source/module/color";
 import {getColorVarDefinitionCss, getFontFamilyVarDefinitionCss} from "/source/util/css";
 
@@ -19,13 +19,17 @@ export const Root = create(
     messageInventory = {},
     fontFamilies = {},
     colorDefinitions = {},
+    initialLocale = "ja",
+    initialTheme = "light",
     children
   }: {
     messageInventory?: MessageInventory,
     fontFamilies?: {main?: string, monospace?: string},
     colorDefinitions?: ColorDefinitions,
+    initialLocale?: Locale,
+    initialTheme?: string,
     children: ReactNode
-  }): ReactElement {
+  }): ReactElement | null {
 
     return (
       <Fragment>
@@ -35,7 +39,7 @@ export const Root = create(
         </Helmet>
         <Suspense fallback={<div/>}>
           <RecoilRoot>
-            <InnerRoot messageInventory={messageInventory}>
+            <InnerRoot messageInventory={messageInventory} initialLocale={initialLocale} initialTheme={initialTheme}>
               {children}
             </InnerRoot>
           </RecoilRoot>
