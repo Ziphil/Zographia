@@ -34,26 +34,26 @@ export const preview = {
     locale: {
       defaultValue: "ja",
       toolbar: {
-        title: "言語",
+        title: "Locale",
         icon: "globe",
         items: [
-          {value: "ja", title: "日本語"},
-          {value: "en", title: "English"},
-          {value: "eo", title: "Esperanto"}
+          {value: "ja", title: "日本語", right: "ja"},
+          {value: "en", title: "English", right: "en"},
+          {value: "eo", title: "Esperanto", right: "eo"}
         ],
-        dynamicTitle: true,
+        dynamicTitle: true
       },
     },
     theme: {
       defaultValue: "light",
       toolbar: {
-        title: "テーマ",
-        icon: "circlehollow",
+        title: "Theme",
+        icon: "paintbrush",
         items: [
           {value: "light", title: "Light"},
           {value: "dark", title: "Dark"}
         ],
-        dynamicTitle: true,
+        dynamicTitle: true
       },
     }
   },
@@ -74,8 +74,8 @@ export const preview = {
       const changeTheme = useChangeTheme();
       useEffect(() => {
         const {locale, theme} = context.globals;
-        changeLocale(locale);
-        changeTheme(theme);
+        changeLocale(locale ?? "ja");
+        changeTheme(theme ?? "light");
       }, [context.globals]);
       return (
         <Fragment>
