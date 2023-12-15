@@ -1,8 +1,7 @@
 //
 
 import {
-  FunctionComponent,
-  ReactNode
+  FunctionComponent
 } from "react";
 import cssModules from "react-css-modules";
 
@@ -17,6 +16,3 @@ export function create<C extends FunctionComponent<any>>(...args: [any, C] | [an
   component.displayName = name ?? "<unknown>";
   return component;
 }
-
-export type WithChildren<P> = P & {children?: ReactNode};
-export type StylesRecord = {[key: string]: string | undefined};

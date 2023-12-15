@@ -5,7 +5,20 @@
 
 .root {
   @include theme(light) {
-    --text-color: #{leveled-color("primary", 5)};
+    &[data-variant="solid"] {
+      --text-color: white;
+      --border-color: #{leveled-color("primary", 6)};
+      --background-color: #{leveled-color("primary", 5)};
+      --hover-background-color: #{leveled-color("primary", 4)};
+    }
+    &[data-variant="outline"] {
+      --text-color: #{leveled-color("primary", 5)};
+      --border-color: #{leveled-color("primary", 3)};
+      --background-color: white;
+      --hover-background-color: #{leveled-color("primary", 0)};
+    }
+    --box-shadow-color: #{leveled-color("primary", 3, 0.3)};
+    --outline-color: #{leveled-color("primary", 5, 0.3)};
   }
   @include theme(dark) {
     --text-color: #{leveled-color("primary", 1)};
@@ -13,5 +26,42 @@
 }
 
 .root {
+  padding-block: 1.5u;
+  padding-inline: 3u;
   color: var(--text-color);
+  background-color: var(--background-color);
+  background-image: linear-gradient(to bottom, transparent, rgba(black, 0.1));
+  border: solid 1px var(--border-color);
+  box-shadow: 0px 1px 2px var(--box-shadow-color);
+  border-radius: 1px;
+  line-height: 1;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: 0.1s background-color;
+  &:hover:not(:disabled, [data-loading]) {
+    background-color: var(--hover-background-color);
+  }
+  &:focus-visible {
+    outline: solid 2px var(--outline-color);
+  }
+  &:disabled,
+  &[data-loading] {
+    box-shadow: 0px 1px 2px transparent;
+    opacity: 0.5;
+    cursor: inherit;
+  }
+}
+
+.loading {
+  inset: 0u;
+  background-color: var(--background-color);
+  border-radius: 1px;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  position: absolute;
+  &[data-loading] {
+    display: flex;
+  }
 }

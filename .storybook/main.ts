@@ -1,4 +1,4 @@
-//
+// @ts-nocheck
 
 import type {StorybookConfig} from "@storybook/react-webpack5";
 import {readCsf} from "@storybook/csf-tools";
@@ -8,7 +8,9 @@ import pathUtil from "path";
 
 const config = {
   stories: [
-    "../source/story/**/*.@(js|jsx|ts|tsx)"
+    "../source/story/atom/*.@(js|jsx|ts|tsx)",
+    "../source/story/module/*.@(js|jsx|ts|tsx)",
+    "../source/story/document/*.@(mdx)"
   ],
   addons: [
     "@storybook/addon-essentials",
@@ -30,6 +32,7 @@ const config = {
     module: {
       ...config.module,
       rules: [
+        ...config.module.rules,
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
@@ -91,7 +94,7 @@ const config = {
       ...config.resolve,
       alias: {
         ...config.resolve?.alias,
-        "/client": pathUtil.join(process.cwd(), "client"),
+        "/source": pathUtil.join(process.cwd(), "source"),
       },
     }
   })

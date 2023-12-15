@@ -1,6 +1,9 @@
 @charset "utf-8";
 
 
+$blank-gap: 0.3em;
+
+
 @function leveled-color($scheme, $level, $alpha: 1) {
   @if $alpha < 1 {
     @return rgb(var(#{"--zp-color-" + $scheme + "-" + $level}), $alpha);

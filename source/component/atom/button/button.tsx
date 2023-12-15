@@ -1,30 +1,70 @@
 //
 
-import {ReactElement} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircleNotch} from "@fortawesome/sharp-regular-svg-icons";
+import {KeyboardEvent, MouseEvent, ReactElement, ReactNode} from "react";
 import {create} from "/source/component/create";
-import {useTrans} from "/source/hook/translation";
-import {AdditionalProps} from "/source/module/data";
+import {LeveledColorScheme} from "/source/module/color";
+import {AdditionalProps, aria, data} from "/source/module/data";
 
 
 export const Button = create(
   require("./button.scss"), "Button",
   function ({
-    foo,
-    bar = 3,
+    scheme = "primary",
+    variant = "solid",
+    size = "medium",
+    type = "button",
+    disabled,
+    loading,
+    hotkeys,
     onClick,
+    onKeyDown,
+    onKeyUp,
+    onMouseDown,
+    onPointerDown,
+    children,
     ...rest
   }: {
-    foo: string,
-    bar?: number,
-    onClick?: () => void
+    scheme?: LeveledColorScheme,
+    variant?: "solid" | "outline",
+    size?: "small" | "medium" | "large",
+    type?: "submit" | "reset" | "button",
+    disabled?: boolean,
+    loading?: boolean,
+    hotkeys?: string | Array<string>,
+    onClick?: (event: MouseEvent<HTMLButtonElement>) => unknown,
+    onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => unknown,
+    onKeyUp?: (event: KeyboardEvent<HTMLButtonElement>) => unknown,
+    onMouseDown?: (event: MouseEvent<HTMLButtonElement>) => unknown,
+    onPointerDown?: (event: MouseEvent<HTMLButtonElement>) => unknown,
+    children?: ReactNode,
+    className?: string
   } & AdditionalProps): ReactElement {
 
-    const {trans} = useTrans("test");
-
     return (
-      <div styleName="root" onClick={onClick} {...rest}>
-        Hello! {foo} & {bar}, {trans("hello")}
-      </div>
+      <button
+        styleName="root"
+        type={type}
+        disabled={disabled}
+        onClick={onClick}
+        onKeyDown={onKeyDown}
+        onKeyUp={onKeyUp}
+        onMouseDown={onMouseDown}
+        onPointerDown={onPointerDown}
+        {...data({
+          scheme,
+          variant,
+          size,
+          loading
+        })}
+        {...rest}
+      >
+        {children}
+        <div styleName="loading" {...data({loading})} {...aria({hidden: true})}>
+          <FontAwesomeIcon icon={faCircleNotch} spin={true}/>
+        </div>
+      </button>
     );
 
   }
