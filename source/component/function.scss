@@ -26,3 +26,11 @@ $blank-gap: 0.3em;
     @content;
   }
 }
+
+@mixin schemify {
+  @each $scheme in primary, secondary, blue, red, gray {
+    &[data-scheme="#{$scheme}"] {
+      @content($scheme);
+    }
+  }
+}

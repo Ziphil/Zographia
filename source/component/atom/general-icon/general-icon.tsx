@@ -1,11 +1,11 @@
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {ReactElement} from "react";
-import {create} from "/source/component/create";
+import {ForwardedRef, ReactElement} from "react";
+import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
 
 
-export const GeneralIcon = create(
+export const GeneralIcon = createWithRef(
   null, "GeneralIcon",
   function ({
     icon,
@@ -14,14 +14,15 @@ export const GeneralIcon = create(
     rotation = 0,
     spin = false,
     className,
-    ...reset
+    ...rest
   }: {
     icon: IconDefinition,
     label?: string,
     flip?: "none" | "horizontal" | "vertical" | "both",
     rotation?: 0 | 90 | 180 | 270,
     spin?: boolean,
-    className?: string
+    className?: string,
+    ref: ForwardedRef<SVGSVGElement>
   } & AdditionalProps): ReactElement {
 
     return (
@@ -32,7 +33,7 @@ export const GeneralIcon = create(
         flip={flip === "none" ? undefined : flip}
         rotation={rotation === 0 ? undefined : rotation}
         spin={spin}
-        {...reset}
+        {...rest}
       />
     );
 

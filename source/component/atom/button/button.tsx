@@ -2,13 +2,13 @@
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleNotch} from "@fortawesome/sharp-regular-svg-icons";
-import {KeyboardEvent, MouseEvent, ReactElement, ReactNode} from "react";
-import {create} from "/source/component/create";
+import {ForwardedRef, KeyboardEvent, MouseEvent, ReactElement, ReactNode} from "react";
+import {createWithRef} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, aria, data} from "/source/module/data";
 
 
-export const Button = create(
+export const Button = createWithRef(
   require("./button.scss"), "Button",
   function ({
     scheme = "primary",
@@ -39,7 +39,8 @@ export const Button = create(
     onMouseDown?: (event: MouseEvent<HTMLButtonElement>) => unknown,
     onPointerDown?: (event: MouseEvent<HTMLButtonElement>) => unknown,
     children?: ReactNode,
-    className?: string
+    className?: string,
+    ref: ForwardedRef<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
 
     return (

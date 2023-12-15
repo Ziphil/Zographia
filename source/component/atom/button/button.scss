@@ -6,16 +6,22 @@
 .root {
   @include theme(light) {
     &[data-variant="solid"] {
-      --text-color: white;
-      --border-color: #{leveled-color("primary", 6)};
-      --background-color: #{leveled-color("primary", 5)};
-      --hover-background-color: #{leveled-color("primary", 4)};
+      @include schemify using ($scheme) {
+        --text-color: white;
+        --border-color: #{leveled-color($scheme, 6)};
+        --background-color: #{leveled-color($scheme, 5)};
+        --background-gradient-color: #{leveled-color($scheme, 9, 0.2)};
+        --hover-background-color: #{leveled-color($scheme, 4)};
+      }
     }
     &[data-variant="outline"] {
-      --text-color: #{leveled-color("primary", 5)};
-      --border-color: #{leveled-color("primary", 3)};
-      --background-color: white;
-      --hover-background-color: #{leveled-color("primary", 0)};
+      @include schemify using ($scheme) {
+        --text-color: #{leveled-color($scheme, 5)};
+        --border-color: #{leveled-color($scheme, 3)};
+        --background-color: white;
+        --background-gradient-color: #{leveled-color($scheme, 5, 0.1)};
+        --hover-background-color: #{leveled-color($scheme, 0)};
+      }
     }
     --box-shadow-color: #{leveled-color("primary", 3, 0.3)};
     --outline-color: #{leveled-color("primary", 5, 0.3)};
@@ -30,7 +36,7 @@
   padding-inline: 3u;
   color: var(--text-color);
   background-color: var(--background-color);
-  background-image: linear-gradient(to bottom, transparent, rgba(black, 0.1));
+  background-image: linear-gradient(to bottom, transparent, var(--background-gradient-color));
   border: solid 1px var(--border-color);
   box-shadow: 0px 1px 2px var(--box-shadow-color);
   border-radius: 1px;
