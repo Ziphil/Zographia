@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme(light) {
+    --background-color: #{single-color(white)};
+    --border-color: #{leveled-color(gray, 3)};
+    --box-shadow-color: #{leveled-color(gray, 3, 0.3)};
+    --focus-color: #{leveled-color(primary, 5)};
+    --builtin-addon-color: #{leveled-color(gray, 5)};
+  }
+}
+
+.root {
+  height: 4u;
+  padding-block: 1.5u;
+  padding-inline: 2u;
+  font-size: 4u;
+  border-radius: 1px;
+  background-color: var(--background-color);
+  border: solid 1px var(--border-color);
+  box-shadow: inset 0px 1px 2px var(--box-shadow-color);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: text;
+  box-sizing: content-box;
+  z-index: 0;
+  &:focus-within {
+    outline: solid 2px var(--focus-color);
+    outline-offset: -1px;
+  }
+}
+
+.input {
+  height: 100%;
+  flex: 1 1 auto;
+  order: 10;
+  &::-webkit-calendar-picker-indicator {
+    inline-size: 1.4em;
+    block-size: 100%;
+    inset-block: 0em;
+    inset-inline-end: 0em;
+    padding: 0em;
+    background: transparent;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+.builtin-addon {
+  color: var(--builtin-addon-color);
+  flex: 0 0 auto;
+  order: 20;
+}

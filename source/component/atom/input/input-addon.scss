@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  flex: 0 0 auto;
+  &[data-position="left"] {
+    order: 5;
+  }
+  &[data-position="right"] {
+    order: 15;
+  }
+}

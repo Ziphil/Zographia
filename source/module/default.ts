@@ -24,6 +24,8 @@ export const DEFAULT_COLOR_DEFINITIONS = {
     dark: {mix: 0.6, saturation: -0.3},
     light: {mix: 0.93, saturation: 0.2}
   }),
+  white: createColor("hsl(30, 100%, 100%)"),
+  black: createColor("hsl(30, 0%, 0%)"),
   textLight: createColor("hsl(30, 30%, 10%)"),
   textDark: createColor("hsl(30, 100%, 98%)"),
   backgroundLight: createColor("hsl(30, 30%, 98%)"),

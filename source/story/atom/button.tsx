@@ -18,7 +18,7 @@ export default {
 const template = {
 } as Story;
 
-export const VariantSolid = {
+export const variantSolid = {
   ...template,
   name: "バリアント: 濃い",
   args: {
@@ -26,7 +26,7 @@ export const VariantSolid = {
     children: "ボタンテキスト"
   }
 } as Story;
-export const VariantOutline = {
+export const variantOutline = {
   ...template,
   name: "バリアント: 薄い",
   args: {
@@ -34,7 +34,7 @@ export const VariantOutline = {
     children: "ボタンテキスト"
   }
 } as Story;
-export const WithIcon = {
+export const withIcon = {
   ...template,
   name: "アイコン付き",
   args: {
@@ -44,7 +44,7 @@ export const WithIcon = {
     </>)
   }
 } as Story;
-export const Disabled = {
+export const disabled = {
   ...template,
   name: "無効",
   args: {
@@ -52,7 +52,7 @@ export const Disabled = {
     children: "ボタンテキスト"
   }
 } as Story;
-export const Loading = {
+export const loading = {
   ...template,
   name: "ローディング",
   args: {
