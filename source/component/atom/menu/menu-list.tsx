@@ -14,6 +14,7 @@ export const MenuList = createWithRef(
     mounted,
     status,
     context,
+    combobox = false,
     children,
     ...rest
   }: {
@@ -21,6 +22,7 @@ export const MenuList = createWithRef(
     mounted: boolean,
     status: "unmounted" | "initial" | "open" | "close",
     context: FloatingContext,
+    combobox?: boolean,
     children?: ReactNode,
     className?: string,
     style?: CSSProperties,
@@ -29,7 +31,7 @@ export const MenuList = createWithRef(
 
     return (mounted) ? (
       <FloatingPortal>
-        <FloatingFocusManager context={context}>
+        <FloatingFocusManager context={context} modal={false} initialFocus={(combobox) ? -1 : undefined}>
           <div styleName="root" {...data({status})} {...rest}>
             <Scroll styleName="scroll">
               <div styleName="inner">

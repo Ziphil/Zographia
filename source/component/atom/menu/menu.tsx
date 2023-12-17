@@ -1,7 +1,7 @@
 //
 
 import {Placement, useClick, useDismiss, useFloating, useInteractions, useListNavigation, useRole, useTransitionStatus} from "@floating-ui/react";
-import {Children, ReactElement, ReactNode, cloneElement, useMemo, useRef, useState} from "react";
+import {Children, Fragment, ReactElement, ReactNode, cloneElement, useMemo, useRef, useState} from "react";
 import {isElement} from "react-is";
 import {create} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
@@ -49,7 +49,7 @@ export const Menu = create(
     ]);
 
     return (
-      <>
+      <Fragment>
         {trigger !== undefined && (
           cloneElement(trigger, {ref: refs.setReference, ...getReferenceProps()})
         )}
@@ -67,7 +67,7 @@ export const Menu = create(
             {transformChildren(children)}
           </MenuContextProvider>
         </MenuList>
-      </>
+      </Fragment>
     );
 
   }

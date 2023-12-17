@@ -79,7 +79,7 @@ export const typeDateTime = {
   ...template,
   name: "タイプ: 日付＋時刻",
   args: {
-    type: "datetime-local"
+    type: "datetime"
   }
 } as Story;
 export const typeMonth = {
