@@ -11,6 +11,7 @@ import {getColorVarDefinitionCss, getFontFamilyVarDefinitionCss} from "/source/u
 
 
 require("./reset.scss");
+require("simplebar-react/dist/simplebar.min.css");
 
 
 export const Root = create(
