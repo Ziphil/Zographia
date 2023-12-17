@@ -4,6 +4,7 @@
 
 
 .root {
-  margin-inline-end: $blank-gap;
-  flex: 0 0 auto;
+  margin-block-start: -0.04em;
+  height: 1em;
+  display: inline-flex;
 }

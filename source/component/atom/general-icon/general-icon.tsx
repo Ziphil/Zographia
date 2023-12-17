@@ -6,14 +6,13 @@ import {AdditionalProps} from "/source/module/data";
 
 
 export const GeneralIcon = createWithRef(
-  null, "GeneralIcon",
+  require("./general-icon.scss"), "GeneralIcon",
   function ({
     icon,
     label,
     flip = "none",
     rotation = 0,
     spin = false,
-    className,
     ...rest
   }: {
     icon: IconDefinition,
@@ -27,7 +26,7 @@ export const GeneralIcon = createWithRef(
 
     return (
       <FontAwesomeIcon
-        className={className}
+        styleName="root"
         icon={icon}
         title={label}
         flip={flip === "none" ? undefined : flip}

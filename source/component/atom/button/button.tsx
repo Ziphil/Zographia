@@ -2,7 +2,7 @@
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleNotch} from "@fortawesome/sharp-regular-svg-icons";
-import {ForwardedRef, KeyboardEvent, MouseEvent, ReactElement, ReactNode} from "react";
+import {ForwardedRef, KeyboardEvent, MouseEvent, ReactElement, ReactNode, useCallback, useState} from "react";
 import {createWithRef} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, aria, data} from "/source/module/data";
@@ -15,9 +15,9 @@ export const Button = createWithRef(
     variant = "solid",
     size = "medium",
     type = "button",
+    reactive = true,
     disabled,
     loading,
-    hotkeys,
     onClick,
     onKeyDown,
     onKeyUp,
@@ -30,9 +30,9 @@ export const Button = createWithRef(
     variant?: "solid" | "outline",
     size?: "small" | "medium" | "large",
     type?: "submit" | "reset" | "button",
+    reactive?: boolean,
     disabled?: boolean,
     loading?: boolean,
-    hotkeys?: string | Array<string>,
     onClick?: (event: MouseEvent<HTMLButtonElement>) => unknown,
     onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => unknown,
     onKeyUp?: (event: KeyboardEvent<HTMLButtonElement>) => unknown,
@@ -43,12 +43,33 @@ export const Button = createWithRef(
     ref: ForwardedRef<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
 
+    const [innerLoading, setInnerLoading] = useState(false);
+
+    const actualLoading = (reactive) ? innerLoading : loading;
+
+    const handleClick = useCallback(async function (event: MouseEvent<HTMLButtonElement>): Promise<void> {
+      event.preventDefault();
+      if (!actualLoading) {
+        if (reactive && onClick) {
+          setInnerLoading(true);
+          const result = onClick(event);
+          if (result !== null && typeof result === "object" && "then" in result && typeof result.then === "function") {
+            result.then(() => setInnerLoading(false)).catch(() => null);
+          } else {
+            setInnerLoading(false);
+          }
+        } else {
+          onClick?.(event);
+        }
+      }
+    }, [reactive, actualLoading, onClick]);
+
     return (
       <button
         styleName="root"
         type={type}
         disabled={disabled}
-        onClick={onClick}
+        onClick={handleClick}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
         onMouseDown={onMouseDown}
@@ -57,12 +78,15 @@ export const Button = createWithRef(
           scheme,
           variant,
           size,
-          loading
+          loading: actualLoading
+        })}
+        {...aria({
+          disabled: disabled || actualLoading
         })}
         {...rest}
       >
         {children}
-        <div styleName="loading" {...data({loading})} {...aria({hidden: true})}>
+        <div styleName="loading" {...data({loading: actualLoading})} {...aria({hidden: true})}>
           <FontAwesomeIcon icon={faCircleNotch} spin={true}/>
         </div>
       </button>
