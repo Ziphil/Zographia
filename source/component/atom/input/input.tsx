@@ -1,8 +1,31 @@
 //
 
-import {FloatingContext, useDismiss, useFloating, useInteractions, useListNavigation, useMergeRefs, useRole, useTransitionStatus} from "@floating-ui/react";
+import {
+  FloatingContext,
+  useDismiss,
+  useFloating,
+  useInteractions,
+  useListNavigation,
+  useMergeRefs,
+  useRole,
+  useTransitionStatus
+} from "@floating-ui/react";
 import {faCalendar, faClock} from "@fortawesome/sharp-regular-svg-icons";
-import {ChangeEvent, Dispatch, FocusEvent, ForwardedRef, Fragment, MutableRefObject, ReactElement, ReactNode, SetStateAction, useCallback, useRef, useState} from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  FocusEvent,
+  ForwardedRef,
+  Fragment,
+  MutableRefObject,
+  ReactElement,
+  ReactNode,
+  SetStateAction,
+  useCallback,
+  useRef,
+  useState,
+  useTransition
+} from "react";
 import {AsyncOrSync} from "ts-essentials";
 import {GeneralIcon} from "/source/component/atom/general-icon";
 import {MenuContextProvider} from "/source/component/atom/menu/menu-context";
@@ -53,6 +76,7 @@ export const Input = createWithRef(
 
     const [open, setOpen] = useState(false);
     const [suggestionSpecs, setSuggestionSpecs] = useState<Array<SuggestionSpec>>([]);
+    const [, startTransition] = useTransition();
 
     const innerRef = useRef<HTMLInputElement>(null);
     const mergedRef = useMergeRefs<HTMLInputElement>([ref, innerRef]);
@@ -72,9 +96,11 @@ export const Input = createWithRef(
       const value = event.target.value;
       if (suggest !== undefined && value) {
         const suggestionSpecs = await suggest(value);
-        setSuggestionSpecs(suggestionSpecs);
-        setOpen(true);
-        setActiveIndex(0);
+        startTransition(() => {
+          setSuggestionSpecs(suggestionSpecs);
+          setOpen(true);
+          setActiveIndex(0);
+        });
       } else {
         setOpen(false);
       }
@@ -103,9 +129,7 @@ export const Input = createWithRef(
             readOnly={readonly}
             required={required}
             disabled={disabled}
-            {...aria({
-              invalid: error
-            })}
+            {...aria({invalid: error})}
             {...rest}
             {...getReferenceProps({
               ref: mergedRef,
