@@ -9,7 +9,7 @@ type Meta = RawMeta<typeof Menu>;
 type Story = RawStory<typeof Menu>;
 
 export default {
-  title: "Atom/Menu",
+  title: "Module/Menu",
   component: Menu,
   subcomponents: {MenuItem}
 } as Meta;

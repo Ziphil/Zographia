@@ -28,8 +28,8 @@ import {
 } from "react";
 import {AsyncOrSync} from "ts-essentials";
 import {GeneralIcon} from "/source/component/atom/general-icon";
-import {MenuContextProvider} from "/source/component/atom/menu/menu-context";
-import {MenuList} from "/source/component/atom/menu/menu-list";
+import {MenuContextProvider} from "../../module/menu/menu-context";
+import {MenuList} from "../../module/menu/menu-list";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
 import {InputMenuItem} from "./input-menu-item";

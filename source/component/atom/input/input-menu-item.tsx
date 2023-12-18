@@ -2,7 +2,7 @@
 
 import {MouseEvent, ReactElement, useCallback} from "react";
 import type {SuggestionSpec} from "/source/component/atom/input/input";
-import {MenuItem} from "/source/component/atom/menu";
+import {MenuItem} from "../../module/menu";
 import {create} from "/source/component/create";
 
 
