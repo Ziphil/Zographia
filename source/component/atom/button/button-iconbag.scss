@@ -4,6 +4,6 @@
 
 
 .root {
-  margin-inline-end: $blank-gap;
+  margin-inline-end: var(--blank-gap);
   flex: 0 0 auto;
 }

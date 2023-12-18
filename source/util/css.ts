@@ -9,10 +9,10 @@ export function getColorVarDefinitionCss(definitions: ColorDefinitions): string 
   const wholeDefinitions = {...DEFAULT_COLOR_DEFINITIONS, ...definitions};
   for (const [scheme, definition] of Object.entries(wholeDefinitions)) {
     if (typeof definition === "string") {
-      varCss.push(`--zp-color-${toKebabCase(scheme)}: ${qixColor(definition).rgb().array().join(", ")};`);
+      varCss.push(`--color-${toKebabCase(scheme)}: ${qixColor(definition).rgb().array().join(", ")};`);
     } else {
       for (const [level, color] of Object.entries(definition)) {
-        varCss.push(`--zp-color-${toKebabCase(scheme)}-${level}: ${qixColor(color).rgb().array().join(", ")};`);
+        varCss.push(`--color-${toKebabCase(scheme)}-${level}: ${qixColor(color).rgb().array().join(", ")};`);
       }
     }
   }
@@ -22,8 +22,8 @@ export function getColorVarDefinitionCss(definitions: ColorDefinitions): string 
 
 export function getFontFamilyVarDefinitionCss(fontFamilies: {main?: string, monospace?: string}): string {
   const varCss = [];
-  varCss.push(`--zp-font-family-main: ${fontFamilies.main ?? DEFAULT_FONT_FAMILIES.main};`);
-  varCss.push(`--zp-font-family-monospace: ${fontFamilies.monospace ?? DEFAULT_FONT_FAMILIES.monospace};`);
+  varCss.push(`--font-family-main: ${fontFamilies.main ?? DEFAULT_FONT_FAMILIES.main};`);
+  varCss.push(`--font-family-monospace: ${fontFamilies.monospace ?? DEFAULT_FONT_FAMILIES.monospace};`);
   const css = `:root {\n${varCss.join("\n")}\n}`;
   return css;
 }

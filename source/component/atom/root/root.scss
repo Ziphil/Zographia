@@ -4,7 +4,7 @@
 
 
 html {
-  font-family: var(--zp-font-family-main);
+  font-family: var(--font-family-main);
   font-feature-settings: "palt" 1, "pkna" 1, "lnum" 1, "kern" 1 !important;
   text-decoration-skip-ink: none;
   text-decoration-thickness: 0.003em;
@@ -13,19 +13,26 @@ html {
 
 body {
   @include theme(light) {
-    --text-color: #{single-color(text-light)};
-    --background-color: #{single-color(background-light)};
-    --background-stain-color: #{single-color(background-stain-light)};
+    --loc-text-color: #{single-color(text-light)};
+    --loc-background-color: #{single-color(background-light)};
+    --loc-background-stain-color: #{single-color(background-stain-light)};
   }
   @include theme(dark) {
-    --background-color: #{single-color(background-dark)};
-    --background-stain-color: #{single-color(background-stain-dark)};
+    --loc-text-color: #{single-color(text-dark)};
+    --loc-background-color: #{single-color(background-dark)};
+    --loc-background-stain-color: #{single-color(background-stain-dark)};
   }
 }
 
 body {
-  color: var(--text-color);
-  background-color: var(--background-color);
+  color: var(--loc-text-color);
+  background-color: var(--loc-background-color);
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAiJJREFUWEetWEESwkAIqwf//2AvznbcHYpJCNt6qpayEEKgvg7/8z6O4yPM4/1xPT7IPtsNG+r7RQ5ETrLptGHOOwmxvN8sQPpAgaJbjyr45WcE6KDlHsxQHr9XiKMzTgSdbLJN5Ni8npzLgSg+lonfLTFCpdUEIUKYGArQKYWDuip3vIeqszpblRhlFGWjE6ST9Az6QoluiV2y7wSPfNMm6WibY8t4OVFDlTmfcRHsdqJCsJK1Cx3cAKFGhXFWoYgSdGiwJgkydhyUOkZ0Nmonm9mn7zsIRlLHDqwWiijoMThIoygzXcRc+8w5hBjl+O42g8Q1H+wmoGjymMwoHimRLpOYCDqkreRB8bAKhPqOJe52chVwZ7xRGVP7INMupP6zo6VkpCgQj6cCrORiifPNXXF2tBFtOnmftHSwKiPSwp0AqaaiJkFIqnIgNOKb2k6DLHplHaycMXQeaQjwQiZncVUqF9UcfPyeefcHkNMkuZsdlG+J8w+Z81ymg05zqGXBSaKiy+m/s824Qt4NTvK3E+CTklLxe52lXjvRbHVRjAF0Eb0820XQyTwnppIq5WlXB9mcVtu0s+38SZdCsMyO/PGEdM9ZImbSl2XE4SAbZR2ZQYg7PL0tMxUnY2BsokgfziSJ3HFL5XAxVwB2u/PSpDJ0JITN7Mg5+qcUQrAjyB1dVMnk0bqWCDWLnXJWHET3nTm/bFSJnQCdEseKsG6mfr5oRPR0YJGgrgAAAABJRU5ErkJggg==");
-  box-shadow: inset 0u 0u 16u var(--background-stain-color);
+  box-shadow: inset 0u 0u 16u var(--loc-background-stain-color);
+}
+
+:root {
+  --border-radius: 1px;
+  --box-shadow-setting: 0px 1px 2px;
+  --blank-gap: 0.3em;
 }

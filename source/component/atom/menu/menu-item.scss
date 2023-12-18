@@ -5,13 +5,13 @@
 
 .root {
   @include theme(light) {
-    --text-color: #{single-color(text-light)};
-    --background-color: #{single-color(white)};
-    --focus-background-color: #{leveled-color(gray, 0)};
+    --loc-text-color: #{single-color(text-light)};
+    --loc-background-color: #{single-color(white)};
+    --loc-focus-background-color: #{leveled-color(gray, 0)};
     @include schemify using ($scheme) {
-      --text-color: #{leveled-color($scheme, 5)};
-      --background-color: #{single-color(white)};
-      --focus-background-color: #{leveled-color($scheme, 0)};
+      --loc-text-color: #{leveled-color($scheme, 5)};
+      --loc-background-color: #{single-color(white)};
+      --loc-focus-background-color: #{leveled-color($scheme, 0)};
     }
   }
 }
@@ -19,13 +19,13 @@
 .root {
   padding-block: 1.5u;
   padding-inline: 2u;
-  color: var(--text-color);
-  background-color: var(--background-color);
+  color: var(--loc-text-color);
+  background-color: var(--loc-background-color);
   flex: 0 0 auto;
   cursor: pointer;
   transition: 0.1s background-color;
   &:hover,
   &:focus {
-    background-color: var(--focus-background-color);
+    background-color: var(--loc-focus-background-color);
   }
 }
