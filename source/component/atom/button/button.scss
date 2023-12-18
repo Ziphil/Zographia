@@ -4,7 +4,7 @@
 
 
 .root {
-  @include theme(light) {
+  @include theme("light") {
     @include schemify using ($scheme) {
       &[data-variant="solid"] {
         --loc-text-color: #{single-color("white")};

@@ -4,7 +4,7 @@
 
 
 .root {
-  @include theme(light) {
+  @include theme("light") {
     --loc-background-color: #{single-color("white")};
     --loc-border-color: #{leveled-color("gray", 3)};
     --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
