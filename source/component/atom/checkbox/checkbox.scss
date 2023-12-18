@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme(light) {
+    --loc-icon-color: #{single-color("white")};
+    --loc-background-color: #{single-color("white")};
+    --loc-border-color: #{leveled-color("gray", 3)};
+    --loc-checked-background-color: #{leveled-color("primary", 5)};
+    --loc-checked-border-color: #{leveled-color("primary", 6)};
+    --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
+    --loc-focus-color: #{leveled-color("primary", 5, 0.5)};
+    &[data-error] {
+      --loc-border-color: #{leveled-color("red", 3)};
+      --loc-checked-border-color: #{leveled-color("red", 6)};
+      --loc-box-shadow-color: #{leveled-color("red", 3, 0.3)};
+      --loc-focus-color: #{leveled-color("red", 5, 0.5)};
+    }
+  }
+}
+
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  clip: rect(0px, 0px, 0px, 0px);
+  clip-path: inset(50%);
+}
+
+.label {
+  width: 4.5u;
+  height: 4.5u;
+  background-color: var(--loc-background-color);
+  border: solid 1px var(--loc-border-color);
+  border-radius: var(--border-radius);
+  box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);
+  line-height: 1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  transition: 0.1s border-color, 0.1s background-color;
+  .input:checked +& {
+    border-color: var(--loc-checked-border-color);
+    background-color: var(--loc-checked-background-color);
+  }
+  .input:focus-visible +& {
+    outline: solid 2px var(--loc-focus-color);
+  }
+  .input:disabled +& {
+    cursor: inherit;
+  }
+}
+
+.icon {
+  color: var(--loc-icon-color);
+  opacity: 0;
+  transition: 0.1s color, 0.1s opacity;
+  .input:checked +.label >&,
+  .input:indeterminate +.label >& {
+    opacity: 1;
+  }
+  .input:indeterminate +.label >& {
+    color: var(--loc-checked-background-color);
+  }
+}
