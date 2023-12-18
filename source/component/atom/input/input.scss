@@ -4,6 +4,7 @@
 
 
 .root {
+  @include control-group-vars;
   @include theme("light") {
     --loc-background-color: #{single-color("white")};
     --loc-border-color: #{leveled-color("gray", 3)};
@@ -20,11 +21,11 @@
 }
 
 .root {
+  @include control-group-item;
   height: 4u;
   padding-block: 1.5u;
   padding-inline: 2u;
   font-size: 4u;
-  border-radius: var(--border-radius);
   background-color: var(--loc-background-color);
   border: solid 1px var(--loc-border-color);
   box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);

@@ -54,3 +54,34 @@
     content: "";
   }
 }
+
+@mixin control-group-vars {
+  --loc-left-border-radius: #{var(--border-radius)};
+  --loc-right-border-radius: #{var(--border-radius)};
+  --loc-margin-left: 0u;
+  :global(.control-group) >& {
+    &:first-child {
+      --loc-left-border-radius: #{var(--border-radius)};
+      --loc-margin-left: 0u;
+    }
+    &:not(:first-child) {
+      --loc-left-border-radius: 0u;
+      --loc-margin-left: -1px;
+    }
+    &:last-child {
+      --loc-right-border-radius: #{var(--border-radius)};
+    }
+    &:not(:last-child) {
+      --loc-right-border-radius: 0u;
+    }
+  }
+}
+
+@mixin control-group-item {
+  margin-inline-start: var(--loc-margin-left);
+  margin-inline-end: var(--loc-margin-right);
+  border-start-start-radius: var(--loc-left-border-radius);
+  border-end-start-radius: var(--loc-left-border-radius);
+  border-start-end-radius: var(--loc-right-border-radius);
+  border-end-end-radius: var(--loc-right-border-radius);
+}
