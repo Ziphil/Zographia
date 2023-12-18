@@ -3,14 +3,7 @@
 import {useId, useMergeRefs} from "@floating-ui/react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faMinus} from "@fortawesome/sharp-solid-svg-icons";
-import {
-  ChangeEvent,
-  ForwardedRef,
-  ReactElement,
-  useCallback,
-  useEffect,
-  useRef
-} from "react";
+import {ChangeEvent, ForwardedRef, ReactElement, useCallback, useEffect, useRef} from "react";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
 
@@ -59,11 +52,7 @@ export const Checkbox = createWithRef(
     }, [checked]);
 
     return (
-      <div
-        styleName="root"
-        className={className}
-        {...data({error})}
-      >
+      <div styleName="root" className={className} {...data({error})}>
         <input
           styleName="input"
           type="checkbox"

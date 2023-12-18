@@ -4,15 +4,15 @@ import {action} from "@storybook/addon-actions";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {useState} from "react";
 import {useForm} from "react-hook-form";
-import {Button, Checkbox} from "/source/component";
+import {Button, Radio} from "/source/component";
 
 
-type Meta = RawMeta<typeof Checkbox>;
-type Story = RawStory<typeof Checkbox>;
+type Meta = RawMeta<typeof Radio>;
+type Story = RawStory<typeof Radio>;
 
 export default {
-  title: "Atom/Checkbox",
-  component: Checkbox
+  title: "Atom/Radio",
+  component: Radio
 } as Meta;
 
 const template = {
@@ -32,13 +32,6 @@ export const unchecked = {
     checked: true
   }
 } as Story;
-export const indeterminate = {
-  ...template,
-  name: "不定",
-  args: {
-    checked: "indeterminate"
-  }
-} as Story;
 export const errorChecked = {
   ...template,
   name: "エラー＋チェックなし",
@@ -55,21 +48,13 @@ export const erroUunchecked = {
     error: true
   }
 } as Story;
-export const errorIndeterminate = {
-  ...template,
-  name: "エラー＋不定",
-  args: {
-    checked: "indeterminate",
-    error: true
-  }
-} as Story;
 
 export const testUncontrolled: Story = {
   ...template,
   name: "[テスト] 非制御",
   render: () => {
     return (
-      <Checkbox checked={undefined} onSet={undefined}/>
+      <Radio checked={undefined} onSet={undefined}/>
     );
   }
 };
@@ -79,7 +64,7 @@ export const testControlled: Story = {
   render: () => {
     const [checked, setChecked] = useState(false);
     return (
-      <Checkbox checked={checked} onSet={setChecked}/>
+      <Radio checked={checked} onSet={setChecked}/>
     );
   }
 };
@@ -87,10 +72,12 @@ export const testHook: Story = {
   ...template,
   name: "[テスト] Hook Form",
   render: () => {
-    const {register, handleSubmit} = useForm({defaultValues: {value: true}});
+    const {register, handleSubmit} = useForm({defaultValues: {value: "2"}});
     return (
       <form onSubmit={handleSubmit(action("onSubmit"))}>
-        <Checkbox {...register("value")}/>
+        <Radio value="1" {...register("value")}/>
+        <Radio value="2" {...register("value")}/>
+        <Radio value="3" {...register("value")}/>
         <Button type="submit" scheme="gray" variant="outline">送信</Button>
       </form>
     );
