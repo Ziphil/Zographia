@@ -5,8 +5,8 @@ import {Dispatch, HTMLProps, MutableRefObject, SetStateAction, createContext} fr
 
 export type MenuContextValue = {
   setOpen: Dispatch<SetStateAction<boolean>>,
-  listRef: MutableRefObject<Array<HTMLElement | null>>,
   activeIndex: number | null,
+  listRef: MutableRefObject<Array<HTMLElement | null>>,
   getItemProps: (userProps?: HTMLProps<HTMLElement>) => Record<string, unknown>
 };
 

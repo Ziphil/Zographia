@@ -96,3 +96,13 @@ export const typeWeek = {
     type: "week"
   }
 } as Story;
+export const suggestion = {
+  ...template,
+  name: "サジェスト",
+  args: {
+    suggest: (pattern) => {
+      const specs = Array.from({length: 100}, (dummy, index) => ({replacement: `${pattern}@${index}`, node: `${pattern}@${index}`}));
+      return specs;
+    }
+  }
+} as Story;

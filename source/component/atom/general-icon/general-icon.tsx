@@ -21,6 +21,7 @@ export const GeneralIcon = createWithRef(
     rotation?: 0 | 90 | 180 | 270,
     spin?: boolean,
     className?: string,
+    id?: string,
     ref: ForwardedRef<SVGSVGElement>
   } & AdditionalProps): ReactElement {
 

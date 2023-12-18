@@ -29,9 +29,11 @@ export const MenuList = createWithRef(
     ref: ForwardedRef<HTMLDivElement>
   } & AdditionalProps): ReactElement | null {
 
+    const initialFocus = (combobox) ? -1 : undefined;
+
     return (mounted) ? (
       <FloatingPortal>
-        <FloatingFocusManager context={context} modal={false} initialFocus={(combobox) ? -1 : undefined}>
+        <FloatingFocusManager context={context} modal={false} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
           <div styleName="root" {...data({status})} {...rest}>
             <Scroll styleName="scroll">
               <div styleName="inner">

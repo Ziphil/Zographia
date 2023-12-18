@@ -13,6 +13,7 @@ export const ButtonIconbag = createWithRef(
   }: {
     children: ReactElement,
     className?: string,
+    id?: string,
     ref: ForwardedRef<HTMLSpanElement>
   } & AdditionalProps): ReactElement {
 

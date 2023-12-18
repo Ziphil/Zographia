@@ -40,6 +40,7 @@ export const Button = createWithRef(
     onPointerDown?: (event: MouseEvent<HTMLButtonElement>) => unknown,
     children?: ReactNode,
     className?: string,
+    id?: string,
     ref: ForwardedRef<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
 

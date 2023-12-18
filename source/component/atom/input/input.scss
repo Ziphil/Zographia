@@ -40,11 +40,11 @@
   flex: 1 1 auto;
   order: 10;
   &::-webkit-calendar-picker-indicator {
-    inline-size: 1.4em;
-    block-size: 100%;
-    inset-block: 0em;
-    inset-inline-end: 0em;
-    padding: 0em;
+    width: 7u;
+    height: 100%;
+    inset-block: 0u;
+    inset-inline-end: 0u;
+    padding: 0u;
     background: transparent;
     position: absolute;
     cursor: pointer;

@@ -30,7 +30,7 @@ export const MenuItem = createWithRef(
     const {setOpen, listRef, activeIndex, getItemProps} = useContext(menuContext);
     const mergedRef = useMergeRefs<HTMLButtonElement>([ref, (element) => listRef.current[index] = element]);
 
-    const handleClick = useCallback(function (event: MouseEvent<HTMLButtonElement>) {
+    const handleClick = useCallback(function (event: MouseEvent<HTMLButtonElement>): void {
       setOpen(false);
       onClick?.(event);
     }, [setOpen, onClick]);
@@ -44,12 +44,8 @@ export const MenuItem = createWithRef(
           tabIndex: activeIndex === index ? 0 : -1,
           onClick: handleClick
         })}
-        {...data({
-          scheme
-        })}
-        {...aria({
-          selected: activeIndex === index
-        })}
+        {...data({scheme})}
+        {...aria({selected: activeIndex === index})}
         {...rest}
       >
         {children}
