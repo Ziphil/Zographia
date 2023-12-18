@@ -7,7 +7,7 @@
   @include theme(light) {
     @include schemify using ($scheme) {
       &[data-variant="solid"] {
-        --loc-text-color: #{single-color(white)};
+        --loc-text-color: #{single-color("white")};
         --loc-border-color: #{leveled-color($scheme, 6)};
         --loc-background-color: #{leveled-color($scheme, 5)};
         --loc-background-gradient-color: #{leveled-color($scheme, 9, 0.2)};
@@ -16,7 +16,7 @@
       &[data-variant="outline"] {
         --loc-text-color: #{leveled-color($scheme, 5)};
         --loc-border-color: #{leveled-color($scheme, 3)};
-        --loc-background-color: #{single-color(white)};
+        --loc-background-color: #{single-color("white")};
         --loc-background-gradient-color: #{leveled-color($scheme, 5, 0.1)};
         --loc-hover-background-color: #{leveled-color($scheme, 0)};
       }

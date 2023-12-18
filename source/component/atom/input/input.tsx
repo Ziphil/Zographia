@@ -31,7 +31,7 @@ import {GeneralIcon} from "/source/component/atom/general-icon";
 import {MenuContextProvider} from "/source/component/atom/menu/menu-context";
 import {MenuList} from "/source/component/atom/menu/menu-list";
 import {createWithRef} from "/source/component/create";
-import {AdditionalProps, aria} from "/source/module/data";
+import {AdditionalProps, aria, data} from "/source/module/data";
 import {InputMenuItem} from "./input-menu-item";
 
 
@@ -118,7 +118,7 @@ export const Input = createWithRef(
 
     return (
       <Fragment>
-        <label styleName="root" className={className} ref={refs.setReference}>
+        <label styleName="root" className={className} ref={refs.setReference} {...data({error})}>
           <input
             styleName="input"
             value={value}

@@ -25,7 +25,7 @@
 }
 
 @mixin schemify {
-  @each $scheme in primary, secondary, blue, red, gray {
+  @each $scheme in "primary", "secondary", "blue", "red", "gray" {
     &[data-scheme="#{$scheme}"] {
       @content($scheme);
     }

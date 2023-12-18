@@ -96,6 +96,13 @@ export const typeWeek = {
     type: "week"
   }
 } as Story;
+export const error = {
+  ...template,
+  name: "エラー",
+  args: {
+    error: true
+  }
+} as Story;
 export const suggestion = {
   ...template,
   name: "サジェスト",

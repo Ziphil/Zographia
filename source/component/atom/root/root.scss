@@ -13,14 +13,14 @@ html {
 
 body {
   @include theme(light) {
-    --loc-text-color: #{single-color(text-light)};
-    --loc-background-color: #{single-color(background-light)};
-    --loc-background-stain-color: #{single-color(background-stain-light)};
+    --loc-text-color: #{single-color("text-light")};
+    --loc-background-color: #{single-color("background-light")};
+    --loc-background-stain-color: #{single-color("background-stain-light")};
   }
   @include theme(dark) {
-    --loc-text-color: #{single-color(text-dark)};
-    --loc-background-color: #{single-color(background-dark)};
-    --loc-background-stain-color: #{single-color(background-stain-dark)};
+    --loc-text-color: #{single-color("text-dark")};
+    --loc-background-color: #{single-color("background-dark")};
+    --loc-background-stain-color: #{single-color("background-stain-dark")};
   }
 }
 

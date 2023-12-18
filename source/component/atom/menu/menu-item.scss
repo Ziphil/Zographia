@@ -5,12 +5,12 @@
 
 .root {
   @include theme(light) {
-    --loc-text-color: #{single-color(text-light)};
-    --loc-background-color: #{single-color(white)};
-    --loc-focus-background-color: #{leveled-color(gray, 0)};
+    --loc-text-color: #{single-color("text-light")};
+    --loc-background-color: #{single-color("white")};
+    --loc-focus-background-color: #{leveled-color("gray", 0)};
     @include schemify using ($scheme) {
       --loc-text-color: #{leveled-color($scheme, 5)};
-      --loc-background-color: #{single-color(white)};
+      --loc-background-color: #{single-color("white")};
       --loc-focus-background-color: #{leveled-color($scheme, 0)};
     }
   }

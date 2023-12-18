@@ -56,6 +56,7 @@ export const loading = {
   ...template,
   name: "ローディング",
   args: {
+    reactive: false,
     loading: true,
     children: "ボタンテキスト"
   }
