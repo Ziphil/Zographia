@@ -32,6 +32,11 @@
   }
 }
 
+@mixin bold-font {
+  font-family: var(--font-family-bold);
+  font-weight: bold;
+}
+
 @mixin line-height($line-height) {
   line-height: $line-height;
   &::before {

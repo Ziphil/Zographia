@@ -25,7 +25,7 @@ export const Root = create(
     children
   }: {
     messageInventory?: MessageInventory,
-    fontFamilies?: {main?: string, monospace?: string},
+    fontFamilies?: {main?: string, bold?: string, monospace?: string},
     colorDefinitions?: ColorDefinitions,
     initialLocale?: Locale,
     initialTheme?: string,

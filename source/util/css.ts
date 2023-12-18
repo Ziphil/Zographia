@@ -20,9 +20,10 @@ export function getColorVarDefinitionCss(definitions: ColorDefinitions): string 
   return css;
 };
 
-export function getFontFamilyVarDefinitionCss(fontFamilies: {main?: string, monospace?: string}): string {
+export function getFontFamilyVarDefinitionCss(fontFamilies: {main?: string, bold?: string, monospace?: string}): string {
   const varCss = [];
   varCss.push(`--font-family-main: ${fontFamilies.main ?? DEFAULT_FONT_FAMILIES.main};`);
+  varCss.push(`--font-family-bold: ${fontFamilies.bold ?? DEFAULT_FONT_FAMILIES.bold};`);
   varCss.push(`--font-family-monospace: ${fontFamilies.monospace ?? DEFAULT_FONT_FAMILIES.monospace};`);
   const css = `:root {\n${varCss.join("\n")}\n}`;
   return css;
