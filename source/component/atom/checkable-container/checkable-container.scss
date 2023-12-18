@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  column-gap: var(--blank-gap);
+  display: flex;
+  align-items: center;
+}
