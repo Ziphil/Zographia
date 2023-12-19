@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --loc-background-color: #{single-color("black", 0.5)};
+  }
+}
+
+.root {
+  background-color: var(--loc-background-color);
+  backdrop-filter: blur(1u);
+  opacity: 0;
+  transition: 0.1s opacity;
+  &[data-status="open"] {
+    opacity: 1;
+  }
+}

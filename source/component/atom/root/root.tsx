@@ -30,7 +30,7 @@ export const Root = create(
     initialLocale?: Locale,
     initialTheme?: string,
     children: ReactNode
-  }): ReactElement | null {
+  }): ReactElement {
 
     return (
       <Fragment>

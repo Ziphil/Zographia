@@ -45,7 +45,6 @@ export const Button = createWithRef(
   } & AdditionalProps): ReactElement {
 
     const [innerLoading, setInnerLoading] = useState(false);
-
     const actualLoading = (reactive) ? innerLoading : loading;
 
     const handleClick = useCallback(async function (event: MouseEvent<HTMLButtonElement>): Promise<void> {

@@ -25,7 +25,7 @@ export const MenuItem = createWithRef(
     className?: string,
     style?: CSSProperties,
     ref: ForwardedRef<HTMLButtonElement>
-  } & AdditionalProps): ReactElement | null {
+  } & AdditionalProps): ReactElement {
 
     const {setOpen, listRef, activeIndex, getItemProps} = useContext(menuContext);
     const mergedRef = useMergeRefs<HTMLButtonElement>([ref, (element) => listRef.current[index] = element]);

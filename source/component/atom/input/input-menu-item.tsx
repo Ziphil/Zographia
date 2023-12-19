@@ -16,7 +16,7 @@ export const InputMenuItem = create(
     index: number,
     spec: SuggestionSpec,
     updateValue: (value: string) => unknown
-  }): ReactElement | null {
+  }): ReactElement {
 
     const handleClick = useCallback(function (event: MouseEvent<HTMLButtonElement>): void {
       updateValue(spec.replacement);
