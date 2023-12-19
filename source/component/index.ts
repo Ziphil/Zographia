@@ -5,6 +5,7 @@ export * from "./atom/checkable-container";
 export * from "./atom/checkbox";
 export * from "./atom/control-container";
 export * from "./atom/control-group";
+export * from "./atom/file-input";
 export * from "./atom/general-icon";
 export * from "./atom/input";
 export * from "./atom/multi-line-text";

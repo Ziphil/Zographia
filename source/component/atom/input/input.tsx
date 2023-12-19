@@ -142,9 +142,9 @@ export const Input = createWithRef(
           />
           {children}
           {isAddonType(type) && (
-            <div styleName="builtin-addon">
-              <GeneralIcon icon={type === "time" ? faClock : faCalendar}/>
-            </div>
+            <span styleName="builtin-addon">
+              <GeneralIcon icon={(type === "time") ? faClock : faCalendar}/>
+            </span>
           )}
         </label>
         <MenuList

@@ -19,9 +19,9 @@ export const InputAddon = createWithRef(
   } & AdditionalProps): ReactElement {
 
     return (
-      <div styleName="root" {...data({position})} {...rest}>
+      <span styleName="root" {...data({position})} {...rest}>
         {children}
-      </div>
+      </span>
     );
 
   }

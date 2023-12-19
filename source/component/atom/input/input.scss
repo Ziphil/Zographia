@@ -60,6 +60,7 @@
 }
 
 .builtin-addon {
+  margin-inline-start: var(--blank-gap);
   color: var(--loc-builtin-addon-color);
   flex: 0 0 auto;
   order: 20;

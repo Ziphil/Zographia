@@ -1,14 +1,19 @@
 //
 
 
+import {faFile, faFiles} from "@fortawesome/sharp-regular-svg-icons";
 import {
   ChangeEvent,
   FocusEvent,
   ForwardedRef,
+  Fragment,
   ReactElement,
   ReactNode,
-  useCallback
+  useCallback,
+  useRef,
+  useState
 } from "react";
+import {GeneralIcon} from "/source/component/atom/general-icon";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
 
@@ -42,7 +47,7 @@ export const FileInput = createWithRef(
     readonly?: boolean,
     required?: boolean,
     disabled?: boolean,
-    onSet?: (value: string) => unknown,
+    onSet?: M extends true ? (value: Array<File>) => unknown : (value: File | null) => unknown,
     onChange?: (event: ChangeEvent<HTMLInputElement>) => unknown,
     onBlur?: (event: FocusEvent<HTMLInputElement>) => unknown,
     children?: ReactNode,
@@ -50,31 +55,67 @@ export const FileInput = createWithRef(
     ref: ForwardedRef<HTMLInputElement>
   } & AdditionalProps): ReactElement {
 
-    const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
-      const value = event.target.value;
-      onSet?.(value);
+    const inputRef = useRef<HTMLInputElement>(null);
+    const [fileNameString, setFileNameString] = useState(getFileNameString(defaultValue));
+
+    const handleChange = useCallback(function (event: ChangeEvent<HTMLInputElement>): void {
+      const files = Array.from(event.target.files ?? []);
+      if (multiple) {
+        onSet?.(files as any);
+      } else {
+        onSet?.(files[0] as any ?? null);
+      }
       onChange?.(event);
-    }, [onSet, onChange]);
+      setFileNameString(getFileNameString(files));
+    }, [multiple, onSet, onChange]);
+
+    const handleClick = useCallback(function (): void {
+      inputRef.current?.click();
+    }, []);
 
     return (
-      <label styleName="root" className={className} {...data({error})}>
+      <Fragment>
         <input
           styleName="input"
           type="file"
-          value={value}
-          defaultValue={defaultValue}
           name={name}
           multiple={multiple}
           autoFocus={autoFocus}
           readOnly={readonly}
           required={required}
           disabled={disabled}
+          ref={inputRef}
+          onChange={handleChange}
           {...aria({invalid: error})}
           {...rest}
         />
-        {children}
-      </label>
+        <button
+          styleName="root"
+          className={className}
+          type="button"
+          onClick={handleClick}
+          {...data({error})}
+          {...aria({hidden: true})}
+        >
+          <span styleName="name">{fileNameString}</span>
+          {children}
+          <span styleName="builtin-addon">
+            <GeneralIcon icon={(multiple) ? faFiles : faFile}/>
+          </span>
+        </button>
+      </Fragment>
     );
 
   }
 );
+
+
+function getFileNameString(file: File | Array<File> | null | undefined): string {
+  if (Array.isArray(file)) {
+    return file.map(getFileNameString).join(", ");
+  } else if (file !== null && file !== undefined) {
+    return file.name;
+  } else {
+    return "";
+  }
+}
