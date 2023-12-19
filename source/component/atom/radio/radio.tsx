@@ -11,6 +11,7 @@ export const Radio = createWithRef(
   require("./radio.scss"), "Radio",
   function ({
     checked,
+    defaultChecked,
     name,
     value,
     error,
@@ -24,6 +25,7 @@ export const Radio = createWithRef(
     ...rest
   }: {
     checked?: boolean,
+    defaultChecked?: boolean,
     name?: string,
     value?: string,
     error?: boolean,
@@ -55,6 +57,7 @@ export const Radio = createWithRef(
           styleName="input"
           type="radio"
           checked={(groupSpec?.value !== undefined) ? groupSpec.value === value : (checked !== undefined) ? checked : undefined}
+          defaultChecked={defaultChecked}
           name={groupSpec?.name ?? name}
           value={value}
           required={required}

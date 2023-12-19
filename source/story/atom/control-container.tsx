@@ -41,3 +41,17 @@ export const withInputAndHelper = {
     </>)
   }
 } as Story;
+export const withInputAndErrorMessage = {
+  ...template,
+  name: "テキスト欄＋エラー",
+  args: {
+    children: createChildren(<>
+      <ControlLabel>テキスト欄</ControlLabel>
+      <Input error={true}/>
+      <ControlErrorMessage>
+        入力された内容が適切ではありません。
+        もう一度入力し直してください。
+      </ControlErrorMessage>
+    </>)
+  }
+} as Story;

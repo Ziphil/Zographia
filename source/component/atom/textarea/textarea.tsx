@@ -9,6 +9,7 @@ export const Textarea = createWithRef(
   require("./textarea.scss"), "Textarea",
   function ({
     value,
+    defaultValue,
     name,
     autoComplete = "off",
     autoFocus,
@@ -23,6 +24,7 @@ export const Textarea = createWithRef(
     ...rest
   }: {
     value?: string,
+    defaultValue?: string,
     name?: string,
     autoComplete?: string,
     autoFocus?: boolean,
@@ -48,13 +50,14 @@ export const Textarea = createWithRef(
         <textarea
           styleName="input"
           value={value}
+          defaultValue={defaultValue}
           name={name}
           autoComplete={autoComplete}
           autoFocus={autoFocus}
           readOnly={readonly}
           required={required}
           disabled={disabled}
-          onChange={handleChange}
+          onChange={(onSet !== undefined || onChange !== undefined) ? handleChange : undefined}
           {...aria({invalid: error})}
           {...rest}
         />

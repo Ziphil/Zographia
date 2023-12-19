@@ -39,6 +39,7 @@ export const Input = createWithRef(
   require("./input.scss"), "Input",
   function ({
     value,
+    defaultValue,
     name,
     type = "text",
     autoComplete = "off",
@@ -57,6 +58,7 @@ export const Input = createWithRef(
     ...rest
   }: {
     value?: string,
+    defaultValue?: string,
     name?: string,
     type?: InputType,
     autoComplete?: string,
@@ -122,6 +124,7 @@ export const Input = createWithRef(
           <input
             styleName="input"
             value={value}
+            defaultValue={defaultValue}
             name={name}
             type={toHtmlInputType(type)}
             autoComplete={autoComplete}

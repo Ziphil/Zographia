@@ -5,7 +5,7 @@
 
 .root {
   @include theme("light") {
-    --loc-text-color: #{leveled-color("gray", 5)};
+    --loc-text-color: #{leveled-color("red", 5)};
   }
 }
 

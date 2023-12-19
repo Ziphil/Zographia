@@ -12,6 +12,7 @@ export const Checkbox = createWithRef(
   require("./checkbox.scss"), "Checkbox",
   function ({
     checked,
+    defaultChecked,
     name,
     error,
     required,
@@ -24,6 +25,7 @@ export const Checkbox = createWithRef(
     ...rest
   }: {
     checked?: true | false | "indeterminate",
+    defaultChecked?: true | false,
     name?: string,
     error?: boolean,
     required?: boolean,
@@ -57,6 +59,7 @@ export const Checkbox = createWithRef(
           styleName="input"
           type="checkbox"
           checked={(checked !== undefined) ? checked === true : undefined}
+          defaultChecked={defaultChecked}
           name={name}
           required={required}
           disabled={disabled}
