@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include control-group-vars;
+  @include theme("light") {
+    --loc-background-color: #{single-color("white")};
+    --loc-border-color: #{leveled-color("gray", 3)};
+    --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
+    --loc-focus-color: #{leveled-color("primary", 5)};
+    --loc-builtin-addon-color: #{leveled-color("gray", 5)};
+    &[data-error] {
+      --loc-border-color: #{leveled-color("red", 3)};
+      --loc-box-shadow-color: #{leveled-color("red", 3, 0.3)};
+      --loc-focus-color: #{leveled-color("red", 5)};
+      --loc-builtin-addon-color: #{leveled-color("red", 5)};
+    }
+  }
+}
+
+.root {
+  @include control-group-item;
+  height: 4u;
+  padding-block: 1.5u;
+  padding-inline: 2u;
+  font-size: 4u;
+  background-color: var(--loc-background-color);
+  border: solid 1px var(--loc-border-color);
+  box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: text;
+  box-sizing: content-box;
+  z-index: 0;
+  &:focus-within {
+    outline: solid 2px var(--loc-focus-color);
+    outline-offset: -1px;
+  }
+}
+
+.input {
+  height: 100%;
+  flex: 1 1 auto;
+  order: 10;
+  &::-webkit-calendar-picker-indicator {
+    width: 7u;
+    height: 100%;
+    inset-block: 0u;
+    inset-inline-end: 0u;
+    padding: 0u;
+    background: transparent;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+.builtin-addon {
+  color: var(--loc-builtin-addon-color);
+  flex: 0 0 auto;
+  order: 20;
+}
