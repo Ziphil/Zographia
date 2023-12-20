@@ -5,10 +5,10 @@ import {faFile, faFiles} from "@fortawesome/sharp-regular-svg-icons";
 import {
   ChangeEvent,
   FocusEvent,
-  ForwardedRef,
   Fragment,
   ReactElement,
   ReactNode,
+  Ref,
   useCallback,
   useRef,
   useState
@@ -20,8 +20,8 @@ import {AdditionalProps, aria, data} from "/source/module/data";
 
 export const FileInput = createWithRef(
   require("./file-input.scss"), "FileInput",
-  function <M extends boolean>({
-    value,
+  <M extends boolean>({
+    value = null as any,
     defaultValue,
     name,
     multiple,
@@ -38,8 +38,8 @@ export const FileInput = createWithRef(
     ref,
     ...rest
   }: {
-    value?: M extends true ? Array<File> : File | null,
-    defaultValue?: M extends true ? Array<File> : File | null,
+    value?: FileInputValue<M>,
+    defaultValue?: FileInputValue<M>,
     name?: string,
     multiple?: M,
     autoFocus?: boolean,
@@ -47,13 +47,13 @@ export const FileInput = createWithRef(
     readonly?: boolean,
     required?: boolean,
     disabled?: boolean,
-    onSet?: M extends true ? (value: Array<File>) => unknown : (value: File | null) => unknown,
+    onSet?: (value: FileInputValue<M>) => unknown,
     onChange?: (event: ChangeEvent<HTMLInputElement>) => unknown,
     onBlur?: (event: FocusEvent<HTMLInputElement>) => unknown,
     children?: ReactNode,
     className?: string,
-    ref: ForwardedRef<HTMLInputElement>
-  } & AdditionalProps): ReactElement {
+    ref: Ref<HTMLInputElement>
+  } & AdditionalProps): ReactElement => {
 
     const inputRef = useRef<HTMLInputElement>(null);
     const [fileNameString, setFileNameString] = useState(getFileNameString(defaultValue));
@@ -109,6 +109,8 @@ export const FileInput = createWithRef(
   }
 );
 
+
+export type FileInputValue<M extends boolean> = M extends true ? Array<File> : File | null;
 
 function getFileNameString(file: File | Array<File> | null | undefined): string {
   if (Array.isArray(file)) {
