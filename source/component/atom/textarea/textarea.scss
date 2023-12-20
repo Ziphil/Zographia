@@ -18,19 +18,15 @@
 }
 
 .root {
-  padding-block: calc(1.5u - 0.25em);
-  padding-inline: 2u;
   font-size: 4u;
   border-radius: var(--border-radius);
   background-color: var(--loc-background-color);
   border: solid 1px var(--loc-border-color);
   box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);
-  line-height: 1.5;
   display: flex;
   align-items: center;
   position: relative;
   cursor: text;
-  box-sizing: content-box;
   z-index: 0;
   &:focus-within {
     outline: solid 2px var(--loc-focus-color);
@@ -39,6 +35,8 @@
 }
 
 .input {
-  height: 100%;
+  padding-block: calc(2u - 0.25em);
+  padding-inline: 2u;
+  line-height: 1.5;
   flex: 1 1 auto;
 }

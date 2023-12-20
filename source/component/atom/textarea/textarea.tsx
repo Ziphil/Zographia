@@ -46,7 +46,7 @@ export const Textarea = createWithRef(
     }, [onSet, onChange]);
 
     return (
-      <label styleName="root" className={className} {...data({error})}>
+      <div styleName="root" className={className} {...data({error})}>
         <textarea
           styleName="input"
           value={value}
@@ -61,7 +61,7 @@ export const Textarea = createWithRef(
           {...aria({invalid: error})}
           {...rest}
         />
-      </label>
+      </div>
     );
 
   }

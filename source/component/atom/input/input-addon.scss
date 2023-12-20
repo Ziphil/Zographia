@@ -6,9 +6,11 @@
 .root {
   flex: 0 0 auto;
   &[data-position="left"] {
+    margin-inline-start: 2u;
     order: 5;
   }
   &[data-position="right"] {
+    margin-inline-end: 2u;
     order: 15;
   }
 }

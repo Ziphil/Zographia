@@ -120,7 +120,7 @@ export const Input = createWithRef(
 
     return (
       <Fragment>
-        <label styleName="root" className={className} ref={refs.setReference} {...data({error})}>
+        <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
           <input
             styleName="input"
             value={value}
@@ -146,7 +146,7 @@ export const Input = createWithRef(
               <GeneralIcon icon={(type === "time") ? faClock : faCalendar}/>
             </span>
           )}
-        </label>
+        </div>
         <MenuList
           className={className}
           open={open}
@@ -202,8 +202,8 @@ function toHtmlInputType(type: InputType): string {
   }
 }
 
-function isAddonType(type: string): boolean {
-  return type === "date" || type === "time" || type === "datetime-local" || type === "month" || type === "week";
+function isAddonType(type: InputType): boolean {
+  return type === "date" || type === "time" || type === "datetime" || type === "month" || type === "week";
 };
 
 export type InputType = "text" | "search" | "email" | "url" | "tel" | "date" | "time" | "datetime" | "month" | "week";
