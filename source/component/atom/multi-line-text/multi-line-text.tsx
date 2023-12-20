@@ -14,7 +14,7 @@ export const MultiLineText = createWithRef(
     children,
     ...rest
   }: {
-    tag: string,
+    tag?: string,
     lineHeight?: "short" | "normal" | "wide",
     maxLineCount?: number | null,
     children?: ReactNode,

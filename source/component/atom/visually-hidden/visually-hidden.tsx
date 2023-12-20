@@ -5,8 +5,8 @@ import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
 
 
-export const SingleLineText = createWithRef(
-  require("./single-line-text.scss"), "SingleLineText",
+export const VisuallyHidden = createWithRef(
+  require("./visually-hidden.scss"), "VisuallyHidden",
   function ({
     tag = "div",
     children,
@@ -22,9 +22,7 @@ export const SingleLineText = createWithRef(
 
     return (
       <Tag styleName="root" {...rest}>
-        <span styleName="inner">
-          {children}
-        </span>
+        {children}
       </Tag>
     );
 

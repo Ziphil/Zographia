@@ -16,4 +16,5 @@ export * from "./atom/root";
 export * from "./atom/scroll";
 export * from "./atom/single-line-text";
 export * from "./atom/textarea";
+export * from "./atom/visually-hidden";
 export * from "./module/menu";
