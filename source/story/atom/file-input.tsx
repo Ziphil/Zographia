@@ -2,6 +2,7 @@
 
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {FileInput} from "/source/component";
+import {restrictWidth} from "/source/story/decorator/width";
 
 
 type Meta = RawMeta<typeof FileInput>;
@@ -13,6 +14,7 @@ export default {
 } as Meta;
 
 const template = {
+  decorators: [restrictWidth(600)]
 } as Story;
 
 export const basic = {

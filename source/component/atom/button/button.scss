@@ -22,7 +22,7 @@
         --loc-hover-background-color: #{leveled-color($scheme, 0)};
       }
       --loc-box-shadow-color: #{leveled-color($scheme, 3, 0.3)};
-      --loc-focus-color: #{leveled-color($scheme, 5, 0.3)};
+      --loc-focus-color: #{leveled-color($scheme, 5, 0.5)};
     }
   }
 }

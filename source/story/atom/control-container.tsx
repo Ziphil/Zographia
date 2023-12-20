@@ -2,6 +2,7 @@
 
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {ControlContainer, ControlErrorMessage, ControlHelper, ControlLabel, Input} from "/source/component";
+import {restrictWidth} from "/source/story/decorator/width";
 import {createChildren} from "/source/util/children";
 
 
@@ -15,6 +16,7 @@ export default {
 } as Meta;
 
 const template = {
+  decorators: [restrictWidth(600)]
 } as Story;
 
 export const withInput = {

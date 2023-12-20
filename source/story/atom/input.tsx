@@ -3,6 +3,7 @@
 import {faSearch} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {GeneralIcon, Input, InputAddon} from "/source/component";
+import {restrictWidth} from "/source/story/decorator/width";
 import {createChildren} from "/source/util/children";
 
 
@@ -16,6 +17,7 @@ export default {
 } as Meta;
 
 const template = {
+  decorators: [restrictWidth(600)]
 } as Story;
 
 export const basic = {
