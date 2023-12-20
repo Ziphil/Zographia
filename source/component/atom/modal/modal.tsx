@@ -10,19 +10,19 @@ export const Modal = create(
   require("./modal.scss"), "Modal",
   function ({
     open,
-    initialOpen = false,
+    defaultOpen = false,
     onOpenSet,
     children,
     ...rest
   }: {
     open?: boolean,
-    initialOpen?: boolean,
+    defaultOpen?: boolean,
     onOpenSet?: (open: boolean) => unknown,
     children?: ReactNode,
     className?: string
   } & AdditionalProps): ReactElement | null {
 
-    const [innerOpen, setInnerOpen] = useState(initialOpen);
+    const [innerOpen, setInnerOpen] = useState(defaultOpen);
     const actualOpen = (open !== undefined) ? open : innerOpen;
     const actualOnOpenSet = (onOpenSet !== undefined) ? onOpenSet : setInnerOpen;
 

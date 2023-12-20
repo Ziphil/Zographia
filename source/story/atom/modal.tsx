@@ -30,7 +30,7 @@ export const testUncontrolled = {
   name: "[テスト] 非制御",
   render: () => {
     return (
-      <Modal initialOpen={true}>
+      <Modal defaultOpen={true}>
         モーダル
       </Modal>
     );
