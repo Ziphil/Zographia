@@ -28,7 +28,6 @@ const config = {
     defaultName: "ドキュメント"
   },
   typescript: {
-    reactDocgen: "react-docgen",
   },
   webpackFinal: async (config, options) => {
     const modifiedConfig = {
