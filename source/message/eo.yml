@@ -1,2 +1,11 @@
-test:
-  hello: "Saluton!"
+common:
+  dateFormat: "dd/LLL/yyyy HH:mm"
+  shortDateFormat: "dd/LLL"
+  dateUndefined: "?"
+  numberUndefined: "?"
+  negative: "−{value}"
+  negativeInfinity: "−∞"
+
+passwordInput:
+  reveal: "Malkaŝi"
+  hide: "Kaŝi"

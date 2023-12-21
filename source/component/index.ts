@@ -10,6 +10,7 @@ export * from "./atom/general-icon";
 export * from "./atom/input";
 export * from "./atom/multi-line-text";
 export * from "./atom/modal";
+export * from "./atom/password-input";
 export * from "./atom/radio";
 export * from "./atom/radio-group";
 export * from "./atom/root";

@@ -42,7 +42,7 @@ export const Input = createWithRef(
     defaultValue,
     name,
     type = "text",
-    autoComplete = "off",
+    autoComplete,
     autoFocus,
     error,
     readonly,
@@ -136,7 +136,7 @@ export const Input = createWithRef(
             {...rest}
             {...getReferenceProps({
               ref: mergedRef,
-              onChange: (onSet !== undefined || onChange !== undefined) ? handleChange : undefined,
+              onChange: handleChange,
               onBlur
             })}
           />

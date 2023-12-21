@@ -1,2 +1,11 @@
-test:
-  hello: "こんにちは!"
+common:
+  dateFormat: "yyyy/MM/dd HH:mm"
+  shortDateFormat: "MM/dd"
+  dateUndefined: "?"
+  numberUndefined: "?"
+  negative: "−{value}"
+  negativeInfinity: "−∞"
+
+passwordInput:
+  reveal: "表示"
+  hide: "非表示"
