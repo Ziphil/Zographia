@@ -22,7 +22,7 @@ type Story = RawStory<typeof Dialog>;
 export default {
   title: "Module/Dialog",
   component: Dialog,
-  subcomponents: {DialogPane}
+  subcomponents: {DialogPane, DialogBody, DialogContent, DialogIconbag, DialogFooter}
 } as Meta;
 
 const template = {
