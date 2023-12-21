@@ -35,7 +35,7 @@ export const DEFAULT_COLOR_DEFINITIONS = {
 };
 
 export const DEFAULT_FONT_FAMILIES = {
-  main: "'Alegreya Sans', '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック体', 'YuGothic', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', sans-serif",
-  bold: "'Alegreya Sans', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'YuGothic', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', sans-serif",
-  monospace: "'Fira Code', monospace"
+  main: "'Fira Sans', 'Noto Sans JP', sans-serif",
+  bold: "'Fira Sans', 'Noto Sans JP', sans-serif",
+  monospace: "'Fira Mono', 'Noto Sans JP', monospace"
 };

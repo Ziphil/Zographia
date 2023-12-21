@@ -1,0 +1,33 @@
+import {Meta, Typeset} from "@storybook/blocks";
+import {DEFAULT_FONT_FAMILIES} from "/source/module/default";
+
+
+<Meta title="Design/タイポグラフィ"/>
+
+<div style={{marginBlockEnd: "40px"}}>
+  # タイポグラフィ
+</div>
+
+## 通常
+<Typeset
+  fontSizes={[12, 14, 16, 20, 24, 32, 40]}
+  fontFamily={DEFAULT_FONT_FAMILIES.main}
+  fontWeight="normal"
+  sampleText="人類社会の Łóṝêm を Ἴπσῦ 権利と долор /θʊ̈t̪ɤɮʕ/。"
+/>
+
+## 太字
+<Typeset
+  fontSizes={[12, 14, 16, 20, 24, 32, 40]}
+  fontFamily={DEFAULT_FONT_FAMILIES.bold}
+  fontWeight="bold"
+  sampleText="人類社会の Łóṝêm を Ἴπσῦ 権利と долор /θʊ̈t̪ɤɮʕ/。"
+/>
+
+## 等幅
+<Typeset
+  fontSizes={[12, 14, 16, 20, 24, 32, 40]}
+  fontFamily={DEFAULT_FONT_FAMILIES.monospace}
+  fontWeight="normal"
+  sampleText="人類社会の Łóṝêm を Ἴπσῦ 権利と долор /θʊ̈t̪ɤɮʕ/。"
+/>
