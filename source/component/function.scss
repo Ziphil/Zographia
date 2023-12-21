@@ -42,14 +42,14 @@
   &::before {
     width: 0u;
     height: 0u;
-    margin-block-start: (1 - $line-height) * 0.5em;
+    margin-block-start: calc((1 - #{$line-height}) * 0.5em);
     display: block;
     content: "";
   }
   &::after {
     width: 0u;
     height: 0u;
-    margin-block-end: (1 - $line-height) * 0.5em;
+    margin-block-end: calc((1 - #{$line-height}) * 0.5em);
     display: block;
     content: "";
   }

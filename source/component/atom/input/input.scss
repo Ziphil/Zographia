@@ -58,6 +58,7 @@
 
 .builtin-addon {
   margin-inline-end: 2u;
+  margin-inline-start: calc(-2u + var(--blank-gap));
   color: var(--loc-builtin-addon-color);
   flex: 0 0 auto;
   order: 20;

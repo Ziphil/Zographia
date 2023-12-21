@@ -35,8 +35,8 @@
 }
 
 .input {
-  padding-block: calc(2u - 0.25em);
+  padding-block: calc(2u + (1 - var(--line-height)) * 0.5em);
   padding-inline: 2u;
-  line-height: 1.5;
+  line-height: var(--line-height);
   flex: 1 1 auto;
 }

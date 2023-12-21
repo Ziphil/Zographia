@@ -7,10 +7,12 @@
   flex: 0 0 auto;
   &[data-position="left"] {
     margin-inline-start: 2u;
+    margin-inline-end: calc(-2u + var(--blank-gap));
     order: 5;
   }
   &[data-position="right"] {
     margin-inline-end: 2u;
+    margin-inline-start: calc(-2u + var(--blank-gap));
     order: 15;
   }
 }
