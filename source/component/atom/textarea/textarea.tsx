@@ -1,6 +1,6 @@
 //
 
-import {ChangeEvent, FocusEvent, ForwardedRef, ReactElement, useCallback} from "react";
+import {ChangeEvent, FocusEvent, ForwardedRef, ReactElement, ReactNode, useCallback} from "react";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
 
@@ -20,6 +20,7 @@ export const Textarea = createWithRef(
     onSet,
     onChange,
     onBlur,
+    children,
     className,
     ...rest
   }: {
@@ -35,6 +36,7 @@ export const Textarea = createWithRef(
     onSet?: (value: string) => unknown,
     onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => unknown,
     onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => unknown,
+    children?: ReactNode,
     className?: string,
     ref: ForwardedRef<HTMLTextAreaElement>
   } & AdditionalProps): ReactElement {
@@ -61,6 +63,7 @@ export const Textarea = createWithRef(
           {...aria({invalid: error})}
           {...rest}
         />
+        {children}
       </div>
     );
 

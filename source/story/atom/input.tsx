@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-closing-tag-location */
 
-import {faSearch} from "@fortawesome/sharp-regular-svg-icons";
+import {faExclamationCircle, faSearch} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {GeneralIcon, Input, InputAddon} from "/source/component";
 import {restrictWidth} from "/source/story/decorator/width";
@@ -28,7 +28,7 @@ export const basic = {
 } as Story;
 export const withLeftIconAddon = {
   ...template,
-  name: "アドオン: 左アイコン",
+  name: "アドオン: 左",
   args: {
     children: (
       <InputAddon position="left"><GeneralIcon icon={faSearch}/></InputAddon>
@@ -37,19 +37,28 @@ export const withLeftIconAddon = {
 } as Story;
 export const withLeftTextAddon = {
   ...template,
-  name: "アドオン: 左テキスト",
+  name: "アドオン: 左 (スペースなし)",
   args: {
     children: (
-      <InputAddon position="left">@</InputAddon>
+      <InputAddon position="left" hasGap={false}>@</InputAddon>
+    )
+  }
+} as Story;
+export const withRightIconAddon = {
+  ...template,
+  name: "アドオン: 右",
+  args: {
+    children: (
+      <InputAddon position="right"><GeneralIcon icon={faExclamationCircle}/></InputAddon>
     )
   }
 } as Story;
 export const withRightTextAddon = {
   ...template,
-  name: "アドオン: 右テキスト",
+  name: "アドオン: 右 (スペースなし)",
   args: {
     children: (
-      <InputAddon position="right">万円</InputAddon>
+      <InputAddon position="right" hasGap={false}>万円</InputAddon>
     )
   }
 } as Story;
@@ -59,7 +68,7 @@ export const withBothAddon = {
   args: {
     children: createChildren(<>
       <InputAddon position="left"><GeneralIcon icon={faSearch}/></InputAddon>
-      <InputAddon position="right">を検索</InputAddon>
+      <InputAddon position="right">検索</InputAddon>
     </>)
   }
 } as Story;
