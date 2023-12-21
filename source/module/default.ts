@@ -35,7 +35,7 @@ export const DEFAULT_COLOR_DEFINITIONS = {
 };
 
 export const DEFAULT_FONT_FAMILIES = {
-  main: "'Fira Sans', 'Noto Sans JP', sans-serif",
-  bold: "'Fira Sans', 'Noto Sans JP', sans-serif",
-  monospace: "'Fira Mono', 'Noto Sans JP', monospace"
+  main: "'Fira Sans', 'Noto Sans', 'Noto Sans JP', sans-serif",
+  bold: "'Fira Sans', 'Noto Sans', 'Noto Sans JP', sans-serif",
+  monospace: "'Fira Mono', 'Noto Sans Mono', 'Noto Sans JP', monospace"
 };

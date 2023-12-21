@@ -1,16 +1,16 @@
 @charset "utf-8";
 
 
-@function leveled-color($scheme, $level, $alpha: 1) {
-  @if $alpha < 1 {
+@function leveled-color($scheme, $level, $alpha: null) {
+  @if $alpha != null {
     @return rgb(var(#{"--color-" + $scheme + "-" + $level}), $alpha);
   } @else {
     @return rgb(var(#{"--color-" + $scheme + "-" + $level}));
   }
 }
 
-@function single-color($scheme, $alpha: 1) {
-  @if $alpha < 1 {
+@function single-color($scheme, $alpha: null) {
+  @if $alpha != null {
     @return rgb(var(#{"--color-" + $scheme}), $alpha);
   } @else {
     @return rgb(var(#{"--color-" + $scheme}));
