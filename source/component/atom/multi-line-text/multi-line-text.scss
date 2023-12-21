@@ -6,13 +6,16 @@
 
 .root {
   &[data-line-height="short"] {
-    @include line-height(1 + div(3, 8));
+    @include line-height(1 + div(2, 8));
   }
   &[data-line-height="normal"] {
-    @include line-height(1 + div(4, 8));
+    @include line-height(1 + div(3, 8));
   }
   &[data-line-height="wide"] {
-    @include line-height(1 + div(5, 8));
+    @include line-height(1 + div(4, 8));
+  }
+  &[data-justify] {
+    text-align: justify;
   }
   &[data-max-line-count] {
     display: -webkit-box;

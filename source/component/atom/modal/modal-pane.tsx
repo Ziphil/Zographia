@@ -5,21 +5,21 @@ import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
 
 
-export const ModalContent = createWithRef(
-  require("./modal-content.scss"), "ModalContent",
+export const ModalPane = createWithRef(
+  require("./modal-pane.scss"), "ModalPane",
   function ({
     children,
     ...rest
   }: {
     children?: ReactNode,
     className?: string,
-    ref: Ref<HTMLDivElement>
+    ref: Ref<HTMLElement>
   } & AdditionalProps): ReactElement {
 
     return (
-      <div styleName="inner" {...rest}>
+      <article styleName="inner" {...rest}>
         {children}
-      </div>
+      </article>
     );
 
   }

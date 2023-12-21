@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    @include schemify using ($scheme) {
+      --loc-text-color: #{leveled-color($scheme, 5)};
+    }
+  }
+}
+
+.root {
+  font-size: 10u;
+  color: var(--loc-text-color);
+  flex: 0 0 auto;
+}

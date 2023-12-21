@@ -9,12 +9,14 @@ export const MultiLineText = createWithRef(
   require("./multi-line-text.scss"), "MultiLineText",
   function ({
     tag = "div",
+    justify = true,
     lineHeight = "normal",
     maxLineCount = null,
     children,
     ...rest
   }: {
     tag?: string,
+    justify?: boolean,
     lineHeight?: "short" | "normal" | "wide",
     maxLineCount?: number | null,
     children?: ReactNode,
@@ -25,7 +27,7 @@ export const MultiLineText = createWithRef(
     const Tag = tag as any;
 
     return (
-      <Tag styleName="root" style={getStyle(maxLineCount)} {...data({lineHeight, maxLineCount})} {...rest}>
+      <Tag styleName="root" style={getStyle(maxLineCount)} {...data({justify, lineHeight, maxLineCount})} {...rest}>
         {children}
       </Tag>
     );

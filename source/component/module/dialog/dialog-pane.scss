@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --loc-background-color: #{single-color("background-light")};
+    --loc-stain-color: #{single-color("stain-light")};
+  }
+  @include theme("dark") {
+    --loc-background-color: #{single-color("background-dark")}; 
+    --loc-stain-color: #{single-color("stain-dark")};
+  }
+}
+
+.root {
+  width: 100%;
+  max-width: 120u;
+  padding-block: 6u;
+  padding-inline: 6u;
+  background-color: var(--loc-background-color);
+  background-image: var(--noise-background-image);
+  box-shadow: var(--stain-shadow-setting) var(--loc-stain-color);
+  border-radius: var(--border-radus);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}

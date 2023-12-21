@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  column-gap: 4u;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}

@@ -2,7 +2,7 @@
 
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {Fragment, useState} from "react";
-import {Button, Modal, ModalContent} from "/source/component";
+import {Button, Modal, ModalPane} from "/source/component";
 
 
 type Meta = RawMeta<typeof Modal>;
@@ -11,7 +11,7 @@ type Story = RawStory<typeof Modal>;
 export default {
   title: "Atom/Modal",
   component: Modal,
-  subcomponents: {ModalContent}
+  subcomponents: {ModalContent: ModalPane}
 } as Meta;
 
 const template = {
@@ -22,7 +22,7 @@ export const basic = {
   name: "基本",
   args: {
     open: true,
-    children: <ModalContent>あああ</ModalContent>
+    children: <ModalPane>あああ</ModalPane>
   }
 } as Story;
 
@@ -32,9 +32,9 @@ export const testUncontrolled = {
   render: () => {
     return (
       <Modal defaultOpen={true}>
-        <ModalContent>
+        <ModalPane>
           モーダル
-        </ModalContent>
+        </ModalPane>
       </Modal>
     );
   }
@@ -48,10 +48,10 @@ export const testControlled = {
       <div>
         <Button onClick={() => setOpen(true)}>開く</Button>
         <Modal open={open} onOpenSet={setOpen}>
-          <ModalContent>
+          <ModalPane>
             モーダル
             <Button onClick={() => setOpen(false)}>閉じる</Button>
-          </ModalContent>
+          </ModalPane>
         </Modal>
       </div>
     );
@@ -74,10 +74,10 @@ export const testScrollLock = {
         </div>
         <Button onClick={() => setOpen(true)}>開く</Button>
         <Modal open={open} onOpenSet={setOpen}>
-          <ModalContent>
+          <ModalPane>
             モーダル
             <Button onClick={() => setOpen(false)}>閉じる</Button>
-          </ModalContent>
+          </ModalPane>
         </Modal>
       </div>
     );
