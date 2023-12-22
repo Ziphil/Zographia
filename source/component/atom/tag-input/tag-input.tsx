@@ -5,6 +5,7 @@ import {
 } from "@floating-ui/react";
 import {
   ChangeEvent,
+  FocusEvent,
   ForwardedRef,
   KeyboardEvent,
   ReactElement,
@@ -62,7 +63,18 @@ export const TagInput = createWithRef(
           }
         }
       }
-    }, [onSet, values]);
+    }, [values, onSet]);
+
+    const handleInputBlur = useCallback(function (event: FocusEvent<HTMLInputElement>): void {
+      const inputElement = innerRef.current;
+      if (inputElement !== null) {
+        const value = inputElement.value.trim();
+        if (value) {
+          onSet?.([...values, value]);
+          requestAnimationFrame(() => inputElement.value = "");
+        }
+      }
+    }, [values, onSet]);
 
     return (
       <>
@@ -79,6 +91,7 @@ export const TagInput = createWithRef(
             readOnly={readonly}
             disabled={disabled}
             onChange={handleInputChange}
+            onBlur={handleInputBlur}
             onKeyDown={handleInputKeyDown}
             {...aria({invalid: error})}
             {...rest}
