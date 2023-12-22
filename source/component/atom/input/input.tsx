@@ -1,26 +1,18 @@
 //
 
 import {
-  FloatingContext,
-  useDismiss,
   useFloating,
-  useInteractions,
-  useListNavigation,
   useMergeRefs,
-  useRole,
   useTransitionStatus
 } from "@floating-ui/react";
 import {faCalendar, faClock} from "@fortawesome/sharp-regular-svg-icons";
 import {
   ChangeEvent,
-  Dispatch,
   FocusEvent,
   ForwardedRef,
   Fragment,
-  MutableRefObject,
   ReactElement,
   ReactNode,
-  SetStateAction,
   useCallback,
   useRef,
   useState,
@@ -32,6 +24,7 @@ import {createWithRef} from "/source/component/create";
 import {MenuContextProvider} from "/source/component/module/menu/menu-context";
 import {MenuList} from "/source/component/module/menu/menu-list";
 import {AdditionalProps, aria, data} from "/source/module/data";
+import {useInputInteraction} from "./input-hook";
 import {InputMenuItem} from "./input-menu-item";
 
 
@@ -170,29 +163,6 @@ export const Input = createWithRef(
   }
 );
 
-
-type InputInteractionSpec = ReturnType<typeof useInteractions> & {
-  listRef: MutableRefObject<Array<HTMLElement>>,
-  activeIndex: number | null,
-  setActiveIndex: Dispatch<SetStateAction<number | null>>
-};
-
-function useInputInteraction(context: FloatingContext): InputInteractionSpec {
-  const listRef = useRef([]);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const dismiss = useDismiss(context);
-  const listNavigation = useListNavigation(context, {listRef, activeIndex, onNavigate: setActiveIndex, virtual: true});
-  const role = useRole(context, {role: "listbox"});
-  const {getReferenceProps, getFloatingProps, getItemProps} = useInteractions([dismiss, listNavigation, role]);
-  return {
-    listRef,
-    activeIndex,
-    setActiveIndex,
-    getReferenceProps,
-    getFloatingProps,
-    getItemProps
-  };
-}
 
 function toHtmlInputType(type: InputType): string {
   if (type === "datetime") {
