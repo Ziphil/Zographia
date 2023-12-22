@@ -10,7 +10,6 @@ import {
   ChangeEvent,
   FocusEvent,
   ForwardedRef,
-  Fragment,
   ReactElement,
   ReactNode,
   useCallback,
@@ -112,7 +111,7 @@ export const Input = createWithRef(
     }, [onSet]);
 
     return (
-      <Fragment>
+      <>
         <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
           <input
             styleName="input"
@@ -141,7 +140,6 @@ export const Input = createWithRef(
           )}
         </div>
         <MenuList
-          className={className}
           open={open}
           mounted={isMounted}
           status={status}
@@ -157,7 +155,7 @@ export const Input = createWithRef(
             ))}
           </MenuContextProvider>
         </MenuList>
-      </Fragment>
+      </>
     );
 
   }

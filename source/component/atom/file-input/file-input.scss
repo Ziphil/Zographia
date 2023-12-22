@@ -7,10 +7,12 @@
   @include control-group-vars;
   @include theme("light") {
     --loc-background-color: #{single-color("white")};
-    --loc-border-color: #{leveled-color("gray", 3)};
-    --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
-    --loc-focus-color: #{leveled-color("primary", 5)};
-    --loc-builtin-addon-color: #{leveled-color("gray", 5)};
+    &:not([data-error]) {
+      --loc-border-color: #{leveled-color("gray", 3)};
+      --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
+      --loc-focus-color: #{leveled-color("primary", 5)};
+      --loc-builtin-addon-color: #{leveled-color("gray", 5)};
+    }
     &[data-error] {
       --loc-border-color: #{leveled-color("red", 3)};
       --loc-box-shadow-color: #{leveled-color("red", 3, 0.3)};

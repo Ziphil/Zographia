@@ -7,11 +7,13 @@
   @include theme("light") {
     --loc-icon-color: #{single-color("white")};
     --loc-background-color: #{single-color("white")};
-    --loc-border-color: #{leveled-color("gray", 3)};
     --loc-checked-background-color: #{leveled-color("primary", 5)};
-    --loc-checked-border-color: #{leveled-color("primary", 6)};
-    --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
-    --loc-focus-color: #{leveled-color("primary", 5, var(--focus-alpha))};
+    &:not([data-error]) {
+      --loc-border-color: #{leveled-color("gray", 3)};
+      --loc-checked-border-color: #{leveled-color("primary", 6)};
+      --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
+      --loc-focus-color: #{leveled-color("primary", 5, var(--focus-alpha))};
+    }
     &[data-error] {
       --loc-border-color: #{leveled-color("red", 3)};
       --loc-checked-border-color: #{leveled-color("red", 6)};
