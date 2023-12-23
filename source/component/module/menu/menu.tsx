@@ -8,7 +8,7 @@ import {AdditionalProps} from "/source/module/data";
 import {MenuContextProvider} from "./menu-context";
 import {useMenuInteraction} from "./menu-hook";
 import {MenuItem} from "./menu-item";
-import {MenuList} from "./menu-list";
+import {MenuPane} from "./menu-pane";
 
 
 export const Menu = create(
@@ -44,7 +44,7 @@ export const Menu = create(
         {trigger !== undefined && (
           cloneElement(trigger, {ref: refs.setReference, ...getReferenceProps()})
         )}
-        <MenuList
+        <MenuPane
           className={className}
           open={open}
           mounted={isMounted}
@@ -57,7 +57,7 @@ export const Menu = create(
           <MenuContextProvider value={{setOpen, listRef, activeIndex, getItemProps}}>
             {transformChildren(children)}
           </MenuContextProvider>
-        </MenuList>
+        </MenuPane>
       </Fragment>
     );
 

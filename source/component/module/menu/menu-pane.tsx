@@ -7,8 +7,8 @@ import {createWithRef} from "/source/component/create";
 import {AdditionalProps, data} from "/source/module/data";
 
 
-export const MenuList = createWithRef(
-  require("./menu-list.scss"), "MenuList",
+export const MenuPane = createWithRef(
+  require("./menu-pane.scss"), "MenuPane",
   function ({
     open,
     mounted,

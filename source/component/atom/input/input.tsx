@@ -1,10 +1,6 @@
 //
 
-import {
-  useFloating,
-  useMergeRefs,
-  useTransitionStatus
-} from "@floating-ui/react";
+import {useMergeRefs} from "@floating-ui/react";
 import {faCalendar, faClock} from "@fortawesome/sharp-regular-svg-icons";
 import {
   ChangeEvent,
@@ -19,12 +15,10 @@ import {
 } from "react";
 import {AsyncOrSync} from "ts-essentials";
 import {GeneralIcon} from "/source/component/atom/general-icon";
+import {InputMenuPane} from "/source/component/atom/input/input-menu-pane";
 import {createWithRef} from "/source/component/create";
-import {MenuContextProvider} from "/source/component/module/menu/menu-context";
-import {MenuList} from "/source/component/module/menu/menu-list";
 import {AdditionalProps, aria, data} from "/source/module/data";
-import {useInputInteraction} from "./input-hook";
-import {InputMenuItem} from "./input-menu-item";
+import {useInputFloating, useInputInteraction} from "./input-hook";
 
 
 export const Input = createWithRef(
@@ -68,23 +62,16 @@ export const Input = createWithRef(
     ref: ForwardedRef<HTMLInputElement>
   } & AdditionalProps): ReactElement {
 
-    const [open, setOpen] = useState(false);
     const [suggestionSpecs, setSuggestionSpecs] = useState<Array<SuggestionSpec>>([]);
     const [, startTransition] = useTransition();
 
     const innerRef = useRef<HTMLInputElement>(null);
     const mergedRef = useMergeRefs<HTMLInputElement>([ref, innerRef]);
 
-    const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement: "bottom-start"});
-    const {isMounted, status} = useTransitionStatus(context, {duration: 100});
-    const {
-      listRef,
-      activeIndex,
-      setActiveIndex,
-      getReferenceProps,
-      getFloatingProps,
-      getItemProps
-    } = useInputInteraction(context);
+    const floatingSpec = useInputFloating();
+    const interactionSpec = useInputInteraction(floatingSpec.context);
+    const {setOpen, refs} = floatingSpec;
+    const {setActiveIndex, getReferenceProps} = interactionSpec;
 
     const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
       const value = event.target.value;
@@ -100,7 +87,7 @@ export const Input = createWithRef(
       }
       onSet?.(value);
       onChange?.(event);
-    }, [suggest, setActiveIndex, onSet, onChange]);
+    }, [suggest, setOpen, setActiveIndex, onSet, onChange]);
 
     const updateValue = useCallback(function (value: string): void {
       if (innerRef.current !== null) {
@@ -139,22 +126,7 @@ export const Input = createWithRef(
             </span>
           )}
         </div>
-        <MenuList
-          open={open}
-          mounted={isMounted}
-          status={status}
-          context={context}
-          combobox={true}
-          style={floatingStyles}
-          ref={refs.setFloating}
-          {...getFloatingProps()}
-        >
-          <MenuContextProvider value={{setOpen, listRef, activeIndex, getItemProps}}>
-            {suggestionSpecs.map((spec, index) => (
-              <InputMenuItem key={index} index={index} spec={spec} updateValue={updateValue}/>
-            ))}
-          </MenuContextProvider>
-        </MenuList>
+        <InputMenuPane suggestionSpecs={suggestionSpecs} updateValue={updateValue} floatingSpec={floatingSpec} interactionSpec={interactionSpec}/>
       </>
     );
 
