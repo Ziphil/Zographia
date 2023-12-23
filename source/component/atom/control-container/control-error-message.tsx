@@ -16,7 +16,7 @@ export const ControlErrorMessage = createWithRef(
   } & AdditionalProps): ReactElement {
 
     return (
-      <MultiLineText styleName="root" tag="p" lineHeight="short" {...rest}>
+      <MultiLineText styleName="root" is="p" lineHeight="short" {...rest}>
         {children}
       </MultiLineText>
     );

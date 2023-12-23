@@ -24,12 +24,14 @@ export const basic = {
   ...template,
   name: "基本",
   args: {
+    defaultValue: "あいうえおねこねこ"
   }
 } as Story;
 export const withLeftIconAddon = {
   ...template,
   name: "アドオン: 左",
   args: {
+    defaultValue: "あいうえおねこねこ",
     children: (
       <InputAddon position="left"><GeneralIcon icon={faSearch}/></InputAddon>
     )
@@ -39,6 +41,7 @@ export const withLeftTextAddon = {
   ...template,
   name: "アドオン: 左 (スペースなし)",
   args: {
+    defaultValue: "あいうえおねこねこ",
     children: (
       <InputAddon position="left" hasGap={false}>@</InputAddon>
     )
@@ -48,6 +51,7 @@ export const withRightIconAddon = {
   ...template,
   name: "アドオン: 右",
   args: {
+    defaultValue: "あいうえおねこねこ",
     children: (
       <InputAddon position="right"><GeneralIcon icon={faExclamationCircle}/></InputAddon>
     )
@@ -57,6 +61,7 @@ export const withRightTextAddon = {
   ...template,
   name: "アドオン: 右 (スペースなし)",
   args: {
+    defaultValue: "あいうえおねこねこ",
     children: (
       <InputAddon position="right" hasGap={false}>万円</InputAddon>
     )
@@ -66,6 +71,7 @@ export const withBothAddon = {
   ...template,
   name: "アドオン: 両方",
   args: {
+    defaultValue: "あいうえおねこねこ",
     children: createChildren(<>
       <InputAddon position="left"><GeneralIcon icon={faSearch}/></InputAddon>
       <InputAddon position="right">検索</InputAddon>
@@ -111,6 +117,7 @@ export const error = {
   ...template,
   name: "エラー",
   args: {
+    defaultValue: "あいうえおねこねこ",
     error: true
   }
 } as Story;
@@ -118,6 +125,7 @@ export const suggestion = {
   ...template,
   name: "サジェスト",
   args: {
+    defaultValue: "あいうえおねこねこ",
     suggest: (pattern) => {
       const specs = Array.from({length: 100}, (dummy, index) => ({replacement: `${pattern}@${index}`, node: `${pattern}@${index}`}));
       return specs;

@@ -8,24 +8,24 @@ import {AdditionalProps} from "/source/module/data";
 export const SingleLineText = createWithRef(
   require("./single-line-text.scss"), "SingleLineText",
   function ({
-    tag = "div",
+    is = "div",
     children,
     ...rest
   }: {
-    tag?: string,
+    is?: string,
     children?: ReactNode,
     className?: string,
     ref: ForwardedRef<HTMLElement>
   } & AdditionalProps): ReactElement {
 
-    const Tag = tag as any;
+    const Is = is as any;
 
     return (
-      <Tag styleName="root" {...rest}>
+      <Is styleName="root" {...rest}>
         <span styleName="inner">
           {children}
         </span>
-      </Tag>
+      </Is>
     );
 
   }

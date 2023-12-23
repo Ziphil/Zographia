@@ -16,7 +16,7 @@ export const ControlLabel = createWithRef(
   } & AdditionalProps): ReactElement {
 
     return (
-      <SingleLineText styleName="root" tag="div" {...rest}>
+      <SingleLineText styleName="root" is="div" {...rest}>
         {children}
       </SingleLineText>
     );

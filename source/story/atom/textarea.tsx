@@ -23,12 +23,14 @@ export const basic = {
   ...template,
   name: "基本",
   args: {
+    defaultValue: "全ての lorem ipsum は、生まれながらにして οὗ μέρος οὐθέν であり、рожьць ѩжє ꙗдѣахѫ свиниѩ について平等である。"
   }
 } as Story;
 export const withAddon = {
   ...template,
   name: "アドオン",
   args: {
+    defaultValue: "全ての lorem ipsum は、生まれながらにして οὗ μέρος οὐθέν であり、рожьць ѩжє ꙗдѣахѫ свиниѩ について平等である。",
     children: (
       <TextareaAddon><GeneralIcon icon={faSearch}/></TextareaAddon>
     )
@@ -38,6 +40,7 @@ export const error = {
   ...template,
   name: "エラー",
   args: {
+    defaultValue: "全ての lorem ipsum は、生まれながらにして οὗ μέρος οὐθέν であり、рожьць ѩжє ꙗдѣахѫ свиниѩ について平等である。",
     error: true
   }
 } as Story;

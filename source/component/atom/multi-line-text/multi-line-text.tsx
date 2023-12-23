@@ -8,14 +8,14 @@ import {AdditionalProps, data} from "/source/module/data";
 export const MultiLineText = createWithRef(
   require("./multi-line-text.scss"), "MultiLineText",
   function ({
-    tag = "div",
+    is = "div",
     justify = true,
     lineHeight = "normal",
     maxLineCount = null,
     children,
     ...rest
   }: {
-    tag?: string,
+    is?: string,
     justify?: boolean,
     lineHeight?: "short" | "normal" | "wide",
     maxLineCount?: number | null,
@@ -24,12 +24,12 @@ export const MultiLineText = createWithRef(
     ref: ForwardedRef<HTMLElement>
   } & AdditionalProps): ReactElement {
 
-    const Tag = tag as any;
+    const Is = is as any;
 
     return (
-      <Tag styleName="root" style={getStyle(maxLineCount)} {...data({justify, lineHeight, maxLineCount})} {...rest}>
+      <Is styleName="root" style={getStyle(maxLineCount)} {...data({justify, lineHeight, maxLineCount})} {...rest}>
         {children}
-      </Tag>
+      </Is>
     );
 
   }

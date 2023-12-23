@@ -21,12 +21,14 @@ export const basic = {
   ...template,
   name: "基本",
   args: {
+    defaultValue: "password"
   }
 } as Story;
 export const error = {
   ...template,
   name: "エラー",
   args: {
+    defaultValue: "password",
     error: true
   }
 } as Story;
