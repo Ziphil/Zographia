@@ -2,7 +2,7 @@
 
 import {faExclamationCircle, faSearch} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
-import {GeneralIcon, Input, InputAddon} from "/source/component";
+import {GeneralIcon, Input, InputAddon, SuggestionSpec} from "/source/component";
 import {restrictWidth} from "/source/story/decorator/width";
 import {createChildren} from "/source/util/children";
 
@@ -19,6 +19,12 @@ export default {
 const template = {
   decorators: [restrictWidth(600)]
 } as Story;
+
+const suggest = async function (pattern: string): Promise<Array<SuggestionSpec>> {
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  const specs = Array.from({length: 100}, (dummy, index) => ({replacement: `${pattern}@${index}`, node: `${pattern}@${index}`}));
+  return specs;
+};
 
 export const basic = {
   ...template,
@@ -126,9 +132,6 @@ export const suggestion = {
   name: "サジェスト",
   args: {
     defaultValue: "あいうえおねこねこ",
-    suggest: (pattern) => {
-      const specs = Array.from({length: 100}, (dummy, index) => ({replacement: `${pattern}@${index}`, node: `${pattern}@${index}`}));
-      return specs;
-    }
+    suggest
   }
 } as Story;
