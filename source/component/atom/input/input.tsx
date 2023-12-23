@@ -92,7 +92,7 @@ export const Input = createWithRef(
     const updateValue = useCallback(function (value: string): void {
       if (innerRef.current !== null) {
         innerRef.current.value = value;
-        innerRef.current.setSelectionRange(value.length, value.length);
+        requestAnimationFrame(() => innerRef.current?.setSelectionRange(value.length, value.length));
         onSet?.(value);
       }
     }, [onSet]);
