@@ -4,7 +4,6 @@ import {
   useMergeRefs
 } from "@floating-ui/react";
 import {
-  ChangeEvent,
   FocusEvent,
   ForwardedRef,
   KeyboardEvent,
@@ -14,7 +13,9 @@ import {
   useRef
 } from "react";
 import {AsyncOrSync} from "ts-essentials";
+import {Tag, TagCloseButton} from "/source/component/atom/tag";
 import {createWithRef} from "/source/component/create";
+import {useEnterDown} from "/source/hook/click";
 import {AdditionalProps, aria, data} from "/source/module/data";
 
 
@@ -48,24 +49,7 @@ export const TagInput = createWithRef(
     const innerRef = useRef<HTMLInputElement>(null);
     const mergedRef = useMergeRefs<HTMLInputElement>([ref, innerRef]);
 
-    const handleInputChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
-      const value = event.target.value;
-    }, []);
-
-    const handleInputKeyDown = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
-      const inputElement = innerRef.current;
-      if (inputElement !== null) {
-        const value = inputElement.value.trim();
-        if (event.key === ",") {
-          if (value) {
-            onSet?.([...values, value]);
-            requestAnimationFrame(() => inputElement.value = "");
-          }
-        }
-      }
-    }, [values, onSet]);
-
-    const handleInputBlur = useCallback(function (event: FocusEvent<HTMLInputElement>): void {
+    const handleEnterDownForAdd = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
       const inputElement = innerRef.current;
       if (inputElement !== null) {
         const value = inputElement.value.trim();
@@ -76,13 +60,56 @@ export const TagInput = createWithRef(
       }
     }, [values, onSet]);
 
+    const handleKeyDownForRemove = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
+      if (event.key === "Backspace") {
+        const target = event.currentTarget;
+        const selectionPos = (target.selectionDirection === "forward") ? target.selectionEnd : target.selectionStart;
+        if (selectionPos === 0) {
+          onSet?.(values.slice(0, -1));
+        }
+      }
+    }, [values, onSet]);
+
+    const handleBlur = useCallback(function (event: FocusEvent<HTMLInputElement>): void {
+      const inputElement = innerRef.current;
+      if (inputElement !== null) {
+        const value = inputElement.value.trim();
+        if (value) {
+          onSet?.([...values, value]);
+          requestAnimationFrame(() => inputElement.value = "");
+        }
+      }
+    }, [values, onSet]);
+
+    const {handleKeyDown: handleKeyDownForAdd, handleCompositionEnd} = useEnterDown(handleEnterDownForAdd);
+
+    const handleKeyDown = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
+      handleKeyDownForAdd(event);
+      handleKeyDownForRemove(event);
+    }, [handleKeyDownForAdd, handleKeyDownForRemove]);
+
+    const addTag = useCallback(function (value: string): void {
+      const inputElement = innerRef.current;
+      if (inputElement !== null && value) {
+        onSet?.([...values, value]);
+        inputElement.value = "";
+      }
+    }, [values, onSet]);
+
+    const removeTag = useCallback(function (index: number): void {
+      const inputElement = innerRef.current;
+      onSet?.(values.filter((value, valueIndex) => valueIndex !== index));
+      inputElement?.focus();
+    }, [values, onSet]);
+
     return (
       <>
         <div styleName="root" className={className} {...data({error})}>
           {values.map((value, index) => (
-            <span key={index} styleName="tag">
-              [{value}]
-            </span>
+            <Tag key={index} styleName="tag">
+              {value}
+              <TagCloseButton onClick={() => removeTag(index)}/>
+            </Tag>
           ))}
           <input
             styleName="input"
@@ -90,9 +117,9 @@ export const TagInput = createWithRef(
             autoFocus={autoFocus}
             readOnly={readonly}
             disabled={disabled}
-            onChange={handleInputChange}
-            onBlur={handleInputBlur}
-            onKeyDown={handleInputKeyDown}
+            onKeyDown={handleKeyDown}
+            onCompositionEnd={handleCompositionEnd}
+            onBlur={handleBlur}
             {...aria({invalid: error})}
             {...rest}
           />

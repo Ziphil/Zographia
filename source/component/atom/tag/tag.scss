@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+@use "sass:math" as *;
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --loc-background-color: #{leveled-color("primary", 1)};
+  }
+}
+
+.root {
+  padding-block: 0.5u;
+  padding-inline: 1u; 
+  font-size: 3u;
+  background-color: var(--loc-background-color);
+  border-radius: var(--border-radius);
+  display: inline-flex;
+  align-items: center;
+}

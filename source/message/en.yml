@@ -9,3 +9,5 @@ common:
 passwordInput:
   reveal: "Reveal"
   hide: "Hide"
+tag:
+  close: "Remove"

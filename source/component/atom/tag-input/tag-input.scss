@@ -22,6 +22,10 @@
 
 .root {
   @include control-group-item;
+  padding-block: 1.5u;
+  padding-inline: 2u;
+  row-gap: 1.5u;
+  column-gap: 2u;
   font-size: 4u;
   background-color: var(--loc-background-color);
   border: solid 1px var(--loc-border-color);
@@ -38,29 +42,13 @@
 }
 
 .input {
+  min-width: 16u;
   height: 4u + 1.5u * 2;
+  margin-block: -1.5u;
+  margin-inline: -2u;
   padding-inline: 2u;
   line-height: 4u + 1.5u * 2;
   flex: 1 1 auto;
   order: 10;
   cursor: text;
-  &::-webkit-calendar-picker-indicator {
-    width: 7u;
-    height: 100%;
-    inset-block: 0u;
-    inset-inline-end: 0u;
-    padding: 0u;
-    background: transparent;
-    position: absolute;
-    cursor: pointer;
-    z-index: 1;
-  }
-}
-
-.builtin-addon {
-  margin-inline-end: 2u;
-  margin-inline-start: calc(-2u + var(--blank-gap));
-  color: var(--loc-builtin-addon-color);
-  flex: 0 0 auto;
-  order: 20;
 }

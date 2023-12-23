@@ -9,3 +9,5 @@ common:
 passwordInput:
   reveal: "表示"
   hide: "非表示"
+tag:
+  close: "削除"

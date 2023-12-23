@@ -9,3 +9,5 @@ common:
 passwordInput:
   reveal: "Malkaŝi"
   hide: "Kaŝi"
+tag:
+  close: "Forigi"

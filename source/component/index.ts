@@ -16,6 +16,7 @@ export * from "./atom/radio-group";
 export * from "./atom/root";
 export * from "./atom/scroll";
 export * from "./atom/single-line-text";
+export * from "./atom/tag";
 export * from "./atom/tag-input";
 export * from "./atom/textarea";
 export * from "./atom/visually-hidden";

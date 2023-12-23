@@ -29,7 +29,7 @@ export const manyTags = {
   ...template,
   name: "たくさんのタグ",
   args: {
-    values: ["長い長い長いタグ", "長い長い長い長いタグ", "長い長い長い長い長いタグ", "長い長い長い長い長い長いタグ", "ねこねこ", "ねこねこねこ", "うさうさ", "うさうさうさ"]
+    values: ["長い長い長いタグ", "長い長い長い長いタグ", "長い長い長い長い長いタグ", "長い長い長い長い長い長いタグ", "ねこねこ", "ねこねこねこ"]
   }
 } as Story;
 
@@ -37,7 +37,7 @@ export const test = {
   ...template,
   name: "[テスト] 制御",
   render: () => {
-    const [values, setValues] = useState<Array<string>>([]);
+    const [values, setValues] = useState<Array<string>>(["ねこねこ", "うさうさ"]);
     return (
       <TagInput values={values} onSet={setValues}/>
     );
