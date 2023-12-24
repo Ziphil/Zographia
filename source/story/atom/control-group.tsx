@@ -32,7 +32,7 @@ export const three = {
   args: {
     children: createChildren(<>
       <Input/>
-      <Button variant="outline">ボタン 1</Button>
+      <Button variant="light">ボタン 1</Button>
       <Button>ボタン 2</Button>
     </>)
   }

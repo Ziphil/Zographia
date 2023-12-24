@@ -30,7 +30,7 @@ export const variantOutline = {
   ...template,
   name: "バリアント: 薄い",
   args: {
-    variant: "outline",
+    variant: "light",
     children: "ボタンテキスト"
   }
 } as Story;

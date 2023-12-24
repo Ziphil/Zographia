@@ -9,7 +9,7 @@ import {
   DialogBody,
   DialogContent,
   DialogFooter,
-  DialogIconbag,
+  DialogIconContainer,
   DialogPane,
   GeneralIcon,
   MultiLineText
@@ -22,7 +22,7 @@ type Story = RawStory<typeof Dialog>;
 export default {
   title: "Module/Dialog",
   component: Dialog,
-  subcomponents: {DialogPane, DialogBody, DialogContent, DialogIconbag, DialogFooter}
+  subcomponents: {DialogPane, DialogBody, DialogContent, DialogIconbag: DialogIconContainer, DialogFooter}
 } as Meta;
 
 const template = {
@@ -36,9 +36,9 @@ export const basic = {
     children: (
       <DialogPane>
         <DialogBody>
-          <DialogIconbag>
+          <DialogIconContainer>
             <GeneralIcon icon={faCircleInfo}/>
-          </DialogIconbag>
+          </DialogIconContainer>
           <DialogContent>
             <MultiLineText justify={true}>
               ここにダイアログのメッセージが入ります。
@@ -48,7 +48,7 @@ export const basic = {
           </DialogContent>
         </DialogBody>
         <DialogFooter>
-          <Button scheme="gray" variant="outline">
+          <Button scheme="gray" variant="light">
             <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
             キャンセル
           </Button>
@@ -69,9 +69,9 @@ export const alert = {
     children: (
       <DialogPane>
         <DialogBody>
-          <DialogIconbag scheme="red">
+          <DialogIconContainer scheme="red">
             <GeneralIcon icon={faExclamationTriangle}/>
-          </DialogIconbag>
+          </DialogIconContainer>
           <DialogContent>
             <MultiLineText justify={true}>
               このユーザーを削除してもよろしいですか?
@@ -80,7 +80,7 @@ export const alert = {
           </DialogContent>
         </DialogBody>
         <DialogFooter>
-          <Button scheme="gray" variant="outline">
+          <Button scheme="gray" variant="light">
             <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
             キャンセル
           </Button>

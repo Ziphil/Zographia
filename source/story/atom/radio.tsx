@@ -78,7 +78,7 @@ export const testHook: Story = {
         <Radio value="1" {...register("value")}/>
         <Radio value="2" {...register("value")}/>
         <Radio value="3" {...register("value")}/>
-        <Button type="submit" scheme="gray" variant="outline">送信</Button>
+        <Button type="submit" scheme="gray" variant="light">送信</Button>
       </form>
     );
   }

@@ -6,8 +6,8 @@ import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, data} from "/source/module/data";
 
 
-export const DialogIconbag = createWithRef(
-  require("./dialog-iconbag.scss"), "DialogIconbag",
+export const DialogIconContainer = createWithRef(
+  require("./dialog-icon-container.scss"), "DialogIconContainer",
   function ({
     scheme = "primary",
     children,

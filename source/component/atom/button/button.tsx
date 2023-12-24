@@ -27,7 +27,7 @@ export const Button = createWithRef(
     ...rest
   }: {
     scheme?: LeveledColorScheme,
-    variant?: "solid" | "outline",
+    variant?: "solid" | "light",
     size?: "small" | "medium" | "large",
     type?: "submit" | "reset" | "button",
     reactive?: boolean,

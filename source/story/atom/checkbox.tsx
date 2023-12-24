@@ -91,7 +91,7 @@ export const testHook: Story = {
     return (
       <form onSubmit={handleSubmit(action("onSubmit"))}>
         <Checkbox {...register("value")}/>
-        <Button type="submit" scheme="gray" variant="outline">送信</Button>
+        <Button type="submit" scheme="gray" variant="light">送信</Button>
       </form>
     );
   }

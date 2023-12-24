@@ -14,7 +14,7 @@
         --loc-background-gradient-color: #{leveled-color($scheme, 9, 0.2)};
         --loc-hover-background-color: #{leveled-color($scheme, 4)};
       }
-      &[data-variant="outline"] {
+      &[data-variant="light"] {
         --loc-text-color: #{leveled-color($scheme, 5)};
         --loc-border-color: #{leveled-color($scheme, 3)};
         --loc-background-color: #{single-color("white")};
