@@ -8,7 +8,7 @@
   --border-radius: 1px;
   --box-shadow-setting: 0px 1px 2px;
   --stain-shadow-setting: inset 0rem 0rem 1rem;
-  --blank-gap: 0.3em;
+  --blank-gap: #{div(5, 16)}em;
   --focus-alpha: 0.3;
   --line-height: #{1 + div(3, 8)};
   --short-line-height: #{1 + div(2, 8)};
