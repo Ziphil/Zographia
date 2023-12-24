@@ -1,0 +1,146 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --loc-heading-text-color: #{leveled-color("secondary", 5)};
+    --loc-marker-color: #{leveled-color("gray", 5)};
+    --loc-code-background-color: #{leveled-color("primary", 1)};
+    --loc-table-border-color: #{leveled-color("primary", 1)};
+    --loc-blockquote-border-color: #{leveled-color("primary", 1)};
+  }
+}
+
+.root {
+  @include line-height(var(--line-height));
+}
+
+.inner {
+  row-gap: calc(2zu + (1 - var(--line-height)) * 0.5em);
+  display: flex;
+  flex-direction: column;
+  &[data-justify] {
+    text-align: justify;
+  }
+}
+
+.inner em,
+.inner strong {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.inner del {
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: line-through;
+}
+
+.inner code {
+  padding-inline: 1zu;
+  font-size: 3.5zu;
+  font-family: var(--font-family-monospace);
+  font-feature-settings: "palt" 0, "pkna" 0, "lnum" 0, "kern" 0 !important;
+  white-space: pre;
+  text-autospace: no-autospace;
+  background-color: var(--loc-code-background-color);
+  border-radius: var(--border-radius);
+}
+
+.inner h1 {
+  font-size: 6zu;
+  font-weight: bold;
+  color: var(--loc-heading-text-color);
+  &:not(:first-child) {
+    margin-block-start: 2zu;
+  }
+}
+
+.inner h2 {
+  font-size: 5zu;
+  font-weight: bold;
+  color: var(--loc-heading-text-color);
+  &:not(:first-child) {
+    margin-block-start: 2zu;
+  }
+}
+
+.inner *:where(h1, h2, h3, h4, h5, h6) +:where(h1, h2, h3, h4, h5, h6) {
+  margin-block: 0zu !important;
+}
+
+.inner ol {
+  counter-reset: ordered-list;
+}
+
+.inner blockquote {
+  padding-inline-start: 2zu;
+  row-gap: calc(2zu + (1 - var(--line-height)) * 0.5em);
+  border-inline-start: solid 4zx var(--loc-blockquote-border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.inner pre {
+  margin-block: calc((1 - var(--line-height)) * -0.5em);
+  padding-block: calc(1.5zu + (1 - var(--short-line-height)) * 0.5em);
+  padding-inline: 2zu;
+  font-size: 3.5zu;
+  font-family: var(--font-family-monospace);
+  font-feature-settings: "palt" 0, "pkna" 0, "lnum" 0, "kern" 0 !important;
+  white-space: pre;
+  text-autospace: no-autospace;
+  line-height: var(--short-line-height);
+  background-color: var(--loc-code-background-color);
+  border-radius: var(--border-radius);
+  >code {
+    font-size: inherit;
+    display: contents;
+  }
+}
+
+.inner table {
+  margin-block: calc((1 - var(--line-height)) * -0.5em);
+  border-radius: var(--border-radius);
+  border-spacing: 0u;
+  border-collapse: separate;
+  align-self: center;;
+}
+
+.inner td,
+.inner th {
+  padding-block: calc(1.5zu + (1 - var(--line-height)) * 0.5em);
+  padding-inline: 2zu;
+  border-block-end: solid 1zx var(--loc-table-border-color);
+  border-inline-end: solid 1zx var(--loc-table-border-color);
+}
+
+.inner th {
+  background-color: var(--loc-table-border-color);
+}
+
+.inner thead tr:first-child >* {
+  border-block-start: solid 1zx var(--loc-table-border-color);
+}
+
+.inner tr >*:first-child {
+  border-inline-start: solid 1zx var(--loc-table-border-color);
+}
+
+.inner thead tr:first-child >*:first-child {
+  border-start-start-radius: var(--border-radius);
+}
+
+.inner thead tr:first-child >*:last-child {
+  border-start-end-radius: var(--border-radius);
+}
+
+.inner tbody tr:last-child >*:first-child {
+  border-end-start-radius: var(--border-radius);
+}
+
+.inner tbody tr:last-child >*:last-child {
+  border-end-end-radius: var(--border-radius);
+}
