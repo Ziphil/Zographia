@@ -6,7 +6,16 @@
 
 .root {
   @include theme("light") {
-    --loc-background-color: #{leveled-color("primary", 1)};
+    @include schemify using ($scheme) {
+      &[data-variant="solid"] {
+        --loc-text-color: #{single-color("white")};
+        --loc-background-color: #{leveled-color($scheme, 5)};
+      }
+      &[data-variant="light"] {
+        --loc-text-color: #{single-color("text-light")};
+        --loc-background-color: #{leveled-color($scheme, 1)};
+      }
+    }
   }
 }
 
@@ -14,6 +23,7 @@
   padding-block: 0.5zu;
   padding-inline: 1zu; 
   font-size: 3zu;
+  color: var(--loc-text-color);
   background-color: var(--loc-background-color);
   border-radius: var(--border-radius);
   display: inline-flex;

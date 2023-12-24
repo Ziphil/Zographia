@@ -18,11 +18,20 @@ export default {
 const template = {
 } as Story;
 
-export const basic = {
+export const variantOutline = {
   ...template,
-  name: "基本",
+  name: "バリアント: 薄い",
   args: {
-    children: "タグ"
+    variant: "light",
+    children: "タグテキスト"
+  }
+} as Story;
+export const variantSolid = {
+  ...template,
+  name: "バリアント: 濃い",
+  args: {
+    variant: "solid",
+    children: "タグテキスト"
   }
 } as Story;
 export const withIcon = {
@@ -31,7 +40,7 @@ export const withIcon = {
   args: {
     children: createChildren(<>
       <TagIconbag><GeneralIcon icon={faCat}/></TagIconbag>
-      タグ
+      タグテキスト
     </>)
   }
 } as Story;
@@ -40,7 +49,7 @@ export const withCloseButton = {
   name: "ボタン付き",
   args: {
     children: createChildren(<>
-      タグ
+      タグテキスト
       <TagCloseButton/>
     </>)
   }
