@@ -5,9 +5,9 @@
 
 
 :root {
-  --border-radius: 1px;
-  --box-shadow-setting: 0px 1px 2px;
-  --stain-shadow-setting: inset 0rem 0rem 1rem;
+  --border-radius: #{zx(1)};
+  --box-shadow-setting: #{zx(0)} #{zx(1)} #{zx(2)};
+  --stain-shadow-setting: inset #{zx(0)} #{zx(0)} #{zx(16)};
   --blank-gap: #{div(5, 16)}em;
   --focus-alpha: 0.3;
   --line-height: #{1 + div(3, 8)};

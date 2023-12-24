@@ -24,33 +24,33 @@
 
 .root {
   @include control-group-item;
-  font-size: 4u;
+  font-size: 4zu;
   background-color: var(--loc-background-color);
-  border: solid 1px var(--loc-border-color);
+  border: solid 1zx var(--loc-border-color);
   box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);
   display: flex;
   align-items: center;
   position: relative;
   z-index: 0;
   &:focus-within {
-    outline: solid 2px var(--loc-focus-color);
-    outline-offset: -1px;
+    outline: solid 2zx var(--loc-focus-color);
+    outline-offset: -1zx;
   }
 }
 
 .input {
-  height: 4u + 1.5u * 2;
-  padding-inline: 2u;
-  line-height: 4u + 1.5u * 2;
+  height: 4zu + 1.5zu * 2;
+  padding-inline: 2zu;
+  line-height: 4zu + 1.5zu * 2;
   flex: 1 1 auto;
   order: 10;
   cursor: text;
   &::-webkit-calendar-picker-indicator {
-    width: 7u;
+    width: 7zu;
     height: 100%;
-    inset-block: 0u;
-    inset-inline-end: 0u;
-    padding: 0u;
+    inset-block: 0zu;
+    inset-inline-end: 0zu;
+    padding: 0zu;
     background: transparent;
     position: absolute;
     cursor: pointer;
@@ -59,8 +59,8 @@
 }
 
 .builtin-addon {
-  margin-inline-end: 2u;
-  margin-inline-start: calc(-2u + var(--blank-gap));
+  margin-inline-end: 2zu;
+  margin-inline-start: calc(-2zu + var(--blank-gap));
   color: var(--loc-builtin-addon-color);
   flex: 0 0 auto;
   order: 20;

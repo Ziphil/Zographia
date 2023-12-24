@@ -42,8 +42,8 @@
 }
 
 .label {
-  width: 4.5u;
-  height: 4.5u;
+  width: 4.5zu;
+  height: 4.5zu;
   background-color: var(--loc-background-color);
   border: solid 1px var(--loc-border-color);
   border-radius: 1000px;
@@ -60,7 +60,7 @@
     background-color: var(--loc-checked-background-color);
   }
   .input:focus-visible +& {
-    outline: solid 2px var(--loc-focus-color);
+    outline: solid 2zx var(--loc-focus-color);
   }
   .input:disabled +& {
     cursor: inherit;
@@ -68,8 +68,8 @@
 }
 
 .icon {
-  width: 2.5u;
-  height: 2.5u;
+  width: 2.5zu;
+  height: 2.5zu;
   background-color: var(--loc-icon-color);
   border-radius: 1000px;
   opacity: 0;

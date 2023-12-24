@@ -22,13 +22,13 @@
 
 .root {
   @include control-group-item;
-  padding-block: 1.5u;
-  padding-inline: 2u;
-  row-gap: 1.5u;
-  column-gap: 2u;
-  font-size: 4u;
+  padding-block: 1.5zu;
+  padding-inline: 2zu;
+  row-gap: 1.5zu;
+  column-gap: 2zu;
+  font-size: 4zu;
   background-color: var(--loc-background-color);
-  border: solid 1px var(--loc-border-color);
+  border: solid 1zx var(--loc-border-color);
   box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);
   display: flex;
   flex-wrap: wrap;
@@ -36,18 +36,18 @@
   position: relative;
   z-index: 0;
   &:focus-within {
-    outline: solid 2px var(--loc-focus-color);
-    outline-offset: -1px;
+    outline: solid 2zx var(--loc-focus-color);
+    outline-offset: -1zx;
   }
 }
 
 .input {
-  min-width: 16u;
-  height: 4u + 1.5u * 2;
-  margin-block: -1.5u;
-  margin-inline: -2u;
-  padding-inline: 2u;
-  line-height: 4u + 1.5u * 2;
+  min-width: 16zu;
+  height: 4zu + 1.5zu * 2;
+  margin-block: -1.5zu;
+  margin-inline: -2zu;
+  padding-inline: 2zu;
+  line-height: 4zu + 1.5zu * 2;
   flex: 1 1 auto;
   order: 10;
   cursor: text;

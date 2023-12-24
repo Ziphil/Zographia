@@ -12,11 +12,11 @@
 }
 
 .root {
-  min-width: 32u;
-  max-height: 64u;
+  min-width: 32zu;
+  max-height: 64zu;
   border-radius: var(--border-radius);
   background-color: var(--loc-background-color);
-  border: solid 1px var(--loc-border-color);
+  border: solid 1zx var(--loc-border-color);
   box-shadow: var(--box-shadow-setting) var(--loc-box-shadow-color);
   opacity: 0;
   display: flex;

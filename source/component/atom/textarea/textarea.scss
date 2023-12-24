@@ -18,10 +18,10 @@
 }
 
 .root {
-  font-size: 4u;
+  font-size: 4zu;
   border-radius: var(--border-radius);
   background-color: var(--loc-background-color);
-  border: solid 1px var(--loc-border-color);
+  border: solid 1zx var(--loc-border-color);
   box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);
   display: flex;
   align-items: center;
@@ -29,14 +29,14 @@
   cursor: text;
   z-index: 0;
   &:focus-within {
-    outline: solid 2px var(--loc-focus-color);
-    outline-offset: -1px;
+    outline: solid 2zx var(--loc-focus-color);
+    outline-offset: -1zx;
   }
 }
 
 .input {
-  padding-block: calc(2u + (1 - var(--line-height)) * 0.5em);
-  padding-inline: 2u;
+  padding-block: calc(2zu + (1 - var(--line-height)) * 0.5em);
+  padding-inline: 2zu;
   line-height: var(--line-height);
   flex: 1 1 auto;
   order: 10;

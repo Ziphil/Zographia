@@ -25,12 +25,12 @@
 .root {
   @include control-group-item;
   width: 100%;
-  height: calc(4u + 1.5u * 2 + 1px * 2);
-  padding-block: 1.5u;
-  padding-inline: 2u;
-  font-size: 4u;
+  height: calc(4zu + 1.5zu * 2 + 1zx * 2);
+  padding-block: 1.5zu;
+  padding-inline: 2zu;
+  font-size: 4zu;
   background-color: var(--loc-background-color);
-  border: solid 1px var(--loc-border-color);
+  border: solid 1zx var(--loc-border-color);
   box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);
   line-height: 1;
   display: flex;
@@ -40,8 +40,8 @@
   box-sizing: border-box;
   z-index: 0;
   &:focus-within {
-    outline: solid 2px var(--loc-focus-color);
-    outline-offset: -1px;
+    outline: solid 2zx var(--loc-focus-color);
+    outline-offset: -1zx;
   }
 }
 

@@ -29,12 +29,12 @@
 
 .root {
   @include control-group-item;
-  padding-block: 1.5u;
-  padding-inline: 3u;
+  padding-block: 1.5zu;
+  padding-inline: 3zu;
   color: var(--loc-text-color);
   background-color: var(--loc-background-color);
   background-image: linear-gradient(to bottom, transparent, var(--loc-background-gradient-color));
-  border: solid 1px var(--loc-border-color);
+  border: solid 1zx var(--loc-border-color);
   box-shadow: var(--box-shadow-setting) var(--loc-box-shadow-color);
   line-height: 1;
   text-align: center;
@@ -45,7 +45,7 @@
     background-color: var(--loc-hover-background-color);
   }
   &:focus-visible {
-    outline: solid 2px var(--loc-focus-color);
+    outline: solid 2zx var(--loc-focus-color);
   }
   &:disabled,
   &[data-loading] {
@@ -56,7 +56,7 @@
 }
 
 .loading {
-  inset: 0u;
+  inset: 0zu;
   background-color: var(--loc-background-color);
   border-radius: var(--border-radius);
   align-items: center;
