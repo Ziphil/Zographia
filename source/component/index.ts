@@ -23,3 +23,4 @@ export * from "./atom/textarea";
 export * from "./atom/visually-hidden";
 export * from "./compound/dialog";
 export * from "./compound/menu";
+export * from "./compound/pagination";

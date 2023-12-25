@@ -11,3 +11,10 @@ passwordInput:
   hide: "Hide"
 tag:
   close: "Remove"
+
+pagination:
+  first: "First page"
+  previous: "Previous page"
+  next: "Next page"
+  last: "Last page"
+  page: "<hidden>Page </hidden>{number, number}"

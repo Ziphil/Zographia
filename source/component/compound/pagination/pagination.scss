@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --loc-text-color: #{leveled-color("gray", 5)};
+    --loc-hover-text-color: #{leveled-color("gray", 6)};
+    --loc-highlight-color: #{leveled-color("gray", 0)};
+    --loc-focus-color: #{leveled-color("gray", 5, var(--focus-alpha))};
+  }
+}
+
+.root {
+  color: var(--loc-text-color);
+  display: flex;
+  align-items: center;
+}
+
+.ellipsis-container {
+  margin-inline: 2zu;
+}
+
+.leftmost,
+.rightmost,
+.center {
+  flex: 0 0 auto;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1 1 0zu;
+  z-index: 0;
+}
+
+.left {
+  justify-content: flex-end;
+}
+
+.right {
+  justify-content: flex-start;
+}
