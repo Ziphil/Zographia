@@ -1,9 +1,9 @@
 //
 
 import {ReactElement} from "react";
+import {MenuContextProvider} from "/source/component/compound/menu/menu-context";
+import {MenuPane} from "/source/component/compound/menu/menu-pane";
 import {createWithRef} from "/source/component/create";
-import {MenuContextProvider} from "/source/component/module/menu/menu-context";
-import {MenuPane} from "/source/component/module/menu/menu-pane";
 import type {SuggestionSpec} from "./input";
 import {InputFloatingSpec, InputInteractionSpec} from "./input-hook";
 import {InputMenuItem} from "./input-menu-item";

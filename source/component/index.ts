@@ -21,5 +21,5 @@ export * from "./atom/tag";
 export * from "./atom/tag-input";
 export * from "./atom/textarea";
 export * from "./atom/visually-hidden";
-export * from "./module/dialog";
-export * from "./module/menu";
+export * from "./compound/dialog";
+export * from "./compound/menu";

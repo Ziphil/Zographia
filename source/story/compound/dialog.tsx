@@ -20,7 +20,7 @@ type Meta = RawMeta<typeof Dialog>;
 type Story = RawStory<typeof Dialog>;
 
 export default {
-  title: "Module/Dialog",
+  title: "Compound/Dialog",
   component: Dialog,
   subcomponents: {DialogPane, DialogBody, DialogContent, DialogIconContainer, DialogFooter}
 } as Meta;

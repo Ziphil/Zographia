@@ -9,7 +9,7 @@ import pathUtil from "path";
 const config = {
   stories: [
     "../source/story/atom/*.@(js|jsx|ts|tsx)",
-    "../source/story/module/*.@(js|jsx|ts|tsx)",
+    "../source/story/compound/*.@(js|jsx|ts|tsx)",
     "../source/story/document/*.@(mdx)"
   ],
   addons: [
@@ -87,7 +87,7 @@ const config = {
 
 config["experimental_indexers"] = function (indexers: Array<Indexer>, option: any): Array<Indexer> {
   const indexer = {
-    test: /story\/(atom|module)\/(.+)\.tsx?$/,
+    test: /story\/(atom|compound)\/(.+)\.tsx?$/,
     createIndex: (fileName, options) => readCsf(fileName, options).then((file) => file.parse().indexInputs),
   } as Indexer;
   return [...indexers, indexer];
