@@ -7,9 +7,9 @@
   @include theme("light") {
     --loc-heading-text-color: #{leveled-color("secondary", 5)};
     --loc-marker-color: #{leveled-color("gray", 5)};
-    --loc-code-background-color: #{leveled-color("primary", 1)};
+    --loc-block-background-color: #{leveled-color("primary", 0)};
     --loc-table-border-color: #{leveled-color("primary", 1)};
-    --loc-blockquote-border-color: #{leveled-color("primary", 1)};
+    --loc-blockquote-border-color: #{leveled-color("primary", 0)};
   }
 }
 
@@ -45,7 +45,7 @@
   font-feature-settings: "palt" 0, "pkna" 0, "lnum" 0, "kern" 0 !important;
   white-space: pre;
   text-autospace: no-autospace;
-  background-color: var(--loc-code-background-color);
+  background-color: var(--loc-block-background-color);
   border-radius: var(--border-radius);
 }
 
@@ -93,7 +93,7 @@
   white-space: pre;
   text-autospace: no-autospace;
   line-height: var(--short-line-height);
-  background-color: var(--loc-code-background-color);
+  background-color: var(--loc-block-background-color);
   border-radius: var(--border-radius);
   >code {
     font-size: inherit;
@@ -118,7 +118,7 @@
 }
 
 .inner th {
-  background-color: var(--loc-table-border-color);
+  background-color: var(--loc-block-background-color);
 }
 
 .inner thead tr:first-child >* {

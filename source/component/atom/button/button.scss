@@ -11,8 +11,9 @@
         --loc-text-color: #{single-color("white")};
         --loc-border-color: #{leveled-color($scheme, 6)};
         --loc-background-color: #{leveled-color($scheme, 5)};
-        --loc-background-gradient-color: #{leveled-color($scheme, 9, 0.2)};
-        --loc-hover-background-color: #{leveled-color($scheme, 4)};
+        --loc-background-gradient-color: #{single-color("black", 0.1)};
+        --loc-hover-background-color: #{leveled-color($scheme, 6)};
+        --loc-hover-border-color: #{leveled-color($scheme, 7)};
       }
       &[data-variant="light"] {
         --loc-text-color: #{leveled-color($scheme, 5)};
@@ -20,6 +21,7 @@
         --loc-background-color: #{single-color("white")};
         --loc-background-gradient-color: #{leveled-color($scheme, 5, 0.1)};
         --loc-hover-background-color: #{leveled-color($scheme, 0)};
+        --loc-hover-border-color: #{leveled-color($scheme, 3)};
       }
       --loc-box-shadow-color: #{leveled-color($scheme, 3, 0.3)};
       --loc-focus-color: #{leveled-color($scheme, 5, var(--focus-alpha))};
@@ -50,9 +52,13 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
-  transition: 0.1s background-color;
+  transition: 0.1s background-color, 0.1s border-color;
   &:hover:not(:disabled, [data-loading]) {
     background-color: var(--loc-hover-background-color);
+    border-color: var(--loc-hover-border-color);
+  }
+  &:active {
+    background-image: linear-gradient(to bottom,  var(--loc-background-gradient-color), transparent);
   }
   &:focus-visible {
     outline: solid 2zx var(--loc-focus-color);
