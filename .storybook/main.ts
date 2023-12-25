@@ -14,10 +14,8 @@ const config = {
   ],
   addons: [
     "@storybook/addon-essentials",
-    "@storybook/addon-themes",
-    "@storybook/addon-links",
-    "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "@storybook/addon-links",
   ],
   framework: {
     name: "@storybook/react-webpack5",
