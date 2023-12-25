@@ -47,6 +47,7 @@
   box-shadow: var(--box-shadow-setting) var(--loc-box-shadow-color);
   line-height: 1;
   text-align: center;
+  display: inline-block;
   position: relative;
   cursor: pointer;
   transition: 0.1s background-color;
@@ -68,6 +69,7 @@
   color: var(--loc-text-color);
   text-decoration-color: transparent;
   text-decoration-line: underline;
+  display: inline;
   position: relative;
   cursor: pointer;
   transition: 0.1s color, 0.1s text-decoration-color;

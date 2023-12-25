@@ -34,7 +34,7 @@ export const variantOutline = {
     children: "ボタンテキスト"
   }
 } as Story;
-export const variantLink = {
+export const variantText = {
   ...template,
   name: "バリアント: 単純",
   args: {

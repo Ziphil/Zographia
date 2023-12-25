@@ -8,6 +8,7 @@ export * from "./atom/control-group";
 export * from "./atom/file-input";
 export * from "./atom/general-icon";
 export * from "./atom/input";
+export * from "./atom/link";
 export * from "./atom/markdown";
 export * from "./atom/multi-line-text";
 export * from "./atom/modal";
