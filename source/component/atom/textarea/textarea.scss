@@ -6,13 +6,17 @@
 .root {
   @include theme("light") {
     --loc-background-color: #{single-color("white")};
-    --loc-border-color: #{leveled-color("gray", 3)};
-    --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
-    --loc-focus-color: #{leveled-color("primary", 5)};
+    &:not([data-error]) {
+      --loc-border-color: #{leveled-color("gray", 3)};
+      --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
+      --loc-focus-color: #{leveled-color("primary", 5, var(--focus-alpha))};
+      --loc-focus-border-color: #{leveled-color("primary", 5)};
+    }
     &[data-error] {
       --loc-border-color: #{leveled-color("red", 3)};
       --loc-box-shadow-color: #{leveled-color("red", 3, 0.3)};
-      --loc-focus-color: #{leveled-color("red", 5)};
+      --loc-focus-color: #{leveled-color("red", 5, var(--focus-alpha))};
+      --loc-focus-border-color: #{leveled-color("red", 5)};
     }
   }
 }
@@ -29,8 +33,8 @@
   cursor: text;
   z-index: 0;
   &:focus-within {
+    border-color: var(--loc-focus-border-color);
     outline: solid 2zx var(--loc-focus-color);
-    outline-offset: -1zx;
   }
 }
 
