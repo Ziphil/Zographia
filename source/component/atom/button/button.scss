@@ -27,6 +27,15 @@
   }
 }
 
+.root-text {
+  @include theme("light") {
+    @include schemify using ($scheme) {
+      --loc-text-color: #{leveled-color($scheme, 5)};
+      --loc-hover-text-color: #{leveled-color($scheme, 6)};
+    }
+  }
+}
+
 .root {
   @include control-group-item;
   padding-block: 1.5zu;
@@ -52,6 +61,19 @@
     box-shadow: var(--box-shadow-setting) transparent;
     opacity: 0.5;
     cursor: inherit;
+  }
+}
+
+.root-text {
+  color: var(--loc-text-color);
+  text-decoration-color: transparent;
+  text-decoration-line: underline;
+  position: relative;
+  cursor: pointer;
+  transition: 0.1s color, 0.1s text-decoration-color;
+  &:hover:not(:disabled, [data-loading]) {
+    color: var(--loc-hover-text-color);
+    text-decoration-color: var(--loc-hover-text-color);
   }
 }
 

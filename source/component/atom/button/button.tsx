@@ -27,7 +27,7 @@ export const Button = createWithRef(
     ...rest
   }: {
     scheme?: LeveledColorScheme,
-    variant?: "solid" | "light",
+    variant?: "solid" | "light" | "text",
     size?: "small" | "medium" | "large",
     type?: "submit" | "reset" | "button",
     reactive?: boolean,
@@ -66,7 +66,7 @@ export const Button = createWithRef(
 
     return (
       <button
-        styleName="root"
+        styleName={variant === "text" ? "root-text" : "root"}
         type={type}
         disabled={disabled}
         onClick={handleClick}
