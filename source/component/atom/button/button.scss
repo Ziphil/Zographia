@@ -75,6 +75,12 @@
     color: var(--loc-hover-text-color);
     text-decoration-color: var(--loc-hover-text-color);
   }
+  &:disabled,
+  &[data-loading] {
+    box-shadow: var(--box-shadow-setting) transparent;
+    opacity: 0.5;
+    cursor: inherit;
+  }
 }
 
 .loading {
