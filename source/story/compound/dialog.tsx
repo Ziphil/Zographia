@@ -7,6 +7,7 @@ import {
   ButtonIconbag,
   Dialog,
   DialogBody,
+  DialogCloseButton,
   DialogContent,
   DialogFooter,
   DialogIconContainer,
@@ -22,7 +23,7 @@ type Story = RawStory<typeof Dialog>;
 export default {
   title: "Compound/Dialog",
   component: Dialog,
-  subcomponents: {DialogPane, DialogBody, DialogContent, DialogIconContainer, DialogFooter}
+  subcomponents: {DialogPane, DialogBody, DialogContent, DialogIconContainer, DialogFooter, DialogCloseButton}
 } as Meta;
 
 const template = {
@@ -35,6 +36,7 @@ export const basic = {
     open: true,
     children: (
       <DialogPane>
+        <DialogCloseButton/>
         <DialogBody>
           <DialogIconContainer>
             <GeneralIcon icon={faCircleInfo}/>
@@ -68,6 +70,7 @@ export const alert = {
     open: true,
     children: (
       <DialogPane>
+        <DialogCloseButton/>
         <DialogBody>
           <DialogIconContainer scheme="red">
             <GeneralIcon icon={faExclamationTriangle}/>

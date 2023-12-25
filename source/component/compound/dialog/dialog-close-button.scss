@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --loc-text-color: #{single-color("white")};
+    --loc-hover-text-color: #{leveled-color("primary", 0)};
+    --loc-focus-color: #{single-color("white", var(--focus-alpha))};
+  }
+}
+
+.root {
+  inset-inline-end: 6zu;
+  inset-block-start: -6zu;
+  font-size: 4zu;
+  color: var(--loc-text-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  cursor: pointer;
+  transition: 0.1s color;
+  &:hover {
+    color: var(--loc-hover-text-color);
+  }
+  &:focus-visible {
+    outline: solid 2zx var(--loc-focus-color);
+  }
+}
+
+.icon {
+  margin-inline-end: var(--blank-gap);
+}

@@ -5,7 +5,6 @@ import {faEllipsis} from "@fortawesome/sharp-regular-svg-icons";
 import {ReactElement, Ref, useCallback} from "react";
 import {PaginationButton} from "/source/component/compound/pagination/pagination-button";
 import {createWithRef} from "/source/component/create";
-import {useTrans} from "/source/hook/translation";
 import {AdditionalProps} from "/source/module/data";
 
 
@@ -27,8 +26,6 @@ export const Pagination = createWithRef(
     className?: string,
     ref: Ref<HTMLElement>
   } & AdditionalProps): ReactElement {
-
-    const {trans, transNumber} = useTrans("pagination");
 
     const movePage = useCallback(function (page: number): void {
       onSet?.(page);

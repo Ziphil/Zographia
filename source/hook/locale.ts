@@ -52,6 +52,11 @@ export function useDefaultLocale(initialLocale: Locale): void {
   }, [initialLocale, changeLocale]);
 }
 
+export function useMessageInventory(): MessageInventory {
+  const messageInventory = useRecoilValue(messageInventoryAtom);
+  return messageInventory;
+}
+
 export function useSetMessageInventory(): Dispatch<MessageInventory> {
   const setMessageInventory = useSetRecoilState(messageInventoryAtom);
   return setMessageInventory;

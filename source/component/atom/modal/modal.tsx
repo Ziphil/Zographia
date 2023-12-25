@@ -1,9 +1,18 @@
 /* eslint-disable quote-props, @typescript-eslint/naming-convention */
 
-import {FloatingFocusManager, FloatingOverlay, useDismiss, useFloating, useInteractions, useRole, useTransitionStatus} from "@floating-ui/react";
+import {
+  FloatingFocusManager,
+  FloatingOverlay,
+  useDismiss,
+  useFloating,
+  useInteractions,
+  useRole,
+  useTransitionStatus
+} from "@floating-ui/react";
 import {ReactElement, cloneElement, useState} from "react";
 import {create} from "/source/component/create";
 import {AdditionalProps, data} from "/source/module/data";
+import {ModalContextProvider} from "./modal-context";
 
 
 export const Modal = create(
@@ -35,7 +44,9 @@ export const Modal = create(
     return (isMounted) ? (
       <FloatingOverlay styleName="root" {...data({status})}>
         <FloatingFocusManager context={context}>
-          {cloneElement(children, {ref: refs.setFloating, ...getFloatingProps(rest)})}
+          <ModalContextProvider value={{onOpenSet: actualOnOpenSet}}>
+            {cloneElement(children, {ref: refs.setFloating, ...getFloatingProps(rest)})}
+          </ModalContextProvider>
         </FloatingFocusManager>
       </FloatingOverlay>
     ) : null;

@@ -12,6 +12,8 @@ passwordInput:
 tag:
   close: "Forigi"
 
+dialog:
+  close: "Fermi"
 pagination:
   first: "Unua paĝo"
   previous: "Antaŭa paĝo"

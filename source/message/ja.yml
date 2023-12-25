@@ -12,6 +12,8 @@ passwordInput:
 tag:
   close: "削除"
 
+dialog:
+  close: "閉じる"
 pagination:
   first: "最初のページ"
   previous: "前のページ"
