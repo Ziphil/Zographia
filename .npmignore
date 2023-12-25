@@ -1,0 +1,9 @@
+node_modules
+docs
+*.code-workspace
+*.env
+.vscode
+.github
+.storybook
+desktop.ini
+Thumbs.dbs
