@@ -19,7 +19,7 @@ const template = {
 
 export const triggerTypeClick = {
   ...template,
-  name: "トリガー: クリック",
+  name: "[テスト] クリック",
   args: {
     trigger: <button>表示</button>,
     triggerType: "click",
@@ -30,7 +30,7 @@ export const triggerTypeClick = {
 } as Story;
 export const triggerTypeFocus = {
   ...template,
-  name: "トリガー: フォーカス",
+  name: "[テスト] フォーカス",
   args: {
     trigger: <input type="input" value="表示"/>,
     triggerType: "focus",
@@ -41,7 +41,7 @@ export const triggerTypeFocus = {
 } as Story;
 export const triggerTypeHover = {
   ...template,
-  name: "トリガー: ホバー",
+  name: "[テスト] ホバー",
   args: {
     trigger: <div>表示</div>,
     triggerType: "hover",

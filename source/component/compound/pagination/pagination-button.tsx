@@ -1,7 +1,7 @@
 //
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronLeft, faChevronRight} from "@fortawesome/sharp-regular-svg-icons";
+import {faArrowLeft, faArrowRight} from "@fortawesome/sharp-regular-svg-icons";
 import {ReactElement} from "react";
 import {VisuallyHidden} from "/source/component/atom/visually-hidden";
 import {create} from "/source/component/create";
@@ -25,7 +25,7 @@ export const PaginationButton = create(
     className?: string
   } & AdditionalProps): ReactElement {
 
-    const {trans, transNode, transNumber} = useTrans("pagination");
+    const {trans, transNode} = useTrans("pagination");
 
     const numeric = typeof page === "number";
 
@@ -45,7 +45,7 @@ export const PaginationButton = create(
             hidden: (child) => <VisuallyHidden>{child}</VisuallyHidden>
           })
         ) : (
-          <FontAwesomeIcon icon={page === "previous" ? faChevronLeft : faChevronRight}/>
+          <FontAwesomeIcon icon={page === "previous" ? faArrowLeft : faArrowRight}/>
         )}
       </button>
     );
