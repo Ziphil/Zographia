@@ -8,9 +8,10 @@ import pathUtil from "path";
 
 const config = {
   stories: [
+    "../source/story/document/main/*.@(mdx)",
     "../source/story/atom/*.@(js|jsx|ts|tsx)",
     "../source/story/compound/*.@(js|jsx|ts|tsx)",
-    "../source/story/document/**/*.@(mdx)"
+    "../source/story/document/**/*.@(mdx)",
   ],
   addons: [
     "@storybook/addon-essentials",
