@@ -38,7 +38,7 @@ export const Root = create(
           <style>{getColorVarDefinitionCss(colorDefinitions)}</style>
           <style>{getFontFamilyVarDefinitionCss(fontFamilies)}</style>
         </Helmet>
-        <Suspense fallback={<div/>}>
+        <Suspense fallback={<div>LOADING</div>}>
           <RecoilRoot>
             <InnerRoot messageInventory={messageInventory} initialLocale={initialLocale} initialTheme={initialTheme}>
               {children}
