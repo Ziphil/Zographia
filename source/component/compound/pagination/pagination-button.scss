@@ -23,6 +23,7 @@
     min-width: 7zu;
   }
   &[data-current] {
+    font-weight: bold;
     background-color: var(--loc-highlight-color);
   }
   &:hover:not(:disabled) {

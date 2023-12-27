@@ -3,6 +3,7 @@
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {useState} from "react";
 import {Pagination} from "/source/component";
+import {restrictWidth} from "/source/story/decorator/width";
 
 
 type Meta = RawMeta<typeof Pagination>;
@@ -14,6 +15,7 @@ export default {
 } as Meta;
 
 const template = {
+  decorators: [restrictWidth(600)]
 } as Story;
 
 export const basic = {
@@ -23,6 +25,15 @@ export const basic = {
     page: 41,
     maxPage: 499
   }
+} as Story;
+export const narrow = {
+  ...template,
+  name: "狭い",
+  args: {
+    page: 41,
+    maxPage: 499
+  },
+  decorators: [restrictWidth(400)]
 } as Story;
 
 export const testControlled = {

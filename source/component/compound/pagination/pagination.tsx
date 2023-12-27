@@ -1,11 +1,11 @@
 //
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEllipsis} from "@fortawesome/sharp-regular-svg-icons";
 import {ReactElement, Ref, useCallback} from "react";
-import {PaginationButton} from "/source/component/compound/pagination/pagination-button";
+import {OverflowList} from "react-overflow-list";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
+import {PaginationButton} from "./pagination-button";
+import {PaginationSideButton} from "./pagination-side-button";
 
 
 export const Pagination = createWithRef(
@@ -14,14 +14,14 @@ export const Pagination = createWithRef(
     page,
     minPage = 0,
     maxPage,
-    count = 4,
+    count = 5,
     onSet,
     ...rest
   }: {
     page: number,
     minPage?: number,
     maxPage: number,
-    count?: number,
+    count?: number | null,
     onSet?: (page: number) => unknown,
     className?: string,
     ref: Ref<HTMLElement>
@@ -46,35 +46,33 @@ export const Pagination = createWithRef(
         <div styleName="button-group leftmost">
           <PaginationButton page="previous" disabled={page <= minPage} onClick={movePreviousPage}/>
         </div>
-        <div styleName="button-group left">
-          {(page > minPage) && (
-            <>
-              <PaginationButton page={minPage} onClick={() => movePage(minPage)}/>
-              <div styleName="ellipsis-container">
-                <FontAwesomeIcon icon={faEllipsis}/>
-              </div>
-            </>
-          )}
-          {calculateButtonSpecs(page, minPage, maxPage, count, -1).map((spec) => (
+        <OverflowList
+          styleName="button-group left"
+          collapseFrom="start"
+          alwaysRenderOverflow={true}
+          items={calculateButtonSpecs(page, minPage, maxPage, count, -1)}
+          itemRenderer={(spec) => (
             <PaginationButton key={spec.page} page={spec.page} onClick={() => movePage(spec.page)}/>
-          ))}
-        </div>
+          )}
+          overflowRenderer={() => (page > minPage) && (
+            <PaginationSideButton page={minPage} position="first" onClick={() => movePage(minPage)}/>
+          )}
+        />
         <div styleName="button-group center">
           <PaginationButton page={page} current={true}/>
         </div>
-        <div styleName="button-group right">
-          {calculateButtonSpecs(page, minPage, maxPage, count, 1).map((spec) => (
+        <OverflowList
+          styleName="button-group right"
+          collapseFrom="end"
+          alwaysRenderOverflow={true}
+          items={calculateButtonSpecs(page, minPage, maxPage, count, 1)}
+          itemRenderer={(spec) => (
             <PaginationButton key={spec.page} page={spec.page} onClick={() => movePage(spec.page)}/>
-          ))}
-          {(page < maxPage) && (
-            <>
-              <div styleName="ellipsis-container">
-                <FontAwesomeIcon icon={faEllipsis}/>
-              </div>
-              <PaginationButton page={maxPage} onClick={() => movePage(maxPage)}/>
-            </>
           )}
-        </div>
+          overflowRenderer={() => (page < maxPage) && (
+            <PaginationSideButton page={maxPage} position="last" onClick={() => movePage(maxPage)}/>
+          )}
+        />
         <div styleName="button-group rightmost">
           <PaginationButton page="next" disabled={page >= maxPage} onClick={moveNextPage}/>
         </div>
@@ -85,12 +83,13 @@ export const Pagination = createWithRef(
 );
 
 
-function calculateButtonSpecs(page: number, minPage: number, maxPage: number, count: number, direction: 1 | -1): Array<{page: number}> {
+function calculateButtonSpecs(page: number, minPage: number, maxPage: number, count: number | null, direction: 1 | -1): Array<{page: number}> {
   const targetPage = (direction === -1) ? minPage : maxPage;
   const currentPage = page;
+  const actualCount = (count === null) ? 1 / 0 : count;
   const buttonSpecs = [];
   let difference = 2;
-  for (let i = 0 ; i < count ; i ++) {
+  for (let i = 0 ; i < actualCount ; i ++) {
     const nextPage = currentPage + (difference - 1) * direction;
     if ((direction === -1 && nextPage > targetPage) || (direction === 1 && nextPage < targetPage)) {
       buttonSpecs.push({page: nextPage});
