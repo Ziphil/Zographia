@@ -47,13 +47,13 @@ export type InputInteractionSpec = ReturnType<typeof useInteractions> & {
   setActiveIndex: Dispatch<SetStateAction<number | null>>
 };
 
-export function useInputInteraction(context: FloatingContext): InputInteractionSpec {
+export function useInputInteraction(context: FloatingContext, enabled: boolean): InputInteractionSpec {
   const listRef = useRef([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const dismiss = useDismiss(context);
   const listNavigation = useListNavigation(context, {listRef, activeIndex, onNavigate: setActiveIndex, virtual: true});
   const role = useRole(context, {role: "listbox"});
-  const {getReferenceProps, getFloatingProps, getItemProps} = useInteractions([dismiss, listNavigation, role]);
+  const {getReferenceProps, getFloatingProps, getItemProps} = useInteractions((enabled) ? [dismiss, listNavigation, role] : []);
   return {
     listRef,
     activeIndex,

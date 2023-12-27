@@ -69,7 +69,7 @@ export const Input = createWithRef(
     const mergedRef = useMergeRefs<HTMLInputElement>([ref, innerRef]);
 
     const floatingSpec = useInputFloating();
-    const interactionSpec = useInputInteraction(floatingSpec.context);
+    const interactionSpec = useInputInteraction(floatingSpec.context, suggest !== undefined);
     const {setOpen, refs} = floatingSpec;
     const {setActiveIndex, getReferenceProps} = interactionSpec;
 
@@ -126,7 +126,14 @@ export const Input = createWithRef(
             </span>
           )}
         </div>
-        <InputMenuPane suggestionSpecs={suggestionSpecs} updateValue={updateValue} floatingSpec={floatingSpec} interactionSpec={interactionSpec}/>
+        {(suggest !== undefined) && (
+          <InputMenuPane
+            suggestionSpecs={suggestionSpecs}
+            updateValue={updateValue}
+            floatingSpec={floatingSpec}
+            interactionSpec={interactionSpec}
+          />
+        )}
       </>
     );
 

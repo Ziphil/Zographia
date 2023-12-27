@@ -59,7 +59,7 @@ export const TagInput = createWithRef(
     const mergedRef = useMergeRefs<HTMLInputElement>([ref, innerRef]);
 
     const floatingSpec = useInputFloating();
-    const interactionSpec = useInputInteraction(floatingSpec.context);
+    const interactionSpec = useInputInteraction(floatingSpec.context, suggest !== undefined);
     const {open, setOpen, refs} = floatingSpec;
     const {setActiveIndex, getReferenceProps} = interactionSpec;
 
@@ -156,12 +156,16 @@ export const TagInput = createWithRef(
           />
           {children}
         </div>
-        <InputMenuPane suggestionSpecs={suggestionSpecs} updateValue={addTag} floatingSpec={floatingSpec} interactionSpec={interactionSpec}/>
+        {(suggest !== undefined) && (
+          <InputMenuPane
+            suggestionSpecs={suggestionSpecs}
+            updateValue={addTag}
+            floatingSpec={floatingSpec}
+            interactionSpec={interactionSpec}
+          />
+        )}
       </>
     );
 
   }
 );
-
-
-export type TagSuggestionSpec = {replacement: string, node: ReactNode};
