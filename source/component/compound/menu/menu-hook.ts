@@ -2,6 +2,7 @@
 
 import {
   FloatingContext,
+  safePolygon,
   useClick,
   useDismiss,
   useFocus,
@@ -27,7 +28,7 @@ export function useMenuInteraction(context: FloatingContext, triggerType: "click
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const click = useClick(context, {enabled: triggerType === "click"});
   const focus = useFocus(context, {enabled: triggerType === "focus"});
-  const hover = useHover(context, {enabled: triggerType === "hover"});
+  const hover = useHover(context, {enabled: triggerType === "hover", handleClose: safePolygon()});
   const dismiss = useDismiss(context);
   const listNavigation = useListNavigation(context, {listRef, activeIndex, onNavigate: setActiveIndex});
   const role = useRole(context, {role: "menu"});
