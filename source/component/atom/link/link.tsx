@@ -1,6 +1,6 @@
 //
 
-import {ForwardedRef, KeyboardEvent, MouseEvent, ReactElement, ReactNode} from "react";
+import {AnchorHTMLAttributes, ComponentType, ForwardedRef, KeyboardEvent, MouseEvent, ReactElement, ReactNode} from "react";
 import {createWithRef} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, data} from "/source/module/data";
@@ -12,6 +12,7 @@ export const Link = createWithRef(
     href,
     scheme = "primary",
     variant = "text",
+    is = "a",
     onClick,
     onKeyDown,
     onKeyUp,
@@ -23,6 +24,7 @@ export const Link = createWithRef(
     href?: string,
     scheme?: LeveledColorScheme,
     variant?: "solid" | "light" | "text",
+    is?: "a" | ComponentType<AnchorHTMLAttributes<HTMLAnchorElement>>,
     onClick?: (event: MouseEvent<HTMLAnchorElement>) => unknown,
     onKeyDown?: (event: KeyboardEvent<HTMLAnchorElement>) => unknown,
     onKeyUp?: (event: KeyboardEvent<HTMLAnchorElement>) => unknown,
@@ -34,8 +36,10 @@ export const Link = createWithRef(
     ref: ForwardedRef<HTMLAnchorElement>
   } & AdditionalProps): ReactElement {
 
+    const Is = is;
+
     return (
-      <a
+      <Is
         styleName={variant === "text" ? "root-text" : "root"}
         href={href}
         onClick={onClick}
@@ -50,7 +54,7 @@ export const Link = createWithRef(
         {...rest}
       >
         {children}
-      </a>
+      </Is>
     );
 
   }
