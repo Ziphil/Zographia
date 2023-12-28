@@ -5,17 +5,17 @@
 
 @function leveled-color($scheme, $level, $alpha: null) {
   @if $alpha != null {
-    @return rgb(var(#{"--color-" + $scheme + "-" + $level}), $alpha);
+    @return rgb(var(#{"--glob-color-" + $scheme + "-" + $level}), $alpha);
   } @else {
-    @return rgb(var(#{"--color-" + $scheme + "-" + $level}));
+    @return rgb(var(#{"--glob-color-" + $scheme + "-" + $level}));
   }
 }
 
 @function single-color($scheme, $alpha: null) {
   @if $alpha != null {
-    @return rgb(var(#{"--color-" + $scheme}), $alpha);
+    @return rgb(var(#{"--glob-color-" + $scheme}), $alpha);
   } @else {
-    @return rgb(var(#{"--color-" + $scheme}));
+    @return rgb(var(#{"--glob-color-" + $scheme}));
   }
 }
 
@@ -72,32 +72,32 @@
 }
 
 @mixin control-group-vars {
-  --loc-left-border-radius: #{var(--border-radius)};
-  --loc-right-border-radius: #{var(--border-radius)};
-  --loc-margin-left: 0zu;
+  --left-border-radius: #{var(--glob-border-radius)};
+  --right-border-radius: #{var(--glob-border-radius)};
+  --margin-left: 0zu;
   :global(.control-group) >& {
     &:first-child {
-      --loc-left-border-radius: #{var(--border-radius)};
-      --loc-margin-left: 0zu;
+      --left-border-radius: #{var(--glob-border-radius)};
+      --margin-left: 0zu;
     }
     &:not(:first-child) {
-      --loc-left-border-radius: 0zu;
-      --loc-margin-left: -1zx;
+      --left-border-radius: 0zu;
+      --margin-left: -1zx;
     }
     &:last-child {
-      --loc-right-border-radius: #{var(--border-radius)};
+      --right-border-radius: #{var(--glob-border-radius)};
     }
     &:not(:last-child) {
-      --loc-right-border-radius: 0zu;
+      --right-border-radius: 0zu;
     }
   }
 }
 
 @mixin control-group-item {
-  margin-inline-start: var(--loc-margin-left);
-  margin-inline-end: var(--loc-margin-right);
-  border-start-start-radius: var(--loc-left-border-radius);
-  border-end-start-radius: var(--loc-left-border-radius);
-  border-start-end-radius: var(--loc-right-border-radius);
-  border-end-end-radius: var(--loc-right-border-radius);
+  margin-inline-start: var(--margin-left);
+  margin-inline-end: var(--margin-right);
+  border-start-start-radius: var(--left-border-radius);
+  border-end-start-radius: var(--left-border-radius);
+  border-start-end-radius: var(--right-border-radius);
+  border-end-end-radius: var(--right-border-radius);
 }

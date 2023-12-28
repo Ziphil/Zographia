@@ -5,12 +5,12 @@
 
 .root {
   @include theme("light") {
-    --loc-text-color: #{leveled-color("gray", 7)};
+    --text-color: #{leveled-color("gray", 7)};
   }
 }
 
 .root {
   @include bold-font;
   font-size: 3.5zu;
-  color: var(--loc-text-color);
+  color: var(--text-color);
 }

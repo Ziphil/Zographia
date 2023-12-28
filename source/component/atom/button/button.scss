@@ -8,23 +8,23 @@
   @include theme("light") {
     @include schemify using ($scheme) {
       &[data-variant="solid"] {
-        --loc-text-color: #{single-color("white")};
-        --loc-border-color: #{leveled-color($scheme, 6)};
-        --loc-background-color: #{leveled-color($scheme, 5)};
-        --loc-background-gradient-color: #{single-color("black", 0.1)};
-        --loc-hover-background-color: #{leveled-color($scheme, 6)};
-        --loc-hover-border-color: #{leveled-color($scheme, 7)};
+        --text-color: #{single-color("white")};
+        --border-color: #{leveled-color($scheme, 6)};
+        --background-color: #{leveled-color($scheme, 5)};
+        --background-gradient-color: #{single-color("black", 0.1)};
+        --hover-background-color: #{leveled-color($scheme, 6)};
+        --hover-border-color: #{leveled-color($scheme, 7)};
       }
       &[data-variant="light"] {
-        --loc-text-color: #{leveled-color($scheme, 5)};
-        --loc-border-color: #{leveled-color($scheme, 3)};
-        --loc-background-color: #{single-color("white")};
-        --loc-background-gradient-color: #{leveled-color($scheme, 5, 0.1)};
-        --loc-hover-background-color: #{leveled-color($scheme, 0)};
-        --loc-hover-border-color: #{leveled-color($scheme, 3)};
+        --text-color: #{leveled-color($scheme, 5)};
+        --border-color: #{leveled-color($scheme, 3)};
+        --background-color: #{single-color("white")};
+        --background-gradient-color: #{leveled-color($scheme, 5, 0.1)};
+        --hover-background-color: #{leveled-color($scheme, 0)};
+        --hover-border-color: #{leveled-color($scheme, 3)};
       }
-      --loc-box-shadow-color: #{leveled-color($scheme, 3, 0.3)};
-      --loc-focus-color: #{leveled-color($scheme, 5, var(--focus-alpha))};
+      --box-shadow-color: #{leveled-color($scheme, 3, 0.3)};
+      --focus-color: #{leveled-color($scheme, 5, var(--glob-focus-alpha))};
     }
   }
 }
@@ -32,8 +32,8 @@
 .root-text {
   @include theme("light") {
     @include schemify using ($scheme) {
-      --loc-text-color: #{leveled-color($scheme, 5)};
-      --loc-hover-text-color: #{leveled-color($scheme, 6)};
+      --text-color: #{leveled-color($scheme, 5)};
+      --hover-text-color: #{leveled-color($scheme, 6)};
     }
   }
 }
@@ -42,11 +42,11 @@
   @include control-group-item;
   padding-block: 1.5zu;
   padding-inline: 3zu;
-  color: var(--loc-text-color);
-  background-color: var(--loc-background-color);
-  background-image: linear-gradient(to bottom, transparent, var(--loc-background-gradient-color));
-  border: solid 1zx var(--loc-border-color);
-  box-shadow: var(--box-shadow-setting) var(--loc-box-shadow-color);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  background-image: linear-gradient(to bottom, transparent, var(--background-gradient-color));
+  border: solid 1zx var(--border-color);
+  box-shadow: var(--glob-box-shadow-setting) var(--box-shadow-color);
   line-height: 1;
   text-align: center;
   display: inline-block;
@@ -54,25 +54,25 @@
   cursor: pointer;
   transition: 0.1s background-color, 0.1s border-color;
   &:hover:not(:disabled, [data-loading]) {
-    background-color: var(--loc-hover-background-color);
-    border-color: var(--loc-hover-border-color);
+    background-color: var(--hover-background-color);
+    border-color: var(--hover-border-color);
   }
   &:active {
-    background-image: linear-gradient(to bottom,  var(--loc-background-gradient-color), transparent);
+    background-image: linear-gradient(to bottom,  var(--background-gradient-color), transparent);
   }
   &:focus-visible {
-    outline: solid 2zx var(--loc-focus-color);
+    outline: solid 2zx var(--focus-color);
   }
   &:disabled,
   &[data-loading] {
-    box-shadow: var(--box-shadow-setting) transparent;
+    box-shadow: var(--glob-box-shadow-setting) transparent;
     opacity: 0.5;
     cursor: inherit;
   }
 }
 
 .root-text {
-  color: var(--loc-text-color);
+  color: var(--text-color);
   text-decoration-color: transparent;
   text-decoration-line: underline;
   display: inline;
@@ -80,12 +80,12 @@
   cursor: pointer;
   transition: 0.1s color, 0.1s text-decoration-color;
   &:hover:not(:disabled, [data-loading]) {
-    color: var(--loc-hover-text-color);
-    text-decoration-color: var(--loc-hover-text-color);
+    color: var(--hover-text-color);
+    text-decoration-color: var(--hover-text-color);
   }
   &:disabled,
   &[data-loading] {
-    box-shadow: var(--box-shadow-setting) transparent;
+    box-shadow: var(--glob-box-shadow-setting) transparent;
     opacity: 0.5;
     cursor: inherit;
   }
@@ -93,8 +93,8 @@
 
 .loading {
   inset: 0zu;
-  background-color: var(--loc-background-color);
-  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  border-radius: var(--glob-border-radius);
   align-items: center;
   justify-content: center;
   display: none;

@@ -4,14 +4,14 @@
 
 
 .root {
-  column-gap: var(--blank-gap);
+  column-gap: var(--glob-blank-gap);
   list-style: none;
   display: flex;
   align-items: baseline;
 }
 
 .icon {
-  color: var(--loc-marker-color);
+  color: var(--marker-color);
   flex: 0 0 auto;
   ol >li >& {
     display: none;
@@ -22,9 +22,9 @@
   width: 4zu;
   font-size: 3zu;
   inset-block-end: 2zx;
-  color: var(--loc-marker-color);
-  border: solid 1zx var(--loc-marker-color);
-  border-radius: var(--border-radius);
+  color: var(--marker-color);
+  border: solid 1zx var(--marker-color);
+  border-radius: var(--glob-border-radius);
   line-height: 1;
   display: inline-flex;
   align-items: center;

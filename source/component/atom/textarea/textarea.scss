@@ -5,43 +5,43 @@
 
 .root {
   @include theme("light") {
-    --loc-background-color: #{single-color("white")};
+    --background-color: #{single-color("white")};
     &:not([data-error]) {
-      --loc-border-color: #{leveled-color("gray", 3)};
-      --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
-      --loc-focus-color: #{leveled-color("primary", 5, var(--focus-alpha))};
-      --loc-focus-border-color: #{leveled-color("primary", 5)};
+      --border-color: #{leveled-color("gray", 3)};
+      --box-shadow-color: #{leveled-color("gray", 3, 0.3)};
+      --focus-color: #{leveled-color("primary", 5, var(--glob-focus-alpha))};
+      --focus-border-color: #{leveled-color("primary", 5)};
     }
     &[data-error] {
-      --loc-border-color: #{leveled-color("red", 3)};
-      --loc-box-shadow-color: #{leveled-color("red", 3, 0.3)};
-      --loc-focus-color: #{leveled-color("red", 5, var(--focus-alpha))};
-      --loc-focus-border-color: #{leveled-color("red", 5)};
+      --border-color: #{leveled-color("red", 3)};
+      --box-shadow-color: #{leveled-color("red", 3, 0.3)};
+      --focus-color: #{leveled-color("red", 5, var(--glob-focus-alpha))};
+      --focus-border-color: #{leveled-color("red", 5)};
     }
   }
 }
 
 .root {
   font-size: 4zu;
-  border-radius: var(--border-radius);
-  background-color: var(--loc-background-color);
-  border: solid 1zx var(--loc-border-color);
-  box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);
+  border-radius: var(--glob-border-radius);
+  background-color: var(--background-color);
+  border: solid 1zx var(--border-color);
+  box-shadow: inset var(--glob-box-shadow-setting) var(--box-shadow-color);
   display: flex;
   align-items: center;
   position: relative;
   cursor: text;
   z-index: 0;
   &:focus-within {
-    border-color: var(--loc-focus-border-color);
-    outline: solid 2zx var(--loc-focus-color);
+    border-color: var(--focus-border-color);
+    outline: solid 2zx var(--focus-color);
   }
 }
 
 .input {
-  padding-block: calc(2zu + (1 - var(--line-height)) * 0.5em);
+  padding-block: calc(2zu + (1 - var(--glob-line-height)) * 0.5em);
   padding-inline: 2zu;
-  line-height: var(--line-height);
+  line-height: var(--glob-line-height);
   flex: 1 1 auto;
   order: 10;
 }

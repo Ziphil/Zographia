@@ -5,9 +5,9 @@
 
 .root {
   @include theme("light") {
-    --loc-text-color: #{single-color("white")};
-    --loc-hover-text-color: #{leveled-color("primary", 0)};
-    --loc-focus-color: #{single-color("white", var(--focus-alpha))};
+    --text-color: #{single-color("white")};
+    --hover-text-color: #{leveled-color("primary", 0)};
+    --focus-color: #{single-color("white", var(--glob-focus-alpha))};
   }
 }
 
@@ -15,8 +15,8 @@
   inset-inline-end: 6zu;
   inset-block-start: -6zu;
   font-size: 4zu;
-  color: var(--loc-text-color);
-  border-radius: var(--border-radius);
+  color: var(--text-color);
+  border-radius: var(--glob-border-radius);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,13 +24,13 @@
   cursor: pointer;
   transition: 0.1s color;
   &:hover {
-    color: var(--loc-hover-text-color);
+    color: var(--hover-text-color);
   }
   &:focus-visible {
-    outline: solid 2zx var(--loc-focus-color);
+    outline: solid 2zx var(--focus-color);
   }
 }
 
 .icon {
-  margin-inline-end: var(--blank-gap);
+  margin-inline-end: var(--glob-blank-gap);
 }

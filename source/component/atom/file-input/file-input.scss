@@ -6,20 +6,20 @@
 .root {
   @include control-group-vars;
   @include theme("light") {
-    --loc-background-color: #{single-color("white")};
+    --background-color: #{single-color("white")};
     &:not([data-error]) {
-      --loc-border-color: #{leveled-color("gray", 3)};
-      --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
-      --loc-focus-color: #{leveled-color("primary", 5, var(--focus-alpha))};
-      --loc-focus-border-color: #{leveled-color("primary", 5)};
-      --loc-builtin-addon-color: #{leveled-color("gray", 5)};
+      --border-color: #{leveled-color("gray", 3)};
+      --box-shadow-color: #{leveled-color("gray", 3, 0.3)};
+      --focus-color: #{leveled-color("primary", 5, var(--glob-focus-alpha))};
+      --focus-border-color: #{leveled-color("primary", 5)};
+      --builtin-addon-color: #{leveled-color("gray", 5)};
     }
     &[data-error] {
-      --loc-border-color: #{leveled-color("red", 3)};
-      --loc-box-shadow-color: #{leveled-color("red", 3, 0.3)};
-      --loc-focus-color: #{leveled-color("red", 5, var(--focus-alpha))};
-      --loc-focus-border-color: #{leveled-color("red", 5)};
-      --loc-builtin-addon-color: #{leveled-color("red", 5)};
+      --border-color: #{leveled-color("red", 3)};
+      --box-shadow-color: #{leveled-color("red", 3, 0.3)};
+      --focus-color: #{leveled-color("red", 5, var(--glob-focus-alpha))};
+      --focus-border-color: #{leveled-color("red", 5)};
+      --builtin-addon-color: #{leveled-color("red", 5)};
     }
   }
 }
@@ -31,9 +31,9 @@
   padding-block: 1.5zu;
   padding-inline: 2zu;
   font-size: 4zu;
-  background-color: var(--loc-background-color);
-  border: solid 1zx var(--loc-border-color);
-  box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);
+  background-color: var(--background-color);
+  border: solid 1zx var(--border-color);
+  box-shadow: inset var(--glob-box-shadow-setting) var(--box-shadow-color);
   line-height: 1;
   display: flex;
   align-items: center;
@@ -42,8 +42,8 @@
   box-sizing: border-box;
   z-index: 0;
   &:focus-within {
-    border-color: var(--loc-focus-border-color);
-    outline: solid 2zx var(--loc-focus-color);
+    border-color: var(--focus-border-color);
+    outline: solid 2zx var(--focus-color);
   }
 }
 
@@ -54,8 +54,8 @@
 }
 
 .builtin-addon {
-  margin-inline-start: var(--blank-gap);
-  color: var(--loc-builtin-addon-color);
+  margin-inline-start: var(--glob-blank-gap);
+  color: var(--builtin-addon-color);
   flex: 0 0 auto;
   order: 20;
 }

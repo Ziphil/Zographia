@@ -5,12 +5,12 @@
 
 .root {
   @include theme("light") {
-    --loc-background-color: #{single-color("background-light")};
-    --loc-stain-color: #{single-color("stain-light")};
+    --background-color: #{single-color("background-light")};
+    --stain-color: #{single-color("stain-light")};
   }
   @include theme("dark") {
-    --loc-background-color: #{single-color("background-dark")}; 
-    --loc-stain-color: #{single-color("stain-dark")};
+    --background-color: #{single-color("background-dark")}; 
+    --stain-color: #{single-color("stain-dark")};
   }
 }
 
@@ -19,10 +19,10 @@
   max-width: 120zu;
   padding-block: 6zu;
   padding-inline: 6zu;
-  background-color: var(--loc-background-color);
+  background-color: var(--background-color);
   background-image: var(--noise-background-image);
-  box-shadow: var(--stain-shadow-setting) var(--loc-stain-color);
-  border-radius: var(--border-radius);
+  box-shadow: var(--glob-stain-shadow-setting) var(--stain-color);
+  border-radius: var(--glob-border-radius);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

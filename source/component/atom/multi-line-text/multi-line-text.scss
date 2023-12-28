@@ -6,13 +6,13 @@
 
 .root {
   &[data-line-height="short"] {
-    @include line-height(var(--short-line-height));
+    @include line-height(var(--glob-short-line-height));
   }
   &[data-line-height="normal"] {
-    @include line-height(var(--line-height));
+    @include line-height(var(--glob-line-height));
   }
   &[data-line-height="wide"] {
-    @include line-height(var(--wide-line-height));
+    @include line-height(var(--glob-wide-line-height));
   }
   &[data-justify] {
     text-align: justify;

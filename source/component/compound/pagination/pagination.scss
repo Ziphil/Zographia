@@ -5,15 +5,15 @@
 
 .root {
   @include theme("light") {
-    --loc-text-color: #{leveled-color("gray", 5)};
-    --loc-hover-text-color: #{leveled-color("gray", 6)};
-    --loc-highlight-color: #{leveled-color("gray", 0)};
-    --loc-focus-color: #{leveled-color("gray", 5, var(--focus-alpha))};
+    --text-color: #{leveled-color("gray", 5)};
+    --hover-text-color: #{leveled-color("gray", 6)};
+    --highlight-color: #{leveled-color("gray", 0)};
+    --focus-color: #{leveled-color("gray", 5, var(--glob-focus-alpha))};
   }
 }
 
 .root {
-  color: var(--loc-text-color);
+  color: var(--text-color);
   display: flex;
   align-items: center;
 }

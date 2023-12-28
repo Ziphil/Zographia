@@ -5,20 +5,20 @@
 
 .root {
   @include theme("light") {
-    --loc-icon-color: #{single-color("white")};
-    --loc-background-color: #{single-color("white")};
-    --loc-checked-background-color: #{leveled-color("primary", 5)};
+    --icon-color: #{single-color("white")};
+    --background-color: #{single-color("white")};
+    --checked-background-color: #{leveled-color("primary", 5)};
     &:not([data-error]) {
-      --loc-border-color: #{leveled-color("gray", 3)};
-      --loc-checked-border-color: #{leveled-color("primary", 6)};
-      --loc-box-shadow-color: #{leveled-color("gray", 3, 0.3)};
-      --loc-focus-color: #{leveled-color("primary", 5, var(--focus-alpha))};
+      --border-color: #{leveled-color("gray", 3)};
+      --checked-border-color: #{leveled-color("primary", 6)};
+      --box-shadow-color: #{leveled-color("gray", 3, 0.3)};
+      --focus-color: #{leveled-color("primary", 5, var(--glob-focus-alpha))};
     }
     &[data-error] {
-      --loc-border-color: #{leveled-color("red", 3)};
-      --loc-checked-border-color: #{leveled-color("red", 6)};
-      --loc-box-shadow-color: #{leveled-color("red", 3, 0.3)};
-      --loc-focus-color: #{leveled-color("red", 5, var(--focus-alpha))};
+      --border-color: #{leveled-color("red", 3)};
+      --checked-border-color: #{leveled-color("red", 6)};
+      --box-shadow-color: #{leveled-color("red", 3, 0.3)};
+      --focus-color: #{leveled-color("red", 5, var(--glob-focus-alpha))};
     }
   }
 }
@@ -44,10 +44,10 @@
 .label {
   width: 4.5zu;
   height: 4.5zu;
-  background-color: var(--loc-background-color);
-  border: solid 1px var(--loc-border-color);
-  border-radius: var(--border-radius);
-  box-shadow: inset var(--box-shadow-setting) var(--loc-box-shadow-color);
+  background-color: var(--background-color);
+  border: solid 1px var(--border-color);
+  border-radius: var(--glob-border-radius);
+  box-shadow: inset var(--glob-box-shadow-setting) var(--box-shadow-color);
   line-height: 1;
   box-sizing: border-box;
   display: flex;
@@ -56,11 +56,11 @@
   flex: 0 0 auto;
   transition: 0.1s border-color, 0.1s background-color;
   .input:checked +& {
-    border-color: var(--loc-checked-border-color);
-    background-color: var(--loc-checked-background-color);
+    border-color: var(--checked-border-color);
+    background-color: var(--checked-background-color);
   }
   .input:focus-visible +& {
-    outline: solid 2px var(--loc-focus-color);
+    outline: solid 2px var(--focus-color);
   }
   .input:disabled +& {
     cursor: inherit;
@@ -68,7 +68,7 @@
 }
 
 .icon {
-  color: var(--loc-icon-color);
+  color: var(--icon-color);
   opacity: 0;
   transition: 0.1s color, 0.1s opacity;
   .input:checked +.label >&,
@@ -76,6 +76,6 @@
     opacity: 1;
   }
   .input:indeterminate +.label >& {
-    color: var(--loc-checked-background-color);
+    color: var(--checked-background-color);
   }
 }

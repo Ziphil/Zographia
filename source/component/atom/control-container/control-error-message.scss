@@ -5,11 +5,11 @@
 
 .root {
   @include theme("light") {
-    --loc-text-color: #{leveled-color("red", 5)};
+    --text-color: #{leveled-color("red", 5)};
   }
 }
 
 .root {
   font-size: 3zu;
-  color: var(--loc-text-color);
+  color: var(--text-color);
 }

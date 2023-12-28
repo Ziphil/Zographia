@@ -8,12 +8,12 @@
   @include theme("light") {
     @include schemify using ($scheme) {
       &[data-variant="solid"] {
-        --loc-text-color: #{single-color("white")};
-        --loc-background-color: #{leveled-color($scheme, 5)};
+        --text-color: #{single-color("white")};
+        --background-color: #{leveled-color($scheme, 5)};
       }
       &[data-variant="light"] {
-        --loc-text-color: #{single-color("text-light")};
-        --loc-background-color: #{leveled-color($scheme, 1)};
+        --text-color: #{single-color("text-light")};
+        --background-color: #{leveled-color($scheme, 1)};
       }
     }
   }
@@ -23,9 +23,9 @@
   padding-block: 0.5zu;
   padding-inline: 1zu; 
   font-size: 3zu;
-  color: var(--loc-text-color);
-  background-color: var(--loc-background-color);
-  border-radius: var(--border-radius);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border-radius: var(--glob-border-radius);
   display: inline-flex;
   align-items: center;
 }

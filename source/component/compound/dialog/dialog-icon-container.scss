@@ -6,13 +6,13 @@
 .root {
   @include theme("light") {
     @include schemify using ($scheme) {
-      --loc-text-color: #{leveled-color($scheme, 5)};
+      --text-color: #{leveled-color($scheme, 5)};
     }
   }
 }
 
 .root {
   font-size: 10zu;
-  color: var(--loc-text-color);
+  color: var(--text-color);
   flex: 0 0 auto;
 }

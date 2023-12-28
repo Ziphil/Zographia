@@ -5,12 +5,12 @@
 
 .root {
   @include theme("light") {
-    --loc-background-color: #{single-color("black", 0.5)};
+    --background-color: #{single-color("black", 0.5)};
   }
 }
 
 .root {
-  background-color: var(--loc-background-color);
+  background-color: var(--background-color);
   backdrop-filter: blur(1zu);
   display: flex;
   flex-direction: column;

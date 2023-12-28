@@ -5,19 +5,19 @@
 
 .root {
   @include theme("light") {
-    --loc-background-color: #{single-color("white")};
-    --loc-border-color: #{leveled-color("gray", 1)};
-    --loc-box-shadow-color: #{leveled-color("gray", 5, 0.3)};
+    --background-color: #{single-color("white")};
+    --border-color: #{leveled-color("gray", 1)};
+    --box-shadow-color: #{leveled-color("gray", 5, 0.3)};
   }
 }
 
 .root {
   min-width: 32zu;
   max-height: 64zu;
-  border-radius: var(--border-radius);
-  background-color: var(--loc-background-color);
-  border: solid 1zx var(--loc-border-color);
-  box-shadow: var(--box-shadow-setting) var(--loc-box-shadow-color);
+  border-radius: var(--glob-border-radius);
+  background-color: var(--background-color);
+  border: solid 1zx var(--border-color);
+  box-shadow: var(--glob-box-shadow-setting) var(--box-shadow-color);
   opacity: 0;
   display: flex;
   flex-direction: column;
