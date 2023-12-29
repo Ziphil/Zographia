@@ -26,5 +26,6 @@ export * from "./atom/textarea";
 export * from "./atom/visually-hidden";
 export * from "./compound/card";
 export * from "./compound/dialog";
+export * from "./compound/list";
 export * from "./compound/menu";
 export * from "./compound/pagination";

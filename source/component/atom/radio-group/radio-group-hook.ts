@@ -14,6 +14,6 @@ export function useRadioGroup(): UseRadioGroupReturn {
     const {value} = groupSpec;
     return {value};
   } else {
-    throw new Error("Not inside `RadioGroup`");
+    throw new Error("not inside `RadioGroup`");
   }
 };
