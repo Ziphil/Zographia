@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --text-color: #{leveled-color("secondary", 5)};
+  }
+}
+
+.root {
+  @include bold-font;
+  font-size: 6zu;
+  color: var(--text-color);
+}

@@ -8,12 +8,12 @@
   @include theme("light") {
     --background-color: #{single-color("white")};
     --border-color: #{leveled-color("gray", 3)};
-    --box-shadow-color: #{leveled-color("gray", 3, 0.3)};
+    --box-shadow-color: #{leveled-color("gray", 5, 0.2)};
     --focus-color: #{leveled-color("primary", 5)};
     --builtin-addon-color: #{leveled-color("gray", 5)};
     &[data-error] {
       --border-color: #{leveled-color("red", 3)};
-      --box-shadow-color: #{leveled-color("red", 3, 0.3)};
+      --box-shadow-color: #{leveled-color("red", 5, 0.2)};
       --focus-color: #{leveled-color("red", 5)};
       --builtin-addon-color: #{leveled-color("red", 5)};
     }

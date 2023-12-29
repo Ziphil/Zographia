@@ -24,6 +24,7 @@ export * from "./atom/tag";
 export * from "./atom/tag-input";
 export * from "./atom/textarea";
 export * from "./atom/visually-hidden";
+export * from "./compound/card";
 export * from "./compound/dialog";
 export * from "./compound/menu";
 export * from "./compound/pagination";

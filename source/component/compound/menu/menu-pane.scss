@@ -7,7 +7,7 @@
   @include theme("light") {
     --background-color: #{single-color("white")};
     --border-color: #{leveled-color("gray", 1)};
-    --box-shadow-color: #{leveled-color("gray", 5, 0.3)};
+    --box-shadow-color: #{leveled-color("gray", 5, 0.2)};
   }
 }
 

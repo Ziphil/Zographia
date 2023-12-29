@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --border-color: #{leveled-color("gray", 1)};
+    --background-color: #{single-color("white")};
+    --box-shadow-color: #{leveled-color("gray", 5, 0.2)};
+  }
+}
+
+.root {
+  padding-block: 3zu;
+  padding-inline: 3zu;
+  background-color: var(--background-color);
+  background-image: linear-gradient(to bottom, transparent, var(--background-gradient-color));
+  border: solid 1zx var(--border-color);
+  box-shadow: var(--glob-box-shadow-setting) var(--box-shadow-color);
+}
