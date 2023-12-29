@@ -1,6 +1,6 @@
 common:
-  dateFormat: "dd/LLL/yyyy HH:mm"
-  shortDateFormat: "dd/LLL"
+  dateFormat: "DD/MMM/YYYY HH:mm"
+  shortDateFormat: "DD/MMM"
   dateUndefined: "?"
   numberUndefined: "?"
   negative: "−{value}"
