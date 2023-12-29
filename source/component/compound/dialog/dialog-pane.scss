@@ -6,11 +6,11 @@
 .root {
   @include theme("light") {
     --background-color: #{single-color("background-light")};
-    --stain-color: #{single-color("stain-light")};
+    --stain-color: #{single-color("stain-light", 0.1)};
   }
   @include theme("dark") {
     --background-color: #{single-color("background-dark")}; 
-    --stain-color: #{single-color("stain-dark")};
+    --stain-color: #{single-color("stain-dark", 0.2)};
   }
 }
 

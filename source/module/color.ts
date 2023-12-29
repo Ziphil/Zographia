@@ -37,5 +37,5 @@ export function createColorDefinition(colorString: string, setting: Record<"dark
 };
 
 export function createColor(colorString: string): string {
-  return qixColor(colorString).hex();
+  return qixColor(colorString).hexa();
 }

@@ -9,10 +9,14 @@ export function getColorVarDefinitionCss(definitions: ColorDefinitions): string 
   const wholeDefinitions = {...DEFAULT_COLOR_DEFINITIONS, ...definitions};
   for (const [scheme, definition] of Object.entries(wholeDefinitions)) {
     if (typeof definition === "string") {
-      varCss.push(`--glob-color-${toKebabCase(scheme)}: ${qixColor(definition).rgb().array().join(", ")};`);
+      const colorObject = qixColor(definition);
+      const colorArray = colorObject.rgb().array();
+      varCss.push(`--glob-color-${toKebabCase(scheme)}: ${colorArray.join(", ")};`);
     } else {
       for (const [level, color] of Object.entries(definition)) {
-        varCss.push(`--glob-color-${toKebabCase(scheme)}-${level}: ${qixColor(color).rgb().array().join(", ")};`);
+        const colorObject = qixColor(color);
+        const colorArray = colorObject.rgb().array();
+        varCss.push(`--glob-color-${toKebabCase(scheme)}-${level}: ${colorArray.join(", ")};`);
       }
     }
   }

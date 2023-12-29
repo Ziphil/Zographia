@@ -29,9 +29,9 @@ export const DEFAULT_COLOR_DEFINITIONS = {
   textLight: createColor("hsl(30, 30%, 10%)"),
   textDark: createColor("hsl(30, 100%, 98%)"),
   backgroundLight: createColor("hsl(30, 30%, 99%)"),
-  stainLight: createColor("hsl(30, 30%, 94%)"),
+  stainLight: createColor("hsla(30, 30%, 50%)"),
   backgroundDark: createColor("hsl(30, 50%, 15%)"),
-  stainDark: createColor("hsl(30, 50%, 10%)")
+  stainDark: createColor("hsla(30, 50%, 0%)")
 };
 
 export const DEFAULT_FONT_FAMILIES = {
