@@ -1,6 +1,6 @@
 //
 
-import {AnchorHTMLAttributes, ComponentType, ForwardedRef, KeyboardEvent, MouseEvent, ReactElement, ReactNode} from "react";
+import {AnchorHTMLAttributes, ComponentType, ForwardedRef, KeyboardEvent, MouseEvent, PointerEvent, ReactElement, ReactNode} from "react";
 import {createWithRef} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, data} from "/source/module/data";
@@ -29,7 +29,7 @@ export const Link = createWithRef(
     onKeyDown?: (event: KeyboardEvent<HTMLAnchorElement>) => unknown,
     onKeyUp?: (event: KeyboardEvent<HTMLAnchorElement>) => unknown,
     onMouseDown?: (event: MouseEvent<HTMLAnchorElement>) => unknown,
-    onPointerDown?: (event: MouseEvent<HTMLAnchorElement>) => unknown,
+    onPointerDown?: (event: PointerEvent<HTMLAnchorElement>) => unknown,
     children?: ReactNode,
     className?: string,
     id?: string,

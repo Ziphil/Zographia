@@ -7,7 +7,6 @@
   min-width: 0rem;
   min-height: 0rem;
   background-origin: border-box;
-  scroll-behavior: smooth;
 }
 
 input,
@@ -24,10 +23,15 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-body,
-:global(#root) {
+body {
   width: 100%;
   min-height: 100%;
   margin: 0px;
   padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+:global(#root) {
+  flex: 1 1 auto;
 }

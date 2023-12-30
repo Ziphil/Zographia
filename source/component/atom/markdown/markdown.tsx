@@ -13,6 +13,7 @@ export const Markdown = create(
   function ({
     justify = true,
     allowedElements = null,
+    disallowedElements = null,
     components = {},
     rehypePlugins = [],
     remarkPlugins = [],
@@ -21,6 +22,7 @@ export const Markdown = create(
   }: {
     justify?: boolean,
     allowedElements?: Array<string> | null,
+    disallowedElements?: Array<string> | null,
     components?: NonNullable<MarkdownOption["components"]>,
     rehypePlugins?: NonNullable<MarkdownOption["rehypePlugins"]>,
     remarkPlugins?: NonNullable<MarkdownOption["remarkPlugins"]>,
@@ -33,6 +35,7 @@ export const Markdown = create(
         <div styleName="inner" {...data({justify})}>
           <ReactMarkdown
             allowedElements={allowedElements}
+            disallowedElements={disallowedElements}
             skipHtml={true}
             components={{li: MarkdownListItem, ...components}}
             rehypePlugins={rehypePlugins}
