@@ -1,6 +1,6 @@
 //
 
-import {AnchorHTMLAttributes, ComponentType, ForwardedRef, KeyboardEvent, MouseEvent, PointerEvent, ReactElement, ReactNode} from "react";
+import {AnchorHTMLAttributes, ComponentType, ForwardedRef, HTMLAttributeAnchorTarget, KeyboardEvent, MouseEvent, PointerEvent, ReactElement, ReactNode} from "react";
 import {createWithRef} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, data} from "/source/module/data";
@@ -12,6 +12,7 @@ export const Link = createWithRef(
     href,
     scheme = "primary",
     variant = "text",
+    target,
     is = "a",
     onClick,
     onKeyDown,
@@ -24,6 +25,7 @@ export const Link = createWithRef(
     href?: string,
     scheme?: LeveledColorScheme,
     variant?: "solid" | "light" | "text",
+    target?: HTMLAttributeAnchorTarget,
     is?: "a" | ComponentType<AnchorHTMLAttributes<HTMLAnchorElement>>,
     onClick?: (event: MouseEvent<HTMLAnchorElement>) => unknown,
     onKeyDown?: (event: KeyboardEvent<HTMLAnchorElement>) => unknown,
@@ -42,6 +44,8 @@ export const Link = createWithRef(
       <Is
         styleName={variant === "text" ? "root-text" : "root"}
         href={href}
+        target={target}
+        rel={(target === "_blank") ? "noopener noreferrer" : undefined}
         onClick={onClick}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}

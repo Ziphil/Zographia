@@ -2,7 +2,7 @@
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClose} from "@fortawesome/sharp-regular-svg-icons";
-import {ForwardedRef, KeyboardEvent, MouseEvent, ReactElement} from "react";
+import {ForwardedRef, KeyboardEvent, MouseEvent, PointerEvent, ReactElement} from "react";
 import {createWithRef} from "/source/component/create";
 import {useTrans} from "/source/hook/translation";
 import {AdditionalProps, aria} from "/source/module/data";
@@ -22,7 +22,7 @@ export const TagCloseButton = createWithRef(
     onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => unknown,
     onKeyUp?: (event: KeyboardEvent<HTMLButtonElement>) => unknown,
     onMouseDown?: (event: MouseEvent<HTMLButtonElement>) => unknown,
-    onPointerDown?: (event: MouseEvent<HTMLButtonElement>) => unknown,
+    onPointerDown?: (event: PointerEvent<HTMLButtonElement>) => unknown,
     className?: string,
     ref: ForwardedRef<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
