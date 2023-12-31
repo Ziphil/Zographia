@@ -7,9 +7,9 @@
   @include theme("light") {
     --heading-text-color: #{leveled-color("secondary", 5)};
     --marker-color: #{leveled-color("gray", 5)};
-    --block-background-color: #{leveled-color("primary", 0)};
-    --table-border-color: #{leveled-color("primary", 1)};
-    --blockquote-border-color: #{leveled-color("primary", 0)};
+    --block-background-color: #{leveled-color("gray", 1)};
+    --table-border-color: #{leveled-color("gray", 1)};
+    --blockquote-border-color: #{leveled-color("gray", 1)};
   }
 }
 

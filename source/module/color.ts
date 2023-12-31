@@ -37,5 +37,10 @@ export function createColorDefinition(colorString: string, setting: Record<"dark
 };
 
 export function createColor(colorString: string): string {
-  return qixColor(colorString).hexa();
+  const color = qixColor(colorString);
+  if (color.alpha() >= 1) {
+    return color.hex();
+  } else {
+    return color.hexa();
+  }
 }

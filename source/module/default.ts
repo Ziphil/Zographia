@@ -4,9 +4,9 @@ import {createColor, createColorDefinition} from "/source/module/color";
 
 
 export const DEFAULT_COLOR_DEFINITIONS = {
-  primary: createColorDefinition("hsl(30, 70%, 50%)", {
+  primary: createColorDefinition("hsl(30, 80%, 50%)", {
     dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.92, saturation: 0.3}
+    light: {mix: 0.91, saturation: 0.3}
   }),
   secondary: createColorDefinition("hsl(10, 80%, 55%)", {
     dark: {mix: 0.5, saturation: -0.1},
@@ -20,9 +20,9 @@ export const DEFAULT_COLOR_DEFINITIONS = {
     dark: {mix: 0.5, saturation: -0.1},
     light: {mix: 0.94, saturation: 0.3}
   }),
-  gray: createColorDefinition("hsl(30, 5%, 50%)", {
-    dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.93, saturation: 0.2}
+  gray: createColorDefinition("hsl(30, 5%, 55%)", {
+    dark: {mix: 0.55, saturation: -0.1},
+    light: {mix: 0.92, saturation: 0.2}
   }),
   white: createColor("hsl(30, 100%, 100%)"),
   black: createColor("hsl(30, 0%, 0%)"),
