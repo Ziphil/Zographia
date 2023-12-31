@@ -2,17 +2,19 @@
 
 import {ReactElement, ReactNode, Ref} from "react";
 import {createWithRef} from "/source/component/create";
-import {AdditionalProps} from "/source/module/data";
+import {AdditionalProps, data} from "/source/module/data";
 
 
 export const Card = createWithRef(
   require("./card.scss"), "Card",
   function ({
     is = "article",
+    padding = "normal",
     children,
     ...rest
   }: {
     is?: string,
+    padding?: "normal" | "wide",
     children?: ReactNode,
     className?: string,
     ref: Ref<HTMLElement>
@@ -21,7 +23,7 @@ export const Card = createWithRef(
     const Is = is as any;
 
     return (
-      <Is styleName="root" {...rest}>
+      <Is styleName="root" {...data({padding})} {...rest}>
         {children}
       </Is>
     );
