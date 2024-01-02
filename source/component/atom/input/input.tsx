@@ -1,6 +1,7 @@
 //
 
 import {useMergeRefs} from "@floating-ui/react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendar, faClock} from "@fortawesome/sharp-regular-svg-icons";
 import {
   ChangeEvent,
@@ -14,7 +15,6 @@ import {
   useTransition
 } from "react";
 import {AsyncOrSync} from "ts-essentials";
-import {GeneralIcon} from "/source/component/atom/general-icon";
 import {InputMenuPane} from "/source/component/atom/input/input-menu-pane";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
@@ -122,7 +122,7 @@ export const Input = createWithRef(
           {children}
           {isAddonType(type) && (
             <span styleName="builtin-addon">
-              <GeneralIcon icon={(type === "time") ? faClock : faCalendar}/>
+              <FontAwesomeIcon icon={(type === "time") ? faClock : faCalendar}/>
             </span>
           )}
         </div>

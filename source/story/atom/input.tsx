@@ -84,6 +84,13 @@ export const withBothAddon = {
     </>)
   }
 } as Story;
+export const typeSearch = {
+  ...template,
+  name: "タイプ: 検索",
+  args: {
+    type: "search"
+  }
+} as Story;
 export const typeDate = {
   ...template,
   name: "タイプ: 日付",

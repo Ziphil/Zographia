@@ -1,6 +1,7 @@
 //
 
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFile, faFiles} from "@fortawesome/sharp-regular-svg-icons";
 import {
   ChangeEvent,
@@ -13,7 +14,6 @@ import {
   useRef,
   useState
 } from "react";
-import {GeneralIcon} from "/source/component/atom/general-icon";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
 
@@ -100,7 +100,7 @@ export const FileInput = createWithRef(
           <span styleName="name">{fileNameString}</span>
           {children}
           <span styleName="builtin-addon">
-            <GeneralIcon icon={(multiple) ? faFiles : faFile}/>
+            <FontAwesomeIcon icon={(multiple) ? faFiles : faFile}/>
           </span>
         </button>
       </Fragment>

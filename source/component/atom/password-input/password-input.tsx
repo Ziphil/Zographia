@@ -1,6 +1,7 @@
 //
 
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faEyeSlash} from "@fortawesome/sharp-regular-svg-icons";
 import {
   ChangeEvent,
@@ -11,7 +12,6 @@ import {
   useCallback,
   useState
 } from "react";
-import {GeneralIcon} from "/source/component/atom/general-icon";
 import {createWithRef} from "/source/component/create";
 import {useTrans} from "/source/hook/translation";
 import {AdditionalProps, aria, data} from "/source/module/data";
@@ -103,7 +103,7 @@ export const PasswordInput = createWithRef(
           {...aria({label: trans((type === "text") ? "hide" : "reveal")})}
           onClick={handleEyeClick}
         >
-          <GeneralIcon icon={(type === "text") ? faEyeSlash : faEye}/>
+          <FontAwesomeIcon icon={(type === "text") ? faEyeSlash : faEye}/>
         </button>
       </div>
     );

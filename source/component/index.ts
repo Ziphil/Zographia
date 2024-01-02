@@ -18,6 +18,7 @@ export * from "./atom/password-input";
 export * from "./atom/radio";
 export * from "./atom/radio-group";
 export * from "./atom/root";
+export * from "./atom/select";
 export * from "./atom/scroll";
 export * from "./atom/single-line-text";
 export * from "./atom/tag";

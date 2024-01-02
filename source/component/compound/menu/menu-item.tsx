@@ -1,7 +1,7 @@
 //
 
 import {useMergeRefs} from "@floating-ui/react";
-import {CSSProperties, ForwardedRef, MouseEvent, ReactElement, ReactNode, useCallback, useContext} from "react";
+import {CSSProperties, ComponentProps, ForwardedRef, MouseEvent, ReactElement, ReactNode, useCallback, useContext} from "react";
 import {createWithRef} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, aria, data} from "/source/module/data";
@@ -11,14 +11,12 @@ import {menuContext} from "./menu-context";
 export const MenuItem = createWithRef(
   require("./menu-item.scss"), "MenuItem",
   function ({
-    index = 0,
     scheme = null,
     onClick,
     children,
     ref,
-    ...rest
+    ...restAndInternal
   }: {
-    index?: number,
     scheme?: LeveledColorScheme | null,
     onClick?: (event: MouseEvent<HTMLButtonElement>) => unknown,
     children?: ReactNode,
@@ -26,6 +24,8 @@ export const MenuItem = createWithRef(
     style?: CSSProperties,
     ref: ForwardedRef<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
+
+    const {index, ...rest} = restAndInternal as MenuItemPropsWithInternal;
 
     const {setOpen, listRef, activeIndex, getItemProps} = useContext(menuContext);
     const mergedRef = useMergeRefs<HTMLButtonElement>([ref, (element) => listRef.current[index] = element]);
@@ -54,3 +54,6 @@ export const MenuItem = createWithRef(
 
   }
 );
+
+
+type MenuItemPropsWithInternal = Omit<ComponentProps<typeof MenuItem>, "scheme" | "onClick" | "children" | "ref"> & {index: number};

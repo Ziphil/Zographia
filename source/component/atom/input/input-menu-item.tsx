@@ -23,7 +23,7 @@ export const InputMenuItem = create(
     }, [spec.replacement, updateValue]);
 
     return (
-      <MenuItem index={index} onClick={handleClick}>
+      <MenuItem onClick={handleClick} {...{index}}>
         {spec.node}
       </MenuItem>
     );
