@@ -39,6 +39,7 @@ export const paddingWide = {
   ...template,
   name: "余白: 広い",
   args: {
+    padding: "wide",
     children: createChildren(<>
       <CardBody>
         <MultiLineText justify={true}>

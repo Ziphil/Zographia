@@ -3,6 +3,7 @@
 import {
   FloatingFocusManager,
   FloatingOverlay,
+  FloatingPortal,
   useDismiss,
   useFloating,
   useInteractions,
@@ -42,13 +43,15 @@ export const Modal = create(
     const {getFloatingProps} = useInteractions([dismiss, role]);
 
     return (isMounted) ? (
-      <FloatingOverlay styleName="root" {...data({status})}>
-        <FloatingFocusManager context={context}>
-          <ModalContextProvider value={{onOpenSet: actualOnOpenSet}}>
-            {cloneElement(children, {ref: refs.setFloating, ...getFloatingProps(rest)})}
-          </ModalContextProvider>
-        </FloatingFocusManager>
-      </FloatingOverlay>
+      <FloatingPortal>
+        <FloatingOverlay styleName="root" lockScroll={true} {...data({status})}>
+          <FloatingFocusManager context={context}>
+            <ModalContextProvider value={{onOpenSet: actualOnOpenSet}}>
+              {cloneElement(children, {ref: refs.setFloating, ...getFloatingProps(rest)})}
+            </ModalContextProvider>
+          </FloatingFocusManager>
+        </FloatingOverlay>
+      </FloatingPortal>
     ) : null;
 
   }

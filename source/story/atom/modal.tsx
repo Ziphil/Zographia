@@ -15,6 +15,9 @@ export default {
 } as Meta;
 
 const template = {
+  parameters: {
+    docs: {story: {inline: false, iframeHeight: 320}}
+  }
 } as Story;
 
 export const basic = {
