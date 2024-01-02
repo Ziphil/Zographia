@@ -98,34 +98,32 @@ export const Input = createWithRef(
     }, [onSet]);
 
     return (
-      <>
-        <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
-          <input
-            styleName="input"
-            value={value}
-            defaultValue={defaultValue}
-            name={name}
-            type={toHtmlInputType(type)}
-            autoComplete={autoComplete}
-            autoFocus={autoFocus}
-            readOnly={readonly}
-            required={required}
-            disabled={disabled}
-            {...aria({invalid: error})}
-            {...rest}
-            {...getReferenceProps({
-              ref: mergedRef,
-              onChange: handleChange,
-              onBlur
-            })}
-          />
-          {children}
-          {isAddonType(type) && (
-            <span styleName="builtin-addon">
-              <FontAwesomeIcon icon={(type === "time") ? faClock : faCalendar}/>
-            </span>
-          )}
-        </div>
+      <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
+        <input
+          styleName="input"
+          value={value}
+          defaultValue={defaultValue}
+          name={name}
+          type={toHtmlInputType(type)}
+          autoComplete={autoComplete}
+          autoFocus={autoFocus}
+          readOnly={readonly}
+          required={required}
+          disabled={disabled}
+          {...aria({invalid: error})}
+          {...rest}
+          {...getReferenceProps({
+            ref: mergedRef,
+            onChange: handleChange,
+            onBlur
+          })}
+        />
+        {children}
+        {isAddonType(type) && (
+          <span styleName="builtin-addon">
+            <FontAwesomeIcon icon={(type === "time") ? faClock : faCalendar}/>
+          </span>
+        )}
         {(suggest !== undefined) && (
           <InputMenuPane
             suggestionSpecs={suggestionSpecs}
@@ -134,7 +132,7 @@ export const Input = createWithRef(
             interactionSpec={interactionSpec}
           />
         )}
-      </>
+      </div>
     );
 
   }

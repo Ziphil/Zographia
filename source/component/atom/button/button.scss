@@ -34,6 +34,7 @@
     @include schemify using ($scheme) {
       --text-color: #{leveled-color($scheme, 5)};
       --hover-text-color: #{leveled-color($scheme, 6)};
+      --focus-color: #{leveled-color($scheme, 5, var(--glob-focus-alpha))};
     }
   }
 }
@@ -73,6 +74,7 @@
 
 .root-text {
   color: var(--text-color);
+  border-radius: var(--glob-border-radius);
   text-decoration-color: transparent;
   text-decoration-line: underline;
   display: inline;
@@ -82,6 +84,9 @@
   &:hover:not(:disabled, [data-loading]) {
     color: var(--hover-text-color);
     text-decoration-color: var(--hover-text-color);
+  }
+  &:focus-visible {
+    outline: solid 2zx var(--focus-color);
   }
   &:disabled,
   &[data-loading] {

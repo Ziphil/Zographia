@@ -48,24 +48,22 @@ export const Select = create(
     }, [value, onSet]);
 
     return (
-      <>
-        <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
-          <button
-            styleName="input"
-            {...aria({invalid: error})}
-            {...rest}
-            {...getReferenceProps()}
-          >
-            {(actualValue !== undefined) ? optionMap.get(actualValue)?.props.label ?? "" : ""}
-          </button>
-          <span styleName="angle">
-            <FontAwesomeIcon icon={faAngleDown}/>
-          </span>
-        </div>
+      <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
+        <button
+          styleName="input"
+          {...aria({invalid: error})}
+          {...rest}
+          {...getReferenceProps()}
+        >
+          {(actualValue !== undefined) ? optionMap.get(actualValue)?.props.label ?? "" : ""}
+        </button>
+        <span styleName="angle">
+          <FontAwesomeIcon icon={faAngleDown}/>
+        </span>
         <SelectMenuPane updateValue={updateValue} floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
           {transformChildren(children)}
         </SelectMenuPane>
-      </>
+      </div>
     );
 
   }

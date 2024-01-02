@@ -1,6 +1,6 @@
 //
 
-import {FloatingContext, FloatingFocusManager, FloatingPortal} from "@floating-ui/react";
+import {FloatingContext, FloatingFocusManager} from "@floating-ui/react";
 import {CSSProperties, ForwardedRef, ReactElement, ReactNode} from "react";
 import {Scroll} from "/source/component/atom/scroll";
 import {createWithRef} from "/source/component/create";
@@ -32,17 +32,15 @@ export const MenuPane = createWithRef(
     const initialFocus = (combobox) ? -1 : undefined;
 
     return (mounted) ? (
-      <FloatingPortal>
-        <FloatingFocusManager context={context} modal={false} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
-          <div styleName="root" {...data({status})} {...rest}>
-            <Scroll styleName="scroll">
-              <div styleName="inner">
-                {children}
-              </div>
-            </Scroll>
-          </div>
-        </FloatingFocusManager>
-      </FloatingPortal>
+      <FloatingFocusManager context={context} modal={false} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
+        <div styleName="root" {...data({status})} {...rest}>
+          <Scroll styleName="scroll">
+            <div styleName="inner">
+              {children}
+            </div>
+          </Scroll>
+        </div>
+      </FloatingFocusManager>
     ) : null;
 
   }

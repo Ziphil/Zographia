@@ -131,31 +131,29 @@ export const TagInput = createWithRef(
     }, [values, onSet]);
 
     return (
-      <>
-        <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
-          {values.map((value, index) => (
-            <Tag key={index} styleName="tag">
-              {value}
-              <TagCloseButton onClick={() => removeTag(index)}/>
-            </Tag>
-          ))}
-          <input
-            styleName="input"
-            autoFocus={autoFocus}
-            readOnly={readonly}
-            disabled={disabled}
-            {...aria({invalid: error})}
-            {...rest}
-            {...getReferenceProps({
-              ref: mergedRef,
-              onChange: handleChange,
-              onKeyDown: handleKeyDown,
-              onCompositionEnd: handleCompositionEnd,
-              onBlur: handleBlur
-            })}
-          />
-          {children}
-        </div>
+      <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
+        {values.map((value, index) => (
+          <Tag key={index} styleName="tag">
+            {value}
+            <TagCloseButton onClick={() => removeTag(index)}/>
+          </Tag>
+        ))}
+        <input
+          styleName="input"
+          autoFocus={autoFocus}
+          readOnly={readonly}
+          disabled={disabled}
+          {...aria({invalid: error})}
+          {...rest}
+          {...getReferenceProps({
+            ref: mergedRef,
+            onChange: handleChange,
+            onKeyDown: handleKeyDown,
+            onCompositionEnd: handleCompositionEnd,
+            onBlur: handleBlur
+          })}
+        />
+        {children}
         {(suggest !== undefined) && (
           <InputMenuPane
             suggestionSpecs={suggestionSpecs}
@@ -164,7 +162,7 @@ export const TagInput = createWithRef(
             interactionSpec={interactionSpec}
           />
         )}
-      </>
+      </div>
     );
 
   }
