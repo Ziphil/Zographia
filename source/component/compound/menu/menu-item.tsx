@@ -38,8 +38,9 @@ export const MenuItem = createWithRef(
     return (
       <button
         styleName="root"
-        ref={mergedRef}
+        type="button"
         role="option"
+        ref={mergedRef}
         {...getItemProps({
           tabIndex: activeIndex === index ? 0 : -1,
           onClick: handleClick

@@ -51,6 +51,7 @@ export const Select = create(
       <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
         <button
           styleName="input"
+          type="button"
           {...aria({invalid: error})}
           {...rest}
           {...getReferenceProps()}
