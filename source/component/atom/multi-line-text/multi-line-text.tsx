@@ -9,7 +9,7 @@ export const MultiLineText = createWithRef(
   require("./multi-line-text.scss"), "MultiLineText",
   function ({
     is = "div",
-    justify = true,
+    justify = false,
     lineHeight = "normal",
     maxLineCount = null,
     children,

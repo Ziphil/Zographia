@@ -11,7 +11,7 @@ import {MarkdownListItem} from "./markdown-list-item";
 export const Markdown = create(
   require("./markdown.scss"), "Markdown",
   function ({
-    justify = true,
+    justify = false,
     allowedElements = null,
     disallowedElements = null,
     components = {},
