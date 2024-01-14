@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  column-gap: var(--glob-blank-gap);
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+}
+
+.icon {
+  color: var(--marker-color);
+  flex: 0 0 auto;
+  ol >li >& {
+    display: none;
+  }
+}
+
+.number {
+  width: 4zu;
+  font-size: 3zu;
+  inset-block-end: 2zx;
+  color: var(--marker-color);
+  border: solid 1zx var(--marker-color);
+  border-radius: var(--glob-border-radius);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 0 0 auto;
+  &::before {
+    content: counter(ordered-list);
+    counter-increment: ordered-list;
+  }
+  ul >li >& {
+    display: none;
+  }
+}
+
+.main {
+  flex: 1 1 auto;
+}

@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+@use "sass:math" as *;
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    @include schemify using ($scheme) {
+      &[data-variant="solid"] {
+        --text-color: #{single-color("white")};
+        --background-color: #{leveled-color($scheme, 5)};
+      }
+      &[data-variant="light"] {
+        --text-color: #{single-color("text-light")};
+        --background-color: #{leveled-color($scheme, 1)};
+      }
+    }
+  }
+}
+
+.root {
+  padding-block: 0.5zu;
+  padding-inline: 1zu; 
+  font-size: 3zu;
+  line-height: 1;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border-radius: var(--glob-border-radius);
+  display: inline-flex;
+  align-items: center;
+}

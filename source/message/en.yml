@@ -1,0 +1,22 @@
+common:
+  dateFormat: "DD/MMM/YYYY HH:mm"
+  shortDateFormat: "DD/MMM"
+  dateUndefined: "?"
+  numberUndefined: "?"
+  negative: "−{value}"
+  negativeInfinity: "−∞"
+
+passwordInput:
+  reveal: "Reveal"
+  hide: "Hide"
+tag:
+  close: "Remove"
+
+dialog:
+  close: "Close"
+pagination:
+  first: "First page"
+  previous: "Previous page"
+  next: "Next page"
+  last: "Last page"
+  page: "<hidden>Page </hidden>{number, number}"

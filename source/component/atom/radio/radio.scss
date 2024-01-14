@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --icon-color: #{single-color("white")};
+    --background-color: #{single-color("white")};
+    --checked-background-color: #{leveled-color("primary", 5)};
+    &:not([data-error]) {
+      --border-color: #{leveled-color("gray", 3)};
+      --checked-border-color: #{leveled-color("primary", 6)};
+      --box-shadow-color: #{leveled-color("gray", 5, 0.2)};
+      --focus-color: #{leveled-color("primary", 5, var(--glob-focus-alpha))};
+    }
+    &[data-error] {
+      --border-color: #{leveled-color("red", 3)};
+      --checked-border-color: #{leveled-color("red", 6)};
+      --box-shadow-color: #{leveled-color("red", 5, 0.2)};
+      --focus-color: #{leveled-color("red", 5, var(--glob-focus-alpha))};
+    }
+  }
+}
+
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  clip: rect(0px, 0px, 0px, 0px);
+  clip-path: inset(50%);
+}
+
+.label {
+  width: 4.5zu;
+  height: 4.5zu;
+  background-color: var(--background-color);
+  border: solid 1px var(--border-color);
+  border-radius: 1000px;
+  box-shadow: inset var(--glob-box-shadow-setting) var(--box-shadow-color);
+  line-height: 1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  transition: 0.1s border-color, 0.1s background-color;
+  .input:checked +& {
+    border-color: var(--checked-border-color);
+    background-color: var(--checked-background-color);
+  }
+  .input:focus-visible +& {
+    outline: solid 2zx var(--focus-color);
+  }
+  .input:disabled +& {
+    cursor: inherit;
+  }
+}
+
+.icon {
+  width: 2.5zu;
+  height: 2.5zu;
+  background-color: var(--icon-color);
+  border-radius: 1000px;
+  opacity: 0;
+  transition: 0.1s color, 0.1s opacity;
+  .input:checked +.label >& {
+    opacity: 1;
+  }
+}

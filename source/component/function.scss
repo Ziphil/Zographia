@@ -1,0 +1,103 @@
+@charset "utf-8";
+
+@use "sass:math" as *;
+
+
+@function leveled-color($scheme, $level, $alpha: null) {
+  @if $alpha != null {
+    @return rgb(var(#{"--glob-color-" + $scheme + "-" + $level}), $alpha);
+  } @else {
+    @return rgb(var(#{"--glob-color-" + $scheme + "-" + $level}));
+  }
+}
+
+@function single-color($scheme, $alpha: null) {
+  @if $alpha != null {
+    @return rgb(var(#{"--glob-color-" + $scheme}), $alpha);
+  } @else {
+    @return rgb(var(#{"--glob-color-" + $scheme}));
+  }
+}
+
+@function zu($value) {
+  @return div($value * 4, 16) * 1rem;
+}
+
+@function zx($value) {
+  @return div($value * 1, 16) * 1rem;
+}
+
+
+@mixin theme($theme) {
+  html[data-theme="#{$theme}"] & {
+    @content;
+  }
+}
+
+@mixin locale($locale) {
+  html[lang="#{$locale}"] & {
+    @content;
+  }
+}
+
+@mixin schemify {
+  @each $scheme in "primary", "secondary", "blue", "red", "gray" {
+    &[data-scheme="#{$scheme}"] {
+      @content($scheme);
+    }
+  }
+}
+
+@mixin bold-font {
+  font-family: var(--font-family-bold);
+  font-weight: bold;
+}
+
+@mixin line-height($line-height) {
+  line-height: $line-height;
+  &::before {
+    width: 0zu;
+    height: 0zu;
+    margin-block-start: calc((1 - #{$line-height}) * 0.5em);
+    display: block;
+    content: "";
+  }
+  &::after {
+    width: 0zu;
+    height: 0zu;
+    margin-block-end: calc((1 - #{$line-height}) * 0.5em);
+    display: block;
+    content: "";
+  }
+}
+
+@mixin control-group-vars {
+  --left-border-radius: #{var(--glob-border-radius)};
+  --right-border-radius: #{var(--glob-border-radius)};
+  --margin-left: 0zu;
+  :global(.control-group) >& {
+    &:first-child {
+      --left-border-radius: #{var(--glob-border-radius)};
+      --margin-left: 0zu;
+    }
+    &:not(:first-child) {
+      --left-border-radius: 0zu;
+      --margin-left: -1zx;
+    }
+    &:last-child {
+      --right-border-radius: #{var(--glob-border-radius)};
+    }
+    &:not(:last-child) {
+      --right-border-radius: 0zu;
+    }
+  }
+}
+
+@mixin control-group-item {
+  margin-inline-start: var(--margin-left);
+  margin-inline-end: var(--margin-right);
+  border-start-start-radius: var(--left-border-radius);
+  border-end-start-radius: var(--left-border-radius);
+  border-start-end-radius: var(--right-border-radius);
+  border-end-end-radius: var(--right-border-radius);
+}

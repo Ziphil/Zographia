@@ -1,0 +1,22 @@
+common:
+  dateFormat: "DD/MMM/YYYY HH:mm"
+  shortDateFormat: "DD/MMM"
+  dateUndefined: "?"
+  numberUndefined: "?"
+  negative: "−{value}"
+  negativeInfinity: "−∞"
+
+passwordInput:
+  reveal: "Malkaŝi"
+  hide: "Kaŝi"
+tag:
+  close: "Forigi"
+
+dialog:
+  close: "Fermi"
+pagination:
+  first: "Unua paĝo"
+  previous: "Antaŭa paĝo"
+  next: "Sekva paĝo"
+  last: "Lasta paĝo"
+  page: "<hidden>Paĝo </hidden>{number, number}"

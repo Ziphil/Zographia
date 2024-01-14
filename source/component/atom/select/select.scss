@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+@use "sass:math" as *;
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include control-group-vars;
+  @include theme("light") {
+    --background-color: #{single-color("white")};
+    &:not([data-error]) {
+      --border-color: #{leveled-color("gray", 3)};
+      --box-shadow-color: #{leveled-color("gray", 5, 0.2)};
+      --focus-color: #{leveled-color("primary", 5, var(--glob-focus-alpha))};
+      --focus-border-color: #{leveled-color("primary", 5)};
+      --builtin-addon-color: #{leveled-color("gray", 5)};
+    }
+    &[data-error] {
+      --border-color: #{leveled-color("red", 3)};
+      --box-shadow-color: #{leveled-color("red", 5, 0.2)};
+      --focus-color: #{leveled-color("red", 5, var(--glob-focus-alpha))};
+      --focus-border-color: #{leveled-color("red", 5)};
+      --builtin-addon-color: #{leveled-color("red", 5)};
+    }
+  }
+}
+
+.root {
+  @include control-group-item;
+  font-size: 4zu;
+  background-color: var(--background-color);
+  border: solid 1zx var(--border-color);
+  box-shadow: inset var(--glob-box-shadow-setting) var(--box-shadow-color);
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  &:focus-within {
+    border-color: var(--focus-border-color);
+    outline: solid 2zx var(--focus-color);
+  }
+}
+
+.input {
+  height: 4zu + 1.5zu * 2;
+  padding-inline: 2zu;
+  line-height: 4zu + 1.5zu * 2;
+  flex: 1 1 auto;
+  order: 10;
+  cursor: pointer;
+}
+
+.angle {
+  margin-inline-end: 2zu;
+  margin-inline-start: calc(-2zu + var(--glob-blank-gap));
+  color: var(--builtin-addon-color);
+  flex: 0 0 auto;
+  order: 20;
+}

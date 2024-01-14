@@ -1,0 +1,28 @@
+import {Meta} from "@storybook/blocks";
+
+
+<Meta title="初めに"/>
+
+<div style={{marginBlockEnd: "40px", display: "flex", justifyContent: "center"}}>
+  <h1 style={{fontSize: "56px", fontFamily: "Felipa", fontWeight: "normal", letterSpacing: "0.02em"}}>Zographia UI</h1>
+</div>
+
+## 概要
+React の汎用コンポーネントライブラリです。
+[ZpDIC Online](https://github.com/Ziphil/ZpdicOnlineNova) や [ZpDIC for Shaleian](https://github.com/Ziphil/ZpdicShaleian) などの Web ベースのアプリケーションで利用していく予定です。
+
+## インストール
+このコンポーネントライブラリは、各種アイコンを表示するのに [Font Awesome](https://fontawesome.com/) の Pro プランを利用しています。
+そのため、あらかじめ Font Awesome のトークンの設定をしておく必要があります。
+
+Font Awesome のトークンの設定方法は[公式ドキュメント](https://fontawesome.com/docs/web/setup/packages)を参考にしてください。最も簡単にセットアップするには、リポジトリトップに `.npmrc` ファイルを作成し、以下の内容を書き込んでください。
+```
+@fortawesome:registry=https://npm.fontawesome.com
+//npm.fontawesome.com/:_authToken=(トークン)
+```
+
+Font Awesome のトークンの設定ができていれば、[npm](https://www.npmjs.com/package/zographia) 経由でこのパッケージをインストールできます。
+
+```cmd
+npm i zographia
+```

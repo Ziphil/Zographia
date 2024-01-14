@@ -1,20 +1,79 @@
-//
+/* eslint-disable react/jsx-closing-tag-location */
 
+import {faThumbsUp} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
-import {Button} from "../../component";
+import {Button, ButtonIconbag, GeneralIcon} from "/source/component";
+import {createChildren} from "/source/util/children";
 
 
 type Meta = RawMeta<typeof Button>;
 type Story = RawStory<typeof Button>;
 
 export default {
-  title: "Atoms/Button/Button",
-  component: Button
+  title: "Atom/Button",
+  component: Button,
+  subcomponents: {ButtonIconbag}
 } as Meta;
 
-export const Solid = {
+const template = {
+} as Story;
+
+export const variantSolid = {
+  ...template,
   name: "バリアント: 濃い",
   args: {
-    foo: "foo"
+    variant: "solid",
+    children: "ボタンテキスト"
+  }
+} as Story;
+export const variantOutline = {
+  ...template,
+  name: "バリアント: 薄い",
+  args: {
+    variant: "light",
+    children: "ボタンテキスト"
+  }
+} as Story;
+export const variantText = {
+  ...template,
+  name: "バリアント: 単純",
+  args: {
+    variant: "text",
+    children: "ボタンテキスト"
+  }
+} as Story;
+export const variantUnderline = {
+  ...template,
+  name: "バリアント: 下線",
+  args: {
+    variant: "underline",
+    children: "ボタンテキスト"
+  }
+} as Story;
+export const withIcon = {
+  ...template,
+  name: "アイコン付き",
+  args: {
+    children: createChildren(<>
+      <ButtonIconbag><GeneralIcon icon={faThumbsUp}/></ButtonIconbag>
+      ボタンテキスト
+    </>)
+  }
+} as Story;
+export const disabled = {
+  ...template,
+  name: "無効",
+  args: {
+    disabled: true,
+    children: "ボタンテキスト"
+  }
+} as Story;
+export const loading = {
+  ...template,
+  name: "ローディング",
+  args: {
+    reactive: false,
+    loading: true,
+    children: "ボタンテキスト"
   }
 } as Story;

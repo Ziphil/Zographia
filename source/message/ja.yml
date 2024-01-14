@@ -1,0 +1,22 @@
+common:
+  dateFormat: "YYYY/MM/DD HH:mm"
+  shortDateFormat: "MM/DD"
+  dateUndefined: "?"
+  numberUndefined: "?"
+  negative: "−{value}"
+  negativeInfinity: "−∞"
+
+passwordInput:
+  reveal: "表示"
+  hide: "非表示"
+tag:
+  close: "削除"
+
+dialog:
+  close: "閉じる"
+pagination:
+  first: "最初のページ"
+  previous: "前のページ"
+  next: "次のページ"
+  last: "最後のページ"
+  page: "<hidden>ページ </hidden>{number, number}"

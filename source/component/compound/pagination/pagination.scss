@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --text-color: #{leveled-color("gray", 5)};
+    --hover-text-color: #{leveled-color("gray", 6)};
+    --highlight-border-color: #{leveled-color("gray", 1)};
+    --focus-color: #{leveled-color("gray", 5, var(--glob-focus-alpha))};
+  }
+}
+
+.root {
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+}
+
+.leftmost,
+.rightmost,
+.center {
+  flex: 0 0 auto;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1 1 0zu;
+  z-index: 0;
+}
+
+.left {
+  justify-content: flex-end;
+}
+
+.right {
+  justify-content: flex-start;
+}

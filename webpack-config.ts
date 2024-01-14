@@ -11,7 +11,7 @@ const config = {
   entry: ["./source/index.ts"],
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "./[name].js",
+    filename: "./index.js",
     library: {
       type: "commonjs"
     }

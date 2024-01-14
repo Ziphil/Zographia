@@ -1,0 +1,57 @@
+import {Meta, ColorPalette, ColorItem} from "@storybook/blocks";
+import {DEFAULT_COLOR_DEFINITIONS} from "/source/module/default";
+
+
+<Meta title="Design/カラースキーム"/>
+
+<div style={{marginBlockEnd: "40px"}}>
+  # カラースキーム
+</div>
+
+## レベル付き
+<ColorPalette style={{marginBlockStart: "20px"}}>
+  <ColorItem
+    title="primary"
+    colors={DEFAULT_COLOR_DEFINITIONS.primary}
+  />
+  <ColorItem
+    title="secondary"
+    colors={DEFAULT_COLOR_DEFINITIONS.secondary}
+  />
+  <ColorItem
+    title="blue"
+    colors={DEFAULT_COLOR_DEFINITIONS.blue}
+  />
+  <ColorItem
+    title="red"
+    colors={DEFAULT_COLOR_DEFINITIONS.red}
+  />
+  <ColorItem
+    title="gray"
+    colors={DEFAULT_COLOR_DEFINITIONS.gray}
+  />
+</ColorPalette>
+
+## その他
+<ColorPalette style={{marginBlockStart: "20px"}}>
+  <ColorItem
+    title="white"
+    colors={[DEFAULT_COLOR_DEFINITIONS.white]}
+  />
+  <ColorItem
+    title="black"
+    colors={[DEFAULT_COLOR_DEFINITIONS.black]}
+  />
+  <ColorItem
+    title="text"
+    colors={{light: DEFAULT_COLOR_DEFINITIONS.textLight, dark: DEFAULT_COLOR_DEFINITIONS.textDark}}
+  />
+  <ColorItem
+    title="background"
+    colors={{light: DEFAULT_COLOR_DEFINITIONS.backgroundLight, dark: DEFAULT_COLOR_DEFINITIONS.backgroundDark}}
+  />
+  <ColorItem
+    title="stain"
+    colors={{light: DEFAULT_COLOR_DEFINITIONS.stainLight, dark: DEFAULT_COLOR_DEFINITIONS.stainDark}}
+  />
+</ColorPalette>

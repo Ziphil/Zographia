@@ -21,8 +21,12 @@ function convert(this: any, source: string): string {
 }
 
 function convertUnit(dimension: Dimension): {value: number, unit: string} | null {
-  if (dimension.unit === "u") {
+  if (dimension.unit === "zu") {
     const value = parseFloat(dimension.value) * 4 / 16;
+    const unit = "rem";
+    return {value, unit};
+  } else if (dimension.unit === "zx") {
+    const value = parseFloat(dimension.value) * 1 / 16;
     const unit = "rem";
     return {value, unit};
   } else {

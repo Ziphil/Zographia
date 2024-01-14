@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --background-color: #{single-color("white")};
+    --border-color: #{leveled-color("gray", 1)};
+    --box-shadow-color: #{leveled-color("gray", 5, 0.2)};
+  }
+}
+
+.root {
+  min-width: 32zu;
+  max-height: 64zu;
+  border-radius: var(--glob-border-radius);
+  background-color: var(--background-color);
+  border: solid 1zx var(--border-color);
+  box-shadow: var(--glob-box-shadow-setting) var(--box-shadow-color);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 3000;
+  transition: 0.1s opacity;
+  &[data-status="open"] {
+    opacity: 1;
+  }
+}
+
+.scroll {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+}
