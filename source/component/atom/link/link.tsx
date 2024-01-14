@@ -24,7 +24,7 @@ export const Link = createWithRef(
   }: {
     href?: string,
     scheme?: LeveledColorScheme,
-    variant?: "solid" | "light" | "text",
+    variant?: "solid" | "light" | "text" | "underline",
     target?: HTMLAttributeAnchorTarget,
     is?: "a" | ComponentType<AnchorHTMLAttributes<HTMLAnchorElement>>,
     onClick?: (event: MouseEvent<HTMLAnchorElement>) => unknown,
@@ -42,7 +42,7 @@ export const Link = createWithRef(
 
     return (
       <Is
-        styleName={variant === "text" ? "root-text" : "root"}
+        styleName={(variant === "text" || variant === "underline") ? "root-text" : "root"}
         href={href}
         target={target}
         rel={(target === "_blank") ? "noopener noreferrer" : undefined}

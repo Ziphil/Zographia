@@ -27,6 +27,15 @@ export const variantText = {
     children: "リンクテキスト"
   }
 } as Story;
+export const variantUnderline = {
+  ...template,
+  name: "バリアント: 下線",
+  args: {
+    href: "https://example.com",
+    variant: "underline",
+    children: "リンクテキスト"
+  }
+} as Story;
 export const variantSolid = {
   ...template,
   name: "バリアント: 濃い",

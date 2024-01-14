@@ -75,15 +75,24 @@
 .root-text {
   color: var(--text-color);
   border-radius: var(--glob-border-radius);
-  text-decoration-color: transparent;
   text-decoration-line: underline;
   display: inline;
   position: relative;
   cursor: pointer;
   transition: 0.1s color, 0.1s text-decoration-color;
-  &:hover:not(:disabled, [data-loading]) {
-    color: var(--hover-text-color);
-    text-decoration-color: var(--hover-text-color);
+  &[data-variant="text"] {
+    text-decoration-color: transparent;
+    &:hover:not(:disabled, [data-loading]) {
+      color: var(--hover-text-color);
+      text-decoration-color: var(--hover-text-color);
+    }
+  }
+  &[data-variant="underline"] {
+    text-decoration-color: var(--text-color);
+    &:hover:not(:disabled, [data-loading]) {
+      color: var(--hover-text-color);
+      text-decoration-color: transparent;
+    }
   }
   &:focus-visible {
     outline: solid 2zx var(--focus-color);

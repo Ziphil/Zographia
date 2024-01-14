@@ -42,6 +42,14 @@ export const variantText = {
     children: "ボタンテキスト"
   }
 } as Story;
+export const variantUnderline = {
+  ...template,
+  name: "バリアント: 下線",
+  args: {
+    variant: "underline",
+    children: "ボタンテキスト"
+  }
+} as Story;
 export const withIcon = {
   ...template,
   name: "アイコン付き",
