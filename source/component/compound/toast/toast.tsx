@@ -3,7 +3,6 @@
 import {Root as RawToastRoot} from "@radix-ui/react-toast";
 import {ReactElement, ReactNode, Ref} from "react";
 import {createWithRef} from "/source/component/create";
-import {useTrans} from "/source/hook";
 import {AdditionalProps} from "/source/module/data";
 
 
@@ -25,8 +24,6 @@ export const Toast = createWithRef(
     className?: string,
     ref: Ref<HTMLLIElement>
   } & AdditionalProps): ReactElement {
-
-    const {trans} = useTrans("toast");
 
     return (
       <RawToastRoot
