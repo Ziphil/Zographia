@@ -1,8 +1,10 @@
+//
+
 import qixColor from "color";
 import {toKebabCase} from "/source/module/case";
 import {ColorDefinitions} from "/source/module/color";
 import {DEFAULT_COLOR_DEFINITIONS, DEFAULT_THEME} from "/source/module/default";
-import {resolveResponsiveValue} from "/source/module/responsive";
+import {Device, resolveResponsiveValue} from "/source/module/responsive";
 import {Theme} from "/source/module/theme";
 
 
@@ -26,9 +28,9 @@ export function getColorDefinitionsVarCss(definitions: ColorDefinitions): string
   return css;
 };
 
-export function getThemeVarCss(theme: Theme, smartphone: boolean): string {
+export function getThemeVarCss(theme: Theme, device: Device): string {
   const varCss = [];
-  varCss.push(`--glob-font-size: ${resolveResponsiveValue(theme.fontSize ?? DEFAULT_THEME.fontSize, smartphone)};`);
+  varCss.push(`--glob-font-size: ${resolveResponsiveValue(theme.fontSize ?? DEFAULT_THEME.fontSize, device)};`);
   varCss.push(`--glob-font-family-main: ${theme.fontFamilies?.main ?? DEFAULT_THEME.fontFamilies.main};`);
   varCss.push(`--glob-font-family-bold: ${theme.fontFamilies?.bold ?? DEFAULT_THEME.fontFamilies.bold};`);
   varCss.push(`--glob-font-family-monospace: ${theme.fontFamilies?.monospace ?? DEFAULT_THEME.fontFamilies.monospace};`);

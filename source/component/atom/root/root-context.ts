@@ -1,13 +1,14 @@
 //
 
 import {createContext} from "react";
+import {Device} from "/source/module";
 
 
 export type RootContextValue = {
-  smartphone: boolean
+  device: Device
 };
 
 export const rootContext = createContext<RootContextValue>({
-  smartphone: false
+  device: "desktop"
 });
 export const RootContextProvider = rootContext["Provider"];

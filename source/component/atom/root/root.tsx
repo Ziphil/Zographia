@@ -20,7 +20,7 @@ export const Root = create(
   require("./root.scss"), "Root",
   function ({
     messageInventory = {},
-    smartphoneCondition = "(max-width: 767px)",
+    mobileCondition = "(max-width: 767px)",
     colorDefinitions = {},
     theme = {},
     initialLocale = "ja",
@@ -28,7 +28,7 @@ export const Root = create(
     children
   }: {
     messageInventory?: MessageInventory,
-    smartphoneCondition?: string,
+    mobileCondition?: string,
     colorDefinitions?: ColorDefinitions,
     theme?: Theme,
     initialLocale?: Locale,
@@ -36,10 +36,11 @@ export const Root = create(
     children: ReactNode
   }): ReactElement {
 
-    const smartphone = useMedia(smartphoneCondition);
+    const mobile = useMedia(mobileCondition);
+    const device = (mobile) ? "mobile" : "desktop";
 
     const colorDefinitionVarCss = useMemo(() => getColorDefinitionsVarCss(colorDefinitions), [colorDefinitions]);
-    const themeVarCss = useMemo(() => getThemeVarCss(theme, smartphone), [theme, smartphone]);
+    const themeVarCss = useMemo(() => getThemeVarCss(theme, device), [theme, device]);
 
     return (
       <Fragment>
@@ -51,7 +52,7 @@ export const Root = create(
           <RecoilRoot>
             <InnerRoot
               messageInventory={messageInventory}
-              smartphone={smartphone}
+              device={device}
               initialLocale={initialLocale}
               initialTheme={initialTheme}
             >

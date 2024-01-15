@@ -40,6 +40,12 @@
   }
 }
 
+@mixin device($device) {
+  html[data-device="#{$device}"] & {
+    @content;
+  }
+}
+
 @mixin schemify {
   @each $scheme in "primary", "secondary", "blue", "red", "gray" {
     &[data-scheme="#{$scheme}"] {
