@@ -1,6 +1,8 @@
 //
 
+import {DeepRequired} from "ts-essentials";
 import {createColor, createColorDefinition} from "/source/module/color";
+import {Theme} from "/source/module/theme";
 
 
 export const DEFAULT_COLOR_DEFINITIONS = {
@@ -32,10 +34,13 @@ export const DEFAULT_COLOR_DEFINITIONS = {
   stainLight: createColor("hsla(30, 30%, 50%)"),
   backgroundDark: createColor("hsl(30, 50%, 15%)"),
   stainDark: createColor("hsla(30, 50%, 0%)")
-};
+} as const;
 
-export const DEFAULT_FONT_FAMILIES = {
-  main: "'FiraGO', 'Noto Sans', 'Noto Sans JP', sans-serif",
-  bold: "'FiraGO', 'Noto Sans', 'Noto Sans JP', sans-serif",
-  monospace: "'Fira Mono', 'Noto Sans Mono', 'Noto Sans JP', monospace"
-};
+export const DEFAULT_THEME = {
+  fontSize: ["16px", "14px"],
+  fontFamilies: {
+    main: "'FiraGO', 'Noto Sans', 'Noto Sans JP', sans-serif",
+    bold: "'FiraGO', 'Noto Sans', 'Noto Sans JP', sans-serif",
+    monospace: "'Fira Mono', 'Noto Sans Mono', 'Noto Sans JP', monospace"
+  }
+} as const satisfies DeepRequired<Theme>;

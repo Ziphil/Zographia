@@ -1,10 +1,12 @@
 import qixColor from "color";
 import {toKebabCase} from "/source/module/case";
 import {ColorDefinitions} from "/source/module/color";
-import {DEFAULT_COLOR_DEFINITIONS, DEFAULT_FONT_FAMILIES} from "/source/module/default";
+import {DEFAULT_COLOR_DEFINITIONS, DEFAULT_THEME} from "/source/module/default";
+import {resolveResponsiveValue} from "/source/module/responsive";
+import {Theme} from "/source/module/theme";
 
 
-export function getColorVarDefinitionCss(definitions: ColorDefinitions): string {
+export function getColorDefinitionsVarCss(definitions: ColorDefinitions): string {
   const varCss = [];
   const wholeDefinitions = {...DEFAULT_COLOR_DEFINITIONS, ...definitions};
   for (const [scheme, definition] of Object.entries(wholeDefinitions)) {
@@ -24,11 +26,12 @@ export function getColorVarDefinitionCss(definitions: ColorDefinitions): string 
   return css;
 };
 
-export function getFontFamilyVarDefinitionCss(fontFamilies: {main?: string, bold?: string, monospace?: string}): string {
+export function getThemeVarCss(theme: Theme, smartphone: boolean): string {
   const varCss = [];
-  varCss.push(`--glob-font-family-main: ${fontFamilies.main ?? DEFAULT_FONT_FAMILIES.main};`);
-  varCss.push(`--glob-font-family-bold: ${fontFamilies.bold ?? DEFAULT_FONT_FAMILIES.bold};`);
-  varCss.push(`--glob-font-family-monospace: ${fontFamilies.monospace ?? DEFAULT_FONT_FAMILIES.monospace};`);
+  varCss.push(`--glob-font-size: ${resolveResponsiveValue(theme.fontSize ?? DEFAULT_THEME.fontSize, smartphone)};`);
+  varCss.push(`--glob-font-family-main: ${theme.fontFamilies?.main ?? DEFAULT_THEME.fontFamilies.main};`);
+  varCss.push(`--glob-font-family-bold: ${theme.fontFamilies?.bold ?? DEFAULT_THEME.fontFamilies.bold};`);
+  varCss.push(`--glob-font-family-monospace: ${theme.fontFamilies?.monospace ?? DEFAULT_THEME.fontFamilies.monospace};`);
   const css = `:root {\n${varCss.join("\n")}\n}`;
   return css;
 }

@@ -1,13 +1,15 @@
 //
 
-import {Fragment, ReactElement, ReactNode, Suspense} from "react";
+import {Fragment, ReactElement, ReactNode, Suspense, useMemo} from "react";
 import {Helmet} from "react-helmet";
+import {useMedia} from "react-use";
 import {RecoilRoot} from "recoil";
 import {InnerRoot} from "/source/component/atom/root/inner-root";
 import {create} from "/source/component/create";
 import {Locale, MessageInventory} from "/source/hook/locale";
 import {ColorDefinitions} from "/source/module/color";
-import {getColorVarDefinitionCss, getFontFamilyVarDefinitionCss} from "/source/util/css";
+import {Theme} from "/source/module/theme";
+import {getColorDefinitionsVarCss, getThemeVarCss} from "/source/util/css";
 
 
 require("./reset.scss");
@@ -18,29 +20,41 @@ export const Root = create(
   require("./root.scss"), "Root",
   function ({
     messageInventory = {},
-    fontFamilies = {},
+    smartphoneCondition = "(max-width: 767px)",
     colorDefinitions = {},
+    theme = {},
     initialLocale = "ja",
     initialTheme = "light",
     children
   }: {
     messageInventory?: MessageInventory,
-    fontFamilies?: {main?: string, bold?: string, monospace?: string},
+    smartphoneCondition?: string,
     colorDefinitions?: ColorDefinitions,
+    theme?: Theme,
     initialLocale?: Locale,
     initialTheme?: string,
     children: ReactNode
   }): ReactElement {
 
+    const smartphone = useMedia(smartphoneCondition);
+
+    const colorDefinitionVarCss = useMemo(() => getColorDefinitionsVarCss(colorDefinitions), [colorDefinitions]);
+    const themeVarCss = useMemo(() => getThemeVarCss(theme, smartphone), [theme, smartphone]);
+
     return (
       <Fragment>
         <Helmet>
-          <style>{getColorVarDefinitionCss(colorDefinitions)}</style>
-          <style>{getFontFamilyVarDefinitionCss(fontFamilies)}</style>
+          <style>{colorDefinitionVarCss}</style>
+          <style>{themeVarCss}</style>
         </Helmet>
         <Suspense fallback={<div>LOADING</div>}>
           <RecoilRoot>
-            <InnerRoot messageInventory={messageInventory} initialLocale={initialLocale} initialTheme={initialTheme}>
+            <InnerRoot
+              messageInventory={messageInventory}
+              smartphone={smartphone}
+              initialLocale={initialLocale}
+              initialTheme={initialTheme}
+            >
               {children}
             </InnerRoot>
           </RecoilRoot>

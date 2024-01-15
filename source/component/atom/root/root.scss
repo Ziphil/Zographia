@@ -17,6 +17,7 @@
 }
 
 html {
+  font-size: var(--glob-font-size);
   font-family: var(--glob-font-family-main);
   font-feature-settings: "palt" 1, "pkna" 1, "lnum" 1, "kern" 1 !important;
   text-decoration-skip-ink: none;
