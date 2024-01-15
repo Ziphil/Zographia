@@ -58,6 +58,9 @@
     cursor: pointer;
     z-index: 1;
   }
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
 }
 
 .builtin-addon {
