@@ -34,7 +34,7 @@ export const ToastProvider = create(
       <RawToastProvider label={trans("label.provider")}>
         <ToastContextProvider value={useMemo(() => ({setToastElements}), [setToastElements])}>
           <ToastViewport/>
-          {toastElements.map((toastSpec) => toastSpec)}
+          {toastElements.map((toastElement) => toastElement)}
           {children}
         </ToastContextProvider>
       </RawToastProvider>

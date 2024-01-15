@@ -1,6 +1,6 @@
 //
 
-import {ReactElement, ReactNode, useEffect, useMemo} from "react";
+import {ReactElement, ReactNode, useEffect, useMemo, useState} from "react";
 import {RootContextProvider} from "/source/component/atom/root/root-context";
 import {ToastProvider} from "/source/component/compound/toast/toast-context";
 import {create} from "/source/component/create";
@@ -25,12 +25,15 @@ export const InnerRoot = create(
     children: ReactNode
   }): ReactElement {
 
+    const [ready, setReady] = useState(false);
+
     const setMessageInventory = useSetMessageInventory();
     useDefaultTheme(initialTheme);
     useDefaultLocale(initialLocale);
 
     useEffect(() => {
       setMessageInventory(messageInventory);
+      setReady(true);
     }, [messageInventory, setMessageInventory]);
 
     useEffect(() => {
@@ -39,9 +42,11 @@ export const InnerRoot = create(
 
     return (
       <RootContextProvider value={useMemo(() => ({device}), [device])}>
-        <ToastProvider>
-          {children}
-        </ToastProvider>
+        {(ready) && (
+          <ToastProvider>
+            {children}
+          </ToastProvider>
+        )}
       </RootContextProvider>
     );
 
