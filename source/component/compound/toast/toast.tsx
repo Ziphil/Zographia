@@ -3,7 +3,8 @@
 import {Root as RawToastRoot} from "@radix-ui/react-toast";
 import {ReactElement, ReactNode, Ref} from "react";
 import {createWithRef} from "/source/component/create";
-import {AdditionalProps} from "/source/module/data";
+import {LeveledColorScheme} from "/source/module";
+import {AdditionalProps, data} from "/source/module/data";
 
 
 export const Toast = createWithRef(
@@ -12,6 +13,7 @@ export const Toast = createWithRef(
     open,
     defaultOpen,
     duration = 5000,
+    scheme = "primary",
     onOpenSet,
     children,
     ...rest
@@ -19,6 +21,7 @@ export const Toast = createWithRef(
     open?: boolean,
     defaultOpen?: boolean,
     duration?: number | null,
+    scheme?: LeveledColorScheme,
     onOpenSet?: (open: boolean) => unknown,
     children?: ReactNode,
     className?: string,
@@ -32,6 +35,7 @@ export const Toast = createWithRef(
         open={open}
         defaultOpen={defaultOpen}
         onOpenChange={onOpenSet}
+        {...data({scheme})}
         {...rest}
       >
         {children}

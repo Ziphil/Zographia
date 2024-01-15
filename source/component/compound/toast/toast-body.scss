@@ -4,4 +4,8 @@
 
 
 .root {
+  row-gap: 1.5zu;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 }

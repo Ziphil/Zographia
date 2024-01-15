@@ -18,7 +18,7 @@ export function useToast(): DispatchToast {
         if (!open) {
           setTimeout(() => {
             setToastElements((toasts) => toasts.filter((toast) => toast !== addedToastElement));
-          }, 200);
+          }, 100);
         }
       }
     });

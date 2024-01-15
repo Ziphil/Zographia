@@ -1,9 +1,11 @@
 /* eslint-disable react/jsx-closing-tag-location, react-hooks/rules-of-hooks */
 
+import {faCircleInfo} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import dayjs from "dayjs";
 import {useCallback} from "react";
-import {Button, Toast, useToast} from "/source/component";
+import {Button, GeneralIcon, Toast, ToastBody, ToastContent, ToastIconContainer, ToastSupplement, useToast} from "/source/component";
+import {createChildren} from "/source/util/children";
 
 
 type Meta = RawMeta<typeof Toast>;
@@ -22,7 +24,37 @@ export const basic: Story = {
   name: "基本",
   args: {
     duration: null,
-    children: "あいうえお"
+    children: createChildren(<>
+      <ToastIconContainer>
+        <GeneralIcon icon={faCircleInfo}/>
+      </ToastIconContainer>
+      <ToastBody>
+        <ToastContent>
+          何らかのメッセージがあります。
+        </ToastContent>
+      </ToastBody>
+    </>)
+  }
+};
+export const withSupplement: Story = {
+  ...template,
+  name: "補助テキスト付き",
+  args: {
+    duration: null,
+    children: createChildren(<>
+      <ToastIconContainer>
+        <GeneralIcon icon={faCircleInfo}/>
+      </ToastIconContainer>
+      <ToastBody>
+        <ToastContent>
+          何らかの処理が完了して、何らかのメッセージがあります。
+        </ToastContent>
+        <ToastSupplement>
+          ここには、トーストのメインのメッセージに対する補助的なメッセージが入ります。
+          使わないことも多いです。
+        </ToastSupplement>
+      </ToastBody>
+    </>)
   }
 };
 
@@ -35,7 +67,17 @@ export const testHook: Story = {
       const dateString = dayjs().format("YYYY/MM/DD HH:mm:ss.SSS");
       dispatchToast(
         <Toast>
-          {dateString}
+          <ToastIconContainer>
+            <GeneralIcon icon={faCircleInfo}/>
+          </ToastIconContainer>
+          <ToastBody>
+            <ToastContent>
+              トーストが表示されました。
+            </ToastContent>
+            <ToastSupplement>
+              日時は {dateString} です。
+            </ToastSupplement>
+          </ToastBody>
         </Toast>
       );
     }, [dispatchToast]);

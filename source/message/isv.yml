@@ -20,3 +20,7 @@ pagination:
   next: "Слєдна страница"
   last: "Послєдна страница"
   page: "<hidden>Страница </hidden>{number, number}"
+toast:
+  label:
+    viewport: "Увєдомјенја"
+    provider: "Увєдомјенје"

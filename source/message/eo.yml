@@ -20,3 +20,7 @@ pagination:
   next: "Sekva paĝo"
   last: "Lasta paĝo"
   page: "<hidden>Paĝo </hidden>{number, number}"
+toast:
+  label:
+    viewport: "Sciigoj"
+    provider: "Sciigo"

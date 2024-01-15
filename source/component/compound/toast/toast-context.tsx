@@ -31,7 +31,7 @@ export const ToastProvider = create(
     const [toastElements, setToastElements] = useState<Array<ReactElement>>([]);
 
     return (
-      <RawToastProvider label={trans("rootLabel")}>
+      <RawToastProvider label={trans("label.provider")}>
         <ToastContextProvider value={useMemo(() => ({setToastElements}), [setToastElements])}>
           <ToastViewport/>
           {toastElements.map((toastSpec) => toastSpec)}
