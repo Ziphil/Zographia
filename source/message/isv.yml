@@ -1,0 +1,22 @@
+common:
+  dateFormat: "DD/MMM/YYYY HH:mm"
+  shortDateFormat: "DD/MMM"
+  dateUndefined: "?"
+  numberUndefined: "?"
+  negative: "−{value}"
+  negativeInfinity: "−∞"
+
+passwordInput:
+  reveal: "Reveal"
+  hide: "Hide"
+tag:
+  close: "Remove"
+
+dialog:
+  close: "Затворити"
+pagination:
+  first: "Прва страница"
+  previous: "Прєдходна страница"
+  next: "Слєдна страница"
+  last: "Ослєдња страница"
+  page: "<hidden>Страница </hidden>{number, number}"
