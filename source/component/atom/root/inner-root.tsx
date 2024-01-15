@@ -1,7 +1,9 @@
 //
 
+import {Provider as RawToastProvider} from "@radix-ui/react-toast";
 import {ReactElement, ReactNode, useEffect, useMemo} from "react";
 import {RootContextProvider} from "/source/component/atom/root/root-context";
+import {ToastViewport} from "/source/component/compound/toast/toast-viewport";
 import {create} from "/source/component/create";
 import {Locale, MessageInventory, useDefaultLocale, useSetMessageInventory} from "/source/hook/locale";
 import {useDefaultTheme} from "/source/hook/theme";
@@ -37,7 +39,10 @@ export const InnerRoot = create(
 
     return (
       <RootContextProvider value={useMemo(() => ({smartphone}), [smartphone])}>
-        {children}
+        <RawToastProvider>
+          <ToastViewport/>
+          {children}
+        </RawToastProvider>
       </RootContextProvider>
     );
 

@@ -30,3 +30,4 @@ export * from "./compound/dialog";
 export * from "./compound/list";
 export * from "./compound/menu";
 export * from "./compound/pagination";
+export * from "./compound/toast";
