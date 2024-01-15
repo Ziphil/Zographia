@@ -10,7 +10,7 @@ import {
   useRole,
   useTransitionStatus
 } from "@floating-ui/react";
-import {ReactElement, cloneElement, useState} from "react";
+import {ReactElement, cloneElement, useMemo, useState} from "react";
 import {create} from "/source/component/create";
 import {AdditionalProps, data} from "/source/module/data";
 import {ModalContextProvider} from "./modal-context";
@@ -46,7 +46,7 @@ export const Modal = create(
       <FloatingPortal>
         <FloatingOverlay styleName="root" lockScroll={true} {...data({status})}>
           <FloatingFocusManager context={context}>
-            <ModalContextProvider value={{onOpenSet: actualOnOpenSet}}>
+            <ModalContextProvider value={useMemo(() => ({onOpenSet: actualOnOpenSet}), [actualOnOpenSet])}>
               {cloneElement(children, {ref: refs.setFloating, ...getFloatingProps(rest)})}
             </ModalContextProvider>
           </FloatingFocusManager>

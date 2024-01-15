@@ -1,6 +1,6 @@
-//
+/* eslint-disable react/jsx-closing-bracket-location */
 
-import {ReactElement, ReactNode, useState} from "react";
+import {ReactElement, ReactNode, useMemo, useState} from "react";
 import {ListContextProvider} from "/source/component/compound/list/list-context";
 import {create} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
@@ -30,7 +30,10 @@ export const List = create(
 
     return (
       <div {...rest}>
-        <ListContextProvider value={{items, size, hitSize, page, onPageSet, innerPage, onInnerPageSet}}>
+        <ListContextProvider value={useMemo(
+          () => ({items, size, hitSize, page, onPageSet, innerPage, onInnerPageSet}),
+          [items, size, hitSize, page, onPageSet, innerPage, onInnerPageSet]
+        )}>
           {children}
         </ListContextProvider>
       </div>

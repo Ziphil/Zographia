@@ -36,13 +36,7 @@ export const InnerRoot = create(
     }, [smartphone]);
 
     return (
-      <RootContextProvider
-        value={useMemo(() => ({
-          smartphone
-        }), [
-          smartphone
-        ])}
-      >
+      <RootContextProvider value={useMemo(() => ({smartphone}), [smartphone])}>
         {children}
       </RootContextProvider>
     );
