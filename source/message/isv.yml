@@ -18,5 +18,5 @@ pagination:
   first: "Прва страница"
   previous: "Прєдходна страница"
   next: "Слєдна страница"
-  last: "Ослєдња страница"
+  last: "Послєдна страница"
   page: "<hidden>Страница </hidden>{number, number}"
