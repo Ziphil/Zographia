@@ -26,4 +26,4 @@ toast:
     provider: "Увєдомјенје"
 
 test:
-  plural: "{value, plural, one {# слово} many {# слова} other {# слов}}"
+  plural: "{value, plural, one {# слово} few {# слова} other {# слов}}"

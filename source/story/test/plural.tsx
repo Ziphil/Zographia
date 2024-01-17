@@ -3,6 +3,7 @@
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {MultiLineText} from "/source/component";
 import {useTrans} from "/source/hook";
+import "/source";
 
 
 type Meta = RawMeta;
