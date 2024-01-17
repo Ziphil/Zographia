@@ -44,10 +44,12 @@
 .input {
   height: 4zu + 1.5zu * 2;
   padding-inline: 2zu;
-  line-height: 4zu + 1.5zu * 2;
+  padding-block: 1.5zu;
+  line-height: 1;
   flex: 1 1 auto;
   order: 10;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .angle {
