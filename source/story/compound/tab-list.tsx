@@ -17,7 +17,7 @@ export default {
 const template = {
 } as Story;
 
-export const basic: Story = {
+export const basic = {
   ...template,
   name: "基本",
   args: {
@@ -33,4 +33,4 @@ export const basic: Story = {
       </Tab>
     </>)
   }
-};
+} as Story;

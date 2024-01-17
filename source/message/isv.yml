@@ -24,3 +24,6 @@ toast:
   label:
     viewport: "Увєдомјенја"
     provider: "Увєдомјенје"
+
+test:
+  plural: "{value, plural, one {# слово} many {# слова} other {# слов}}"

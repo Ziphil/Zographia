@@ -24,3 +24,6 @@ toast:
   label:
     viewport: "通知"
     provider: "通知"
+
+test:
+  plural: "{value, number} 単語"

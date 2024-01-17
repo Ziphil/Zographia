@@ -24,3 +24,6 @@ toast:
   label:
     viewport: "Sciigoj"
     provider: "Sciigo"
+
+test:
+  plural: "{value, plural, one {# vorto} other {# vortoj}}"

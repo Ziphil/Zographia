@@ -20,7 +20,7 @@ export default {
 const template = {
 } as Story;
 
-export const basic: Story = {
+export const basic = {
   ...template,
   name: "基本",
   args: {
@@ -36,8 +36,8 @@ export const basic: Story = {
       </ToastBody>
     </>)
   }
-};
-export const withSupplement: Story = {
+} as Story;
+export const withSupplement = {
   ...template,
   name: "補助テキスト付き",
   args: {
@@ -57,9 +57,9 @@ export const withSupplement: Story = {
       </ToastBody>
     </>)
   }
-};
+} as Story;
 
-export const testHook: Story = {
+export const testHook = {
   ...template,
   name: "[テスト] フック",
   render: () => {
@@ -86,4 +86,4 @@ export const testHook: Story = {
       <Button onClick={handleClick}>トースト表示</Button>
     );
   }
-};
+} as Story;

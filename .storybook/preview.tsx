@@ -40,7 +40,7 @@ export const preview = {
           {value: "ja", title: "日本語", right: "ja"},
           {value: "en", title: "English", right: "en"},
           {value: "eo", title: "Esperanto", right: "eo"},
-          {value: "isv", title: "Меджусловјанскы", right: "isv"}
+          {value: "isv", title: "Меҗусловјанскы", right: "isv"}
         ],
         dynamicTitle: true
       },
