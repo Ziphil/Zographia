@@ -13,7 +13,8 @@ type Story = RawStory<typeof Toast>;
 
 export default {
   title: "Compound/Toast",
-  component: Toast
+  component: Toast,
+  subcomponents: {ToastIconContainer, ToastBody, ToastContent, ToastSupplement}
 } as Meta;
 
 const template = {
