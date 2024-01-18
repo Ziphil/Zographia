@@ -3,7 +3,7 @@
 import {Trigger as RawTabTrigger} from "@radix-ui/react-tabs";
 import {ReactElement, ReactNode, Ref} from "react";
 import {createWithRef} from "/source/component/create";
-import {AdditionalProps} from "/source/module/data";
+import {AdditionalProps, aria} from "/source/module/data";
 
 
 export const Tab = createWithRef(
@@ -19,9 +19,16 @@ export const Tab = createWithRef(
     ref: Ref<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
 
+    const active = rest["data-state"] === "active";
+
     return (
       <RawTabTrigger styleName="root" value={value} {...rest}>
-        {children}
+        <div styleName="inactive" {...aria({hidden: active})}>
+          {children}
+        </div>
+        <div styleName="active" {...aria({hidden: !active})}>
+          {children}
+        </div>
       </RawTabTrigger>
     );
 

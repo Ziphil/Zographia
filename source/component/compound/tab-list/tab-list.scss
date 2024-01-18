@@ -3,3 +3,15 @@
 @use "/source/component/function.scss" as *;
 
 
+.root {
+  @include theme("light") {
+    --border-color: #{leveled-color("gray", 1)};
+  }
+}
+
+.root {
+  column-gap: 4zu;
+  display: flex;
+  flex-direction: row;
+  border-block-end: solid 1zx var(--border-color);
+}

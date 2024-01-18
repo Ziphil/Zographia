@@ -3,3 +3,60 @@
 @use "/source/component/function.scss" as *;
 
 
+.root {
+  @include theme("light") {
+    &[data-state="inactive"] {
+      --text-color: #{leveled-color("gray", 5)};
+      --highlight-color: #{leveled-color("gray", 1)};
+    }
+    &[data-state="active"] {
+      --text-color: #{leveled-color("secondary", 5)};
+      --highlight-color: #{leveled-color("secondary", 5)};
+    }
+  }
+}
+
+.root {
+  margin-block-end: -1zx;
+  padding-block-end: 2zu;
+  border-start-start-radius: var(--glob-border-radius);
+  border-end-start-radius: var(--glob-border-radius);
+  border-block-end: solid 1zu transparent;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  transition: 0.1s border;
+  cursor: pointer;
+  &[data-state="active"] {
+    border-block-end-color: var(--highlight-color);
+  }
+  &[data-state="inactive"]:hover {
+    border-block-end-color: var(--highlight-color);
+  }
+  &:focus-visible {
+    outline: solid 2zx var(--focus-color);
+  }
+}
+
+.inactive {
+  color: var(--text-color);
+  grid-area: 1 / 1;
+  transition: 0.1s opacity;
+  .root[data-state="active"] >& {
+    opacity: 0;
+    pointer-events: none;
+    user-select: none
+  }
+}
+
+.active {
+  @include bold-font;
+  color: var(--text-color);
+  grid-area: 1 / 1;
+  transition: 0.1s opacity;
+  .root[data-state="inactive"] >& {
+    opacity: 0;
+    pointer-events: none;
+    user-select: none
+  }
+}
