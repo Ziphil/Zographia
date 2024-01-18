@@ -1,7 +1,7 @@
 //
 
-import {List as RawTabList, Root as RawTabRoot} from "@radix-ui/react-tabs";
-import {ReactElement, ReactNode, Ref} from "react";
+import {ReactElement, ReactNode, Ref, useCallback, useMemo, useState} from "react";
+import {TabListContextProvider} from "/source/component/compound/tab-list/tab-list-context";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
 
@@ -23,12 +23,23 @@ export const TabList = createWithRef(
     ref: Ref<HTMLDivElement>
   } & AdditionalProps): ReactElement {
 
+    const [innerValue, setInnerValue] = useState(defaultValue);
+    const actualValue = (value !== undefined) ? value : innerValue;
+    const controlled = value !== undefined;
+
+    const handleSet = useCallback(function (value: string): void {
+      if (!controlled) {
+        setInnerValue(value);
+      }
+      onSet?.(value);
+    }, [controlled, onSet]);
+
     return (
-      <RawTabRoot value={value} defaultValue={defaultValue} onValueChange={onSet} {...rest}>
-        <RawTabList styleName="root">
+      <div styleName="root" role="tablist">
+        <TabListContextProvider value={useMemo(() => ({value: actualValue, onSet: handleSet}), [actualValue, handleSet])}>
           {children}
-        </RawTabList>
-      </RawTabRoot>
+        </TabListContextProvider>
+      </div>
     );
 
   }

@@ -5,13 +5,15 @@
 
 .root {
   @include theme("light") {
-    &[data-state="inactive"] {
+    &:not([data-selected]) {
       --text-color: #{leveled-color("gray", 5)};
       --highlight-color: #{leveled-color("gray", 1)};
+      --focus-color: #{leveled-color("gray", 5, var(--glob-focus-alpha))};
     }
-    &[data-state="active"] {
+    &[data-selected] {
       --text-color: #{leveled-color("secondary", 5)};
       --highlight-color: #{leveled-color("secondary", 5)};
+      --focus-color: #{leveled-color("secondary", 5, var(--glob-focus-alpha))};
     }
   }
 }
@@ -20,17 +22,17 @@
   margin-block-end: -1zx;
   padding-block-end: 2zu;
   border-start-start-radius: var(--glob-border-radius);
-  border-end-start-radius: var(--glob-border-radius);
+  border-start-end-radius: var(--glob-border-radius);
   border-block-end: solid 1zu transparent;
   display: grid;
   align-items: center;
   justify-items: center;
   transition: 0.1s border;
   cursor: pointer;
-  &[data-state="active"] {
+  &[data-selected] {
     border-block-end-color: var(--highlight-color);
   }
-  &[data-state="inactive"]:hover {
+  &:not([data-selected]):hover {
     border-block-end-color: var(--highlight-color);
   }
   &:focus-visible {
@@ -42,7 +44,7 @@
   color: var(--text-color);
   grid-area: 1 / 1;
   transition: 0.1s opacity;
-  .root[data-state="active"] >& {
+  .root[data-selected] >& {
     opacity: 0;
     pointer-events: none;
     user-select: none
@@ -54,7 +56,7 @@
   color: var(--text-color);
   grid-area: 1 / 1;
   transition: 0.1s opacity;
-  .root[data-state="inactive"] >& {
+  .root:not([data-selected]) >& {
     opacity: 0;
     pointer-events: none;
     user-select: none

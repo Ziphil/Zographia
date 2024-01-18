@@ -32,6 +32,7 @@ export const Select = create(
 
     const [innerValue, setInnerValue] = useState(defaultValue);
     const actualValue = (value !== undefined) ? value : innerValue;
+    const controlled = value !== undefined;
 
     const optionMap = getOptionMap<V>(children);
 
@@ -41,11 +42,11 @@ export const Select = create(
     const {getReferenceProps} = interactionSpec;
 
     const updateValue = useCallback(function (nextValue: V): void {
-      if (value === undefined) {
+      if (!controlled) {
         setInnerValue(nextValue);
       }
       onSet?.(nextValue);
-    }, [value, onSet]);
+    }, [controlled, onSet]);
 
     return (
       <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>

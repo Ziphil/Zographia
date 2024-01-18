@@ -1,9 +1,9 @@
 //
 
-import {Trigger as RawTabTrigger} from "@radix-ui/react-tabs";
-import {ReactElement, ReactNode, Ref} from "react";
+import {ReactElement, ReactNode, Ref, useCallback, useContext} from "react";
+import {tabListContext} from "/source/component/compound/tab-list/tab-list-context";
 import {createWithRef} from "/source/component/create";
-import {AdditionalProps, aria} from "/source/module/data";
+import {AdditionalProps, aria, data} from "/source/module/data";
 
 
 export const Tab = createWithRef(
@@ -19,17 +19,29 @@ export const Tab = createWithRef(
     ref: Ref<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
 
-    const active = rest["data-state"] === "active";
+    const {value: currentValue, onSet} = useContext(tabListContext);
+    const selected = value === currentValue;
+
+    const handleClick = useCallback(function (): void {
+      onSet?.(value);
+    }, [value, onSet]);
 
     return (
-      <RawTabTrigger styleName="root" value={value} {...rest}>
-        <div styleName="inactive" {...aria({hidden: active})}>
+      <button
+        styleName="root"
+        role="tab"
+        onClick={handleClick}
+        {...data({selected})}
+        {...aria({selected})}
+        {...rest}
+      >
+        <div styleName="inactive" {...aria({hidden: selected})}>
           {children}
         </div>
-        <div styleName="active" {...aria({hidden: !active})}>
+        <div styleName="active" {...aria({hidden: !selected})}>
           {children}
         </div>
-      </RawTabTrigger>
+      </button>
     );
 
   }
