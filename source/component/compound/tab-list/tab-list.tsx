@@ -35,7 +35,7 @@ export const TabList = createWithRef(
     }, [controlled, onSet]);
 
     return (
-      <div styleName="root" role="tablist">
+      <div styleName="root" role="tablist" {...rest}>
         <TabListContextProvider value={useMemo(() => ({value: actualValue, onSet: handleSet}), [actualValue, handleSet])}>
           {children}
         </TabListContextProvider>
