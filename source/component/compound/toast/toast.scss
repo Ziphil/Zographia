@@ -31,7 +31,8 @@
   position: relative;
   transition: 0.1s opacity, 0.1s transform;
   &::before {
-    inset-block: -1zx;
+    inset-block-start: -1zx;
+    inset-block-end: 0zx;
     inset-inline-start: -1zx;
     inline-size: 2zu;
     border-start-start-radius: var(--glob-border-radius);

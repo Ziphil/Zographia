@@ -80,30 +80,28 @@
 @mixin control-group-vars {
   --left-border-radius: #{var(--glob-border-radius)};
   --right-border-radius: #{var(--glob-border-radius)};
-  --margin-left: #{zu(0)};
+  --right-border-width: #{zx(1)};
   :global(.control-group) >& {
     &:first-child {
       --left-border-radius: #{var(--glob-border-radius)};
-      --margin-left: #{zu(0)};
     }
     &:not(:first-child) {
       --left-border-radius: #{zu(0)};
-      --margin-left: #{zx(-1)};
     }
     &:last-child {
       --right-border-radius: #{var(--glob-border-radius)};
     }
     &:not(:last-child) {
       --right-border-radius: #{zu(0)};
+      --right-border-width: #{zx(0)};
     }
   }
 }
 
 @mixin control-group-item {
-  margin-inline-start: var(--margin-left);
-  margin-inline-end: var(--margin-right);
   border-start-start-radius: var(--left-border-radius);
   border-end-start-radius: var(--left-border-radius);
   border-start-end-radius: var(--right-border-radius);
   border-end-end-radius: var(--right-border-radius);
+  border-inline-end-width: var(--right-border-width) !important;
 }
