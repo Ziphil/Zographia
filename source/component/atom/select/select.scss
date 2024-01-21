@@ -32,13 +32,19 @@
   border: solid 1zx var(--border-color);
   box-shadow: inset var(--glob-box-shadow-setting) var(--box-shadow-color);
   display: flex;
-  align-items: center;
   position: relative;
   z-index: 10;
   &:focus-within {
     border-color: var(--focus-border-color);
     outline: solid 2zx var(--focus-color);
   }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  cursor: pointer;
 }
 
 .input {
@@ -48,7 +54,6 @@
   line-height: 1;
   flex: 1 1 auto;
   order: 10;
-  cursor: pointer;
   box-sizing: border-box;
 }
 

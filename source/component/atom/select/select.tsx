@@ -51,17 +51,19 @@ export const Select = create(
     return (
       <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
         <button
-          styleName="input"
+          styleName="container"
           type="button"
           {...aria({invalid: error})}
           {...rest}
           {...getReferenceProps()}
         >
-          {(actualValue !== undefined) ? optionMap.get(actualValue)?.props.label ?? "" : ""}
+          <span styleName="input">
+            {(actualValue !== undefined) ? optionMap.get(actualValue)?.props.label ?? "" : ""}
+          </span>
+          <span styleName="angle">
+            <FontAwesomeIcon icon={faAngleDown}/>
+          </span>
         </button>
-        <span styleName="angle">
-          <FontAwesomeIcon icon={faAngleDown}/>
-        </span>
         <SelectMenuPane updateValue={updateValue} floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
           {transformChildren(children)}
         </SelectMenuPane>
