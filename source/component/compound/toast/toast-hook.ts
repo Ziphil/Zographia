@@ -11,7 +11,7 @@ export type DispatchToast = (element: ReactElement) => void;
 export function useToast(): DispatchToast {
   const {setToastElements} = useContext(toastContext);
   const dispatchToast = useCallback((element: ReactElement) => {
-    const id = dayjs().valueOf().toString();
+    const id = dayjs().valueOf().toString() + Math.floor(Math.random() * 100000);
     const addedToastElement = cloneElement<ComponentProps<typeof Toast>>(element, {
       key: id,
       onOpenSet: (open) => {
