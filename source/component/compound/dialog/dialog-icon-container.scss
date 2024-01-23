@@ -4,15 +4,7 @@
 
 
 .root {
-  @include theme("light") {
-    @include schemify using ($scheme) {
-      --text-color: #{leveled-color($scheme, 5)};
-    }
-  }
-}
-
-.root {
   font-size: 10zu;
-  color: var(--text-color);
+  color: var(--icon-color);
   flex: 0 0 auto;
 }

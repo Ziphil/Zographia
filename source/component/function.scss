@@ -40,6 +40,12 @@
   }
 }
 
+@mixin device($device) {
+  html[data-device="#{$device}"] & {
+    @content;
+  }
+}
+
 @mixin schemify {
   @each $scheme in "primary", "secondary", "blue", "red", "gray" {
     &[data-scheme="#{$scheme}"] {
@@ -56,15 +62,15 @@
 @mixin line-height($line-height) {
   line-height: $line-height;
   &::before {
-    width: 0zu;
-    height: 0zu;
+    width: zu(0);
+    height: zu(0);
     margin-block-start: calc((1 - #{$line-height}) * 0.5em);
     display: block;
     content: "";
   }
   &::after {
-    width: 0zu;
-    height: 0zu;
+    width: zu(0);
+    height: zu(0);
     margin-block-end: calc((1 - #{$line-height}) * 0.5em);
     display: block;
     content: "";
@@ -74,30 +80,28 @@
 @mixin control-group-vars {
   --left-border-radius: #{var(--glob-border-radius)};
   --right-border-radius: #{var(--glob-border-radius)};
-  --margin-left: 0zu;
+  --right-border-width: #{zx(1)};
   :global(.control-group) >& {
     &:first-child {
       --left-border-radius: #{var(--glob-border-radius)};
-      --margin-left: 0zu;
     }
     &:not(:first-child) {
-      --left-border-radius: 0zu;
-      --margin-left: -1zx;
+      --left-border-radius: #{zu(0)};
     }
     &:last-child {
       --right-border-radius: #{var(--glob-border-radius)};
     }
     &:not(:last-child) {
-      --right-border-radius: 0zu;
+      --right-border-radius: #{zu(0)};
+      --right-border-width: #{zx(0)};
     }
   }
 }
 
 @mixin control-group-item {
-  margin-inline-start: var(--margin-left);
-  margin-inline-end: var(--margin-right);
   border-start-start-radius: var(--left-border-radius);
   border-end-start-radius: var(--left-border-radius);
   border-start-end-radius: var(--right-border-radius);
   border-end-end-radius: var(--right-border-radius);
+  border-inline-end-width: var(--right-border-width) !important;
 }

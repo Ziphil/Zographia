@@ -82,6 +82,7 @@ export const PasswordInput = createWithRef(
       <div styleName="root" className={className} {...data({error})}>
         <input
           styleName="input"
+          ref={ref}
           value={value}
           defaultValue={defaultValue}
           name={name}
@@ -100,8 +101,8 @@ export const PasswordInput = createWithRef(
           styleName="eye"
           type="button"
           title={trans((type === "text") ? "hide" : "reveal")}
-          {...aria({label: trans((type === "text") ? "hide" : "reveal")})}
           onClick={handleEyeClick}
+          {...aria({label: trans((type === "text") ? "hide" : "reveal")})}
         >
           <FontAwesomeIcon icon={(type === "text") ? faEyeSlash : faEye}/>
         </button>

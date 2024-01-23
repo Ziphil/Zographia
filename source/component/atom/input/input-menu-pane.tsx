@@ -1,6 +1,6 @@
-//
+/* eslint-disable react/jsx-closing-bracket-location */
 
-import {ReactElement} from "react";
+import {ReactElement, useMemo} from "react";
 import {MenuContextProvider} from "/source/component/compound/menu/menu-context";
 import {MenuPane} from "/source/component/compound/menu/menu-pane";
 import {createWithRef} from "/source/component/create";
@@ -50,7 +50,10 @@ export const InputMenuPane = createWithRef(
         ref={refs.setFloating}
         {...getFloatingProps()}
       >
-        <MenuContextProvider value={{setOpen, listRef, activeIndex, getItemProps}}>
+        <MenuContextProvider value={useMemo(
+          () => ({setOpen, listRef, activeIndex, getItemProps}),
+          [setOpen, listRef, activeIndex, getItemProps]
+        )}>
           {suggestionSpecs.map((spec, index) => (
             <InputMenuItem key={index} index={index} spec={spec} updateValue={updateValue}/>
           ))}

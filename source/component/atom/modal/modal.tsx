@@ -37,12 +37,12 @@ export const Modal = create(
     const actualOnOpenSet = (onOpenSet !== undefined) ? onOpenSet : setInnerOpen;
 
     const {refs, context} = useFloating({open: actualOpen, onOpenChange: actualOnOpenSet});
-    const {isMounted, status} = useTransitionStatus(context, {duration: 100});
+    const {isMounted: mounted, status} = useTransitionStatus(context, {duration: 100});
     const dismiss = useDismiss(context, {outsidePressEvent: "mousedown"});
     const role = useRole(context);
     const {getFloatingProps} = useInteractions([dismiss, role]);
 
-    return (isMounted) ? (
+    return (mounted) ? (
       <FloatingPortal>
         <FloatingOverlay styleName="root" lockScroll={true} {...data({status})}>
           <FloatingFocusManager context={context}>

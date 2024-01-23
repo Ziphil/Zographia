@@ -11,6 +11,7 @@ const config = {
     "../source/story/document/main/*.@(mdx)",
     "../source/story/atom/*.@(js|jsx|ts|tsx)",
     "../source/story/compound/*.@(js|jsx|ts|tsx)",
+    "../source/story/test/*.@(js|jsx|ts|tsx)",
     "../source/story/document/**/*.@(mdx)",
   ],
   addons: [
@@ -88,7 +89,7 @@ const config = {
 
 config["experimental_indexers"] = function (indexers: Array<Indexer>, option: any): Array<Indexer> {
   const indexer = {
-    test: /story\/(atom|compound)\/(.+)\.tsx?$/,
+    test: /story\/(atom|compound|test)\/(.+)\.tsx?$/,
     createIndex: (fileName, options) => readCsf(fileName, options).then((file) => file.parse().indexInputs),
   } as Indexer;
   return [...indexers, indexer];

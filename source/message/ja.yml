@@ -20,3 +20,10 @@ pagination:
   next: "次のページ"
   last: "最後のページ"
   page: "<hidden>ページ </hidden>{number, number}"
+toast:
+  label:
+    viewport: "通知"
+    provider: "通知"
+
+test:
+  plural: "{value, number} 単語"

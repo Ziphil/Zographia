@@ -1,7 +1,7 @@
-//
+/* eslint-disable react/jsx-closing-bracket-location */
 
 import {useId} from "@floating-ui/react";
-import {ReactElement, ReactNode} from "react";
+import {ReactElement, ReactNode, useMemo} from "react";
 import {create} from "/source/component/create";
 import {RadioGroupContextProvider} from "./radio-group-context";
 
@@ -24,7 +24,10 @@ export const RadioGroup = create(
     const actualName = (name !== undefined) ? name : innerName;
 
     return (
-      <RadioGroupContextProvider value={{name: actualName, value, onSet}}>
+      <RadioGroupContextProvider value={useMemo(
+        () => ({name: actualName, value, onSet}),
+        [actualName, value, onSet]
+      )}>
         {children}
       </RadioGroupContextProvider>
     );

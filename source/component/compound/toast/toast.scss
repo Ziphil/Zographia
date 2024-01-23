@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --background-color: #{single-color("white")};
+    --border-color: #{leveled-color("gray", 1)};
+    --box-shadow-color: #{leveled-color("gray", 5, 0.2)};
+    @include schemify using ($scheme) {
+      --supplement-text-color: #{leveled-color("gray", 5)};
+      --icon-color: #{leveled-color($scheme, 5)};
+    }
+  }
+}
+
+.root {
+  inline-size: 100%;
+  padding-block: 3zu;
+  padding-inline-end: 3zu;
+  padding-inline-start: 5zu;
+  column-gap: 2zu;
+  border-radius: var(--glob-border-radius);
+  background-color: var(--background-color);
+  border: solid 1zx var(--border-color);
+  box-shadow: var(--glob-box-shadow-setting) var(--box-shadow-color);
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  transition: 0.1s opacity, 0.1s transform;
+  &::before {
+    inset-block-start: -1zx;
+    inset-block-end: 0zx;
+    inset-inline-start: -1zx;
+    inline-size: 2zu;
+    border-start-start-radius: var(--glob-border-radius);
+    border-end-start-radius: var(--glob-border-radius);
+    background-color: var(--icon-color);
+    flex: 0 0 auto;
+    content: "";
+    position: absolute;
+  }
+  &[data-state="open"] {
+    animation: 0.1s open;
+  }
+  &[data-state="closed"] {
+    animation: 0.1s close;
+  }
+}
+
+
+@keyframes open {
+  from {
+    opacity: 0;
+    transform: translate(0zu, 2zu);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0zu, 0zu);
+  }
+}
+
+@keyframes close {
+  to {
+    opacity: 0;
+    transform: translate(0zu, 2zu);
+  }
+  from {
+    opacity: 1;
+    transform: translate(0zu, 0zu);
+  }
+}

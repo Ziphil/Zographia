@@ -1,8 +1,8 @@
 //
 
-import {Dispatch, useCallback, useEffect} from "react";
+import {Dispatch, useCallback, useEffect, useRef} from "react";
 import {IntlShape, createIntl, createIntlCache} from "react-intl";
-import {atom, selector, useRecoilValue, useSetRecoilState} from "recoil";
+import {Loadable, atom, selector, useRecoilValue, useRecoilValueLoadable, useSetRecoilState} from "recoil";
 import {AsyncOrSync} from "ts-essentials";
 import {BUILTIN_MESSAGE_INVENTORY} from "/source/message";
 import {getMessages} from "/source/module/message";
@@ -63,6 +63,14 @@ export function useSetMessageInventory(): Dispatch<MessageInventory> {
 }
 
 export function useIntl(): IntlShape {
-  const intl = useRecoilValue(intlAtom);
-  return intl;
+  const intlLoadable = useRecoilValueLoadable(intlAtom);
+  const ref = useRef<Loadable<IntlShape>>();
+  if (intlLoadable.state === "hasValue") {
+    ref.current = intlLoadable;
+  }
+  if (intlLoadable.state === "loading" && ref.current?.state === "hasValue") {
+    return ref.current.contents;
+  } else {
+    return intlLoadable.getValue();
+  }
 }

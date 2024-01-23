@@ -71,11 +71,12 @@ export const alert = {
   name: "アラート",
   args: {
     open: true,
+    scheme: "red",
     children: (
       <DialogPane>
         <DialogCloseButton/>
         <DialogBody>
-          <DialogIconContainer scheme="red">
+          <DialogIconContainer>
             <GeneralIcon icon={faExclamationTriangle}/>
           </DialogIconContainer>
           <DialogContent>

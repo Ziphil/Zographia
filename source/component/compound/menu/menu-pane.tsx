@@ -2,7 +2,6 @@
 
 import {FloatingContext, FloatingFocusManager} from "@floating-ui/react";
 import {CSSProperties, ForwardedRef, ReactElement, ReactNode} from "react";
-import {Scroll} from "/source/component/atom/scroll";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, data} from "/source/module/data";
 
@@ -34,11 +33,7 @@ export const MenuPane = createWithRef(
     return (mounted) ? (
       <FloatingFocusManager context={context} modal={false} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
         <div styleName="root" {...data({status})} {...rest}>
-          <Scroll styleName="scroll">
-            <div styleName="inner">
-              {children}
-            </div>
-          </Scroll>
+          {children}
         </div>
       </FloatingFocusManager>
     ) : null;

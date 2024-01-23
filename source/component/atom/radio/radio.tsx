@@ -42,8 +42,10 @@ export const Radio = createWithRef(
     const groupSpec = useContext(radioGroupContext);
 
     const handleChange = useCallback(function (event: ChangeEvent<HTMLInputElement>): void {
-      if (groupSpec?.onSet !== undefined && value !== undefined) {
-        groupSpec.onSet(value);
+      if (groupSpec?.onSet !== undefined) {
+        if (value !== undefined) {
+          groupSpec.onSet(value);
+        }
       } else {
         const checked = event.target.checked;
         onSet?.(checked);

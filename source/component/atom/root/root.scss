@@ -17,6 +17,7 @@
 }
 
 html {
+  font-size: var(--glob-font-size);
   font-family: var(--glob-font-family-main);
   font-feature-settings: "palt" 1, "pkna" 1, "lnum" 1, "kern" 1 !important;
   text-decoration-skip-ink: none;
@@ -29,11 +30,13 @@ body {
     --text-color: #{single-color("text-light")};
     --background-color: #{single-color("background-light")};
     --stain-color: #{single-color("stain-light", 0.1)};
+    --scrollbar-color: #{leveled-color("gray", 5)};
   }
   @include theme("dark") {
     --text-color: #{single-color("text-dark")};
     --background-color: #{single-color("background-dark")};
     --stain-color: #{single-color("stain-dark", 0.2)};
+    --scrollbar-color: #{leveled-color("gray", 5)};
   }
 }
 
@@ -42,4 +45,8 @@ body {
   background-color: var(--background-color);
   background-image: var(--glob-noise-background-image);
   box-shadow: var(--glob-stain-shadow-setting) var(--stain-color);
+  * {
+    scrollbar-color: var(--scrollbar-color) transparent;
+    scrollbar-width: thin;
+  }
 }

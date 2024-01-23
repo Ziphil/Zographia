@@ -1,0 +1,29 @@
+common:
+  dateFormat: "DD/MM/YYYY HH:mm"
+  shortDateFormat: "DD/MM"
+  dateUndefined: "?"
+  numberUndefined: "?"
+  negative: "−{value}"
+  negativeInfinity: "−∞"
+
+passwordInput:
+  reveal: "Reveal"
+  hide: "Hide"
+tag:
+  close: "Remove"
+
+dialog:
+  close: "Затворити"
+pagination:
+  first: "Прва страница"
+  previous: "Прєдходна страница"
+  next: "Слєдна страница"
+  last: "Послєдна страница"
+  page: "<hidden>Страница </hidden>{number, number}"
+toast:
+  label:
+    viewport: "Увєдомјенја"
+    provider: "Увєдомјенје"
+
+test:
+  plural: "{value, plural, one {# слово} few {# слова} other {# слов}}"

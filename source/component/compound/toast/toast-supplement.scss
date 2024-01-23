@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  font-size: 3zu;
+  color: var(--supplement-text-color);
+}

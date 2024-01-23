@@ -20,3 +20,10 @@ pagination:
   next: "Next page"
   last: "Last page"
   page: "<hidden>Page </hidden>{number, number}"
+toast:
+  label:
+    viewport: "Notifications"
+    provider: "Notification"
+
+test:
+  plural: "{value, plural, one {# word} other {# words}}"

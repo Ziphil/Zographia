@@ -59,7 +59,7 @@
     border-color: var(--hover-border-color);
   }
   &:active {
-    background-image: linear-gradient(to bottom,  var(--background-gradient-color), transparent);
+    background-image: linear-gradient(to bottom, var(--background-gradient-color), transparent);
   }
   &:focus-visible {
     outline: solid 2zx var(--focus-color);

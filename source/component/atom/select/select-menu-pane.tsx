@@ -1,6 +1,6 @@
-//
+/* eslint-disable react/jsx-closing-bracket-location */
 
-import {ReactElement, ReactNode} from "react";
+import {ReactElement, ReactNode, useMemo} from "react";
 import {SelectContextProvider} from "/source/component/atom/select/select-context";
 import {MenuContextProvider} from "/source/component/compound/menu/menu-context";
 import {MenuPane} from "/source/component/compound/menu/menu-pane";
@@ -49,8 +49,11 @@ export const SelectMenuPane = createWithRef(
         ref={refs.setFloating}
         {...getFloatingProps()}
       >
-        <MenuContextProvider value={{setOpen, listRef, activeIndex, getItemProps}}>
-          <SelectContextProvider value={{updateValue}}>
+        <MenuContextProvider value={useMemo(
+          () => ({setOpen, listRef, activeIndex, getItemProps}),
+          [setOpen, listRef, activeIndex, getItemProps]
+        )}>
+          <SelectContextProvider value={useMemo(() => ({updateValue}), [updateValue])}>
             {children}
           </SelectContextProvider>
         </MenuContextProvider>

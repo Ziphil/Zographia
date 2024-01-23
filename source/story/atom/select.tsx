@@ -38,7 +38,7 @@ export const basic = {
   }
 } as Story;
 
-export const testUncontrolled: Story = {
+export const testUncontrolled = {
   ...template,
   name: "[テスト] 非制御",
   render: () => {
@@ -56,8 +56,8 @@ export const testUncontrolled: Story = {
       </Select>
     );
   }
-};
-export const testControlled: Story = {
+} as Story;
+export const testControlled = {
   ...template,
   name: "[テスト] 制御",
   render: () => {
@@ -76,4 +76,4 @@ export const testControlled: Story = {
       </Select>
     );
   }
-};
+} as Story;

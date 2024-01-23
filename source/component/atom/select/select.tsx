@@ -32,6 +32,7 @@ export const Select = create(
 
     const [innerValue, setInnerValue] = useState(defaultValue);
     const actualValue = (value !== undefined) ? value : innerValue;
+    const controlled = value !== undefined;
 
     const optionMap = getOptionMap<V>(children);
 
@@ -41,26 +42,28 @@ export const Select = create(
     const {getReferenceProps} = interactionSpec;
 
     const updateValue = useCallback(function (nextValue: V): void {
-      if (value === undefined) {
+      if (!controlled) {
         setInnerValue(nextValue);
       }
       onSet?.(nextValue);
-    }, [value, onSet]);
+    }, [controlled, onSet]);
 
     return (
       <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
         <button
-          styleName="input"
+          styleName="container"
           type="button"
           {...aria({invalid: error})}
           {...rest}
           {...getReferenceProps()}
         >
-          {(actualValue !== undefined) ? optionMap.get(actualValue)?.props.label ?? "" : ""}
+          <span styleName="input">
+            {(actualValue !== undefined) ? optionMap.get(actualValue)?.props.label ?? "" : ""}
+          </span>
+          <span styleName="angle">
+            <FontAwesomeIcon icon={faAngleDown}/>
+          </span>
         </button>
-        <span styleName="angle">
-          <FontAwesomeIcon icon={faAngleDown}/>
-        </span>
         <SelectMenuPane updateValue={updateValue} floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
           {transformChildren(children)}
         </SelectMenuPane>

@@ -1,7 +1,7 @@
-//
+/* eslint-disable react/jsx-closing-bracket-location */
 
 import {Placement, useFloating, useTransitionStatus} from "@floating-ui/react";
-import {Children, Fragment, ReactElement, ReactNode, cloneElement, useState} from "react";
+import {Children, Fragment, ReactElement, ReactNode, cloneElement, useMemo, useState} from "react";
 import {isElement} from "react-is";
 import {create} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
@@ -54,7 +54,10 @@ export const Menu = create(
           ref={refs.setFloating}
           {...getFloatingProps()}
         >
-          <MenuContextProvider value={{setOpen, listRef, activeIndex, getItemProps}}>
+          <MenuContextProvider value={useMemo(
+            () => ({setOpen, listRef, activeIndex, getItemProps}),
+            [setOpen, listRef, activeIndex, getItemProps]
+          )}>
             {transformChildren(children)}
           </MenuContextProvider>
         </MenuPane>
