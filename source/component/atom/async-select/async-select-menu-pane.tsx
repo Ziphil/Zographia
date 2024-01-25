@@ -4,12 +4,12 @@ import {ReactElement, ReactNode, useMemo} from "react";
 import {MenuContextProvider} from "/source/component/compound/menu/menu-context";
 import {MenuPane} from "/source/component/compound/menu/menu-pane";
 import {createWithRef} from "/source/component/create";
-import {SelectContextProvider} from "./select-context";
-import {SelectFloatingSpec, SelectInteractionSpec} from "./select-hook";
+import {AsyncSelectContextProvider} from "./async-select-context";
+import {AsyncSelectFloatingSpec, AsyncSelectInteractionSpec} from "./async-select-hook";
 
 
-export const SelectMenuPane = createWithRef(
-  null, "SelectMenuPane",
+export const AsyncSelectMenuPane = createWithRef(
+  null, "AsyncSelectMenuPane",
   function ({
     updateValue,
     floatingSpec,
@@ -17,8 +17,8 @@ export const SelectMenuPane = createWithRef(
     children
   }: {
     updateValue: (value: any) => unknown,
-    floatingSpec: SelectFloatingSpec,
-    interactionSpec: SelectInteractionSpec,
+    floatingSpec: AsyncSelectFloatingSpec,
+    interactionSpec: AsyncSelectInteractionSpec,
     children: ReactNode
   }): ReactElement {
 
@@ -44,7 +44,7 @@ export const SelectMenuPane = createWithRef(
         mounted={mounted}
         status={status}
         context={context}
-        combobox={false}
+        combobox={true}
         style={floatingStyles}
         ref={refs.setFloating}
         {...getFloatingProps()}
@@ -53,9 +53,9 @@ export const SelectMenuPane = createWithRef(
           () => ({setOpen, listRef, activeIndex, getItemProps}),
           [setOpen, listRef, activeIndex, getItemProps]
         )}>
-          <SelectContextProvider value={useMemo(() => ({updateValue}), [updateValue])}>
+          <AsyncSelectContextProvider value={useMemo(() => ({updateValue}), [updateValue])}>
             {children}
-          </SelectContextProvider>
+          </AsyncSelectContextProvider>
         </MenuContextProvider>
       </MenuPane>
     );
