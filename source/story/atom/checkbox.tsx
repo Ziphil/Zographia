@@ -89,9 +89,9 @@ export const testHook: Story = {
   render: () => {
     const {register, handleSubmit} = useForm({defaultValues: {value: true}});
     return (
-      <form onSubmit={handleSubmit(action("onSubmit"))}>
+      <form>
         <Checkbox {...register("value")}/>
-        <Button type="submit" scheme="gray" variant="light">送信</Button>
+        <Button type="submit" scheme="gray" variant="light" onClick={handleSubmit(action("onSubmit"))}>送信</Button>
       </form>
     );
   }
