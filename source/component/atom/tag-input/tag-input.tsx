@@ -30,6 +30,7 @@ export const TagInput = createWithRef(
   require("./tag-input.scss"), "TagInput",
   function ({
     values,
+    tagVariant = "light",
     autoFocus,
     error,
     readonly,
@@ -42,6 +43,7 @@ export const TagInput = createWithRef(
     ...rest
   }: {
     values: Array<string>,
+    tagVariant?: "solid" | "light",
     autoFocus?: boolean,
     error?: boolean,
     readonly?: boolean,
@@ -135,7 +137,7 @@ export const TagInput = createWithRef(
     return (
       <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
         {values.map((value, index) => (
-          <Tag key={index} styleName="tag">
+          <Tag styleName="tag" key={index} variant={tagVariant}>
             {value}
             <TagCloseButton onClick={() => removeTag(index)}/>
           </Tag>
