@@ -15,6 +15,7 @@ import {
   useTransition
 } from "react";
 import {AsyncOrSync} from "ts-essentials";
+import {InputMenuItem} from "/source/component/atom/input/input-menu-item";
 import {InputMenuPane} from "/source/component/atom/input/input-menu-pane";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
@@ -125,12 +126,11 @@ export const Input = createWithRef(
           </span>
         )}
         {(suggest !== undefined) && (
-          <InputMenuPane
-            suggestionSpecs={suggestionSpecs}
-            updateValue={updateValue}
-            floatingSpec={floatingSpec}
-            interactionSpec={interactionSpec}
-          />
+          <InputMenuPane floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
+            {suggestionSpecs.map((spec, index) => (
+              <InputMenuItem key={index} index={index} spec={spec} updateValue={updateValue}/>
+            ))}
+          </InputMenuPane>
         )}
       </div>
     );

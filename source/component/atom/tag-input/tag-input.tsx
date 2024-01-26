@@ -18,6 +18,7 @@ import {
 import {AsyncOrSync} from "ts-essentials";
 import {SuggestionSpec} from "/source/component/atom/input";
 import {useInputFloating, useInputInteraction} from "/source/component/atom/input/input-hook";
+import {InputMenuItem} from "/source/component/atom/input/input-menu-item";
 import {InputMenuPane} from "/source/component/atom/input/input-menu-pane";
 import {Tag, TagCloseButton} from "/source/component/atom/tag";
 import {createWithRef} from "/source/component/create";
@@ -83,6 +84,7 @@ export const TagInput = createWithRef(
         const value = inputElement.value.trim();
         if (value) {
           onSet?.([...values, value]);
+          event.preventDefault();
           requestAnimationFrame(() => inputElement.value = "");
         }
       }
@@ -155,12 +157,11 @@ export const TagInput = createWithRef(
         />
         {children}
         {(suggest !== undefined) && (
-          <InputMenuPane
-            suggestionSpecs={suggestionSpecs}
-            updateValue={addTag}
-            floatingSpec={floatingSpec}
-            interactionSpec={interactionSpec}
-          />
+          <InputMenuPane floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
+            {suggestionSpecs.map((spec, index) => (
+              <InputMenuItem key={index} index={index} spec={spec} updateValue={addTag}/>
+            ))}
+          </InputMenuPane>
         )}
       </div>
     );

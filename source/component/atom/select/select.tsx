@@ -6,6 +6,7 @@ import {Children, ReactElement, ReactNode, cloneElement, useCallback, useMemo, u
 import {isElement} from "react-is";
 import {create} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
+import {SelectContextProvider} from "./select-context";
 import {useSelectFloating, useSelectInteraction} from "./select-hook";
 import {SelectMenuPane} from "./select-menu-pane";
 import {SelectOption} from "./select-option";
@@ -65,7 +66,9 @@ export const Select = create(
           </span>
         </button>
         <SelectMenuPane updateValue={updateValue} floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
-          {transformChildren(children)}
+          <SelectContextProvider value={useMemo(() => ({updateValue}), [updateValue])}>
+            {transformChildren(children)}
+          </SelectContextProvider>
         </SelectMenuPane>
       </div>
     );

@@ -1,9 +1,10 @@
 /* eslint-disable quote-props, @typescript-eslint/naming-convention */
 
-import {ChangeEvent, FocusEvent, ReactElement, cloneElement, useCallback, useRef, useState, useTransition} from "react";
+import {ChangeEvent, FocusEvent, ReactElement, cloneElement, useCallback, useMemo, useRef, useState, useTransition} from "react";
 import {AsyncOrSync} from "ts-essentials";
 import {create} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
+import {AsyncSelectContextProvider} from "./async-select-context";
 import {useAsyncSelectFloating, useAsyncSelectInteraction} from "./async-select-hook";
 import {AsyncSelectMenuPane} from "./async-select-menu-pane";
 
@@ -93,8 +94,10 @@ export const AsyncSelect = create(
             </div>
           )}
         </div>
-        <AsyncSelectMenuPane updateValue={updateValue} floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
-          {options.map((option, index) => cloneElement(children(option), {index}))}
+        <AsyncSelectMenuPane floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
+          <AsyncSelectContextProvider value={useMemo(() => ({updateValue}), [updateValue])}>
+            {options.map((value, index) => cloneElement(children(value), {index, value}))}
+          </AsyncSelectContextProvider>
         </AsyncSelectMenuPane>
       </div>
     );

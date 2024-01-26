@@ -32,7 +32,7 @@ export const testUncontrolled = {
     return (
       <AsyncSelect value={undefined} onSet={undefined} loadOptions={loadOptions}>
         {(value) => (
-          <AsyncSelectOption key={value} value={value} label={value}>
+          <AsyncSelectOption key={value}>
             {value}
           </AsyncSelectOption>
         )}
@@ -48,7 +48,7 @@ export const testControlled = {
     return (
       <AsyncSelect value={value} onSet={setValue} loadOptions={loadOptions}>
         {(value) => (
-          <AsyncSelectOption key={value} value={value} label={value}>
+          <AsyncSelectOption key={value}>
             {value}
           </AsyncSelectOption>
         )}

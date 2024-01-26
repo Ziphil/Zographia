@@ -4,7 +4,6 @@ import {ReactElement, ReactNode, useMemo} from "react";
 import {MenuContextProvider} from "/source/component/compound/menu/menu-context";
 import {MenuPane} from "/source/component/compound/menu/menu-pane";
 import {createWithRef} from "/source/component/create";
-import {SelectContextProvider} from "./select-context";
 import {SelectFloatingSpec, SelectInteractionSpec} from "./select-hook";
 
 
@@ -49,13 +48,8 @@ export const SelectMenuPane = createWithRef(
         ref={refs.setFloating}
         {...getFloatingProps()}
       >
-        <MenuContextProvider value={useMemo(
-          () => ({setOpen, listRef, activeIndex, getItemProps}),
-          [setOpen, listRef, activeIndex, getItemProps]
-        )}>
-          <SelectContextProvider value={useMemo(() => ({updateValue}), [updateValue])}>
-            {children}
-          </SelectContextProvider>
+        <MenuContextProvider value={useMemo(() => ({setOpen, listRef, activeIndex, getItemProps}), [setOpen, listRef, activeIndex, getItemProps])}>
+          {children}
         </MenuContextProvider>
       </MenuPane>
     );

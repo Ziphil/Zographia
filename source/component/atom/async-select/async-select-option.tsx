@@ -1,6 +1,6 @@
 //
 
-import {ForwardedRef, MouseEvent, ReactElement, ReactNode, useCallback, useContext} from "react";
+import {ComponentProps, ForwardedRef, MouseEvent, ReactElement, ReactNode, useCallback, useContext} from "react";
 import {MenuItem} from "/source/component/compound/menu";
 import {createWithRef} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module";
@@ -10,20 +10,18 @@ import {asyncSelectContext} from "./async-select-context";
 
 export const AsyncSelectOption = createWithRef(
   null, "AsyncSelectOption",
-  function <V>({
-    value,
-    label,
+  function ({
     scheme,
     children,
-    ...rest
+    ...restAndInternal
   }: {
-    value: V,
-    label: ReactNode,
     scheme?: LeveledColorScheme | null,
     children?: ReactNode,
     className?: string,
     ref: ForwardedRef<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
+
+    const {value, ...rest} = restAndInternal as AsyncSelectOptionPropsWithInternal;
 
     const {updateValue} = useContext(asyncSelectContext);
 
@@ -39,3 +37,6 @@ export const AsyncSelectOption = createWithRef(
 
   }
 );
+
+
+type AsyncSelectOptionPropsWithInternal = Omit<ComponentProps<typeof AsyncSelectOption>, "scheme" | "children"> & {value: any};
