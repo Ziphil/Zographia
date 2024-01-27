@@ -12,20 +12,26 @@
     --blockquote-border-color: #{leveled-color("gray", 1)};
     --line-height: #{var(--glob-line-height)};
     --pre-line-height: #{var(--glob-line-height-short)};
+    &[data-compact] {
+      --row-gap: #{zu(2)};
+    }
+    &:not([data-compact]) {
+      --row-gap: #{zu(3)};
+    }
   }
 }
 
 .root {
   @include line-height(var(--line-height));
-}
-
-.inner {
-  row-gap: calc(2zu - extrusion(var(--line-height)));
-  display: flex;
-  flex-direction: column;
   &[data-justify] {
     text-align: justify;
   }
+}
+
+.inner {
+  row-gap: calc(var(--row-gap) - extrusion(var(--line-height)) * 2);
+  display: flex;
+  flex-direction: column;
 }
 
 .inner em,
@@ -79,7 +85,7 @@
 
 .inner blockquote {
   padding-inline-start: 2zu;
-  row-gap: calc(2zu - extrusion(var(--line-height)));
+  row-gap: calc(var(--row-gap) - extrusion(var(--line-height)) * 2);
   border-inline-start: solid 4zx var(--blockquote-border-color);
   display: flex;
   flex-direction: column;
