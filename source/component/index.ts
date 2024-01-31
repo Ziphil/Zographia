@@ -1,6 +1,7 @@
 //
 
 export * from "./atom/async-select";
+export * from "./atom/avatar";
 export * from "./atom/button";
 export * from "./atom/checkable-container";
 export * from "./atom/checkbox";
