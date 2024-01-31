@@ -6,7 +6,7 @@ import {ToastProvider} from "/source/component/compound/toast/toast-context";
 import {create} from "/source/component/create";
 import {Locale, MessageInventory, useDefaultLocale, useSetMessageInventory} from "/source/hook/locale";
 import {useDefaultTheme} from "/source/hook/theme";
-import {Device} from "/source/module";
+import {ColorDefinitions, Device, Theme} from "/source/module";
 
 
 export const InnerRoot = create(
@@ -14,12 +14,16 @@ export const InnerRoot = create(
   function ({
     messageInventory,
     device,
+    colorDefinitions,
+    theme,
     initialLocale,
     initialTheme,
     children
   }: {
     messageInventory: MessageInventory,
     device: Device,
+    colorDefinitions: ColorDefinitions,
+    theme: Theme,
     initialLocale: Locale,
     initialTheme: string,
     children: ReactNode
@@ -41,7 +45,7 @@ export const InnerRoot = create(
     }, [device]);
 
     return (
-      <RootContextProvider value={useMemo(() => ({device}), [device])}>
+      <RootContextProvider value={useMemo(() => ({device, colorDefinitions, theme}), [device, colorDefinitions, theme])}>
         {(ready) && (
           <ToastProvider>
             {children}

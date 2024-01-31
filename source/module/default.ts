@@ -18,9 +18,29 @@ export const DEFAULT_COLOR_DEFINITIONS = {
     dark: {mix: 0.5, saturation: -0.1},
     light: {mix: 0.93, saturation: 0.3}
   }),
-  red: createColorDefinition("hsl(350, 75%, 55%)", {
+  red: createColorDefinition("hsl(350, 65%, 55%)", {
     dark: {mix: 0.5, saturation: -0.1},
     light: {mix: 0.94, saturation: 0.3}
+  }),
+  green: createColorDefinition("hsl(140, 55%, 45%)", {
+    dark: {mix: 0.5, saturation: -0.1},
+    light: {mix: 0.93, saturation: 0.3}
+  }),
+  yellow: createColorDefinition("hsl(60, 70%, 50%)", {
+    dark: {mix: 0.5, saturation: -0.1},
+    light: {mix: 0.9, saturation: 0.3}
+  }),
+  purple: createColorDefinition("hsl(280, 55%, 55%)", {
+    dark: {mix: 0.5, saturation: -0.1},
+    light: {mix: 0.94, saturation: 0.3}
+  }),
+  cyan: createColorDefinition("hsl(190, 70%, 50%)", {
+    dark: {mix: 0.5, saturation: -0.1},
+    light: {mix: 0.93, saturation: 0.3}
+  }),
+  orange: createColorDefinition("hsl(30, 80%, 50%)", {
+    dark: {mix: 0.5, saturation: -0.1},
+    light: {mix: 0.91, saturation: 0.3}
   }),
   gray: createColorDefinition("hsl(30, 5%, 55%)", {
     dark: {mix: 0.55, saturation: -0.1},

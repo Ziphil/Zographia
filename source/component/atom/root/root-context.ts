@@ -1,14 +1,18 @@
 //
 
 import {createContext} from "react";
-import {Device} from "/source/module";
+import {ColorDefinitions, DEFAULT_COLOR_DEFINITIONS, DEFAULT_THEME, Device, Theme} from "/source/module";
 
 
 export type RootContextValue = {
-  device: Device
+  device: Device,
+  colorDefinitions: ColorDefinitions,
+  theme: Theme
 };
 
 export const rootContext = createContext<RootContextValue>({
-  device: "desktop"
+  device: "desktop",
+  colorDefinitions: DEFAULT_COLOR_DEFINITIONS,
+  theme: DEFAULT_THEME
 });
 export const RootContextProvider = rootContext["Provider"];

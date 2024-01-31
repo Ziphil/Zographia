@@ -1,12 +1,15 @@
 //
 
+import merge from "lodash-es/merge";
 import {Fragment, ReactElement, ReactNode, Suspense, useMemo} from "react";
 import {Helmet} from "react-helmet";
 import {useMedia} from "react-use";
 import {RecoilRoot} from "recoil";
+import {DeepPartial} from "ts-essentials";
 import {InnerRoot} from "/source/component/atom/root/inner-root";
 import {create} from "/source/component/create";
 import {Locale, MessageInventory} from "/source/hook/locale";
+import {DEFAULT_COLOR_DEFINITIONS, DEFAULT_THEME} from "/source/module";
 import {ColorDefinitions} from "/source/module/color";
 import {Theme} from "/source/module/theme";
 import {getColorDefinitionsVarCss, getThemeVarCss} from "/source/util/css";
@@ -29,8 +32,8 @@ export const Root = create(
   }: {
     messageInventory?: MessageInventory,
     mobileCondition?: string,
-    colorDefinitions?: ColorDefinitions,
-    theme?: Theme,
+    colorDefinitions?: DeepPartial<ColorDefinitions>,
+    theme?: DeepPartial<Theme>,
     initialLocale?: Locale,
     initialTheme?: string,
     children: ReactNode
@@ -39,8 +42,11 @@ export const Root = create(
     const mobile = useMedia(mobileCondition);
     const device = (mobile) ? "mobile" : "desktop";
 
-    const colorDefinitionVarCss = useMemo(() => getColorDefinitionsVarCss(colorDefinitions), [colorDefinitions]);
-    const themeVarCss = useMemo(() => getThemeVarCss(theme, device), [theme, device]);
+    const fullColorDefinitions = useMemo(() => merge(DEFAULT_COLOR_DEFINITIONS, colorDefinitions), [colorDefinitions]);
+    const fullTheme = useMemo(() => merge(DEFAULT_THEME, theme), [theme]);
+
+    const colorDefinitionVarCss = useMemo(() => getColorDefinitionsVarCss(fullColorDefinitions), [fullColorDefinitions]);
+    const themeVarCss = useMemo(() => getThemeVarCss(fullTheme, device), [fullTheme, device]);
 
     return (
       <Fragment>
@@ -53,6 +59,8 @@ export const Root = create(
             <InnerRoot
               messageInventory={messageInventory}
               device={device}
+              colorDefinitions={fullColorDefinitions}
+              theme={fullTheme}
               initialLocale={initialLocale}
               initialTheme={initialTheme}
             >
