@@ -20,7 +20,7 @@ export const Avatar = createWithRef(
     alt?: string,
     fallbackHue?: number,
     className?: string,
-    ref: ForwardedRef<HTMLLabelElement>
+    ref: ForwardedRef<HTMLSpanElement>
   } & AdditionalProps): ReactElement {
 
     return (
