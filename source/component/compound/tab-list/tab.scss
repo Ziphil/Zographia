@@ -19,7 +19,6 @@
 }
 
 .root {
-  margin-block-end: -1zx;
   padding-block-end: 2zu;
   border-start-start-radius: var(--glob-border-radius);
   border-start-end-radius: var(--glob-border-radius);
@@ -29,6 +28,7 @@
   justify-items: center;
   transition: 0.1s border;
   cursor: pointer;
+  flex: 0 0 auto;
   &[data-selected] {
     border-block-end-color: var(--highlight-color);
   }

@@ -10,8 +10,14 @@
 }
 
 .root {
+  border-block-end: solid 1zx var(--border-color);
+}
+
+.inner {
   column-gap: 4zu;
+  margin-block-end: -1zx;
   display: flex;
   flex-direction: row;
-  border-block-end: solid 1zx var(--border-color);
+  overflow-x: auto;
+  overflow-y: visible;
 }

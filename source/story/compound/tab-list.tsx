@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-closing-tag-location, react-hooks/rules-of-hooks */
 
-import {faCat, faFish, faRabbit} from "@fortawesome/sharp-regular-svg-icons";
+import {faCat, faCatSpace, faFish, faRabbit} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {useState} from "react";
 import {GeneralIcon, Tab, TabIconbag, TabList} from "/source/component";
@@ -36,6 +36,55 @@ export const basic = {
       <Tab value="3">
         <TabIconbag><GeneralIcon icon={faFish}/></TabIconbag>
         うお 3C うお
+      </Tab>
+    </>)
+  }
+} as Story;
+export const overflow = {
+  ...template,
+  name: "オーバーフロー",
+  args: {
+    value: "2",
+    children: createChildren(<>
+      <Tab value="1">
+        <TabIconbag><GeneralIcon icon={faCat}/></TabIconbag>
+        1 つ目のタブ
+      </Tab>
+      <Tab value="2">
+        <TabIconbag><GeneralIcon icon={faRabbit}/></TabIconbag>
+        2 つ目のタブ
+      </Tab>
+      <Tab value="3">
+        <TabIconbag><GeneralIcon icon={faFish}/></TabIconbag>
+        3 つ目のタブ
+      </Tab>
+      <Tab value="1">
+        <TabIconbag><GeneralIcon icon={faCat}/></TabIconbag>
+        4 つ目のタブ
+      </Tab>
+      <Tab value="2">
+        <TabIconbag><GeneralIcon icon={faRabbit}/></TabIconbag>
+        5 つ目のタブ
+      </Tab>
+      <Tab value="3">
+        <TabIconbag><GeneralIcon icon={faFish}/></TabIconbag>
+        6 つ目のタブ
+      </Tab>
+      <Tab value="1">
+        <TabIconbag><GeneralIcon icon={faCat}/></TabIconbag>
+        7 つ目のタブ
+      </Tab>
+      <Tab value="2">
+        <TabIconbag><GeneralIcon icon={faRabbit}/></TabIconbag>
+        8 つ目のタブ
+      </Tab>
+      <Tab value="3">
+        <TabIconbag><GeneralIcon icon={faFish}/></TabIconbag>
+        9 つ目のタブ
+      </Tab>
+      <Tab value="3">
+        <TabIconbag><GeneralIcon icon={faCatSpace}/></TabIconbag>
+        10 つ目のタブ
       </Tab>
     </>)
   }
