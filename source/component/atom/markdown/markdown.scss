@@ -11,7 +11,7 @@
     --table-border-color: #{leveled-color("gray", 1)};
     --blockquote-border-color: #{leveled-color("gray", 1)};
     --line-height: #{var(--glob-line-height)};
-    --pre-line-height: #{var(--glob-line-height-short)};
+    --pre-line-height: #{var(--glob-line-height-narrow)};
     &[data-compact] {
       --row-gap: #{zu(2)};
     }

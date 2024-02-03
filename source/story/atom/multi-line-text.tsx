@@ -25,11 +25,11 @@ export const lineHeightNormal = {
     children: "長いテキスト".repeat(50)
   }
 } as Story;
-export const lineHeightShort = {
+export const lineHeightNarrow = {
   ...template,
   name: "行間: 狭い",
   args: {
-    lineHeight: "short",
+    lineHeight: "narrow",
     children: "長いテキスト".repeat(50)
   }
 } as Story;

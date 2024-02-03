@@ -5,11 +5,14 @@
 
 
 .root {
-  &[data-line-height="short"] {
-    @include line-height(var(--glob-line-height-short));
-  }
   &[data-line-height="normal"] {
     @include line-height(var(--glob-line-height));
+  }
+  &[data-line-height="narrow"] {
+    @include line-height(var(--glob-line-height-narrow));
+  }
+  &[data-line-height="narrowest"] {
+    @include line-height(var(--glob-line-height-narrowest));
   }
   &[data-line-height="wide"] {
     @include line-height(var(--glob-line-height-wide));
