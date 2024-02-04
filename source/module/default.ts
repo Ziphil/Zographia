@@ -2,7 +2,7 @@
 
 import {DeepRequired} from "ts-essentials";
 import {createColor, createColorDefinition} from "/source/module/color";
-import {Theme} from "/source/module/theme";
+import {StyleDefinitions} from "/source/module/style";
 
 
 export const DEFAULT_COLOR_DEFINITIONS = {
@@ -56,11 +56,12 @@ export const DEFAULT_COLOR_DEFINITIONS = {
   stainDark: createColor("hsla(30, 50%, 0%)")
 } as const;
 
-export const DEFAULT_THEME = {
-  fontSize: ["16px", "14px"],
-  fontFamilies: {
+export const DEFAULT_STYLE_DEFINITIONS = {
+  fontFamily: {
     main: "'Fira Sans', 'Noto Sans', 'Noto Sans JP', sans-serif",
     bold: "'Fira Sans', 'Noto Sans', 'Noto Sans JP', sans-serif",
     monospace: "'Fira Mono', 'Noto Sans Mono', 'Noto Sans JP', monospace"
-  }
-} as const satisfies DeepRequired<Theme>;
+  },
+  fontSize: ["16px", "14px"],
+  pageHorizontalPadding: [`${10 / 4}em`, `${4 / 4}em`]
+} as const satisfies DeepRequired<StyleDefinitions>;

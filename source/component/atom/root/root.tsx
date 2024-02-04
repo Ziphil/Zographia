@@ -9,10 +9,10 @@ import {DeepPartial} from "ts-essentials";
 import {InnerRoot} from "/source/component/atom/root/inner-root";
 import {create} from "/source/component/create";
 import {Locale, MessageInventory} from "/source/hook/locale";
-import {DEFAULT_COLOR_DEFINITIONS, DEFAULT_THEME} from "/source/module";
+import {DEFAULT_COLOR_DEFINITIONS, DEFAULT_STYLE_DEFINITIONS} from "/source/module";
 import {ColorDefinitions} from "/source/module/color";
-import {Theme} from "/source/module/theme";
-import {getColorDefinitionsVarCss, getThemeVarCss} from "/source/util/css";
+import {StyleDefinitions} from "/source/module/style";
+import {getColorDefinitionsVarCss, getStyleDefinitionsVarCss} from "/source/util/css";
 
 
 require("./reset.scss");
@@ -25,7 +25,7 @@ export const Root = create(
     messageInventory = {},
     mobileCondition = "(max-width: 767px)",
     colorDefinitions = {},
-    theme = {},
+    styleDefinitions = {},
     initialLocale = "ja",
     initialTheme = "light",
     children
@@ -33,7 +33,7 @@ export const Root = create(
     messageInventory?: MessageInventory,
     mobileCondition?: string,
     colorDefinitions?: DeepPartial<ColorDefinitions>,
-    theme?: DeepPartial<Theme>,
+    styleDefinitions?: DeepPartial<StyleDefinitions>,
     initialLocale?: Locale,
     initialTheme?: string,
     children: ReactNode
@@ -43,10 +43,10 @@ export const Root = create(
     const device = (mobile) ? "mobile" : "desktop";
 
     const fullColorDefinitions = useMemo(() => merge(DEFAULT_COLOR_DEFINITIONS, colorDefinitions), [colorDefinitions]);
-    const fullTheme = useMemo(() => merge(DEFAULT_THEME, theme), [theme]);
+    const fullStyleDefinitions = useMemo(() => merge(DEFAULT_STYLE_DEFINITIONS, styleDefinitions), [styleDefinitions]);
 
     const colorDefinitionVarCss = useMemo(() => getColorDefinitionsVarCss(fullColorDefinitions), [fullColorDefinitions]);
-    const themeVarCss = useMemo(() => getThemeVarCss(fullTheme, device), [fullTheme, device]);
+    const themeVarCss = useMemo(() => getStyleDefinitionsVarCss(fullStyleDefinitions, device), [fullStyleDefinitions, device]);
 
     return (
       <Fragment>
@@ -60,7 +60,7 @@ export const Root = create(
               messageInventory={messageInventory}
               device={device}
               colorDefinitions={fullColorDefinitions}
-              theme={fullTheme}
+              styleDefinitions={fullStyleDefinitions}
               initialLocale={initialLocale}
               initialTheme={initialTheme}
             >

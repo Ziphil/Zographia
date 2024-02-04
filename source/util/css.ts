@@ -4,7 +4,7 @@ import qixColor from "color";
 import {toKebabCase} from "/source/module/case";
 import {ColorDefinitions} from "/source/module/color";
 import {Device, resolveResponsiveValue} from "/source/module/responsive";
-import {Theme} from "/source/module/theme";
+import {StyleDefinitions} from "/source/module/style";
 
 
 export function getColorDefinitionsVarCss(definitions: ColorDefinitions): string {
@@ -26,12 +26,13 @@ export function getColorDefinitionsVarCss(definitions: ColorDefinitions): string
   return css;
 };
 
-export function getThemeVarCss(theme: Theme, device: Device): string {
+export function getStyleDefinitionsVarCss(definitions: StyleDefinitions, device: Device): string {
   const varCss = [];
-  varCss.push(`--glob-font-size: ${resolveResponsiveValue(theme.fontSize, device)};`);
-  varCss.push(`--glob-font-family-main: ${theme.fontFamilies.main};`);
-  varCss.push(`--glob-font-family-bold: ${theme.fontFamilies.bold};`);
-  varCss.push(`--glob-font-family-monospace: ${theme.fontFamilies.monospace};`);
+  varCss.push(`--glob-font-family-main: ${definitions.fontFamily.main};`);
+  varCss.push(`--glob-font-family-bold: ${definitions.fontFamily.bold};`);
+  varCss.push(`--glob-font-family-monospace: ${definitions.fontFamily.monospace};`);
+  varCss.push(`--glob-font-size: ${resolveResponsiveValue(definitions.fontSize, device)};`);
+  varCss.push(`--glob-page-horizontal-padding: ${resolveResponsiveValue(definitions.pageHorizontalPadding, device)};`);
   const css = `:root {\n${varCss.join("\n")}\n}`;
   return css;
 }

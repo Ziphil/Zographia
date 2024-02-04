@@ -5,9 +5,9 @@
 
 
 :root {
-  --glob-border-radius: #{zx(2)};
-  --glob-box-shadow-setting: #{zx(0)} #{zx(1)} #{zx(2)};
-  --glob-stain-shadow-setting: inset #{zx(0)} #{zx(0)} #{zx(16)};
+  --glob-border-radius: 2zx;
+  --glob-box-shadow-setting: 0zx 1zx 2zx;
+  --glob-stain-shadow-setting: inset 0zx 0zx 16zx;
   --glob-blank-gap: #{div(5, 16)}em;
   --glob-focus-alpha: 0.3;
   --glob-line-height: #{1 + div(4, 8)};

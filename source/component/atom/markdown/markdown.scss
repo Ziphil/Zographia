@@ -12,12 +12,12 @@
     --blockquote-border-color: #{leveled-color("gray", 1)};
     --line-height: #{var(--glob-line-height)};
     --pre-line-height: #{var(--glob-line-height-narrow)};
-    &[data-compact] {
-      --row-gap: #{zu(2)};
-    }
-    &:not([data-compact]) {
-      --row-gap: #{zu(3)};
-    }
+  }
+  &[data-compact] {
+    --row-gap: 2zu;
+  }
+  &:not([data-compact]) {
+    --row-gap: 3zu;
   }
 }
 

@@ -6,6 +6,7 @@ import {
   ColorLevel,
   LeveledColorScheme,
   SingleColorScheme,
+  StyleDefinitions,
   getLeveledColor,
   getSingleColor
 } from "/source/module";
@@ -39,4 +40,9 @@ export function useSingleColor(scheme: SingleColorScheme, alpha?: number): strin
   const {colorDefinitions} = useContext(rootContext);
   const color = getSingleColor(colorDefinitions, scheme, alpha);
   return color;
+}
+
+export function useStyleDefinitions(): StyleDefinitions {
+  const {styleDefinitions} = useContext(rootContext);
+  return styleDefinitions;
 }
