@@ -99,7 +99,7 @@ export const Input = createWithRef(
     }, [onSet]);
 
     return (
-      <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
+      <div styleName="root" className={className} ref={refs.setReference} {...data({disabled, error})}>
         <input
           styleName="input"
           value={value}

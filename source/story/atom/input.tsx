@@ -126,6 +126,14 @@ export const typeWeek = {
     type: "week"
   }
 } as Story;
+export const disabled = {
+  ...template,
+  name: "無効",
+  args: {
+    defaultValue: "あいうえおねこねこ",
+    disabled: true
+  }
+} as Story;
 export const error = {
   ...template,
   name: "エラー",
