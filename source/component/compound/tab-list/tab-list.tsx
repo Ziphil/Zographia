@@ -3,7 +3,8 @@
 import {ReactElement, ReactNode, Ref, useCallback, useMemo, useState} from "react";
 import {TabListContextProvider} from "/source/component/compound/tab-list/tab-list-context";
 import {createWithRef} from "/source/component/create";
-import {AdditionalProps} from "/source/module/data";
+import {LeveledColorScheme} from "/source/module";
+import {AdditionalProps, data} from "/source/module/data";
 
 
 export const TabList = createWithRef(
@@ -11,12 +12,14 @@ export const TabList = createWithRef(
   function ({
     value,
     defaultValue,
+    scheme = "secondary",
     onSet,
     children,
     ...rest
   }: {
     value?: string,
     defaultValue?: string,
+    scheme?: LeveledColorScheme,
     onSet?: (value: string) => unknown,
     children?: ReactNode,
     className?: string,
@@ -35,7 +38,7 @@ export const TabList = createWithRef(
     }, [controlled, onSet]);
 
     return (
-      <div styleName="root" role="tablist" {...rest}>
+      <div styleName="root" role="tablist" {...data({scheme})} {...rest}>
         <div styleName="inner">
           <TabListContextProvider value={useMemo(() => ({value: actualValue, onSet: handleSet}), [actualValue, handleSet])}>
             {children}

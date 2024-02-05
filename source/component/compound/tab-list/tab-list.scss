@@ -6,6 +6,11 @@
 .root {
   @include theme("light") {
     --border-color: #{leveled-color("gray", 1)};
+    @include schemify using ($scheme) {
+      --selected-text-color: #{leveled-color($scheme, 5)};
+      --selected-highlight-color: #{leveled-color($scheme, 5)};
+      --selected-focus-color: #{leveled-color($scheme, 5, var(--glob-focus-alpha))};
+    }
   }
 }
 
