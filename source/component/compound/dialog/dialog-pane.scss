@@ -7,6 +7,9 @@
   @include theme("light") {
     --background-color: #{single-color("background-light")};
     --stain-color: #{single-color("stain-light", 0.1)};
+    @include schemify using ($scheme) {
+      --icon-color: #{leveled-color($scheme, 5)};
+    }
   }
   @include theme("dark") {
     --background-color: #{single-color("background-dark")}; 

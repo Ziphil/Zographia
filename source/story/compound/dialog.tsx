@@ -2,6 +2,8 @@
 
 import {faCheck, faCircleInfo, faClose, faExclamationTriangle, faTrashAlt} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
+import dayjs from "dayjs";
+import {useCallback} from "react";
 import {
   Button,
   ButtonIconbag,
@@ -13,7 +15,8 @@ import {
   DialogIconContainer,
   DialogPane,
   GeneralIcon,
-  MultiLineText
+  MultiLineText,
+  useDialog
 } from "/source/component";
 
 
@@ -45,7 +48,7 @@ export const basic = {
             <GeneralIcon icon={faCircleInfo}/>
           </DialogIconContainer>
           <DialogContent>
-            <MultiLineText justify={true}>
+            <MultiLineText>
               ここにダイアログのメッセージが入ります。
               ここにダイアログのメッセージが入ります。
               ここにダイアログのメッセージが入ります。
@@ -80,7 +83,7 @@ export const alert = {
             <GeneralIcon icon={faExclamationTriangle}/>
           </DialogIconContainer>
           <DialogContent>
-            <MultiLineText justify={true}>
+            <MultiLineText>
               このユーザーを削除してもよろしいですか?
               一度削除すると、元に戻すことはできません。
             </MultiLineText>
@@ -98,5 +101,47 @@ export const alert = {
         </DialogFooter>
       </DialogPane>
     )
+  }
+} as Story;
+
+export const testHook = {
+  ...template,
+  name: "[テスト] フック",
+  render: () => {
+    const openDialog = useDialog();
+    const handleClick = useCallback(function (): void {
+      const dateString = dayjs().format("YYYY/MM/DD HH:mm:ss.SSS");
+      openDialog((close) => (
+        <Dialog>
+          <DialogPane>
+            <DialogCloseButton/>
+            <DialogBody>
+              <DialogIconContainer>
+                <GeneralIcon icon={faCircleInfo}/>
+              </DialogIconContainer>
+              <DialogContent>
+                <MultiLineText>
+                  ここにダイアログのメッセージが入ります。
+                  日時は {dateString} です。
+                </MultiLineText>
+              </DialogContent>
+            </DialogBody>
+            <DialogFooter>
+              <Button scheme="gray" variant="light" onClick={close}>
+                <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
+                キャンセル
+              </Button>
+              <Button>
+                <ButtonIconbag><GeneralIcon icon={faCheck}/></ButtonIconbag>
+                確認
+              </Button>
+            </DialogFooter>
+          </DialogPane>
+        </Dialog>
+      ));
+    }, [openDialog]);
+    return (
+      <Button onClick={handleClick}>ダイアログ表示</Button>
+    );
   }
 } as Story;

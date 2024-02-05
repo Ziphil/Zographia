@@ -64,7 +64,7 @@ export const testHook = {
   name: "[テスト] フック",
   render: () => {
     const dispatchToast = useToast();
-    const handleClick = useCallback(() => {
+    const handleClick = useCallback(function (): void {
       const dateString = dayjs().format("YYYY/MM/DD HH:mm:ss.SSS");
       dispatchToast(
         <Toast>

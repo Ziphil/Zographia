@@ -1,10 +1,11 @@
 //
 
-import {ReactElement} from "react";
+import {ReactElement, useMemo} from "react";
 import {Modal} from "/source/component/atom/modal";
 import {create} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module";
-import {AdditionalProps, data} from "/source/module/data";
+import {AdditionalProps} from "/source/module/data";
+import {DialogContextProvider} from "./dialog-context";
 
 
 export const Dialog = create(
@@ -12,7 +13,7 @@ export const Dialog = create(
   function ({
     open,
     defaultOpen = false,
-    scheme,
+    scheme = "primary",
     onOpenSet,
     children,
     ...rest
@@ -26,9 +27,11 @@ export const Dialog = create(
   } & AdditionalProps): ReactElement {
 
     return (
-      <Modal styleName="root" open={open} defaultOpen={defaultOpen} onOpenSet={onOpenSet} {...data({scheme})} {...rest}>
-        {children}
-      </Modal>
+      <DialogContextProvider value={useMemo(() => ({scheme}), [scheme])}>
+        <Modal styleName="root" open={open} defaultOpen={defaultOpen} onOpenSet={onOpenSet} {...rest}>
+          {children}
+        </Modal>
+      </DialogContextProvider>
     );
 
   }
