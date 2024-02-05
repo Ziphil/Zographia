@@ -8,18 +8,18 @@ import {create} from "/source/component/create";
 import {useTrans} from "/source/hook";
 
 
-export type ToastContextValue = {
+export type ToastGlobalContextValue = {
   setToastElements: Dispatch<SetStateAction<Array<ReactElement>>>
 };
 
-export const toastContext = createContext<ToastContextValue>({
+export const toastGlobalContext = createContext<ToastGlobalContextValue>({
   setToastElements: noop
 });
-export const ToastContextProvider = toastContext["Provider"];
+export const ToastGlobalContextProvider = toastGlobalContext["Provider"];
 
 
-export const ToastProvider = create(
-  null, "ToastProvider",
+export const ToastGlobalProvider = create(
+  null, "ToastGlobalProvider",
   function ({
     children
   }: {
@@ -32,11 +32,11 @@ export const ToastProvider = create(
 
     return (
       <RawToastProvider label={trans("label.provider")}>
-        <ToastContextProvider value={useMemo(() => ({setToastElements}), [setToastElements])}>
+        <ToastGlobalContextProvider value={useMemo(() => ({setToastElements}), [setToastElements])}>
           <ToastViewport/>
           {toastElements.map((toastElement) => toastElement)}
           {children}
-        </ToastContextProvider>
+        </ToastGlobalContextProvider>
       </RawToastProvider>
     );
 
