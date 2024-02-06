@@ -23,6 +23,8 @@
   margin-block-end: -1zx;
   display: flex;
   flex-direction: row;
-  overflow-x: auto;
-  overflow-y: visible;
+  @include device("mobile") {
+    overflow-x: auto;
+    overflow-y: visible;
+  }
 }
