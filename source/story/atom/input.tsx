@@ -126,6 +126,13 @@ export const typeWeek = {
     type: "week"
   }
 } as Story;
+export const placeholder = {
+  ...template,
+  name: "プレースホルダー",
+  args: {
+    placeholder: "プレースホルダー"
+  }
+} as Story;
 export const disabled = {
   ...template,
   name: "無効",
