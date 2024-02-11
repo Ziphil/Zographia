@@ -1,6 +1,6 @@
 //
 
-import {FloatingContext, FloatingFocusManager} from "@floating-ui/react";
+import {FloatingContext, FloatingFocusManager, FloatingPortal} from "@floating-ui/react";
 import {CSSProperties, ForwardedRef, ReactElement, ReactNode} from "react";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, data} from "/source/module/data";
@@ -14,6 +14,7 @@ export const MenuPane = createWithRef(
     status,
     context,
     combobox = false,
+    usePortal = true,
     children,
     ...rest
   }: {
@@ -22,6 +23,7 @@ export const MenuPane = createWithRef(
     status: "unmounted" | "initial" | "open" | "close",
     context: FloatingContext,
     combobox?: boolean,
+    usePortal?: boolean,
     children?: ReactNode,
     className?: string,
     style?: CSSProperties,
@@ -30,7 +32,15 @@ export const MenuPane = createWithRef(
 
     const initialFocus = (combobox) ? -1 : undefined;
 
-    return (mounted) ? (
+    return (mounted) ? (usePortal) ? (
+      <FloatingPortal>
+        <FloatingFocusManager context={context} modal={false} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
+          <div styleName="root" {...data({status})} {...rest}>
+            {children}
+          </div>
+        </FloatingFocusManager>
+      </FloatingPortal>
+    ) : (
       <FloatingFocusManager context={context} modal={false} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
         <div styleName="root" {...data({status})} {...rest}>
           {children}
