@@ -14,6 +14,7 @@ export * from "./atom/google-adsense";
 export * from "./atom/google-analytics";
 export * from "./atom/input";
 export * from "./atom/link";
+export * from "./atom/loading-icon";
 export * from "./atom/markdown";
 export * from "./atom/multi-line-text";
 export * from "./atom/modal";
