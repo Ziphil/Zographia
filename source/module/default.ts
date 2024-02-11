@@ -18,7 +18,7 @@ export const DEFAULT_COLOR_DEFINITIONS = {
     dark: {mix: 0.5, saturation: -0.1},
     light: {mix: 0.93, saturation: 0.3}
   }),
-  red: createColorDefinition("hsl(340, 65%, 55%)", {
+  red: createColorDefinition("hsl(0, 65%, 55%)", {
     dark: {mix: 0.5, saturation: -0.1},
     light: {mix: 0.94, saturation: 0.3}
   }),
