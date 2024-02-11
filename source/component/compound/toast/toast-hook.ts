@@ -3,13 +3,13 @@
 import dayjs from "dayjs";
 import {ComponentProps, ReactElement, cloneElement, useCallback, useContext} from "react";
 import type {Toast} from "./toast";
-import {toastContext} from "./toast-context";
+import {toastGlobalContext} from "./toast-global-context";
 
 
 export type DispatchToast = (element: ReactElement) => void;
 
 export function useToast(): DispatchToast {
-  const {setToastElements} = useContext(toastContext);
+  const {setToastElements} = useContext(toastGlobalContext);
   const dispatchToast = useCallback((element: ReactElement) => {
     const id = dayjs().valueOf().toString() + Math.floor(Math.random() * 100000);
     const addedToastElement = cloneElement<ComponentProps<typeof Toast>>(element, {

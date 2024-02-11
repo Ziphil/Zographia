@@ -3,15 +3,13 @@
 import qixColor from "color";
 import {toKebabCase} from "/source/module/case";
 import {ColorDefinitions} from "/source/module/color";
-import {DEFAULT_COLOR_DEFINITIONS, DEFAULT_THEME} from "/source/module/default";
 import {Device, resolveResponsiveValue} from "/source/module/responsive";
-import {Theme} from "/source/module/theme";
+import {StyleDefinitions} from "/source/module/style";
 
 
 export function getColorDefinitionsVarCss(definitions: ColorDefinitions): string {
   const varCss = [];
-  const wholeDefinitions = {...DEFAULT_COLOR_DEFINITIONS, ...definitions};
-  for (const [scheme, definition] of Object.entries(wholeDefinitions)) {
+  for (const [scheme, definition] of Object.entries(definitions)) {
     if (typeof definition === "string") {
       const colorObject = qixColor(definition);
       const colorArray = colorObject.rgb().array();
@@ -28,12 +26,13 @@ export function getColorDefinitionsVarCss(definitions: ColorDefinitions): string
   return css;
 };
 
-export function getThemeVarCss(theme: Theme, device: Device): string {
+export function getStyleDefinitionsVarCss(definitions: StyleDefinitions, device: Device): string {
   const varCss = [];
-  varCss.push(`--glob-font-size: ${resolveResponsiveValue(theme.fontSize ?? DEFAULT_THEME.fontSize, device)};`);
-  varCss.push(`--glob-font-family-main: ${theme.fontFamilies?.main ?? DEFAULT_THEME.fontFamilies.main};`);
-  varCss.push(`--glob-font-family-bold: ${theme.fontFamilies?.bold ?? DEFAULT_THEME.fontFamilies.bold};`);
-  varCss.push(`--glob-font-family-monospace: ${theme.fontFamilies?.monospace ?? DEFAULT_THEME.fontFamilies.monospace};`);
+  varCss.push(`--glob-font-family-main: ${definitions.fontFamily.main};`);
+  varCss.push(`--glob-font-family-bold: ${definitions.fontFamily.bold};`);
+  varCss.push(`--glob-font-family-monospace: ${definitions.fontFamily.monospace};`);
+  varCss.push(`--glob-font-size: ${resolveResponsiveValue(definitions.fontSize, device)};`);
+  varCss.push(`--glob-page-horizontal-padding: ${resolveResponsiveValue(definitions.pageHorizontalPadding, device)};`);
   const css = `:root {\n${varCss.join("\n")}\n}`;
   return css;
 }

@@ -74,11 +74,11 @@ export const testHook: Story = {
   render: () => {
     const {register, handleSubmit} = useForm({defaultValues: {value: "2"}});
     return (
-      <form onSubmit={handleSubmit(action("onSubmit"))}>
+      <form>
         <Radio value="1" {...register("value")}/>
         <Radio value="2" {...register("value")}/>
         <Radio value="3" {...register("value")}/>
-        <Button type="submit" scheme="gray" variant="light">送信</Button>
+        <Button type="submit" scheme="gray" variant="light" onClick={handleSubmit(action("onSubmit"))}>送信</Button>
       </form>
     );
   }

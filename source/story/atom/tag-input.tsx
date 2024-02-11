@@ -1,8 +1,10 @@
-/* eslint-disable react/jsx-closing-tag-location, react-hooks/rules-of-hooks */
+/* eslint-disable react/jsx-closing-tag-location, react-hooks/rules-of-hooks, react/jsx-closing-bracket-location */
 
+import {action} from "@storybook/addon-actions";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {useState} from "react";
-import {SuggestionSpec, TagInput} from "/source/component";
+import {Controller, useForm} from "react-hook-form";
+import {Button, SuggestionSpec, TagInput} from "/source/component";
 import {restrictWidth} from "/source/story/decorator/width";
 
 
@@ -47,7 +49,7 @@ export const suggestion = {
   }
 } as Story;
 
-export const test = {
+export const testControlled = {
   ...template,
   name: "[テスト] 制御",
   render: () => {
@@ -57,3 +59,18 @@ export const test = {
     );
   }
 } as Story;
+export const testHook: Story = {
+  ...template,
+  name: "[テスト] Hook Form",
+  render: () => {
+    const {control, handleSubmit} = useForm({defaultValues: {value: ["ねこねこ", "うさうさ"]}});
+    return (
+      <form>
+        <Controller name="value" control={control} render={({field}) => (
+          <TagInput values={field.value} suggest={suggest} onSet={field.onChange}/>
+        )}/>
+        <Button type="submit" scheme="gray" variant="light" onClick={handleSubmit(action("onSubmit"))}>送信</Button>
+      </form>
+    );
+  }
+};

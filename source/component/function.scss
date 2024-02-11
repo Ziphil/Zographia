@@ -27,6 +27,10 @@
   @return div($value * 1, 16) * 1rem;
 }
 
+@function extrusion($line-height) {
+  @return calc((#{$line-height} - 1) * 0.5em);
+}
+
 
 @mixin theme($theme) {
   html[data-theme="#{$theme}"] & {
@@ -47,15 +51,20 @@
 }
 
 @mixin schemify {
-  @each $scheme in "primary", "secondary", "blue", "red", "gray" {
+  @each $scheme in "primary", "secondary", "blue", "red", "green", "yellow", "purple", "cyan", "orange", "gray" {
     &[data-scheme="#{$scheme}"] {
       @content($scheme);
     }
   }
 }
 
+@mixin normal-font {
+  font-family: var(--glob-font-family);
+  font-weight: normal;
+}
+
 @mixin bold-font {
-  font-family: var(--font-family-bold);
+  font-family: var(--glob-font-family-bold);
   font-weight: bold;
 }
 

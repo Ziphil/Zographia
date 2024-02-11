@@ -18,6 +18,7 @@ import {
 import {AsyncOrSync} from "ts-essentials";
 import {SuggestionSpec} from "/source/component/atom/input";
 import {useInputFloating, useInputInteraction} from "/source/component/atom/input/input-hook";
+import {InputMenuItem} from "/source/component/atom/input/input-menu-item";
 import {InputMenuPane} from "/source/component/atom/input/input-menu-pane";
 import {Tag, TagCloseButton} from "/source/component/atom/tag";
 import {createWithRef} from "/source/component/create";
@@ -29,6 +30,7 @@ export const TagInput = createWithRef(
   require("./tag-input.scss"), "TagInput",
   function ({
     values,
+    tagVariant = "light",
     autoFocus,
     error,
     readonly,
@@ -41,6 +43,7 @@ export const TagInput = createWithRef(
     ...rest
   }: {
     values: Array<string>,
+    tagVariant?: "solid" | "light",
     autoFocus?: boolean,
     error?: boolean,
     readonly?: boolean,
@@ -83,6 +86,7 @@ export const TagInput = createWithRef(
         const value = inputElement.value.trim();
         if (value) {
           onSet?.([...values, value]);
+          event.preventDefault();
           requestAnimationFrame(() => inputElement.value = "");
         }
       }
@@ -133,7 +137,7 @@ export const TagInput = createWithRef(
     return (
       <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
         {values.map((value, index) => (
-          <Tag key={index} styleName="tag">
+          <Tag styleName="tag" key={index} variant={tagVariant}>
             {value}
             <TagCloseButton onClick={() => removeTag(index)}/>
           </Tag>
@@ -155,12 +159,11 @@ export const TagInput = createWithRef(
         />
         {children}
         {(suggest !== undefined) && (
-          <InputMenuPane
-            suggestionSpecs={suggestionSpecs}
-            updateValue={addTag}
-            floatingSpec={floatingSpec}
-            interactionSpec={interactionSpec}
-          />
+          <InputMenuPane floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
+            {suggestionSpecs.map((spec, index) => (
+              <InputMenuItem key={index} index={index} spec={spec} updateValue={addTag}/>
+            ))}
+          </InputMenuPane>
         )}
       </div>
     );

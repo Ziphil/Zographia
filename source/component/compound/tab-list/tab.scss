@@ -11,15 +11,14 @@
       --focus-color: #{leveled-color("gray", 5, var(--glob-focus-alpha))};
     }
     &[data-selected] {
-      --text-color: #{leveled-color("secondary", 5)};
-      --highlight-color: #{leveled-color("secondary", 5)};
-      --focus-color: #{leveled-color("secondary", 5, var(--glob-focus-alpha))};
+      --text-color: var(--selected-text-color);
+      --highlight-color: var(--selected-highlight-color);
+      --focus-color: var(--selected-focus-color);
     }
   }
 }
 
 .root {
-  margin-block-end: -1zx;
   padding-block-end: 2zu;
   border-start-start-radius: var(--glob-border-radius);
   border-start-end-radius: var(--glob-border-radius);
@@ -29,6 +28,7 @@
   justify-items: center;
   transition: 0.1s border;
   cursor: pointer;
+  flex: 0 0 auto;
   &[data-selected] {
     border-block-end-color: var(--highlight-color);
   }

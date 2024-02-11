@@ -2,10 +2,11 @@
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleDown} from "@fortawesome/sharp-regular-svg-icons";
-import {Children, ReactElement, ReactNode, cloneElement, useCallback, useState} from "react";
+import {Children, ReactElement, ReactNode, cloneElement, useCallback, useMemo, useState} from "react";
 import {isElement} from "react-is";
 import {create} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
+import {SelectContextProvider} from "./select-context";
 import {useSelectFloating, useSelectInteraction} from "./select-hook";
 import {SelectMenuPane} from "./select-menu-pane";
 import {SelectOption} from "./select-option";
@@ -34,7 +35,7 @@ export const Select = create(
     const actualValue = (value !== undefined) ? value : innerValue;
     const controlled = value !== undefined;
 
-    const optionMap = getOptionMap<V>(children);
+    const optionMap = useMemo(() => getOptionMap<V>(children), [children]);
 
     const floatingSpec = useSelectFloating();
     const interactionSpec = useSelectInteraction(floatingSpec.context);
@@ -65,7 +66,9 @@ export const Select = create(
           </span>
         </button>
         <SelectMenuPane updateValue={updateValue} floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
-          {transformChildren(children)}
+          <SelectContextProvider value={useMemo(() => ({updateValue}), [updateValue])}>
+            {transformChildren(children)}
+          </SelectContextProvider>
         </SelectMenuPane>
       </div>
     );

@@ -5,25 +5,33 @@
 
 .root {
   @include theme("light") {
-    --heading-text-color: #{leveled-color("secondary", 5)};
+    --heading-text-color: #{leveled-color("primary", 5)};
     --marker-color: #{leveled-color("gray", 5)};
     --block-background-color: #{leveled-color("gray", 1)};
     --table-border-color: #{leveled-color("gray", 1)};
     --blockquote-border-color: #{leveled-color("gray", 1)};
+    --line-height: #{var(--glob-line-height)};
+    --pre-line-height: #{var(--glob-line-height-narrow)};
+  }
+  &[data-compact] {
+    --row-gap: 2zu;
+  }
+  &:not([data-compact]) {
+    --row-gap: 3zu;
   }
 }
 
 .root {
-  @include line-height(var(--glob-line-height));
-}
-
-.inner {
-  row-gap: calc(2zu + (1 - var(--glob-line-height)) * 0.5em);
-  display: flex;
-  flex-direction: column;
+  @include line-height(var(--line-height));
   &[data-justify] {
     text-align: justify;
   }
+}
+
+.inner {
+  row-gap: calc(var(--row-gap) - extrusion(var(--line-height)) * 2);
+  display: flex;
+  flex-direction: column;
 }
 
 .inner em,
@@ -77,22 +85,22 @@
 
 .inner blockquote {
   padding-inline-start: 2zu;
-  row-gap: calc(2zu + (1 - var(--glob-line-height)) * 0.5em);
+  row-gap: calc(var(--row-gap) - extrusion(var(--line-height)) * 2);
   border-inline-start: solid 4zx var(--blockquote-border-color);
   display: flex;
   flex-direction: column;
 }
 
 .inner pre {
-  margin-block: calc((1 - var(--glob-line-height)) * -0.5em);
-  padding-block: calc(1.5zu + (1 - var(--glob-short-line-height)) * 0.5em);
+  margin-block: extrusion(var(--line-height));
+  padding-block: calc(2zu - extrusion(var(--pre-line-height)));
   padding-inline: 2zu;
   font-size: 3.5zu;
   font-family: var(--glob-font-family-monospace);
   font-feature-settings: "palt" 0, "pkna" 0, "lnum" 0, "kern" 0 !important;
   white-space: pre;
   text-autospace: no-autospace;
-  line-height: var(--glob-short-line-height);
+  line-height: var(--pre-line-height);
   background-color: var(--block-background-color);
   border-radius: var(--glob-border-radius);
   >code {
@@ -102,7 +110,7 @@
 }
 
 .inner table {
-  margin-block: calc((1 - var(--glob-line-height)) * -0.5em);
+  margin-block: extrusion(var(--line-height));
   border-radius: var(--glob-border-radius);
   border-spacing: 0u;
   border-collapse: separate;
@@ -111,7 +119,7 @@
 
 .inner td,
 .inner th {
-  padding-block: calc(1.5zu + (1 - var(--glob-line-height)) * 0.5em);
+  padding-block: calc(1.5zu - extrusion(var(--line-height)));
   padding-inline: 2zu;
   border-block-end: solid 1zx var(--table-border-color);
   border-inline-end: solid 1zx var(--table-border-color);

@@ -1,26 +1,22 @@
-/* eslint-disable react/jsx-closing-bracket-location */
+//
 
-import {ReactElement, useMemo} from "react";
+import {ReactElement, ReactNode, useMemo} from "react";
 import {MenuContextProvider} from "/source/component/compound/menu/menu-context";
 import {MenuPane} from "/source/component/compound/menu/menu-pane";
 import {createWithRef} from "/source/component/create";
-import type {SuggestionSpec} from "./input";
 import {InputFloatingSpec, InputInteractionSpec} from "./input-hook";
-import {InputMenuItem} from "./input-menu-item";
 
 
 export const InputMenuPane = createWithRef(
   null, "InputMenuPane",
   function ({
-    suggestionSpecs,
-    updateValue,
     floatingSpec,
-    interactionSpec
+    interactionSpec,
+    children
   }: {
-    suggestionSpecs: Array<SuggestionSpec>,
-    updateValue: (value: string) => unknown,
     floatingSpec: InputFloatingSpec,
-    interactionSpec: InputInteractionSpec
+    interactionSpec: InputInteractionSpec,
+    children: ReactNode
   }): ReactElement {
 
     const {
@@ -50,13 +46,8 @@ export const InputMenuPane = createWithRef(
         ref={refs.setFloating}
         {...getFloatingProps()}
       >
-        <MenuContextProvider value={useMemo(
-          () => ({setOpen, listRef, activeIndex, getItemProps}),
-          [setOpen, listRef, activeIndex, getItemProps]
-        )}>
-          {suggestionSpecs.map((spec, index) => (
-            <InputMenuItem key={index} index={index} spec={spec} updateValue={updateValue}/>
-          ))}
+        <MenuContextProvider value={useMemo(() => ({setOpen, listRef, activeIndex, getItemProps}), [setOpen, listRef, activeIndex, getItemProps])}>
+          {children}
         </MenuContextProvider>
       </MenuPane>
     );

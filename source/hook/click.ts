@@ -16,19 +16,25 @@ type UseEnterDownReturn<T> = {
 };
 
 export function useEnterDown<T>(onEnter: (event: KeyboardEvent<T>) => unknown): UseEnterDownReturn<T> {
-  const isSafari = navigator.userAgent.toLowerCase().includes("safari");
+  const safari = isSafari();
   const afterCompositionEndRef = useRef(false);
   const handleKeyDown = useCallback(function (event: KeyboardEvent<T>): void {
-    if (isSafari && afterCompositionEndRef.current) {
+    if (safari && afterCompositionEndRef.current) {
       afterCompositionEndRef.current = false;
     } else if (!event.nativeEvent.isComposing) {
       if (event.key === "Enter") {
         onEnter(event);
       }
     }
-  }, [isSafari, onEnter]);
+  }, [safari, onEnter]);
   const handleCompositionEnd = useCallback(function (event: CompositionEvent<T>): void {
     afterCompositionEndRef.current = true;
   }, []);
   return {handleKeyDown, handleCompositionEnd};
+}
+
+function isSafari(): boolean {
+  const userAgent = navigator.userAgent.toLowerCase();
+  const safari = !userAgent.includes("chrome") && userAgent.includes("safari");
+  return safari;
 }

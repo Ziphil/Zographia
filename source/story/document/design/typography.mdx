@@ -1,5 +1,5 @@
 import {Meta, Typeset} from "@storybook/blocks";
-import {DEFAULT_THEME} from "/source/module/default";
+import {DEFAULT_STYLE_DEFINITIONS} from "/source/module/default";
 
 
 <Meta title="Design/タイポグラフィ"/>
@@ -11,7 +11,7 @@ import {DEFAULT_THEME} from "/source/module/default";
 ## 通常
 <Typeset
   fontSizes={[12, 14, 16, 20, 24, 32, 40]}
-  fontFamily={DEFAULT_THEME.fontFamilies.main}
+  fontFamily={DEFAULT_STYLE_DEFINITIONS.fontFamily.main}
   fontWeight="normal"
   sampleText="人類社会の Łóṝêm を Ἴπσῦ 権利と долор /θʊ̈t̪ɤɮʕ/。"
 />
@@ -19,7 +19,7 @@ import {DEFAULT_THEME} from "/source/module/default";
 ## 太字
 <Typeset
   fontSizes={[12, 14, 16, 20, 24, 32, 40]}
-  fontFamily={DEFAULT_THEME.fontFamilies.bold}
+  fontFamily={DEFAULT_STYLE_DEFINITIONS.fontFamily.bold}
   fontWeight="bold"
   sampleText="人類社会の Łóṝêm を Ἴπσῦ 権利と долор /θʊ̈t̪ɤɮʕ/。"
 />
@@ -27,7 +27,7 @@ import {DEFAULT_THEME} from "/source/module/default";
 ## 等幅
 <Typeset
   fontSizes={[12, 14, 16, 20, 24, 32, 40]}
-  fontFamily={DEFAULT_THEME.fontFamilies.monospace}
+  fontFamily={DEFAULT_STYLE_DEFINITIONS.fontFamily.monospace}
   fontWeight="normal"
   sampleText="人類社会の Łóṝêm を Ἴπσῦ 権利と долор /θʊ̈t̪ɤɮʕ/。"
 />

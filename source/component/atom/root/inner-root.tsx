@@ -2,11 +2,12 @@
 
 import {ReactElement, ReactNode, useEffect, useMemo, useState} from "react";
 import {RootContextProvider} from "/source/component/atom/root/root-context";
-import {ToastProvider} from "/source/component/compound/toast/toast-context";
+import {DialogGlobalProvider} from "/source/component/compound/dialog/dialog-global-context";
+import {ToastGlobalProvider} from "/source/component/compound/toast/toast-global-context";
 import {create} from "/source/component/create";
 import {Locale, MessageInventory, useDefaultLocale, useSetMessageInventory} from "/source/hook/locale";
 import {useDefaultTheme} from "/source/hook/theme";
-import {Device} from "/source/module";
+import {ColorDefinitions, Device, StyleDefinitions} from "/source/module";
 
 
 export const InnerRoot = create(
@@ -14,12 +15,16 @@ export const InnerRoot = create(
   function ({
     messageInventory,
     device,
+    colorDefinitions,
+    styleDefinitions,
     initialLocale,
     initialTheme,
     children
   }: {
     messageInventory: MessageInventory,
     device: Device,
+    colorDefinitions: ColorDefinitions,
+    styleDefinitions: StyleDefinitions,
     initialLocale: Locale,
     initialTheme: string,
     children: ReactNode
@@ -41,11 +46,13 @@ export const InnerRoot = create(
     }, [device]);
 
     return (
-      <RootContextProvider value={useMemo(() => ({device}), [device])}>
+      <RootContextProvider value={useMemo(() => ({device, colorDefinitions, styleDefinitions}), [device, colorDefinitions, styleDefinitions])}>
         {(ready) && (
-          <ToastProvider>
-            {children}
-          </ToastProvider>
+          <ToastGlobalProvider>
+            <DialogGlobalProvider>
+              {children}
+            </DialogGlobalProvider>
+          </ToastGlobalProvider>
         )}
       </RootContextProvider>
     );

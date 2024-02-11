@@ -27,7 +27,7 @@ export const Button = createWithRef(
     ...rest
   }: {
     scheme?: LeveledColorScheme,
-    variant?: "solid" | "light" | "text" | "underline",
+    variant?: "solid" | "light" | "underline" | "simple" | "unstyledUnderline" | "unstyledSimple",
     size?: "small" | "medium" | "large",
     type?: "submit" | "reset" | "button",
     reactive?: boolean,
@@ -66,7 +66,7 @@ export const Button = createWithRef(
 
     return (
       <button
-        styleName={(variant === "text" || variant === "underline") ? "root-text" : "root"}
+        styleName={getStyleName(variant)}
         type={type}
         disabled={disabled}
         onClick={handleClick}
@@ -94,3 +94,14 @@ export const Button = createWithRef(
 
   }
 );
+
+
+function getStyleName(variant: "solid" | "light" | "underline" | "simple" | "unstyledUnderline" | "unstyledSimple"): string {
+  if (variant === "solid" || variant === "light") {
+    return "root";
+  } else if (variant === "underline" || variant === "simple") {
+    return "root-text";
+  } else {
+    return "root-unstyled";
+  }
+}

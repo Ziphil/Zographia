@@ -11,7 +11,7 @@ export const Link = createWithRef(
   function ({
     href,
     scheme = "primary",
-    variant = "text",
+    variant = "underline",
     target,
     is = "a",
     onClick,
@@ -24,7 +24,7 @@ export const Link = createWithRef(
   }: {
     href?: string,
     scheme?: LeveledColorScheme,
-    variant?: "solid" | "light" | "text" | "underline",
+    variant?: "solid" | "light" | "underline" | "simple" | "unstyledUnderline" | "unstyledSimple",
     target?: HTMLAttributeAnchorTarget,
     is?: "a" | ComponentType<AnchorHTMLAttributes<HTMLAnchorElement>>,
     onClick?: (event: MouseEvent<HTMLAnchorElement>) => unknown,
@@ -42,7 +42,7 @@ export const Link = createWithRef(
 
     return (
       <Is
-        styleName={(variant === "text" || variant === "underline") ? "root-text" : "root"}
+        styleName={getStyleName(variant)}
         href={href}
         target={target}
         rel={(target === "_blank") ? "noopener noreferrer" : undefined}
@@ -63,3 +63,14 @@ export const Link = createWithRef(
 
   }
 );
+
+
+function getStyleName(variant: "solid" | "light" | "underline" | "simple" | "unstyledUnderline" | "unstyledSimple"): string {
+  if (variant === "solid" || variant === "light") {
+    return "root";
+  } else if (variant === "underline" || variant === "simple") {
+    return "root-text";
+  } else {
+    return "root-unstyled";
+  }
+}

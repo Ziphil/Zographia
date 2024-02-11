@@ -32,6 +32,7 @@ export const TagCloseButton = createWithRef(
     return (
       <button
         styleName="root"
+        type="button"
         tabIndex={-1}
         onClick={onClick}
         onKeyDown={onKeyDown}

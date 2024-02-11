@@ -20,7 +20,7 @@ export const ToastSupplement = createWithRef(
 
     return (
       <RawToastDescription asChild={true}>
-        <MultiLineText styleName="root" is="p" lineHeight="short" {...rest}>
+        <MultiLineText styleName="root" is="p" lineHeight="narrow" {...rest}>
           {children}
         </MultiLineText>
       </RawToastDescription>

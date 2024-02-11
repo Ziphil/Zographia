@@ -6,12 +6,25 @@
 .root {
   @include theme("light") {
     --border-color: #{leveled-color("gray", 1)};
+    @include schemify using ($scheme) {
+      --selected-text-color: #{leveled-color($scheme, 5)};
+      --selected-highlight-color: #{leveled-color($scheme, 5)};
+      --selected-focus-color: #{leveled-color($scheme, 5, var(--glob-focus-alpha))};
+    }
   }
 }
 
 .root {
+  border-block-end: solid 1zx var(--border-color);
+}
+
+.inner {
   column-gap: 4zu;
+  margin-block-end: -1zx;
   display: flex;
   flex-direction: row;
-  border-block-end: solid 1zx var(--border-color);
+  @include device("mobile") {
+    overflow-x: auto;
+    overflow-y: visible;
+  }
 }

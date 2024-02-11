@@ -1,3 +1,5 @@
+//
+
 import {ForwardedRef, ReactElement, ReactNode} from "react";
 import {MultiLineText} from "/source/component/atom/multi-line-text";
 import {createWithRef} from "/source/component/create";
@@ -16,7 +18,7 @@ export const ControlErrorMessage = createWithRef(
   } & AdditionalProps): ReactElement {
 
     return (
-      <MultiLineText styleName="root" is="p" lineHeight="short" {...rest}>
+      <MultiLineText styleName="root" is="p" lineHeight="narrow" {...rest}>
         {children}
       </MultiLineText>
     );

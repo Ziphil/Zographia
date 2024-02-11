@@ -6,6 +6,7 @@
 .root {
   @include control-group-vars;
   @include theme("light") {
+    --placeholder-text-color: #{leveled-color("gray", 5)};
     --background-color: #{single-color("white")};
     &:not([data-error]) {
       --border-color: #{leveled-color("gray", 3)};
@@ -38,6 +39,9 @@
     border-color: var(--focus-border-color);
     outline: solid 2zx var(--focus-color);
   }
+  &[data-disabled] {
+    opacity: 0.5;
+  }
 }
 
 .input {
@@ -47,6 +51,12 @@
   flex: 1 1 auto;
   order: 10;
   cursor: text;
+  &::placeholder {
+    color: var(--placeholder-text-color);
+  }
+  &:disabled {
+    cursor: inherit;
+  }
   &::-webkit-calendar-picker-indicator {
     width: 7zu;
     height: 100%;

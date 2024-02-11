@@ -12,6 +12,7 @@ export const Markdown = create(
   require("./markdown.scss"), "Markdown",
   function ({
     justify = false,
+    compact = false,
     allowedElements = null,
     disallowedElements = null,
     components = {},
@@ -21,6 +22,7 @@ export const Markdown = create(
     ...rest
   }: {
     justify?: boolean,
+    compact?: boolean,
     allowedElements?: Array<string> | null,
     disallowedElements?: Array<string> | null,
     components?: NonNullable<MarkdownOption["components"]>,
@@ -31,8 +33,8 @@ export const Markdown = create(
   } & AdditionalProps): ReactElement | null {
 
     return (
-      <div styleName="root" {...rest}>
-        <div styleName="inner" {...data({justify})}>
+      <div styleName="root" {...data({justify, compact})} {...rest}>
+        <div styleName="inner">
           <ReactMarkdown
             allowedElements={allowedElements}
             disallowedElements={disallowedElements}

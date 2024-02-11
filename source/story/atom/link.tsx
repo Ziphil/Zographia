@@ -18,21 +18,21 @@ export default {
 const template = {
 } as Story;
 
-export const variantText = {
-  ...template,
-  name: "バリアント: 単純",
-  args: {
-    href: "https://example.com",
-    variant: "text",
-    children: "リンクテキスト"
-  }
-} as Story;
 export const variantUnderline = {
   ...template,
   name: "バリアント: 下線",
   args: {
     href: "https://example.com",
     variant: "underline",
+    children: "リンクテキスト"
+  }
+} as Story;
+export const variantText = {
+  ...template,
+  name: "バリアント: 単純",
+  args: {
+    href: "https://example.com",
+    variant: "simple",
     children: "リンクテキスト"
   }
 } as Story;

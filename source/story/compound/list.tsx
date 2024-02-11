@@ -24,7 +24,7 @@ export const testUncontrolledNormal = {
   render: () => {
     return (
       <List
-        size={4}
+        pageSpec={{size: 4}}
         items={[
           {content: "ねこねこ"},
           {content: "うさうさ"},
@@ -55,7 +55,7 @@ export const testUncontrolledLoading = {
   name: "[テスト] 非制御/ローディング",
   render: () => {
     return (
-      <List size={4} items={undefined}>
+      <List pageSpec={{size: 4}} items={undefined}>
         <ListBody>
           {(item, index) => (
             <Card>
@@ -77,7 +77,7 @@ export const testUncontrolledEmpty = {
   name: "[テスト] 非制御/空",
   render: () => {
     return (
-      <List size={4} items={[]}>
+      <List pageSpec={{size: 4}} items={[]}>
         <ListBody>
           {(item, index) => (
             <Card>

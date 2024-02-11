@@ -5,18 +5,18 @@ import type {DEFAULT_COLOR_DEFINITIONS} from "/source/module/default";
 
 
 type IsLeveled<K extends keyof ColorScheme> = ColorScheme[K] extends Record<ColorLevel, string> ? K : never;
-type IsUnleveled<K extends keyof ColorScheme> = ColorScheme[K] extends Record<ColorLevel, string> ? never : K;
+type IsSingle<K extends keyof ColorScheme> = ColorScheme[K] extends Record<ColorLevel, string> ? never : K;
 type LeveledColorSchemeBranch<K extends keyof ColorScheme> = K extends IsLeveled<K> ? K : never;
-type UnleveledColorSchemeBranch<K extends keyof ColorScheme> = K extends IsUnleveled<K> ? K : never;
+type SingleColorSchemeBranch<K extends keyof ColorScheme> = K extends IsSingle<K> ? K : never;
 
 export type ColorScheme = typeof DEFAULT_COLOR_DEFINITIONS;
 export type LeveledColorScheme = LeveledColorSchemeBranch<keyof ColorScheme>;
-export type UnleveledColorScheme = UnleveledColorSchemeBranch<keyof ColorScheme>;
+export type SingleColorScheme = SingleColorSchemeBranch<keyof ColorScheme>;
 
 export type ColorLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 export type ColorDefinition = Record<ColorLevel, string>;
-export type ColorDefinitions = Partial<Record<LeveledColorScheme, ColorDefinition>> & Partial<Record<UnleveledColorScheme, string>>;
+export type ColorDefinitions = Record<LeveledColorScheme, ColorDefinition> & Record<SingleColorScheme, string>;
 
 export function createColorDefinition(colorString: string, setting: Record<"dark" | "light", {mix: number, saturation: number}>): ColorDefinition {
   const color = qixColor(colorString);
@@ -42,5 +42,23 @@ export function createColor(colorString: string): string {
     return color.hex();
   } else {
     return color.hexa();
+  }
+}
+
+export function getLeveledColor(colorDefinitions: ColorDefinitions, scheme: LeveledColorScheme, level: ColorLevel, alpha?: number): string {
+  const color = qixColor(colorDefinitions[scheme][level]);
+  if (alpha !== undefined) {
+    return color.alpha(alpha).hexa();
+  } else {
+    return color.hex();
+  }
+}
+
+export function getSingleColor(colorDefinitions: ColorDefinitions, scheme: SingleColorScheme, alpha?: number): string {
+  const color = qixColor(colorDefinitions[scheme]);
+  if (alpha !== undefined) {
+    return color.alpha(alpha).hexa();
+  } else {
+    return color.hex();
   }
 }
