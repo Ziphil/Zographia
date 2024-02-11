@@ -10,23 +10,19 @@ export const List = create(
   null, "List",
   function <T = any>({
     items,
-    size,
-    hitSize,
-    page,
-    onPageSet,
+    pageSpec,
     children,
     ...rest
   }: {
     items: Array<T> | undefined,
-    size: number,
-    hitSize?: number,
-    page?: number,
-    onPageSet?: (page: number) => void,
+    pageSpec: PageSpec,
     children: ReactNode,
     className?: string
   } & AdditionalProps): ReactElement {
 
     const [innerPage, onInnerPageSet] = useState(0);
+
+    const {size, hitSize, page, onPageSet} = pageSpec;
 
     return (
       <div {...rest}>
@@ -41,3 +37,11 @@ export const List = create(
 
   }
 );
+
+
+export type PageSpec = {
+  size: number,
+  hitSize?: number,
+  page?: number,
+  onPageSet?: (page: number) => unknown
+};
