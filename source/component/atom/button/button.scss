@@ -39,6 +39,14 @@
   }
 }
 
+.root-unstyled {
+  @include theme("light") {
+    @include schemify using ($scheme) {
+      --focus-color: #{leveled-color($scheme, 5, var(--glob-focus-alpha))};
+    }
+  }
+}
+
 .root {
   @include control-group-item;
   padding-block: 1.5zu;
@@ -80,7 +88,7 @@
   position: relative;
   cursor: pointer;
   transition: 0.1s color, 0.1s text-decoration-color;
-  &[data-variant="text"] {
+  &[data-variant="simple"] {
     text-decoration-color: transparent;
     &:hover:not(:disabled, [data-loading]) {
       color: var(--hover-text-color);
@@ -99,7 +107,33 @@
   }
   &:disabled,
   &[data-loading] {
-    box-shadow: var(--glob-box-shadow-setting) transparent;
+    opacity: 0.5;
+    cursor: inherit;
+  }
+}
+
+.root-unstyled {
+  text-decoration-line: underline;
+  position: relative;
+  cursor: pointer;
+  transition: 0.1s color, 0.1s text-decoration-color;
+  &[data-variant="unstyledSimple"] {
+    text-decoration-color: transparent;
+    &:hover:not(:disabled, [data-loading]) {
+      text-decoration-color: currentcolor;
+    }
+  }
+  &[data-variant="unstyledUnderline"] {
+    text-decoration-color: currentcolor;
+    &:hover:not(:disabled, [data-loading]) {
+      text-decoration-color: transparent;
+    }
+  }
+  &:focus-visible {
+    outline: solid 2zx var(--focus-color);
+  }
+  &:disabled,
+  &[data-loading] {
     opacity: 0.5;
     cursor: inherit;
   }

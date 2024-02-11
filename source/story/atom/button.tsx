@@ -34,19 +34,19 @@ export const variantOutline = {
     children: "ボタンテキスト"
   }
 } as Story;
-export const variantText = {
-  ...template,
-  name: "バリアント: 単純",
-  args: {
-    variant: "text",
-    children: "ボタンテキスト"
-  }
-} as Story;
 export const variantUnderline = {
   ...template,
   name: "バリアント: 下線",
   args: {
     variant: "underline",
+    children: "ボタンテキスト"
+  }
+} as Story;
+export const variantText = {
+  ...template,
+  name: "バリアント: 単純",
+  args: {
+    variant: "simple",
     children: "ボタンテキスト"
   }
 } as Story;
