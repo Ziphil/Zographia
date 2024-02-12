@@ -13,3 +13,8 @@ export async function getMessages(messageInventory: MessageInventory, locale: Lo
     return {};
   }
 }
+
+export function convertMessages(messages: Messages, convert: (message: string) => string): Messages {
+  const convertedMessages = Object.fromEntries(Object.entries(messages).map(([key, message]) => [key, convert(message)]));
+  return convertedMessages;
+}
