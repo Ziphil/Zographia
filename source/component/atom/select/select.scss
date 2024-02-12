@@ -34,7 +34,8 @@
   display: flex;
   position: relative;
   z-index: 10;
-  &:focus-within {
+  &:focus-within,
+  &[data-menu-focus] {
     border-color: var(--focus-border-color);
     outline: solid 2zx var(--focus-color);
   }
