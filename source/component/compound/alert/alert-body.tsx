@@ -5,8 +5,8 @@ import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
 
 
-export const DialogBody = createWithRef(
-  require("./dialog-body.scss"), "DialogBody",
+export const AlertBody = createWithRef(
+  require("./alert-body.scss"), "AlertBody",
   function ({
     children,
     ...rest

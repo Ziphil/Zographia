@@ -12,7 +12,7 @@ passwordInput:
 tag:
   close: "削除"
 
-dialog:
+alert:
   close: "閉じる"
 pagination:
   first: "最初のページ"

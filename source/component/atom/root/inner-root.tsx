@@ -2,7 +2,7 @@
 
 import {ReactElement, ReactNode, useEffect, useMemo, useState} from "react";
 import {RootContextProvider} from "/source/component/atom/root/root-context";
-import {DialogGlobalProvider} from "/source/component/compound/dialog/dialog-global-context";
+import {AlertGlobalProvider} from "/source/component/compound/alert/alert-global-context";
 import {ToastGlobalProvider} from "/source/component/compound/toast/toast-global-context";
 import {create} from "/source/component/create";
 import {Locale, MessageInventory, useDefaultLocale, useSetMessageInventory} from "/source/hook/locale";
@@ -49,9 +49,9 @@ export const InnerRoot = create(
       <RootContextProvider value={useMemo(() => ({device, colorDefinitions, styleDefinitions}), [device, colorDefinitions, styleDefinitions])}>
         {(ready) && (
           <ToastGlobalProvider>
-            <DialogGlobalProvider>
+            <AlertGlobalProvider>
               {children}
-            </DialogGlobalProvider>
+            </AlertGlobalProvider>
           </ToastGlobalProvider>
         )}
       </RootContextProvider>

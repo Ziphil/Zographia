@@ -12,7 +12,7 @@ passwordInput:
 tag:
   close: "Forigi"
 
-dialog:
+alert:
   close: "Fermi"
 pagination:
   first: "Unua paĝo"

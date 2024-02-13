@@ -9,8 +9,8 @@ import {useTrans} from "/source/hook/translation";
 import {AdditionalProps} from "/source/module/data";
 
 
-export const DialogCloseButton = createWithRef(
-  require("./dialog-close-button.scss"), "DialogCloseButton",
+export const AlertCloseButton = createWithRef(
+  require("./alert-close-button.scss"), "AlertCloseButton",
   function ({
     ...rest
   }: {
@@ -18,7 +18,7 @@ export const DialogCloseButton = createWithRef(
     ref?: Ref<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
 
-    const {trans} = useTrans("dialog");
+    const {trans} = useTrans("alert");
 
     const {onOpenSet} = useContext(modalContext);
 

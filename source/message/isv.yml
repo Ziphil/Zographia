@@ -12,7 +12,7 @@ passwordInput:
 tag:
   close: "Remove"
 
-dialog:
+alert:
   close: "Затворити"
 pagination:
   first: "Прва страница"

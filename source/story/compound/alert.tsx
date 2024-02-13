@@ -5,28 +5,28 @@ import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import dayjs from "dayjs";
 import {useCallback} from "react";
 import {
+  Alert,
+  AlertBody,
+  AlertCloseButton,
+  AlertContent,
+  AlertFooter,
+  AlertIconContainer,
+  AlertPane,
   Button,
   ButtonIconbag,
-  Dialog,
-  DialogBody,
-  DialogCloseButton,
-  DialogContent,
-  DialogFooter,
-  DialogIconContainer,
-  DialogPane,
   GeneralIcon,
   MultiLineText,
-  useDialog
+  useAlert
 } from "/source/component";
 
 
-type Meta = RawMeta<typeof Dialog>;
-type Story = RawStory<typeof Dialog>;
+type Meta = RawMeta<typeof Alert>;
+type Story = RawStory<typeof Alert>;
 
 export default {
-  title: "Compound/Dialog",
-  component: Dialog,
-  subcomponents: {DialogPane, DialogBody, DialogContent, DialogIconContainer, DialogFooter, DialogCloseButton}
+  title: "Compound/Alert",
+  component: Alert,
+  subcomponents: {AlertPane, AlertBody, AlertContent, AlertIconContainer, AlertFooter, AlertCloseButton}
 } as Meta;
 
 const template = {
@@ -41,21 +41,21 @@ export const basic = {
   args: {
     open: true,
     children: (
-      <DialogPane>
-        <DialogCloseButton/>
-        <DialogBody>
-          <DialogIconContainer>
+      <AlertPane>
+        <AlertCloseButton/>
+        <AlertBody>
+          <AlertIconContainer>
             <GeneralIcon icon={faCircleInfo}/>
-          </DialogIconContainer>
-          <DialogContent>
+          </AlertIconContainer>
+          <AlertContent>
             <MultiLineText>
               ここにダイアログのメッセージが入ります。
               ここにダイアログのメッセージが入ります。
               ここにダイアログのメッセージが入ります。
             </MultiLineText>
-          </DialogContent>
-        </DialogBody>
-        <DialogFooter>
+          </AlertContent>
+        </AlertBody>
+        <AlertFooter>
           <Button scheme="gray" variant="light">
             <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
             キャンセル
@@ -64,32 +64,32 @@ export const basic = {
             <ButtonIconbag><GeneralIcon icon={faCheck}/></ButtonIconbag>
             確認
           </Button>
-        </DialogFooter>
-      </DialogPane>
+        </AlertFooter>
+      </AlertPane>
     )
   }
 } as Story;
 export const alert = {
   ...template,
-  name: "アラート",
+  name: "警告",
   args: {
     open: true,
     scheme: "red",
     children: (
-      <DialogPane>
-        <DialogCloseButton/>
-        <DialogBody>
-          <DialogIconContainer>
+      <AlertPane>
+        <AlertCloseButton/>
+        <AlertBody>
+          <AlertIconContainer>
             <GeneralIcon icon={faExclamationTriangle}/>
-          </DialogIconContainer>
-          <DialogContent>
+          </AlertIconContainer>
+          <AlertContent>
             <MultiLineText>
               このユーザーを削除してもよろしいですか?
               一度削除すると、元に戻すことはできません。
             </MultiLineText>
-          </DialogContent>
-        </DialogBody>
-        <DialogFooter>
+          </AlertContent>
+        </AlertBody>
+        <AlertFooter>
           <Button scheme="gray" variant="light">
             <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
             キャンセル
@@ -98,8 +98,8 @@ export const alert = {
             <ButtonIconbag><GeneralIcon icon={faTrashAlt}/></ButtonIconbag>
             削除
           </Button>
-        </DialogFooter>
-      </DialogPane>
+        </AlertFooter>
+      </AlertPane>
     )
   }
 } as Story;
@@ -108,25 +108,25 @@ export const testHook = {
   ...template,
   name: "[テスト] フック",
   render: () => {
-    const openDialog = useDialog();
+    const openAlert = useAlert();
     const handleClick = useCallback(function (): void {
       const dateString = dayjs().format("YYYY/MM/DD HH:mm:ss.SSS");
-      openDialog((close) => (
-        <Dialog>
-          <DialogPane>
-            <DialogCloseButton/>
-            <DialogBody>
-              <DialogIconContainer>
+      openAlert((close) => (
+        <Alert>
+          <AlertPane>
+            <AlertCloseButton/>
+            <AlertBody>
+              <AlertIconContainer>
                 <GeneralIcon icon={faCircleInfo}/>
-              </DialogIconContainer>
-              <DialogContent>
+              </AlertIconContainer>
+              <AlertContent>
                 <MultiLineText>
                   ここにダイアログのメッセージが入ります。
                   日時は {dateString} です。
                 </MultiLineText>
-              </DialogContent>
-            </DialogBody>
-            <DialogFooter>
+              </AlertContent>
+            </AlertBody>
+            <AlertFooter>
               <Button scheme="gray" variant="light" onClick={close}>
                 <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
                 キャンセル
@@ -135,11 +135,11 @@ export const testHook = {
                 <ButtonIconbag><GeneralIcon icon={faCheck}/></ButtonIconbag>
                 確認
               </Button>
-            </DialogFooter>
-          </DialogPane>
-        </Dialog>
+            </AlertFooter>
+          </AlertPane>
+        </Alert>
       ));
-    }, [openDialog]);
+    }, [openAlert]);
     return (
       <Button onClick={handleClick}>ダイアログ表示</Button>
     );

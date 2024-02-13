@@ -5,11 +5,11 @@ import {Modal} from "/source/component/atom/modal";
 import {create} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module";
 import {AdditionalProps} from "/source/module/data";
-import {DialogContextProvider} from "./dialog-context";
+import {AlertContextProvider} from "./alert-context";
 
 
-export const Dialog = create(
-  require("./dialog.scss"), "Dialog",
+export const Alert = create(
+  require("./alert.scss"), "Alert",
   function ({
     open,
     defaultOpen = false,
@@ -27,11 +27,11 @@ export const Dialog = create(
   } & AdditionalProps): ReactElement {
 
     return (
-      <DialogContextProvider value={useMemo(() => ({scheme}), [scheme])}>
+      <AlertContextProvider value={useMemo(() => ({scheme}), [scheme])}>
         <Modal styleName="root" open={open} defaultOpen={defaultOpen} onOpenSet={onOpenSet} {...rest}>
           {children}
         </Modal>
-      </DialogContextProvider>
+      </AlertContextProvider>
     );
 
   }
