@@ -1,9 +1,15 @@
 /* eslint-disable react/jsx-closing-tag-location, react-hooks/rules-of-hooks */
 
+import {faCat, faRabbit} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {
   Dialog,
-  DialogPane
+  DialogCloseButton,
+  DialogOutsideButton,
+  DialogOutsideButtonContainer,
+  DialogOutsideButtonIconbag,
+  DialogPane,
+  GeneralIcon
 } from "/source/component";
 
 
@@ -29,6 +35,17 @@ export const basic = {
     open: true,
     children: (
       <DialogPane>
+        <DialogCloseButton/>
+        <DialogOutsideButtonContainer>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faCat}/></DialogOutsideButtonIconbag>
+            ボタン 1
+          </DialogOutsideButton>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faRabbit}/></DialogOutsideButtonIconbag>
+            ボタン 2
+          </DialogOutsideButton>
+        </DialogOutsideButtonContainer>
         あああ
       </DialogPane>
     )

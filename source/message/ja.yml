@@ -14,6 +14,8 @@ tag:
 
 alert:
   close: "閉じる"
+dialog:
+  close: "閉じる"
 pagination:
   first: "最初のページ"
   previous: "前のページ"

@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --text-color: #{single-color("white")};
+    --hover-text-color: #{leveled-color("primary", 0)};
+    --focus-color: #{single-color("white", var(--glob-focus-alpha))};
+  }
+}
+
+.root {
+  font-size: 4zu;
+  color: var(--text-color);
+  border-radius: var(--glob-border-radius);
+  cursor: pointer;
+  transition: 0.1s color;
+  &:hover {
+    color: var(--hover-text-color);
+  }
+  &:focus-visible {
+    outline: solid 2zx var(--focus-color);
+  }
+}
