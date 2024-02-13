@@ -49,9 +49,9 @@ export const basic = {
           </AlertIconContainer>
           <AlertContent>
             <MultiLineText>
-              ここにダイアログのメッセージが入ります。
-              ここにダイアログのメッセージが入ります。
-              ここにダイアログのメッセージが入ります。
+              ここにアラートのメッセージが入ります。
+              ここにアラートのメッセージが入ります。
+              ここにアラートのメッセージが入ります。
             </MultiLineText>
           </AlertContent>
         </AlertBody>
@@ -121,7 +121,7 @@ export const testHook = {
               </AlertIconContainer>
               <AlertContent>
                 <MultiLineText>
-                  ここにダイアログのメッセージが入ります。
+                  ここにアラートのメッセージが入ります。
                   日時は {dateString} です。
                 </MultiLineText>
               </AlertContent>
@@ -141,7 +141,7 @@ export const testHook = {
       ));
     }, [openAlert]);
     return (
-      <Button onClick={handleClick}>ダイアログ表示</Button>
+      <Button onClick={handleClick}>アラート表示</Button>
     );
   }
 } as Story;

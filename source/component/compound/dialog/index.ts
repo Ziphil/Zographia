@@ -1,6 +1,7 @@
 //
 
 export * from "./dialog";
+export * from "./dialog-body";
 export * from "./dialog-close-button";
 export * from "./dialog-pane";
 export * from "./dialog-outside-button";

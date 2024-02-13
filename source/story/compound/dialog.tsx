@@ -4,12 +4,14 @@ import {faCat, faRabbit} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {
   Dialog,
+  DialogBody,
   DialogCloseButton,
   DialogOutsideButton,
   DialogOutsideButtonContainer,
   DialogOutsideButtonIconbag,
   DialogPane,
-  GeneralIcon
+  GeneralIcon,
+  MultiLineText
 } from "/source/component";
 
 
@@ -46,7 +48,16 @@ export const basic = {
             ボタン 2
           </DialogOutsideButton>
         </DialogOutsideButtonContainer>
-        あああ
+        <DialogBody>
+          <MultiLineText>
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+          </MultiLineText>
+        </DialogBody>
       </DialogPane>
     )
   }
