@@ -19,6 +19,8 @@
   box-sizing: border-box;
   opacity: 0;
   transition: 0.1s opacity;
+  position: relative;
+  z-index: 10000;
   &[data-status="open"] {
     opacity: 1;
   }
