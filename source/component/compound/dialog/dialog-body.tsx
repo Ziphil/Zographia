@@ -8,18 +8,22 @@ import {AdditionalProps} from "/source/module/data";
 export const DialogBody = createWithRef(
   require("./dialog-body.scss"), "DialogBody",
   function ({
+    is = "div",
     children,
     ...rest
   }: {
+    is?: string,
     children: ReactNode,
     className?: string,
-    ref?: Ref<HTMLDivElement>
+    ref?: Ref<HTMLElement>
   } & AdditionalProps): ReactElement {
 
+    const Is = is as any;
+
     return (
-      <div styleName="root" {...rest}>
+      <Is styleName="root" {...rest}>
         {children}
-      </div>
+      </Is>
     );
 
   }
