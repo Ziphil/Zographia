@@ -29,7 +29,7 @@ export function convertInterslavicCyrillicToLatin(string: string): string {
   table["т"] = "t";
   table["у"] = "u";
   table["ф"] = "f";
-  table["х"] = "x";
+  table["х"] = "h";
   table["ц"] = "c";
   table["ч"] = "č";
   table["ш"] = "š";
@@ -46,8 +46,8 @@ export function convertInterslavicCyrillicToLatin(string: string): string {
   table["И"] = "I";
   table["Ј"] = "J";
   table["К"] = "K";
-  table["Л"] = "ǈ";
-  table["Љ"] = "L";
+  table["Л"] = "L";
+  table["Љ"] = "ǈ";
   table["М"] = "M";
   table["Н"] = "N";
   table["Њ"] = "ǋ";
@@ -58,7 +58,7 @@ export function convertInterslavicCyrillicToLatin(string: string): string {
   table["Т"] = "T";
   table["У"] = "U";
   table["Ф"] = "F";
-  table["Х"] = "X";
+  table["Х"] = "H";
   table["Ц"] = "C";
   table["Ч"] = "Č";
   table["Ш"] = "Š";
