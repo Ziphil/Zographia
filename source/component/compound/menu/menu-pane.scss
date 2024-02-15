@@ -23,7 +23,7 @@
   flex-direction: column;
   box-sizing: border-box;
   overflow: auto;
-  z-index: 3000;
+  z-index: 2000;
   transition: 0.1s opacity;
   &[data-status="open"] {
     opacity: 1;

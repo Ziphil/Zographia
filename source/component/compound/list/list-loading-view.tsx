@@ -1,6 +1,7 @@
 //
 
 import {ReactElement, ReactNode} from "react";
+import {LoadingIcon} from "/source/component/atom/loading-icon";
 import {create} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
 
@@ -17,7 +18,11 @@ export const ListLoadingView = create(
 
     return (
       <div styleName="root" {...rest}>
-        {children}
+        {(children !== undefined) ? children : (
+          <div styleName="icon">
+            <LoadingIcon/>
+          </div>
+        )}
       </div>
     );
 
