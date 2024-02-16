@@ -21,7 +21,7 @@
     }
     @include device("mobile") {
       --pane-max-width: 100%;
-      --pane-padding-inline: 4zu;
+      --pane-padding-inline: var(--glob-page-horizontal-padding);
       --overlay-padding-block-end: 0zu;
       --overlay-padding-inline: 0zu;
     }
