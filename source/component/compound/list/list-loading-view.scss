@@ -11,13 +11,15 @@
 }
 
 .root {
+  min-height: 8zu;
   padding-block: 3zu;
   padding-inline: 3zu;
   border-radius: var(--glob-border-radius);
-  border: dashed 1zx var(--border-color);
+  border: solid 1zx var(--border-color);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
 }
 
