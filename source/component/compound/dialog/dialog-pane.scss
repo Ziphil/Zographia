@@ -17,12 +17,12 @@
 .root {
   width: 100%;
   max-width: 160zu;
-  padding-block: 8zu;
-  padding-inline: 8zu;
   background-color: var(--background-color);
   background-image: var(--glob-noise-background-image);
   box-shadow: var(--glob-stain-shadow-setting) var(--stain-color);
   border-radius: var(--glob-border-radius);
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   position: relative;
 }

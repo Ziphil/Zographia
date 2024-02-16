@@ -4,5 +4,8 @@
 
 
 .root {
-  flex: 0 0 auto;
+  padding-block: 8zu;
+  padding-inline: 8zu;
+  flex: 1 1 auto;
+  overflow: auto;
 }
