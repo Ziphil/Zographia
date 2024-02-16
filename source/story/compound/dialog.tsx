@@ -90,3 +90,36 @@ export const long = {
     )
   }
 } as Story;
+export const full = {
+  ...template,
+  name: "大きい",
+  args: {
+    height: "full",
+    open: true,
+    children: (
+      <DialogPane>
+        <DialogCloseButton/>
+        <DialogOutsideButtonContainer>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faCat}/></DialogOutsideButtonIconbag>
+            ボタン 1
+          </DialogOutsideButton>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faRabbit}/></DialogOutsideButtonIconbag>
+            ボタン 2
+          </DialogOutsideButton>
+        </DialogOutsideButtonContainer>
+        <DialogBody>
+          <MultiLineText>
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+          </MultiLineText>
+        </DialogBody>
+      </DialogPane>
+    )
+  }
+} as Story;

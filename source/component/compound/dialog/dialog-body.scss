@@ -5,7 +5,7 @@
 
 .root {
   padding-block: 8zu;
-  padding-inline: 8zu;
+  padding-inline: var(--pane-padding-inline);
   flex: 1 1 auto;
   overflow: auto;
 }

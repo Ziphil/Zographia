@@ -4,7 +4,7 @@
 
 
 .root {
-  inset-inline-start: 6zu;
+  inset-inline-start: var(--pane-padding-inline);
   inset-block-start: -6zu;
   column-gap: 4zu;
   display: flex;

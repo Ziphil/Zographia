@@ -4,7 +4,32 @@
 
 
 .root {
+  &[data-height="fit"] {
+    --pane-max-width: 160zu;
+    --pane-height: auto;
+    --pane-padding-inline: 8zu;
+    --overlay-padding-block-end: 6zu;
+    --overlay-padding-inline: var(--glob-page-horizontal-padding);
+  }
+  &[data-height="full"] {
+    --pane-height: 100%;
+    @include device("desktop") {
+      --pane-max-width: 240zu;
+      --pane-padding-inline: 8zu;
+      --overlay-padding-block-end: 6zu;
+      --overlay-padding-inline: var(--glob-page-horizontal-padding);
+    }
+    @include device("mobile") {
+      --pane-max-width: 100%;
+      --pane-padding-inline: 4zu;
+      --overlay-padding-block-end: 0zu;
+      --overlay-padding-inline: 0zu;
+    }
+  }
+}
+
+.root {
   padding-block-start: 10zu;
-  padding-block-end: 6zu;
-  padding-inline: var(--glob-page-horizontal-padding);
+  padding-block-end: var(--overlay-padding-block-end);
+  padding-inline: var(--overlay-padding-inline);
 }

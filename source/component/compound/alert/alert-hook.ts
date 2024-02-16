@@ -11,9 +11,9 @@ export function useAlert(): OpenAlert {
   const close = useCallback(function (): void {
     setOpen(false);
   }, [setOpen]);
-  const openDialog = useCallback(function (render: (close: () => void) => ReactElement): void {
+  const openAlert = useCallback(function (render: (close: () => void) => ReactElement): void {
     setAlertElement(render(close));
     setOpen(true);
   }, [setOpen, setAlertElement, close]);
-  return openDialog;
+  return openAlert;
 };
