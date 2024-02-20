@@ -1,6 +1,6 @@
 /* eslint-disable quote-props, @typescript-eslint/naming-convention */
 
-import {ChangeEvent, FocusEvent, ReactElement, cloneElement, useCallback, useMemo, useRef, useState, useTransition} from "react";
+import {ChangeEvent, FocusEvent, ReactElement, ReactNode, cloneElement, useCallback, useMemo, useRef, useState, useTransition} from "react";
 import {AsyncOrSync} from "ts-essentials";
 import {create} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
@@ -27,7 +27,7 @@ export const AsyncSelect = create(
     error?: boolean,
     loadOptions: (pattern: string) => AsyncOrSync<Array<V>>,
     onSet?: (value: V) => unknown,
-    renderLabel?: (value: V) => ReactElement,
+    renderLabel?: (value: V) => ReactNode,
     children: (value: V) => ReactElement,
     className?: string
   } & AdditionalProps): ReactElement {
