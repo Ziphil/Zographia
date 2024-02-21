@@ -26,6 +26,7 @@ export const FileInput = createWithRef(
     name,
     multiple,
     autoFocus,
+    accepts,
     error,
     readonly,
     required,
@@ -43,6 +44,7 @@ export const FileInput = createWithRef(
     name?: string,
     multiple?: M,
     autoFocus?: boolean,
+    accepts?: Array<string>,
     error?: boolean,
     readonly?: boolean,
     required?: boolean,
@@ -81,6 +83,7 @@ export const FileInput = createWithRef(
           name={name}
           multiple={multiple}
           autoFocus={autoFocus}
+          accept={accepts?.join(",") ?? undefined}
           readOnly={readonly}
           required={required}
           disabled={disabled}
