@@ -66,10 +66,10 @@ export const AsyncSelect = create(
         setInnerValue(nextValue);
       }
       onSet?.(nextValue);
+      afterUpdateValueRef.current = true;
       if (inputElementRef.current !== null) {
         inputElementRef.current.value = "";
       }
-      afterUpdateValueRef.current = true;
     }, [controlled, onSet]);
 
     const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
@@ -124,7 +124,7 @@ export const AsyncSelect = create(
             })}
           />
           {(actualValue !== undefined && actualValue !== null) && (
-            <div styleName="label" {...data({hidden: open})} {...aria({hidden: true})}>
+            <div styleName="label" {...data({hidden: open})} {...aria({hidden: open})}>
               {renderLabel(actualValue)}
             </div>
           )}
