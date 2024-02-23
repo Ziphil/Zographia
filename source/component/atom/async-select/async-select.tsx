@@ -131,7 +131,7 @@ export const AsyncSelect = create(
         </div>
         <AsyncSelectMenuPane floatingSpec={floatingSpec} interactionSpec={interactionSpec} onFocusSet={handleMenuFocusSet}>
           <AsyncSelectContextProvider value={useMemo(() => ({updateValue}), [updateValue])}>
-            {loading ? (
+            {(loading) ? (
               <div styleName="loading">
                 <LoadingIcon/>
               </div>
