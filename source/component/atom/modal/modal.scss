@@ -20,6 +20,7 @@
   opacity: 0;
   transition: 0.1s opacity;
   position: relative;
+  overflow: hidden !important;
   z-index: 1000;
   &[data-status="open"] {
     opacity: 1;
