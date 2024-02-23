@@ -14,6 +14,7 @@ import {
   useTransition
 } from "react";
 import {AsyncOrSync} from "ts-essentials";
+import {LoadingIcon} from "/source/component/atom/loading-icon";
 import {create} from "/source/component/create";
 import {AdditionalProps, aria, data} from "/source/module/data";
 import {AsyncSelectContextProvider} from "./async-select-context";
@@ -49,6 +50,7 @@ export const AsyncSelect = create(
     const controlled = value !== undefined;
 
     const [options, setOptions] = useState<Array<V>>([]);
+    const [loading, setLoading] = useState(false);
     const [, startTransition] = useTransition();
 
     const inputElementRef = useRef<HTMLInputElement>(null);
@@ -72,9 +74,11 @@ export const AsyncSelect = create(
 
     const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
       setOpen(true);
+      setLoading(true);
       const value = event.target.value;
       const options = await loadOptions(value);
       startTransition(() => {
+        setLoading(false);
         setOptions(options);
       });
     }, [loadOptions, setOpen]);
@@ -127,7 +131,13 @@ export const AsyncSelect = create(
         </div>
         <AsyncSelectMenuPane floatingSpec={floatingSpec} interactionSpec={interactionSpec} onFocusSet={handleMenuFocusSet}>
           <AsyncSelectContextProvider value={useMemo(() => ({updateValue}), [updateValue])}>
-            {options.map((value, index) => cloneElement(children(value), {index, value}))}
+            {loading ? (
+              <div styleName="loading">
+                <LoadingIcon/>
+              </div>
+            ) : (
+              options.map((value, index) => cloneElement(children(value), {index, value}))
+            )}
           </AsyncSelectContextProvider>
         </AsyncSelectMenuPane>
       </div>

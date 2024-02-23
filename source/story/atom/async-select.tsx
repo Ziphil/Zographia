@@ -20,7 +20,7 @@ const template = {
 } as Story;
 
 const loadOptions = async function (pattern: string): Promise<Array<string>> {
-  await new Promise((resolve) => setTimeout(resolve, 300));
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   const specs = Array.from({length: 100}, (dummy, index) => `${pattern}@${index}`);
   return specs;
 };

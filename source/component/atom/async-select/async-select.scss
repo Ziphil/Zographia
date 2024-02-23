@@ -73,3 +73,13 @@
   flex: 0 0 auto;
   order: 20;
 }
+
+.loading {
+  padding-block: 1.5zu;
+  padding-inline: 2zu;
+  font-size: 6zu;
+  color: var(--loading-icon-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
