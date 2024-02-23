@@ -25,7 +25,8 @@
   cursor: pointer;
   transition: 0.1s background-color;
   &:hover,
-  &:focus {
+  &:focus,
+  &[aria-selected="true"] {
     background-color: var(--focus-background-color);
   }
 }

@@ -4,7 +4,6 @@ import {
   FloatingContext,
   useDismiss,
   useFloating,
-  useFocus,
   useInteractions,
   useListNavigation,
   useRole,
@@ -51,11 +50,10 @@ export type AsyncSelectInteractionSpec = ReturnType<typeof useInteractions> & {
 export function useAsyncSelectInteraction(context: FloatingContext): AsyncSelectInteractionSpec {
   const listRef = useRef([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const focus = useFocus(context);
   const dismiss = useDismiss(context);
-  const listNavigation = useListNavigation(context, {listRef, activeIndex, onNavigate: setActiveIndex});
+  const listNavigation = useListNavigation(context, {listRef, activeIndex, onNavigate: setActiveIndex, virtual: true});
   const role = useRole(context, {role: "listbox"});
-  const {getReferenceProps, getFloatingProps, getItemProps} = useInteractions([focus, dismiss, listNavigation, role]);
+  const {getReferenceProps, getFloatingProps, getItemProps} = useInteractions([dismiss, listNavigation, role]);
   return {
     listRef,
     activeIndex,

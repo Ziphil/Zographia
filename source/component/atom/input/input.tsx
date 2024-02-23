@@ -7,6 +7,7 @@ import {
   ChangeEvent,
   FocusEvent,
   ForwardedRef,
+  KeyboardEvent,
   ReactElement,
   ReactNode,
   useCallback,
@@ -74,7 +75,15 @@ export const Input = createWithRef(
     const floatingSpec = useInputFloating();
     const interactionSpec = useInputInteraction(floatingSpec.context, suggest !== undefined);
     const {setOpen, refs} = floatingSpec;
-    const {setActiveIndex, getReferenceProps} = interactionSpec;
+    const {activeIndex, setActiveIndex, getReferenceProps} = interactionSpec;
+
+    const updateValue = useCallback(function (value: string): void {
+      if (innerRef.current !== null) {
+        innerRef.current.value = value;
+        requestAnimationFrame(() => innerRef.current?.setSelectionRange(value.length, value.length));
+        onSet?.(value);
+      }
+    }, [onSet]);
 
     const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
       const value = event.target.value;
@@ -92,13 +101,13 @@ export const Input = createWithRef(
       onChange?.(event);
     }, [suggest, setOpen, setActiveIndex, onSet, onChange]);
 
-    const updateValue = useCallback(function (value: string): void {
-      if (innerRef.current !== null) {
-        innerRef.current.value = value;
-        requestAnimationFrame(() => innerRef.current?.setSelectionRange(value.length, value.length));
-        onSet?.(value);
+    const handleKeyDown = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
+      if (event.key === "Enter" && activeIndex !== null && suggestionSpecs[activeIndex]) {
+        updateValue(suggestionSpecs[activeIndex].replacement);
+        setOpen(false);
+        setActiveIndex(null);
       }
-    }, [onSet]);
+    }, [suggestionSpecs, activeIndex, updateValue, setOpen, setActiveIndex]);
 
     return (
       <div styleName="root" className={className} ref={refs.setReference} {...data({disabled, error})}>
@@ -119,6 +128,7 @@ export const Input = createWithRef(
           {...getReferenceProps({
             ref: mergedRef,
             onChange: handleChange,
+            onKeyDown: handleKeyDown,
             onBlur
           })}
         />

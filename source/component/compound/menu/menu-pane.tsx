@@ -34,8 +34,8 @@ export const MenuPane = createWithRef(
 
     const initialFocus = (combobox) ? -1 : undefined;
 
-    const [prevopen, setPrevOpen] = useState(open);
-    if (open !== prevopen) {
+    const [prevOpen, setPrevOpen] = useState(open);
+    if (open !== prevOpen) {
       if (!open) {
         onFocusSet?.(false);
       }
@@ -52,14 +52,14 @@ export const MenuPane = createWithRef(
 
     return (mounted) ? (usePortal) ? (
       <FloatingPortal>
-        <FloatingFocusManager context={context} modal={false} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
+        <FloatingFocusManager context={context} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
           <div styleName="root" onFocus={handleFocus} onBlur={handleBlur} {...data({status})} {...rest}>
             {children}
           </div>
         </FloatingFocusManager>
       </FloatingPortal>
     ) : (
-      <FloatingFocusManager context={context} modal={false} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
+      <FloatingFocusManager context={context} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
         <div styleName="root" onFocus={handleFocus} onBlur={handleBlur} {...data({status})} {...rest}>
           {children}
         </div>
