@@ -54,7 +54,7 @@ export const Root = create(
           <style>{colorDefinitionVarCss}</style>
           <style>{themeVarCss}</style>
         </Helmet>
-        <Suspense fallback={<div>LOADING</div>}>
+        <Suspense fallback={<div/>}>
           <RecoilRoot>
             <InnerRoot
               messageInventory={messageInventory}
