@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  padding-block-start: 6zu;
+  padding-inline: 6zu;
+  column-gap: 4zu;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}

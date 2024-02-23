@@ -12,6 +12,8 @@ passwordInput:
 tag:
   close: "Forigi"
 
+alert:
+  close: "Fermi"
 dialog:
   close: "Fermi"
 pagination:

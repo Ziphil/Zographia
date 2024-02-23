@@ -3,6 +3,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleNotch} from "@fortawesome/sharp-regular-svg-icons";
 import {ForwardedRef, KeyboardEvent, MouseEvent, PointerEvent, ReactElement, ReactNode, useCallback, useState} from "react";
+import {noop} from "ts-essentials";
 import {createWithRef} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, aria, data} from "/source/module/data";
@@ -53,8 +54,8 @@ export const Button = createWithRef(
         if (reactive && onClick) {
           setInnerLoading(true);
           const result = onClick(event);
-          if (result !== null && typeof result === "object" && "then" in result && typeof result.then === "function") {
-            result.then(() => setInnerLoading(false)).catch(() => null);
+          if (isPromise(result)) {
+            result.catch(noop).finally(() => setInnerLoading(false));
           } else {
             setInnerLoading(false);
           }
@@ -104,4 +105,8 @@ function getStyleName(variant: "solid" | "light" | "underline" | "simple" | "uns
   } else {
     return "root-unstyled";
   }
+}
+
+function isPromise(value: unknown): value is Promise<unknown> {
+  return value !== null && typeof value === "object" && "then" in value && typeof value.then === "function";
 }

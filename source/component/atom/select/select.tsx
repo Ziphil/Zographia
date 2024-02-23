@@ -42,6 +42,8 @@ export const Select = create(
     const {refs} = floatingSpec;
     const {getReferenceProps} = interactionSpec;
 
+    const [menuFocus, setMenuFocus] = useState(false);
+
     const updateValue = useCallback(function (nextValue: V): void {
       if (!controlled) {
         setInnerValue(nextValue);
@@ -50,7 +52,7 @@ export const Select = create(
     }, [controlled, onSet]);
 
     return (
-      <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
+      <div styleName="root" className={className} ref={refs.setReference} {...data({menuFocus, error})}>
         <button
           styleName="container"
           type="button"
@@ -65,7 +67,7 @@ export const Select = create(
             <FontAwesomeIcon icon={faAngleDown}/>
           </span>
         </button>
-        <SelectMenuPane updateValue={updateValue} floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
+        <SelectMenuPane floatingSpec={floatingSpec} interactionSpec={interactionSpec} onFocusSet={setMenuFocus}>
           <SelectContextProvider value={useMemo(() => ({updateValue}), [updateValue])}>
             {transformChildren(children)}
           </SelectContextProvider>

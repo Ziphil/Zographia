@@ -4,8 +4,8 @@
 
 
 .root {
-  column-gap: 4zu;
-  display: flex;
-  align-items: center;
-  flex: 0 0 auto;
+  padding-block: 8zu;
+  padding-inline: var(--pane-padding-inline);
+  flex: 1 1 auto;
+  overflow: auto;
 }

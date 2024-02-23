@@ -1,22 +1,18 @@
 /* eslint-disable react/jsx-closing-tag-location, react-hooks/rules-of-hooks */
 
-import {faCheck, faCircleInfo, faClose, faExclamationTriangle, faTrashAlt} from "@fortawesome/sharp-regular-svg-icons";
+import {faCat, faRabbit} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
-import dayjs from "dayjs";
-import {useCallback} from "react";
+import {Fragment} from "react";
 import {
-  Button,
-  ButtonIconbag,
   Dialog,
   DialogBody,
   DialogCloseButton,
-  DialogContent,
-  DialogFooter,
-  DialogIconContainer,
+  DialogOutsideButton,
+  DialogOutsideButtonContainer,
+  DialogOutsideButtonIconbag,
   DialogPane,
   GeneralIcon,
-  MultiLineText,
-  useDialog
+  MultiLineText
 } from "/source/component";
 
 
@@ -26,12 +22,12 @@ type Story = RawStory<typeof Dialog>;
 export default {
   title: "Compound/Dialog",
   component: Dialog,
-  subcomponents: {DialogPane, DialogBody, DialogContent, DialogIconContainer, DialogFooter, DialogCloseButton}
+  subcomponents: {DialogPane}
 } as Meta;
 
 const template = {
   parameters: {
-    docs: {story: {inline: false, iframeHeight: 320}}
+    docs: {story: {inline: false, iframeHeight: 640}}
   }
 } as Story;
 
@@ -43,105 +39,87 @@ export const basic = {
     children: (
       <DialogPane>
         <DialogCloseButton/>
+        <DialogOutsideButtonContainer>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faCat}/></DialogOutsideButtonIconbag>
+            ボタン 1
+          </DialogOutsideButton>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faRabbit}/></DialogOutsideButtonIconbag>
+            ボタン 2
+          </DialogOutsideButton>
+        </DialogOutsideButtonContainer>
         <DialogBody>
-          <DialogIconContainer>
-            <GeneralIcon icon={faCircleInfo}/>
-          </DialogIconContainer>
-          <DialogContent>
-            <MultiLineText>
-              ここにダイアログのメッセージが入ります。
-              ここにダイアログのメッセージが入ります。
-              ここにダイアログのメッセージが入ります。
-            </MultiLineText>
-          </DialogContent>
+          <MultiLineText>
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+          </MultiLineText>
         </DialogBody>
-        <DialogFooter>
-          <Button scheme="gray" variant="light">
-            <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
-            キャンセル
-          </Button>
-          <Button>
-            <ButtonIconbag><GeneralIcon icon={faCheck}/></ButtonIconbag>
-            確認
-          </Button>
-        </DialogFooter>
       </DialogPane>
     )
   }
 } as Story;
-export const alert = {
+export const long = {
   ...template,
-  name: "アラート",
+  name: "長い内容",
   args: {
     open: true,
-    scheme: "red",
     children: (
       <DialogPane>
         <DialogCloseButton/>
+        <DialogOutsideButtonContainer>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faCat}/></DialogOutsideButtonIconbag>
+            ボタン 1
+          </DialogOutsideButton>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faRabbit}/></DialogOutsideButtonIconbag>
+            ボタン 2
+          </DialogOutsideButton>
+        </DialogOutsideButtonContainer>
         <DialogBody>
-          <DialogIconContainer>
-            <GeneralIcon icon={faExclamationTriangle}/>
-          </DialogIconContainer>
-          <DialogContent>
-            <MultiLineText>
-              このユーザーを削除してもよろしいですか?
-              一度削除すると、元に戻すことはできません。
-            </MultiLineText>
-          </DialogContent>
+          <MultiLineText>
+            {Array.from({length: 50}).map((dummy, index) => <Fragment key={index}>行 {index + 1}<br/></Fragment>)}
+          </MultiLineText>
         </DialogBody>
-        <DialogFooter>
-          <Button scheme="gray" variant="light">
-            <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
-            キャンセル
-          </Button>
-          <Button scheme="red">
-            <ButtonIconbag><GeneralIcon icon={faTrashAlt}/></ButtonIconbag>
-            削除
-          </Button>
-        </DialogFooter>
       </DialogPane>
     )
   }
 } as Story;
-
-export const testHook = {
+export const full = {
   ...template,
-  name: "[テスト] フック",
-  render: () => {
-    const openDialog = useDialog();
-    const handleClick = useCallback(function (): void {
-      const dateString = dayjs().format("YYYY/MM/DD HH:mm:ss.SSS");
-      openDialog((close) => (
-        <Dialog>
-          <DialogPane>
-            <DialogCloseButton/>
-            <DialogBody>
-              <DialogIconContainer>
-                <GeneralIcon icon={faCircleInfo}/>
-              </DialogIconContainer>
-              <DialogContent>
-                <MultiLineText>
-                  ここにダイアログのメッセージが入ります。
-                  日時は {dateString} です。
-                </MultiLineText>
-              </DialogContent>
-            </DialogBody>
-            <DialogFooter>
-              <Button scheme="gray" variant="light" onClick={close}>
-                <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
-                キャンセル
-              </Button>
-              <Button>
-                <ButtonIconbag><GeneralIcon icon={faCheck}/></ButtonIconbag>
-                確認
-              </Button>
-            </DialogFooter>
-          </DialogPane>
-        </Dialog>
-      ));
-    }, [openDialog]);
-    return (
-      <Button onClick={handleClick}>ダイアログ表示</Button>
-    );
+  name: "大きい",
+  args: {
+    height: "full",
+    open: true,
+    children: (
+      <DialogPane>
+        <DialogCloseButton/>
+        <DialogOutsideButtonContainer>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faCat}/></DialogOutsideButtonIconbag>
+            ボタン 1
+          </DialogOutsideButton>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faRabbit}/></DialogOutsideButtonIconbag>
+            ボタン 2
+          </DialogOutsideButton>
+        </DialogOutsideButtonContainer>
+        <DialogBody>
+          <MultiLineText>
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+          </MultiLineText>
+        </DialogBody>
+      </DialogPane>
+    )
   }
 } as Story;

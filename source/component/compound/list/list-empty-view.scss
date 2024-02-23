@@ -1,3 +1,25 @@
 @charset "utf-8";
 
 @use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --text-color: #{leveled-color("gray", 5)};
+    --border-color: #{leveled-color("gray", 1)};
+  }
+}
+
+.root {
+  min-height: 8zu;
+  padding-block: 3zu;
+  padding-inline: 3zu;
+  color: var(--text-color);
+  border-radius: var(--glob-border-radius);
+  border: solid 1zx var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}

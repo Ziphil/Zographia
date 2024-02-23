@@ -12,15 +12,9 @@
 }
 
 .root {
-  inset-inline-end: var(--pane-padding-inline);
-  inset-block-start: -6zu;
   font-size: 4zu;
   color: var(--text-color);
   border-radius: var(--glob-border-radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
   cursor: pointer;
   transition: 0.1s color;
   &:hover {
@@ -29,8 +23,4 @@
   &:focus-visible {
     outline: solid 2zx var(--focus-color);
   }
-}
-
-.icon {
-  margin-inline-end: var(--glob-blank-gap);
 }

@@ -12,6 +12,8 @@ passwordInput:
 tag:
   close: "削除"
 
+alert:
+  close: "閉じる"
 dialog:
   close: "閉じる"
 pagination:

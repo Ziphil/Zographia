@@ -1,37 +1,33 @@
 //
 
-import {ReactElement, useMemo} from "react";
+import {ReactElement} from "react";
 import {Modal} from "/source/component/atom/modal";
 import {create} from "/source/component/create";
-import {LeveledColorScheme} from "/source/module";
-import {AdditionalProps} from "/source/module/data";
-import {DialogContextProvider} from "./dialog-context";
+import {AdditionalProps, data} from "/source/module/data";
 
 
 export const Dialog = create(
   require("./dialog.scss"), "Dialog",
   function ({
+    height = "fit",
     open,
     defaultOpen = false,
-    scheme = "primary",
     onOpenSet,
     children,
     ...rest
   }: {
+    height?: "fit" | "full",
     open?: boolean,
     defaultOpen?: boolean,
-    scheme?: LeveledColorScheme,
     onOpenSet?: (open: boolean) => unknown,
     children: ReactElement,
     className?: string
   } & AdditionalProps): ReactElement {
 
     return (
-      <DialogContextProvider value={useMemo(() => ({scheme}), [scheme])}>
-        <Modal styleName="root" open={open} defaultOpen={defaultOpen} onOpenSet={onOpenSet} {...rest}>
-          {children}
-        </Modal>
-      </DialogContextProvider>
+      <Modal styleName="root" open={open} defaultOpen={defaultOpen} onOpenSet={onOpenSet} {...data({height})} {...rest}>
+        {children}
+      </Modal>
     );
 
   }

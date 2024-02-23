@@ -30,7 +30,7 @@ export const Menu = create(
     const [open, setOpen] = useState(false);
 
     const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement});
-    const {isMounted, status} = useTransitionStatus(context, {duration: 100});
+    const {isMounted: mounted, status} = useTransitionStatus(context, {duration: 100});
     const {
       listRef,
       activeIndex,
@@ -41,13 +41,13 @@ export const Menu = create(
 
     return (
       <Fragment>
-        {trigger !== undefined && (
+        {(trigger !== undefined) && (
           cloneElement(trigger, {ref: refs.setReference, ...getReferenceProps()})
         )}
         <MenuPane
           className={className}
           open={open}
-          mounted={isMounted}
+          mounted={mounted}
           status={status}
           context={context}
           style={floatingStyles}

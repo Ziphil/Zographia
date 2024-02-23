@@ -44,10 +44,10 @@ export const Modal = create(
 
     return (mounted) ? (
       <FloatingPortal>
-        <FloatingOverlay styleName="root" lockScroll={true} {...data({status})}>
+        <FloatingOverlay styleName="root" lockScroll={true} {...data({status})} {...rest}>
           <FloatingFocusManager context={context}>
             <ModalContextProvider value={{onOpenSet: actualOnOpenSet}}>
-              {cloneElement(children, {ref: refs.setFloating, ...getFloatingProps(rest)})}
+              {cloneElement(children, {ref: refs.setFloating, ...getFloatingProps()})}
             </ModalContextProvider>
           </FloatingFocusManager>
         </FloatingOverlay>

@@ -5,8 +5,8 @@ import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
 
 
-export const DialogIconContainer = createWithRef(
-  require("./dialog-icon-container.scss"), "DialogIconContainer",
+export const AlertContent = createWithRef(
+  require("./alert-content.scss"), "AlertContent",
   function ({
     children,
     ...rest

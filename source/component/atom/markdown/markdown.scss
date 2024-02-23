@@ -57,26 +57,28 @@
   border-radius: var(--glob-border-radius);
 }
 
-.inner h1 {
+.inner :is(h1, h2) {
   @include bold-font;
   font-size: 6zu;
   color: var(--heading-text-color);
+  margin-block-end: calc(1zu - extrusion(var(--line-height)) * (1 - 4 / 6));
   &:not(:first-child) {
-    margin-block-start: 2zu;
+    margin-block-start: calc(5zu - extrusion(var(--line-height)) * (1 - 4 / 6));
   }
 }
 
-.inner h2 {
+.inner :is(h3, h4, h5, h6) {
   @include bold-font;
   font-size: 5zu;
   color: var(--heading-text-color);
+  margin-block-end: calc(1zu - extrusion(var(--line-height)) * (1 - 4 / 5));
   &:not(:first-child) {
-    margin-block-start: 2zu;
+    margin-block-start: calc(3zu - extrusion(var(--line-height)) * (1 - 4 / 5));
   }
 }
 
-.inner *:where(h1, h2, h3, h4, h5, h6) +:where(h1, h2, h3, h4, h5, h6) {
-  margin-block: 0zu !important;
+.inner :is(h1, h2) +:is(h3, h4, h5, h6) {
+  margin-block-start: calc(0zu - extrusion(var(--line-height)) * (1 - 4 / 5)) !important;
 }
 
 .inner ol {

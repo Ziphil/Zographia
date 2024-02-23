@@ -12,10 +12,12 @@ export const AsyncSelectMenuPane = createWithRef(
   function ({
     floatingSpec,
     interactionSpec,
+    onFocusSet,
     children
   }: {
     floatingSpec: AsyncSelectFloatingSpec,
     interactionSpec: AsyncSelectInteractionSpec,
+    onFocusSet: (focus: boolean) => unknown,
     children: ReactNode
   }): ReactElement {
 
@@ -43,6 +45,7 @@ export const AsyncSelectMenuPane = createWithRef(
         context={context}
         combobox={true}
         style={floatingStyles}
+        onFocusSet={onFocusSet}
         ref={refs.setFloating}
         {...getFloatingProps()}
       >

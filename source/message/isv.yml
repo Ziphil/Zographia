@@ -12,6 +12,8 @@ passwordInput:
 tag:
   close: "Remove"
 
+alert:
+  close: "Затворити"
 dialog:
   close: "Затворити"
 pagination:

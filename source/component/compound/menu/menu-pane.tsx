@@ -1,7 +1,7 @@
 //
 
 import {FloatingContext, FloatingFocusManager, FloatingPortal} from "@floating-ui/react";
-import {CSSProperties, ForwardedRef, ReactElement, ReactNode} from "react";
+import {CSSProperties, ForwardedRef, ReactElement, ReactNode, useCallback, useState} from "react";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, data} from "/source/module/data";
 
@@ -15,6 +15,7 @@ export const MenuPane = createWithRef(
     context,
     combobox = false,
     usePortal = true,
+    onFocusSet,
     children,
     ...rest
   }: {
@@ -24,6 +25,7 @@ export const MenuPane = createWithRef(
     context: FloatingContext,
     combobox?: boolean,
     usePortal?: boolean,
+    onFocusSet?: (focus: boolean) => unknown,
     children?: ReactNode,
     className?: string,
     style?: CSSProperties,
@@ -32,17 +34,33 @@ export const MenuPane = createWithRef(
 
     const initialFocus = (combobox) ? -1 : undefined;
 
+    const [prevOpen, setPrevOpen] = useState(open);
+    if (open !== prevOpen) {
+      if (!open) {
+        onFocusSet?.(false);
+      }
+      setPrevOpen(open);
+    }
+
+    const handleFocus = useCallback(function (): void {
+      onFocusSet?.(true);
+    }, [onFocusSet]);
+
+    const handleBlur = useCallback(function (): void {
+      onFocusSet?.(false);
+    }, [onFocusSet]);
+
     return (mounted) ? (usePortal) ? (
       <FloatingPortal>
-        <FloatingFocusManager context={context} modal={false} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
-          <div styleName="root" {...data({status})} {...rest}>
+        <FloatingFocusManager context={context} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
+          <div styleName="root" onFocus={handleFocus} onBlur={handleBlur} {...data({status})} {...rest}>
             {children}
           </div>
         </FloatingFocusManager>
       </FloatingPortal>
     ) : (
-      <FloatingFocusManager context={context} modal={false} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
-        <div styleName="root" {...data({status})} {...rest}>
+      <FloatingFocusManager context={context} visuallyHiddenDismiss={true} initialFocus={initialFocus}>
+        <div styleName="root" onFocus={handleFocus} onBlur={handleBlur} {...data({status})} {...rest}>
           {children}
         </div>
       </FloatingFocusManager>

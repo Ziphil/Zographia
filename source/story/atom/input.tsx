@@ -2,7 +2,7 @@
 
 import {faExclamationCircle, faSearch} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
-import {GeneralIcon, Input, InputAddon, SuggestionSpec} from "/source/component";
+import {Button, GeneralIcon, Input, InputAddon, SuggestionSpec} from "/source/component";
 import {restrictWidth} from "/source/story/decorator/width";
 import {createChildren} from "/source/util/children";
 
@@ -155,5 +155,19 @@ export const suggestion = {
   args: {
     defaultValue: "あいうえおねこねこ",
     suggest
+  }
+} as Story;
+
+export const testFocus = {
+  ...template,
+  name: "[テスト] フォーカス",
+  render: () => {
+    return (
+      <div>
+        <Button>前</Button>
+        <Input suggest={suggest}/>
+        <Button>後</Button>
+      </div>
+    );
   }
 } as Story;

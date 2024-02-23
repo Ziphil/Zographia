@@ -5,8 +5,8 @@ import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
 
 
-export const DialogBody = createWithRef(
-  require("./dialog-body.scss"), "DialogBody",
+export const AlertBody = createWithRef(
+  require("./alert-body.scss"), "AlertBody",
   function ({
     is = "div",
     children,
@@ -15,7 +15,7 @@ export const DialogBody = createWithRef(
     is?: string,
     children: ReactNode,
     className?: string,
-    ref?: Ref<HTMLElement>
+    ref?: Ref<HTMLDivElement>
   } & AdditionalProps): ReactElement {
 
     const Is = is as any;

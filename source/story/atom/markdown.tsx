@@ -19,7 +19,7 @@ const template = {
 } as Story;
 
 const markdownString = dedent`
-  # インライン要素
+  ## インライン要素
   これは**強調**されます。ここも*強調*されます。
   ここは~~取り消し~~です。
   ここは段落です。あいうカキク漢字 ABJOQabfpy ÉÃëç أَنْتَ μῆνιν ἄειδε Ἄϊδι。
@@ -30,8 +30,8 @@ const markdownString = dedent`
   ここから別の段落です。
   これは[リンク](https://example.com)です。
 
-  # ブロック要素
-  ## 番号なしリスト
+  ## ブロック要素
+  ### 番号なしリスト
   箇条書き前の段落です。
 
   - リスト項目 1
@@ -68,7 +68,7 @@ const markdownString = dedent`
 
   箇条書き後の段落です。
 
-  ## 引用
+  ### 引用
   引用前の段落です。
 
   > これは引用です。
@@ -82,7 +82,7 @@ const markdownString = dedent`
 
   引用後の段落です。
 
-  ## コードブロック
+  ### コードブロック
   コードブロック前の段落です。
 
   \`\`\`
@@ -96,7 +96,7 @@ const markdownString = dedent`
 
   コードブロック後の段落です。
 
-  ## 表
+  ### 表
   表前の段落です。
 
   | foofoo | 左揃え | 中央揃え | 右揃え |
@@ -127,7 +127,7 @@ export const example = {
   name: "例",
   args: {
     children: dedent`
-      # 概要
+      ## 概要
       本プライバシーポリシーは、ZpDIC Online (以下「当アプリ」) の各種サービスにおいて、当アプリの利用者 (以下「ユーザー」) の個人情報もしくはそれに準ずる情報を取り扱う際に、当アプリが遵守する方針を示したものです。
       
       当アプリでは、個人情報の重要性を認識して個人情報を保護することが社会的責務であると考え、個人情報に関する法令を遵守し、個人情報の取得や利用や管理を適正に行います。
@@ -135,8 +135,8 @@ export const example = {
       
       本プライバシーポリシーは、当アプリにおいてのみ適用されます。
       
-      # 個人情報の取得と利用目的
-      ## ユーザー情報
+      ## 個人情報の取得と利用目的
+      ### ユーザー情報
       当アプリを利用するには、ユーザー登録した上でログインしていただく必要があります。
       ユーザー登録および当アプリの利用の際に、以下の情報を送信していただく必要があります。
       
@@ -148,7 +148,7 @@ export const example = {
       この際、パスワードはもとの文字列が復元できないハッシュ化された状態で保存されます。
       また、メールアドレスは、ユーザーがパスワードを忘れた際のパスワードリセットの際、および当アプリ内の情報を通知するためにメールを送信する際に利用されます。
       
-      ## Contact
+      ### Contact
       In this application, the user may be asked to send the following information when they contact us via the contact form.
       
       - Name (or handle name)
@@ -162,7 +162,7 @@ export const example = {
       These personal information will be used to reply to your questions or to contact you with necessary information via email, and will not be used for any purpose other than those for which you provided the information.
       The emails containing the content of the inquiry will be deleted as soon as the inquiry has been responded to.
       
-      ## Access log
+      ### Access log
       This application acquires and stores access logs.
       It uses [Papertrail](https://www.papertrail.com/) to store the access log.
       The information stored is as follows:
@@ -178,7 +178,7 @@ export const example = {
       This log information will be used to analyze access trends to improve the services and to determine the cause of errors when they occur.
       Log information will be stored on Papertrail for up to 7 days, and thery will be deleted after 7 days.
       
-      ## reCAPTCHA
+      ### reCAPTCHA
       Tiu aplikaĵo uzas reCAPTCHA v3 provizatan de Guglo por plibonigi sekurecon.
       Ĝi permesas al Guglo kolekti informojn pri la uzanto, kiel la IP-adreso.
       Tiu kolektado de datumoj estas submetita al la [privateca politiko](https://policies.google.com/privacy) kaj la [kondiĉoj de servoj](https://policies.google.com/terms) de Guglo.
@@ -186,21 +186,21 @@ export const example = {
       Ĝi estos uzata por determini ĉu la vizitanto de tiu aplikaĵo estas homo aŭ roboto kaj por protekti tiun aplikaĵon kaj ĝiajn uzantojn kontraŭ malicaj spamoj.
       Tiu aplikaĵo ne uzas ajnajn informojn kolektitajn de reCAPTCHA kaj Guglo.
       
-      ## Google Analytics
+      ### Google Analytics
       Tiu aplikaĵo uzas Google Analytics, kaj ankaŭ uzas kuketojn por kolekti datumojn.
       Tiu kolektado de datumoj estas submetita al la [privateca politiko](https://policies.google.com/privacy) kaj la [kondiĉoj de servoj](https://marketingplatform.google.com/about/analytics/terms/en/) de Guglo.
       
       La kolektitaj datumoj estos uzataj por kompreni kiel tiu aplikaĵo estas uzata kaj por plibonigi la servojn.
       Tiuj datumoj estas kolektitaj anonime kaj ne identigas la uzanton.
       
-      # Administrado de personaj informoj
+      ## Administrado de personaj informoj
       Tiu aplikaĵo taŭge administras personajn informojn, kaj ne malkaŝos aŭ forigos ilin krom en la sekvaj kazoj:
       
       - Kiam estos konsento de la individuo
       - Kiam estos risko malobservi la rajtojn aŭ interesojn de uzanto aŭ de tria partio
       - Kiam necesos malkaŝi aŭ forigi la informojn laŭ leĝoj kaj regularoj
       
-      # Malgarantio
+      ## Malgarantio
       La kopirajtoj kaj portretaj rajtoj de la vortaraj kaj/aŭ bildaj datumoj publikigitaj de la uzanto en tiu aplikaĵo apartenas al la koncerna uzanto.
       La kopirajtoj de la dokumentoj kaj aliaj materialoj kiuj ne estas publikigitaj de la uzantoj apartenas al la programisto de tiu aplikaĵo.
       La programisto de tiu aplikaĵo ne respondecas pri ajnaj damaĝoj kaŭzitaj de tiuj enhavoj al la uzantoj.
@@ -209,13 +209,13 @@ export const example = {
       
       Se la uzanto estas translokigita de tiu aplikaĵo al alia retejo per ligilo aŭ standardo, la programisto de tiu aplikaĵo ne prenas respondecon pri la informoj aŭ servoj provizitaj en la ligita retejo.      
       
-      # お問い合わせ
+      ## お問い合わせ
       当アプリにおける個人情報の取り扱いに関するお問い合わせは、[お問い合わせフォーム](/contact)をご利用いただくか、以下の連絡先へ直接ご連絡ください。
       
       - 運営者 — Ziphil Aleshlas
       - メールアドレス — ziphil.shaleiras❖gmail.com (❖ → @)
       
-      # 制定日
+      ## 制定日
       - 2021 年 1 月 30 日 — 制定
       - 2022 年 1 月 28 日 — 一部改定
       - 2022 年 6 月 15 日 — 一部改定 (Google Analytics に関する項目を追加)

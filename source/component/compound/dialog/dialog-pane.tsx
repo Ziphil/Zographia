@@ -1,10 +1,9 @@
 //
 
-import {ReactElement, ReactNode, Ref, useContext} from "react";
+import {ReactElement, ReactNode, Ref} from "react";
 import {ModalPane} from "/source/component/atom/modal";
 import {createWithRef} from "/source/component/create";
-import {AdditionalProps, data} from "/source/module/data";
-import {dialogContext} from "./dialog-context";
+import {AdditionalProps} from "/source/module/data";
 
 
 export const DialogPane = createWithRef(
@@ -18,10 +17,8 @@ export const DialogPane = createWithRef(
     ref?: Ref<HTMLDivElement>
   } & AdditionalProps): ReactElement {
 
-    const {scheme} = useContext(dialogContext);
-
     return (
-      <ModalPane styleName="root" {...data({scheme})} {...rest}>
+      <ModalPane styleName="root" {...rest}>
         {children}
       </ModalPane>
     );

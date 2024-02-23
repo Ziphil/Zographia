@@ -4,9 +4,6 @@
 
 
 .root {
-  margin-block-start: 4zu;
-  column-gap: 3zu;
-  display: flex;
-  justify-content: flex-end;
+  margin-inline-end: var(--glob-blank-gap);
   flex: 0 0 auto;
 }

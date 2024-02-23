@@ -2,6 +2,7 @@
 
 import {
   FloatingContext,
+  autoUpdate,
   useDismiss,
   useFloating,
   useInteractions,
@@ -28,7 +29,7 @@ export type InputFloatingSpec = Pick<ReturnType<typeof useFloating>, "refs" | "f
 
 export function useInputFloating(): InputFloatingSpec {
   const [open, setOpen] = useState(false);
-  const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement: "bottom-start", middleware: [fitWidth()]});
+  const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement: "bottom-start", whileElementsMounted: autoUpdate, middleware: [fitWidth()]});
   const {isMounted: mounted, status} = useTransitionStatus(context, {duration: 100});
   return {
     refs,

@@ -2,9 +2,9 @@
 
 import {
   FloatingContext,
+  autoUpdate,
   useDismiss,
   useFloating,
-  useFocus,
   useInteractions,
   useListNavigation,
   useRole,
@@ -29,7 +29,7 @@ export type AsyncSelectFloatingSpec = Pick<ReturnType<typeof useFloating>, "refs
 
 export function useAsyncSelectFloating(): AsyncSelectFloatingSpec {
   const [open, setOpen] = useState(false);
-  const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement: "bottom-start", middleware: [fitWidth()]});
+  const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement: "bottom-start", whileElementsMounted: autoUpdate, middleware: [fitWidth()]});
   const {isMounted: mounted, status} = useTransitionStatus(context, {duration: 100});
   return {
     refs,
@@ -51,11 +51,10 @@ export type AsyncSelectInteractionSpec = ReturnType<typeof useInteractions> & {
 export function useAsyncSelectInteraction(context: FloatingContext): AsyncSelectInteractionSpec {
   const listRef = useRef([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const focus = useFocus(context);
   const dismiss = useDismiss(context);
-  const listNavigation = useListNavigation(context, {listRef, activeIndex, onNavigate: setActiveIndex});
+  const listNavigation = useListNavigation(context, {listRef, activeIndex, onNavigate: setActiveIndex, virtual: true});
   const role = useRole(context, {role: "listbox"});
-  const {getReferenceProps, getFloatingProps, getItemProps} = useInteractions([focus, dismiss, listNavigation, role]);
+  const {getReferenceProps, getFloatingProps, getItemProps} = useInteractions([dismiss, listNavigation, role]);
   return {
     listRef,
     activeIndex,

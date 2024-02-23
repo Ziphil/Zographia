@@ -2,9 +2,8 @@
 
 export * from "./dialog";
 export * from "./dialog-body";
-export * from "./dialog-content";
 export * from "./dialog-close-button";
-export * from "./dialog-footer";
-export * from "./dialog-icon-container";
-export * from "./dialog-hook";
 export * from "./dialog-pane";
+export * from "./dialog-outside-button";
+export * from "./dialog-outside-button-container";
+export * from "./dialog-outside-button-iconbag";

@@ -11,12 +11,37 @@ type Story = RawStory<typeof List>;
 export default {
   title: "Compound/List",
   component: List,
-  subcomponents: {ListBody, ListEmptyView, ListLoadingView, ListPagination}
+  subcomponents: {ListBody, ListLoadingView, ListEmptyView, ListPagination}
 } as Meta;
 
 const template = {
   decorators: [restrictWidth(600)]
 } as Story;
+
+export const empty = {
+  ...template,
+  name: "ローディング",
+  args: {
+    items: [],
+    pageSpec: {size: 4},
+    children: (
+      <ListLoadingView/>
+    )
+  }
+};
+export const loading = {
+  ...template,
+  name: "空",
+  args: {
+    items: undefined,
+    pageSpec: {size: 4},
+    children: (
+      <ListEmptyView>
+        リストは空です
+      </ListEmptyView>
+    )
+  }
+};
 
 export const testUncontrolledNormal = {
   ...template,
@@ -64,7 +89,7 @@ export const testUncontrolledLoading = {
               </CardBody>
             </Card>
           )}
-          <ListLoadingView>ローディング中に表示されます</ListLoadingView>
+          <ListLoadingView/>
           <ListEmptyView>空のときに表示されます</ListEmptyView>
         </ListBody>
         <ListPagination/>
@@ -86,7 +111,7 @@ export const testUncontrolledEmpty = {
               </CardBody>
             </Card>
           )}
-          <ListLoadingView>ローディング中に表示されます</ListLoadingView>
+          <ListLoadingView/>
           <ListEmptyView>空のときに表示されます</ListEmptyView>
         </ListBody>
         <ListPagination/>

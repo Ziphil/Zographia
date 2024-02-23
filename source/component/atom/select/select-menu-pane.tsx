@@ -10,14 +10,14 @@ import {SelectFloatingSpec, SelectInteractionSpec} from "./select-hook";
 export const SelectMenuPane = createWithRef(
   null, "SelectMenuPane",
   function ({
-    updateValue,
     floatingSpec,
     interactionSpec,
+    onFocusSet,
     children
   }: {
-    updateValue: (value: any) => unknown,
     floatingSpec: SelectFloatingSpec,
     interactionSpec: SelectInteractionSpec,
+    onFocusSet: (focus: boolean) => unknown,
     children: ReactNode
   }): ReactElement {
 
@@ -45,6 +45,7 @@ export const SelectMenuPane = createWithRef(
         context={context}
         combobox={false}
         style={floatingStyles}
+        onFocusSet={onFocusSet}
         ref={refs.setFloating}
         {...getFloatingProps()}
       >
