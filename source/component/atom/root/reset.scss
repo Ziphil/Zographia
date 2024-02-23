@@ -30,6 +30,7 @@ body {
   padding: 0px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 :global(#root) {
