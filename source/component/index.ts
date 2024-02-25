@@ -12,6 +12,7 @@ export * from "./atom/file-input";
 export * from "./atom/general-icon";
 export * from "./atom/google-adsense";
 export * from "./atom/google-analytics";
+export * from "./atom/icon-button";
 export * from "./atom/input";
 export * from "./atom/link";
 export * from "./atom/loading-icon";
