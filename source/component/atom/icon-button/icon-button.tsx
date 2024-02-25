@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleNotch} from "@fortawesome/sharp-regular-svg-icons";
 import {ForwardedRef, KeyboardEvent, MouseEvent, PointerEvent, ReactElement, ReactNode, useCallback, useState} from "react";
 import {noop} from "ts-essentials";
+import {VisuallyHidden} from "/source/component/atom/visually-hidden";
 import {createWithRef} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, aria, data} from "/source/module/data";
@@ -15,6 +16,7 @@ export const IconButton = createWithRef(
     scheme = "primary",
     variant = "solid",
     type = "button",
+    label,
     reactive = true,
     disabled,
     loading,
@@ -29,6 +31,7 @@ export const IconButton = createWithRef(
     scheme?: LeveledColorScheme,
     variant?: "solid" | "light",
     type?: "submit" | "reset" | "button",
+    label: string,
     reactive?: boolean,
     disabled?: boolean,
     loading?: boolean,
@@ -84,6 +87,7 @@ export const IconButton = createWithRef(
         {...rest}
       >
         {children}
+        <VisuallyHidden>{label}</VisuallyHidden>
         <div styleName="loading" {...data({loading: actualLoading})} {...aria({hidden: true})}>
           <FontAwesomeIcon icon={faCircleNotch} spin={true}/>
         </div>

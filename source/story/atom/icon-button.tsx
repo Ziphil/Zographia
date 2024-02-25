@@ -21,6 +21,7 @@ export const variantSolid = {
   name: "バリアント: 濃い",
   args: {
     variant: "solid",
+    label: "ボタン",
     children: <GeneralIcon icon={faFish}/>
   }
 } as Story;
@@ -29,6 +30,7 @@ export const variantOutline = {
   name: "バリアント: 薄い",
   args: {
     variant: "light",
+    label: "ボタン",
     children: <GeneralIcon icon={faFish}/>
   }
 } as Story;
@@ -36,6 +38,7 @@ export const disabled = {
   ...template,
   name: "無効",
   args: {
+    label: "ボタン",
     disabled: true,
     children: <GeneralIcon icon={faFish}/>
   }
@@ -44,6 +47,7 @@ export const loading = {
   ...template,
   name: "ローディング",
   args: {
+    label: "ボタン",
     reactive: false,
     loading: true,
     children: <GeneralIcon icon={faFish}/>
