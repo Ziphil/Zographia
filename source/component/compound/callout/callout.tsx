@@ -9,7 +9,7 @@ import {AdditionalProps, data} from "/source/module/data";
 export const Callout = createWithRef(
   require("./callout.scss"), "Callout",
   function ({
-    is = "p",
+    is = "div",
     scheme = "primary",
     children,
     ...rest
