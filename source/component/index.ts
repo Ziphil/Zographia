@@ -31,6 +31,7 @@ export * from "./atom/tag-input";
 export * from "./atom/textarea";
 export * from "./atom/visually-hidden";
 export * from "./compound/alert";
+export * from "./compound/callout";
 export * from "./compound/card";
 export * from "./compound/dialog";
 export * from "./compound/list";
