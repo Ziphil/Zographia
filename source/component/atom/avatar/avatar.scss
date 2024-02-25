@@ -11,6 +11,11 @@
   overflow: hidden;
   position: relative;
   flex: 0 0 auto;
+  &[data-inline] {
+    margin-block: -0.0625em;
+    inset-block-end: -0.125em;
+    position: relative;
+  }
 }
 
 .image {

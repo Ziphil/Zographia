@@ -1,19 +1,19 @@
 //
 
-import {ForwardedRef, ReactElement, ReactNode} from "react";
+import {ReactElement, ReactNode, Ref} from "react";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
 
 
-export const CheckableLabel = createWithRef(
-  require("./checkable-label.scss"), "CheckableLabel",
+export const CalloutIconContainer = createWithRef(
+  require("./callout-icon-container.scss"), "CalloutIconContainer",
   function ({
     children,
     ...rest
   }: {
-    children?: ReactNode,
+    children: ReactNode,
     className?: string,
-    ref: ForwardedRef<HTMLDivElement>
+    ref?: Ref<HTMLDivElement>
   } & AdditionalProps): ReactElement {
 
     return (

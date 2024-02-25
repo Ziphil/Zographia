@@ -56,7 +56,7 @@ export const testAlignment = {
     return (
       <p>
         あいう123
-        <Avatar url="https://www.gravatar.com/avatar/c8d5a3ef94caf90b8f96cae9bc155740?rating=PG&size=44&default=identicon"/>
+        <Avatar url="https://www.gravatar.com/avatar/c8d5a3ef94caf90b8f96cae9bc155740?rating=PG&size=44&default=identicon" inline={true}/>
         あいう123
       </p>
     );

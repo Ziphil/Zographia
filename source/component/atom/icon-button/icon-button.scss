@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+@forward "/source/component/atom/button/button.scss";
+
+
+.root {
+  width: 9zu;
+  padding-inline: 0zu;
+  box-sizing: border-box;
+  align-items: center;
+}
