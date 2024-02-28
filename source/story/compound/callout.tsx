@@ -30,7 +30,6 @@ export const short = {
   ...template,
   name: "短い",
   args: {
-    open: true,
     children: createChildren(<>
       <CalloutIconContainer>
         <GeneralIcon icon={faCircleInfo}/>
@@ -45,7 +44,6 @@ export const long = {
   ...template,
   name: "長い",
   args: {
-    open: true,
     children: createChildren(<>
       <CalloutIconContainer>
         <GeneralIcon icon={faCircleInfo}/>
