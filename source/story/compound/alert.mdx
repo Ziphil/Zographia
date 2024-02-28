@@ -1,0 +1,47 @@
+import {Meta, Title, Subtitle, Description, Controls, Stories, ArgsTable} from "@storybook/blocks";
+import * as stories from "./alert";
+
+
+<Meta of={stories}/>
+
+<Title/>
+<Subtitle>アラートダイアログ</Subtitle>
+
+### 非制御/制御
+
+非制御用法と制御用法の両方をサポートしています。
+詳細は[`Modal`](/docs/atom-modal--ドキュメント)を参照してください。
+
+### フック
+`useAlert` フックを利用すると、開閉処理を自前で実装することなくアラートダイアログを表示することができます。
+
+`useAlert` フックは、ダイアログを表示するための `openAlert` 関数を返します。
+この関数の引数に、アラートダイアログの内容を描画するための関数を渡すと、そのアラートダイアログが開きます。
+引数として渡す関数には `close` 関数が渡されるので、アラート内にアラートを閉じるボタンを表示したい場合などに利用できます。
+
+```tsx
+const openAlert = useAlert();
+
+openAlert((close) => (
+  <Alert>
+    // 内容
+  </Alert>
+));
+```
+
+### 構成
+```tsx
+<Alert>
+  <AlertPane>
+    <AlertCloseButton/> (任意)
+    <AlertBody>
+      <AlertIconContainer/>
+      <AlertContent/>
+    </AlertBody>
+    <AlertFooter/>
+  </AlertPane>
+</Alert>
+```
+
+<ArgsTable/>
+<Stories/>
