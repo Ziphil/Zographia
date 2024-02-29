@@ -4,8 +4,14 @@
 
 
 .root {
-  margin-block: -1zu;
+  padding-inline: 2zu;
   font-size: 6zu;
   color: var(--icon-color);
+  background-color: var(--border-color);
+  border-start-start-radius: var(--glob-border-radius);
+  border-end-start-radius: var(--glob-border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
 }

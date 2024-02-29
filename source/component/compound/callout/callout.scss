@@ -14,12 +14,8 @@
 }
 
 .root {
-  padding-block: 3zu;
-  padding-inline: 3zu;
-  column-gap: 2zu;
   background-color: var(--background-color);
   border: solid 1zx var(--border-color);
   border-radius: var(--glob-border-radius);
   display: flex;
-  align-items: center;
 }

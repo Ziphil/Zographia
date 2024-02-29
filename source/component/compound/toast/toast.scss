@@ -20,13 +20,12 @@
   padding-block: 3zu;
   padding-inline-end: 3zu;
   padding-inline-start: 5zu;
-  column-gap: 2zu;
+  column-gap: 3zu;
   border-radius: var(--glob-border-radius);
   background-color: var(--background-color);
   border: solid 1zx var(--border-color);
   box-shadow: var(--glob-box-shadow-setting) var(--box-shadow-color);
   display: flex;
-  align-items: center;
   box-sizing: border-box;
   position: relative;
   transition: 0.1s opacity, 0.1s transform;

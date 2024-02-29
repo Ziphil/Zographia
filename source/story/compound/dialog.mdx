@@ -1,0 +1,26 @@
+import {Meta, Title, Subtitle, Description, Controls, Stories, ArgsTable} from "@storybook/blocks";
+import * as stories from "./dialog";
+
+
+<Meta of={stories}/>
+
+<Title/>
+<Subtitle>ダイアログ</Subtitle>
+
+### 構成
+```tsx
+<Dialog>
+  <DialogPane>
+    <DialogOutsideButtonContainer> (任意)
+      <DialogOutsideButton> (複数可)
+        <DialogOutsideButtonIconbag/>
+      </DialogOutsideButton>
+    </DialogOutsideButtonContainer>
+    <DialogCloseButton/>
+    <DialogBody/>
+  </DialogPane>
+</Dialog>
+```
+
+<ArgsTable/>
+<Stories/>

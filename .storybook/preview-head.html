@@ -22,6 +22,25 @@
   .sbdocs .docblock-icongallery >div >div:nth-child(2) {
     font-weight: bold;
   }
+  .sbdocs ol:not(.docs-story *) {
+    counter-reset: ol;
+    list-style-type: none;
+  }
+  .sbdocs ol:not(.docs-story *) >li::before {
+    width: 30px;
+    margin-left: -30px;
+    padding-right: 7px;
+    box-sizing: border-box;
+    color: rgba(46, 52, 56, 0.75);
+    font-size: 90%;
+    display: inline-block;
+    text-align: right;
+    counter-increment: ol;
+    content: "(" counter(ol) ")";
+  }
+  .sbdocs :where(li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li)) +li {
+    margin-top: 0em !important;
+  }
   .css-1njl3fa,
   .css-1xhj18k {
     column-gap: 4px;

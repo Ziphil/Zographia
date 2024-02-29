@@ -1,0 +1,28 @@
+import {Meta, Title, Subtitle, Description, Controls, Stories, ArgsTable} from "@storybook/blocks";
+import * as stories from "./modal";
+
+
+<Meta of={stories}/>
+
+<Title/>
+<Subtitle>モーダル</Subtitle>
+
+### 構成
+```tsx
+<Modal>
+  <ModalPane/>
+</Modal>
+```
+
+### 非制御/制御
+非制御用法と制御用法の両方をサポートしています。
+
+`open` 属性を指定しない場合、非制御用法になります。
+非制御用法では、モーダルの開閉を `Modal` コンポーネントに任せます。
+`ModalPane` 外の領域をクリックすると、自動的にモーダルが閉じられます。
+
+`open` 属性を指定した場合、制御用法になります。
+制御用法では、ダイアログを開くか閉じるかを `open` 属性によって利用者側で制御する必要があります。
+
+<ArgsTable/>
+<Stories/>
