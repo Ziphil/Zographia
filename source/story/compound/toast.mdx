@@ -1,0 +1,22 @@
+import {Meta, Title, Subtitle, Description, Controls, Stories, ArgsTable} from "@storybook/blocks";
+import * as stories from "./toast";
+
+
+<Meta of={stories}/>
+
+<Title/>
+<Subtitle>トースト</Subtitle>
+
+### 構成
+```tsx
+<Toast>
+  <ToastIconContainer/>
+  <ToastBody>
+    <ToastContent/>
+    <ToastSupplement/> (任意)
+  </ToastBody>
+</Toast>
+```
+
+<ArgsTable/>
+<Stories/>

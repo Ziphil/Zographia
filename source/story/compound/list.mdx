@@ -1,0 +1,64 @@
+import {Meta, Title, Subtitle, Description, Controls, Stories, ArgsTable} from "@storybook/blocks";
+import * as stories from "./list";
+
+
+<Meta of={stories}/>
+
+<Title/>
+<Subtitle>リスト</Subtitle>
+
+### 構成
+```tsx
+<List>
+  <ListBody>
+    {(item, index) => (内容)}
+    <ListEmptyView/> (任意)
+    <ListLoadingView/> (任意)
+  </ListBody>
+  <ListPagination/> (任意)
+</List>
+```
+
+### `ListBody` の子要素
+`ListBody` コンポーネントの子要素には、以下の 3 つを配置してください。
+全て任意です。
+- データを描画する関数
+- `ListEmptyView` コンポーネント
+- `ListLoadingView` コンポーネント
+
+`List` コンポーネントの `items` 属性に渡された内容によって、表示されるものが以下のように切り替わります。
+- 空でない配列 — データを描画する関数を実行した結果
+- 空の配列 — `ListEmptyView` コンポーネント
+- `undefined` — `ListLoadingView` コンポーネント
+
+### ページングの非制御/制御
+ページングの方法として、非制御用法と制御用法の両方をサポートしています。
+非制御用法か制御用法かは `pageSpec` 属性に渡された内容によって切り替わります。
+
+`pageSpec` 属性に `hitSize`, `page` プロパティがどちらも指定されていない場合、非制御用法になります。
+非制御用法では、ページングに関する処理を全て `List` に任せます。
+現在表示しているページ番号を管理したり、ページ番号に応じてデータ全体から表示する部分だけを抜き出したりなどは、全て `List` コンポーネントが内部で行ってくれます。
+以下の手順を行うコードを書いてください。
+
+1. API を叩くなどしてデータ全体を取得する
+2. 1 ページに表示する項目数 (`size`) を決める
+3. 以上のデータを props に渡す
+   - `items` — データ全体を格納した配列
+   - `pageProps` — `size` のみの指定
+
+`pageSpec` 属性に `hitSize`, `page` プロパティがともに指定されている場合、制御用法になります。
+制御用法では、ページングに関する状態を `List` の外側で管理します。
+現在のページ番号を自前で管理するため、全体の一部分のみを取得するよう API にリクエストを送ることができるようになり、不必要なデータを受信する必要がなくなります。
+以下の手順を行うコードを書いてください。
+
+1. 現在のページ番号を保持するステートを用意する (`page`, `onPageSet`)
+2. 1 ページに表示する項目数 (`size`) を決める
+3. API を叩くなどして次の情報を取得する
+   - 現在のページに表示するデータ
+   - 全体数 (`hitSize`)
+4. 以上のデータを props に渡す
+   - `items` — 現在のページに表示するデータの配列
+   - `pageProps` — `size`, `hitSize`, `page`, `onPageSet` の全て
+
+<ArgsTable/>
+<Stories/>

@@ -7,8 +7,21 @@ import * as stories from "./alert";
 <Title/>
 <Subtitle>アラートダイアログ</Subtitle>
 
-### 非制御/制御
+### 構成
+```tsx
+<Alert>
+  <AlertPane>
+    <AlertCloseButton/> (任意)
+    <AlertBody>
+      <AlertIconContainer/>
+      <AlertContent/>
+    </AlertBody>
+    <AlertFooter/>
+  </AlertPane>
+</Alert>
+```
 
+### 非制御/制御
 非制御用法と制御用法の両方をサポートしています。
 詳細は[`Modal`](/docs/atom-modal--ドキュメント)を参照してください。
 
@@ -27,20 +40,6 @@ openAlert((close) => (
     // 内容
   </Alert>
 ));
-```
-
-### 構成
-```tsx
-<Alert>
-  <AlertPane>
-    <AlertCloseButton/> (任意)
-    <AlertBody>
-      <AlertIconContainer/>
-      <AlertContent/>
-    </AlertBody>
-    <AlertFooter/>
-  </AlertPane>
-</Alert>
 ```
 
 <ArgsTable/>
