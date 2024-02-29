@@ -42,9 +42,9 @@ import * as stories from "./list";
 
 1. API を叩くなどしてデータ全体を取得する
 2. 1 ページに表示する項目数 (`size`) を決める
-3. 以上のデータを props に渡す
+3. 以上のデータを渡す
    - `items` — データ全体を格納した配列
-   - `pageProps` — `size` のみの指定
+   - `pageSpec` — `size` のみ指定
 
 `pageSpec` 属性に `hitSize`, `page` プロパティがともに指定されている場合、制御用法になります。
 制御用法では、ページングに関する状態を `List` の外側で管理します。
@@ -56,9 +56,9 @@ import * as stories from "./list";
 3. API を叩くなどして次の情報を取得する
    - 現在のページに表示するデータ
    - 全体数 (`hitSize`)
-4. 以上のデータを props に渡す
+4. 以上のデータを渡す
    - `items` — 現在のページに表示するデータの配列
-   - `pageProps` — `size`, `hitSize`, `page`, `onPageSet` の全て
+   - `pageSpec` — `size`, `hitSize`, `page`, `onPageSet` の全て
 
 <ArgsTable/>
 <Stories/>
