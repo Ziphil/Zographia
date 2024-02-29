@@ -95,6 +95,7 @@ export const FileInput = createWithRef(
           styleName="root"
           className={className}
           type="button"
+          tabIndex={-1}
           onClick={handleClick}
           {...data({error})}
           {...aria({hidden: true})}
