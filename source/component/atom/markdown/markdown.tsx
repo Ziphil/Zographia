@@ -1,5 +1,6 @@
 /* eslint-disable quote-props, @typescript-eslint/naming-convention */
 
+import {Element as HastElement} from "hast";
 import {ReactElement} from "react";
 import ReactMarkdown, {Options as MarkdownOption} from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -16,6 +17,7 @@ export const Markdown = create(
     allowedElements = null,
     disallowedElements = null,
     components = {},
+    transformUrl,
     rehypePlugins = [],
     remarkPlugins = [],
     children,
@@ -26,6 +28,7 @@ export const Markdown = create(
     allowedElements?: Array<string> | null,
     disallowedElements?: Array<string> | null,
     components?: NonNullable<MarkdownOption["components"]>,
+    transformUrl?: (url: string, key: string, node: Readonly<HastElement>) => string | null,
     rehypePlugins?: NonNullable<MarkdownOption["rehypePlugins"]>,
     remarkPlugins?: NonNullable<MarkdownOption["remarkPlugins"]>,
     children: string,
@@ -40,6 +43,7 @@ export const Markdown = create(
             disallowedElements={disallowedElements}
             skipHtml={true}
             components={{li: MarkdownListItem, ...components}}
+            urlTransform={transformUrl}
             rehypePlugins={rehypePlugins}
             remarkPlugins={[[remarkGfm, {singleTilde: false}], ...remarkPlugins]}
           >
