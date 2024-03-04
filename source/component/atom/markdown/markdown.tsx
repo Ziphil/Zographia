@@ -12,7 +12,6 @@ import {MarkdownListItem} from "./markdown-list-item";
 export const Markdown = create(
   require("./markdown.scss"), "Markdown",
   function ({
-    justify = false,
     compact = false,
     allowedElements = null,
     disallowedElements = null,
@@ -23,7 +22,6 @@ export const Markdown = create(
     children,
     ...rest
   }: {
-    justify?: boolean,
     compact?: boolean,
     allowedElements?: Array<string> | null,
     disallowedElements?: Array<string> | null,
@@ -36,7 +34,7 @@ export const Markdown = create(
   } & AdditionalProps): ReactElement | null {
 
     return (
-      <div styleName="root" {...data({justify, compact})} {...rest}>
+      <div styleName="root" {...data({compact})} {...rest}>
         <div styleName="inner">
           <ReactMarkdown
             allowedElements={allowedElements}
