@@ -53,5 +53,6 @@
     line-height: var(--glob-line-height-narrow);
     font-family: var(--glob-font-family-monospace);
     font-feature-settings: "palt" 0, "pkna" 0, "lnum" 0, "kern" 0 !important;
+    white-space: pre;
   }
 }
