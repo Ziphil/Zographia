@@ -30,7 +30,7 @@ export const testUncontrolled = {
   name: "[テスト] 非制御",
   render: () => {
     return (
-      <AsyncSelect value={undefined} onSet={undefined} loadOptions={loadOptions} renderLabel={(option) => option}>
+      <AsyncSelect value={undefined} defaultValue="" onSet={undefined} loadOptions={loadOptions} renderLabel={(option) => option}>
         {(value) => (
           <AsyncSelectOption key={value}>
             {value}
@@ -63,7 +63,7 @@ export const testFocus = {
     return (
       <div>
         <Button>前</Button>
-        <AsyncSelect value={undefined} onSet={undefined} loadOptions={loadOptions} renderLabel={(option) => option}>
+        <AsyncSelect value={undefined} defaultValue="" onSet={undefined} loadOptions={loadOptions} renderLabel={(option) => option}>
           {(value) => (
             <AsyncSelectOption key={value}>
               {value}
