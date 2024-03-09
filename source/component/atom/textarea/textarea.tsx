@@ -11,6 +11,7 @@ export const Textarea = createWithRef(
     value,
     defaultValue,
     name,
+    fontFamily = "main",
     autoComplete = "off",
     autoFocus,
     error,
@@ -27,6 +28,7 @@ export const Textarea = createWithRef(
     value?: string,
     defaultValue?: string,
     name?: string,
+    fontFamily?: "main" | "monospace",
     autoComplete?: string,
     autoFocus?: boolean,
     error?: boolean,
@@ -60,6 +62,7 @@ export const Textarea = createWithRef(
           required={required}
           disabled={disabled}
           onChange={(onSet !== undefined || onChange !== undefined) ? handleChange : undefined}
+          {...data({fontFamily})}
           {...aria({invalid: error})}
           {...rest}
         />

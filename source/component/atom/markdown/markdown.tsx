@@ -1,5 +1,6 @@
 /* eslint-disable quote-props, @typescript-eslint/naming-convention */
 
+import {Element as HastElement} from "hast";
 import {ReactElement} from "react";
 import ReactMarkdown, {Options as MarkdownOption} from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -11,21 +12,21 @@ import {MarkdownListItem} from "./markdown-list-item";
 export const Markdown = create(
   require("./markdown.scss"), "Markdown",
   function ({
-    justify = false,
     compact = false,
     allowedElements = null,
     disallowedElements = null,
     components = {},
+    transformUrl,
     rehypePlugins = [],
     remarkPlugins = [],
     children,
     ...rest
   }: {
-    justify?: boolean,
     compact?: boolean,
     allowedElements?: Array<string> | null,
     disallowedElements?: Array<string> | null,
     components?: NonNullable<MarkdownOption["components"]>,
+    transformUrl?: (url: string, key: string, node: Readonly<HastElement>) => string | null,
     rehypePlugins?: NonNullable<MarkdownOption["rehypePlugins"]>,
     remarkPlugins?: NonNullable<MarkdownOption["remarkPlugins"]>,
     children: string,
@@ -33,13 +34,14 @@ export const Markdown = create(
   } & AdditionalProps): ReactElement | null {
 
     return (
-      <div styleName="root" {...data({justify, compact})} {...rest}>
+      <div styleName="root" {...data({compact})} {...rest}>
         <div styleName="inner">
           <ReactMarkdown
             allowedElements={allowedElements}
             disallowedElements={disallowedElements}
             skipHtml={true}
             components={{li: MarkdownListItem, ...components}}
+            urlTransform={transformUrl}
             rehypePlugins={rehypePlugins}
             remarkPlugins={[[remarkGfm, {singleTilde: false}], ...remarkPlugins]}
           >

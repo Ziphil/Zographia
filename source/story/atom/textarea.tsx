@@ -26,6 +26,14 @@ export const basic = {
     defaultValue: "全ての lorem ipsum は、生まれながらにして οὗ μέρος οὐθέν であり、рожьць ѩжє ꙗдѣахѫ свиниѩ について平等である。"
   }
 } as Story;
+export const monospace = {
+  ...template,
+  name: "等幅フォント",
+  args: {
+    fontFamily: "monospace",
+    defaultValue: "全ての lorem ipsum は、生まれながらにして οὗ μέρος οὐθέν であり、рожьць ѩжє ꙗдѣахѫ свиниѩ について平等である。"
+  }
+} as Story;
 export const withAddon = {
   ...template,
   name: "アドオン",

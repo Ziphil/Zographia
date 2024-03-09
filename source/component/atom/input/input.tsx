@@ -19,6 +19,7 @@ import {AsyncOrSync} from "ts-essentials";
 import {InputMenuItem} from "/source/component/atom/input/input-menu-item";
 import {InputMenuPane} from "/source/component/atom/input/input-menu-pane";
 import {createWithRef} from "/source/component/create";
+import {useDebouncedCallback} from "/source/hook/debounce";
 import {AdditionalProps, aria, data} from "/source/module/data";
 import {useInputFloating, useInputInteraction} from "./input-hook";
 
@@ -38,6 +39,7 @@ export const Input = createWithRef(
     required,
     disabled,
     suggest,
+    suggestionDuration = 300,
     onSet,
     onChange,
     onBlur,
@@ -58,6 +60,7 @@ export const Input = createWithRef(
     required?: boolean,
     disabled?: boolean,
     suggest?: (pattern: string) => AsyncOrSync<Array<SuggestionSpec>>,
+    suggestionDuration?: number,
     onSet?: (value: string) => unknown,
     onChange?: (event: ChangeEvent<HTMLInputElement>) => unknown,
     onBlur?: (event: FocusEvent<HTMLInputElement>) => unknown,
@@ -85,8 +88,7 @@ export const Input = createWithRef(
       }
     }, [onSet]);
 
-    const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
-      const value = event.target.value;
+    const updateSuggestionSpecs = useDebouncedCallback(async function (value: string): Promise<void> {
       if (suggest !== undefined && value) {
         const suggestionSpecs = await suggest(value);
         startTransition(() => {
@@ -97,9 +99,14 @@ export const Input = createWithRef(
       } else {
         setOpen(false);
       }
+    }, suggestionDuration, [suggest, setOpen, setActiveIndex]);
+
+    const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
+      const value = event.target.value;
+      updateSuggestionSpecs(value);
       onSet?.(value);
       onChange?.(event);
-    }, [suggest, setOpen, setActiveIndex, onSet, onChange]);
+    }, [onSet, onChange, updateSuggestionSpecs]);
 
     const handleKeyDown = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
       if (event.key === "Enter" && activeIndex !== null && suggestionSpecs[activeIndex]) {

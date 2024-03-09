@@ -39,10 +39,20 @@
 }
 
 .input {
-  padding-block: calc(2zu + (1 - var(--glob-line-height)) * 0.5em);
   padding-inline: 2zu;
-  line-height: var(--glob-line-height);
   flex: 1 1 auto;
   align-self: stretch;
   order: 10;
+  &[data-font-family="main"] {
+    padding-block: calc(2zu - extrusion(var(--glob-line-height)));
+    line-height: var(--glob-line-height);
+  }
+  &[data-font-family="monospace"] {
+    padding-block: calc(2zu - extrusion(var(--glob-line-height-narrow)));
+    font-size: 3.5zu;
+    line-height: var(--glob-line-height-narrow);
+    font-family: var(--glob-font-family-monospace);
+    font-feature-settings: "palt" 0, "pkna" 0, "lnum" 0, "kern" 0 !important;
+    white-space: pre;
+  }
 }

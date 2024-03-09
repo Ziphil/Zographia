@@ -5,13 +5,12 @@ import {Fragment, ReactElement, ReactNode, Suspense, useMemo} from "react";
 import {Helmet} from "react-helmet";
 import {useMedia} from "react-use";
 import {RecoilRoot} from "recoil";
-import {DeepPartial} from "ts-essentials";
 import {InnerRoot} from "/source/component/atom/root/inner-root";
 import {create} from "/source/component/create";
 import {Locale, MessageInventory} from "/source/hook/locale";
 import {DEFAULT_COLOR_DEFINITIONS, DEFAULT_STYLE_DEFINITIONS} from "/source/module";
-import {ColorDefinitions} from "/source/module/color";
-import {StyleDefinitions} from "/source/module/style";
+import {PartialColorDefinitions} from "/source/module/color";
+import {PartialStyleDefinitions} from "/source/module/style";
 import {getColorDefinitionsVarCss, getStyleDefinitionsVarCss} from "/source/util/css";
 
 
@@ -32,8 +31,8 @@ export const Root = create(
   }: {
     messageInventory?: MessageInventory,
     mobileCondition?: string,
-    colorDefinitions?: DeepPartial<ColorDefinitions>,
-    styleDefinitions?: DeepPartial<StyleDefinitions>,
+    colorDefinitions?: PartialColorDefinitions,
+    styleDefinitions?: PartialStyleDefinitions,
     initialLocale?: Locale,
     initialTheme?: string,
     children: ReactNode
@@ -42,20 +41,19 @@ export const Root = create(
     const mobile = useMedia(mobileCondition);
     const device = (mobile) ? "mobile" : "desktop";
 
-    const fullColorDefinitions = useMemo(() => merge(DEFAULT_COLOR_DEFINITIONS, colorDefinitions), [colorDefinitions]);
-    const fullStyleDefinitions = useMemo(() => merge(DEFAULT_STYLE_DEFINITIONS, styleDefinitions), [styleDefinitions]);
-
-    const colorDefinitionVarCss = useMemo(() => getColorDefinitionsVarCss(fullColorDefinitions), [fullColorDefinitions]);
-    const themeVarCss = useMemo(() => getStyleDefinitionsVarCss(fullStyleDefinitions, device), [fullStyleDefinitions, device]);
+    const fullColorDefinitions = useMemo(() => merge({}, DEFAULT_COLOR_DEFINITIONS, colorDefinitions), [colorDefinitions]);
+    const fullStyleDefinitions = useMemo(() => merge({}, DEFAULT_STYLE_DEFINITIONS, styleDefinitions), [styleDefinitions]);
+    const colorDefinitionsVarCss = useMemo(() => getColorDefinitionsVarCss(fullColorDefinitions), [fullColorDefinitions]);
+    const styleDefinitionsVarCss = useMemo(() => getStyleDefinitionsVarCss(fullStyleDefinitions, device), [fullStyleDefinitions, device]);
 
     return (
       <Fragment>
         <Helmet>
-          <style>{colorDefinitionVarCss}</style>
-          <style>{themeVarCss}</style>
+          <style>{colorDefinitionsVarCss}</style>
+          <style>{styleDefinitionsVarCss}</style>
         </Helmet>
         <Suspense fallback={<div/>}>
-          <RecoilRoot>
+          <RecoilRoot override={false}>
             <InnerRoot
               messageInventory={messageInventory}
               device={device}

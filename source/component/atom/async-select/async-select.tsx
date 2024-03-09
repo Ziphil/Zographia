@@ -16,6 +16,7 @@ import {
 import {AsyncOrSync} from "ts-essentials";
 import {LoadingIcon} from "/source/component/atom/loading-icon";
 import {create} from "/source/component/create";
+import {useDebouncedCallback} from "/source/hook/debounce";
 import {AdditionalProps, aria, data} from "/source/module/data";
 import {AsyncSelectContextProvider} from "./async-select-context";
 import {useAsyncSelectFloating, useAsyncSelectInteraction} from "./async-select-hook";
@@ -24,11 +25,12 @@ import {AsyncSelectMenuPane} from "./async-select-menu-pane";
 
 export const AsyncSelect = create(
   require("./async-select.scss"), "AsyncSelect",
-  function <V>({
+  function <V, O extends V = V>({
     value,
     defaultValue,
     error,
     loadOptions,
+    loadDuration = 300,
     onSet,
     renderLabel,
     children,
@@ -38,10 +40,11 @@ export const AsyncSelect = create(
     value?: V | null,
     defaultValue?: V | null,
     error?: boolean,
-    loadOptions: (pattern: string) => AsyncOrSync<Array<V>>,
-    onSet?: (value: V) => unknown,
+    loadOptions: (pattern: string) => AsyncOrSync<Array<O>>,
+    loadDuration?: number,
+    onSet?: (value: O) => unknown,
     renderLabel: (value: V) => ReactNode,
-    children: (value: V) => ReactElement,
+    children: (value: O) => ReactElement,
     className?: string
   } & AdditionalProps): ReactElement {
 
@@ -49,7 +52,7 @@ export const AsyncSelect = create(
     const actualValue = (value !== undefined) ? value : innerValue;
     const controlled = value !== undefined;
 
-    const [options, setOptions] = useState<Array<V>>([]);
+    const [options, setOptions] = useState<Array<O>>([]);
     const [loading, setLoading] = useState(false);
     const [, startTransition] = useTransition();
 
@@ -61,7 +64,7 @@ export const AsyncSelect = create(
     const {open, setOpen, refs} = floatingSpec;
     const {activeIndex, setActiveIndex, getReferenceProps} = interactionSpec;
 
-    const updateValue = useCallback(function (nextValue: V): void {
+    const updateValue = useCallback(function (nextValue: O): void {
       if (!controlled) {
         setInnerValue(nextValue);
       }
@@ -72,16 +75,20 @@ export const AsyncSelect = create(
       }
     }, [controlled, onSet]);
 
-    const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
-      setOpen(true);
-      setLoading(true);
-      const value = event.target.value;
+    const updateOptions = useDebouncedCallback(async function (value: string): Promise<void> {
       const options = await loadOptions(value);
       startTransition(() => {
         setLoading(false);
         setOptions(options);
       });
-    }, [loadOptions, setOpen]);
+    }, loadDuration, [loadOptions]);
+
+    const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
+      const value = event.target.value;
+      setOpen(true);
+      setLoading(true);
+      updateOptions(value);
+    }, [updateOptions, setOpen]);
 
     const handleKeyDown = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
       if (event.key === "Enter" && activeIndex !== null && options[activeIndex]) {

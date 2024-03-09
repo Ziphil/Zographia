@@ -8,6 +8,7 @@ export type StyleDefinitions = {
   fontSize: string | ResponsiveValue<string>,
   pageHorizontalPadding: string | ResponsiveValue<string>
 };
+export type PartialStyleDefinitions = Partial<StyleDefinitions>;
 
 export type FontFamilyStyleDefinition = {
   main: string,
