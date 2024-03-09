@@ -5,13 +5,12 @@ import {Fragment, ReactElement, ReactNode, Suspense, useMemo} from "react";
 import {Helmet} from "react-helmet";
 import {useMedia} from "react-use";
 import {RecoilRoot} from "recoil";
-import {DeepPartial} from "ts-essentials";
 import {InnerRoot} from "/source/component/atom/root/inner-root";
 import {create} from "/source/component/create";
 import {Locale, MessageInventory} from "/source/hook/locale";
 import {DEFAULT_COLOR_DEFINITIONS, DEFAULT_STYLE_DEFINITIONS} from "/source/module";
-import {ColorDefinitions} from "/source/module/color";
-import {StyleDefinitions} from "/source/module/style";
+import {PartialColorDefinitions} from "/source/module/color";
+import {PartialStyleDefinitions} from "/source/module/style";
 import {getColorDefinitionsVarCss, getStyleDefinitionsVarCss} from "/source/util/css";
 
 
@@ -32,8 +31,8 @@ export const Root = create(
   }: {
     messageInventory?: MessageInventory,
     mobileCondition?: string,
-    colorDefinitions?: DeepPartial<ColorDefinitions>,
-    styleDefinitions?: DeepPartial<StyleDefinitions>,
+    colorDefinitions?: PartialColorDefinitions,
+    styleDefinitions?: PartialStyleDefinitions,
     initialLocale?: Locale,
     initialTheme?: string,
     children: ReactNode

@@ -1,0 +1,33 @@
+import {Meta, Title, Subtitle, Description, Controls, Stories, ArgsTable} from "@storybook/blocks";
+import * as stories from "./root";
+
+
+<Meta of={stories}/>
+
+<Title/>
+<Subtitle>ルート</Subtitle>
+
+### 使い方
+Zographia UI 全体で利用しているコンテキストを提供します。
+アプリケーション全体をこのコンポーネントで囲んでください。
+```tsx
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(
+  <Root>
+    <App/> (アプリのルート)
+  </Root>
+);
+```
+
+### Recoil について
+Zographia UI では、ステート管理に Recoil を利用しています。
+そのため、`Root` コンポーネント内には `RecoilRoot` コンポーネントが含まれています。
+
+`Root` コンポーネント内部にある `RecoilRoot` コンポーネントには、`override` 属性に `true` が指定されています。
+そのため、`Root` コンポーネントの外側に別の `RecoilRoot` コンポーネントを配置することができ、両者でステートが共有されることになります。
+これは、`Root` コンポーネントに渡す属性を Recoil で管理したい場合などに有用です。
+詳細は [Recoil のドキュメント](https://recoiljs.org/docs/api-reference/core/RecoilRoot/)を参照してください。
+
+<ArgsTable/>
+<Stories/>

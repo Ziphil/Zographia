@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import qixColor from "color";
+import {DeepPartial} from "ts-essentials";
 import type {DEFAULT_COLOR_DEFINITIONS} from "/source/module/default";
 
 
@@ -17,6 +18,7 @@ export type ColorLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 export type ColorDefinition = Record<ColorLevel, string>;
 export type ColorDefinitions = Record<LeveledColorScheme, ColorDefinition> & Record<SingleColorScheme, string>;
+export type PartialColorDefinitions = DeepPartial<ColorDefinitions>;
 
 export function createColorDefinition(colorString: string, setting: Record<"dark" | "light", {mix: number, saturation: number}>): ColorDefinition {
   const color = qixColor(colorString);
