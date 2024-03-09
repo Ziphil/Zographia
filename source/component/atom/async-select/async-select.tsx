@@ -16,6 +16,7 @@ import {
 import {AsyncOrSync} from "ts-essentials";
 import {LoadingIcon} from "/source/component/atom/loading-icon";
 import {create} from "/source/component/create";
+import {useDebouncedCallback} from "/source/hook/debounce";
 import {AdditionalProps, aria, data} from "/source/module/data";
 import {AsyncSelectContextProvider} from "./async-select-context";
 import {useAsyncSelectFloating, useAsyncSelectInteraction} from "./async-select-hook";
@@ -29,6 +30,7 @@ export const AsyncSelect = create(
     defaultValue,
     error,
     loadOptions,
+    loadDuration = 300,
     onSet,
     renderLabel,
     children,
@@ -39,6 +41,7 @@ export const AsyncSelect = create(
     defaultValue?: V | null,
     error?: boolean,
     loadOptions: (pattern: string) => AsyncOrSync<Array<O>>,
+    loadDuration?: number,
     onSet?: (value: O) => unknown,
     renderLabel: (value: V) => ReactNode,
     children: (value: O) => ReactElement,
@@ -72,16 +75,20 @@ export const AsyncSelect = create(
       }
     }, [controlled, onSet]);
 
-    const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
-      setOpen(true);
-      setLoading(true);
-      const value = event.target.value;
+    const updateOptions = useDebouncedCallback(async function (value: string): Promise<void> {
       const options = await loadOptions(value);
       startTransition(() => {
         setLoading(false);
         setOptions(options);
       });
-    }, [loadOptions, setOpen]);
+    }, loadDuration, [loadOptions]);
+
+    const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
+      const value = event.target.value;
+      setOpen(true);
+      setLoading(true);
+      updateOptions(value);
+    }, [updateOptions, setOpen]);
 
     const handleKeyDown = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
       if (event.key === "Enter" && activeIndex !== null && options[activeIndex]) {

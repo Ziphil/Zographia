@@ -23,6 +23,7 @@ import {InputMenuPane} from "/source/component/atom/input/input-menu-pane";
 import {Tag, TagCloseButton} from "/source/component/atom/tag";
 import {createWithRef} from "/source/component/create";
 import {useEnterDown} from "/source/hook/click";
+import {useDebouncedCallback} from "/source/hook/debounce";
 import {AdditionalProps, aria, data} from "/source/module/data";
 
 
@@ -36,6 +37,7 @@ export const TagInput = createWithRef(
     readonly,
     disabled,
     suggest,
+    suggestionDuration = 300,
     onSet,
     children,
     className,
@@ -49,6 +51,7 @@ export const TagInput = createWithRef(
     readonly?: boolean,
     disabled?: boolean,
     suggest?: (pattern: string) => AsyncOrSync<Array<SuggestionSpec>>,
+    suggestionDuration?: number,
     onSet?: (values: Array<string>) => unknown,
     children?: ReactNode,
     className?: string,
@@ -66,8 +69,7 @@ export const TagInput = createWithRef(
     const {open, setOpen, refs} = floatingSpec;
     const {setActiveIndex, getReferenceProps} = interactionSpec;
 
-    const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
-      const value = event.target.value;
+    const updateSuggestionSpecs = useDebouncedCallback(async function (value: string): Promise<void> {
       if (suggest !== undefined && value) {
         const suggestionSpecs = await suggest(value);
         startTransition(() => {
@@ -78,7 +80,12 @@ export const TagInput = createWithRef(
       } else {
         setOpen(false);
       }
-    }, [suggest, setOpen, setActiveIndex]);
+    }, suggestionDuration, [suggest, setOpen, setActiveIndex]);
+
+    const handleChange = useCallback(async function (event: ChangeEvent<HTMLInputElement>): Promise<void> {
+      const value = event.target.value;
+      updateSuggestionSpecs(value);
+    }, [updateSuggestionSpecs]);
 
     const handleEnterDownForAdd = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
       const inputElement = innerRef.current;
