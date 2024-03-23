@@ -25,7 +25,7 @@ import {AsyncSelectMenuPane} from "./async-select-menu-pane";
 
 export const AsyncSelect = create(
   require("./async-select.scss"), "AsyncSelect",
-  function <V, O extends V = V>({
+  function <G, V extends G = G>({
     value,
     defaultValue,
     error,
@@ -37,14 +37,14 @@ export const AsyncSelect = create(
     className,
     ...rest
   }: {
-    value?: V | null,
-    defaultValue?: V | null,
+    value?: G | null,
+    defaultValue?: G | null,
     error?: boolean,
-    loadOptions: (pattern: string) => AsyncOrSync<Array<O>>,
+    loadOptions: (pattern: string) => AsyncOrSync<Array<V>>,
     loadDuration?: number,
-    onSet?: (value: O) => unknown,
-    renderLabel: (value: V) => ReactNode,
-    children: (value: O) => ReactElement,
+    onSet?: (value: V) => unknown,
+    renderLabel: (value: G) => ReactNode,
+    children: (value: V) => ReactElement,
     className?: string
   } & AdditionalProps): ReactElement {
 
@@ -52,7 +52,7 @@ export const AsyncSelect = create(
     const actualValue = (value !== undefined) ? value : innerValue;
     const controlled = value !== undefined;
 
-    const [options, setOptions] = useState<Array<O>>([]);
+    const [options, setOptions] = useState<Array<V>>([]);
     const [loading, setLoading] = useState(false);
     const [, startTransition] = useTransition();
 
@@ -64,7 +64,7 @@ export const AsyncSelect = create(
     const {open, setOpen, refs} = floatingSpec;
     const {activeIndex, setActiveIndex, getReferenceProps} = interactionSpec;
 
-    const updateValue = useCallback(function (nextValue: O): void {
+    const updateValue = useCallback(function (nextValue: V): void {
       if (!controlled) {
         setInnerValue(nextValue);
       }

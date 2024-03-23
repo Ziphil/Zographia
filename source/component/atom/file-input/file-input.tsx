@@ -38,8 +38,8 @@ export const FileInput = createWithRef(
     ref,
     ...rest
   }: {
-    value?: FileInputValue<M>,
-    defaultValue?: FileInputValue<M>,
+    value?: FileInputGivenValue<M>,
+    defaultValue?: FileInputGivenValue<M>,
     name?: string,
     multiple?: M,
     autoFocus?: boolean,
@@ -58,6 +58,12 @@ export const FileInput = createWithRef(
 
     const inputRef = useRef<HTMLInputElement>(null);
     const [fileNameString, setFileNameString] = useState(getFileNameString(defaultValue));
+    const [prevValue, setPrevValue] = useState(value);
+
+    if (value !== prevValue) {
+      setPrevValue(value);
+      setFileNameString(getFileNameString(value));
+    }
 
     const handleChange = useCallback(function (event: ChangeEvent<HTMLInputElement>): void {
       const files = Array.from(event.target.files ?? []);
@@ -114,10 +120,13 @@ export const FileInput = createWithRef(
 
 
 export type FileInputValue<M extends boolean> = M extends true ? Array<File> : File | null;
+export type FileInputGivenValue<M extends boolean> = M extends true ? Array<File | string> : File | string | null;
 
-function getFileNameString(file: File | Array<File> | null | undefined): string {
+function getFileNameString(file: File | string | Array<File | string> | null | undefined): string {
   if (Array.isArray(file)) {
     return file.map(getFileNameString).join(", ");
+  } else if (typeof file === "string") {
+    return file;
   } else if (file !== null && file !== undefined) {
     return file.name;
   } else {
