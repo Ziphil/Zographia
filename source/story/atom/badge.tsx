@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-closing-tag-location */
 
+import {faCheck} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
-import {Badge} from "/source/component";
+import {Badge, BadgeIconbag, GeneralIcon} from "/source/component";
+import {createChildren} from "/source/util/children";
 
 
 type Meta = RawMeta<typeof Badge>;
@@ -29,5 +31,15 @@ export const variantSolid = {
   args: {
     variant: "solid",
     children: "1,492"
+  }
+} as Story;
+export const withIcon = {
+  ...template,
+  name: "アイコン付き",
+  args: {
+    children: createChildren(<>
+      <BadgeIconbag><GeneralIcon icon={faCheck}/></BadgeIconbag>
+      完了
+    </>)
   }
 } as Story;

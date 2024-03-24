@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import {create} from "/source/component/create";
 import {AdditionalProps, data} from "/source/module/data";
 import {MarkdownListItem} from "./markdown-list-item";
+import {MarkdownTable} from "./markdown-table";
 
 
 export const Markdown = create(
@@ -40,7 +41,7 @@ export const Markdown = create(
             allowedElements={allowedElements}
             disallowedElements={disallowedElements}
             skipHtml={true}
-            components={{li: MarkdownListItem, ...components}}
+            components={{li: MarkdownListItem, table: MarkdownTable, ...components}}
             urlTransform={transformUrl}
             rehypePlugins={rehypePlugins}
             remarkPlugins={[[remarkGfm, {singleTilde: false}], ...remarkPlugins]}

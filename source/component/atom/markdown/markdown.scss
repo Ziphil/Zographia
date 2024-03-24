@@ -23,6 +23,7 @@
 
 .root {
   @include line-height(var(--line-height));
+  container-type: inline-size;
   &[data-justify] {
     text-align: justify;
   }
@@ -57,6 +58,20 @@
   border-radius: var(--glob-border-radius);
 }
 
+.inner img {
+  width: auto;
+  height: auto;
+  max-width: 50cqw;
+  max-height: 30cqw;
+  margin-block: extrusion(var(--line-height)); 
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+  &:only-child {
+    margin-inline: auto;
+  }
+}
+
 .inner :is(h1, h2) {
   @include bold-font;
   font-size: 6zu;
@@ -79,6 +94,9 @@
 
 .inner :is(h1, h2) +:is(h3, h4, h5, h6) {
   margin-block-start: calc(0zu - extrusion(var(--line-height)) * (1 - 4 / 5)) !important;
+}
+
+.inner p {
 }
 
 .inner ol {
@@ -105,18 +123,23 @@
   line-height: var(--pre-line-height);
   background-color: var(--block-background-color);
   border-radius: var(--glob-border-radius);
+  overflow-x: auto;
   >code {
     font-size: inherit;
     display: contents;
   }
 }
 
-.inner table {
+.inner :global(.table-wrapper) {
   margin-block: extrusion(var(--line-height));
+}
+
+.inner table {
   border-radius: var(--glob-border-radius);
-  border-spacing: 0u;
+  border-spacing: 0zu;
   border-collapse: separate;
-  align-self: center;;
+  align-self: center;
+  white-space: nowrap;
 }
 
 .inner td,

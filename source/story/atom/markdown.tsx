@@ -122,6 +122,130 @@ export const compact = {
     children: markdownString
   }
 } as Story;
+export const longCode = {
+  ...template,
+  name: "長いコード",
+  args: {
+    children: dedent`
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+
+      \`\`\`
+      const veryLongCode = "ここに長いコードが入ります".withExtremelyLongMethodName(ultimatelyLongArgumentName);
+      const veryLongCode = "ここに長いコードが入ります".withExtremelyLongMethodName(ultimatelyLongArgumentName);
+      \`\`\`
+
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+    `
+  }
+} as Story;
+export const longTable = {
+  ...template,
+  name: "長い表",
+  args: {
+    children: dedent`
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+
+      | これは長い表です | 見出し | これは横に長い表です | これは横に長い表です | これはかなり横に長い表です | これはかなり横に長い表です |
+      | ------ | :----- | :------: | -----: | :----- | -----: |
+      | これは長い表の長いセルです | 2 | 3 | これは長い表の長いセルです | 5 | 6 |
+      | 1 | 2 | 3 | 4 | これは長い表のかなり長いセルに入っているかなり長い文章です | 6 |
+      | 1 | 2 | これは長い表の長いセルです | 4 | 5 | 6 |
+
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+
+      | 普通の表 | 普通の表 |
+      | ------ | ------ |
+      | 1 | 2 |
+      | 1 | 2 |
+      | 1 | 2 |
+
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+    `
+  }
+} as Story;
+export const largeImage = {
+  ...template,
+  name: "大きい画像",
+  args: {
+    children: dedent`
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+
+      ![](https://via.placeholder.com/1000x1000?text=1000x1000)
+
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+
+      ![](https://via.placeholder.com/1000x100?text=1000x100)
+
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+
+      ![](https://via.placeholder.com/100x1000?text=100x1000)
+
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+    `
+  }
+} as Story;
+export const inlineImage = {
+  ...template,
+  name: "インラインの画像",
+  args: {
+    children: dedent`
+      文章の途中に![](https://via.placeholder.com/8x8?text=8)画像が![](https://via.placeholder.com/8x8?text=8)挟まります。
+
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+
+      文章の途中に![](https://via.placeholder.com/16x16?text=16)画像が![](https://via.placeholder.com/16x16?text=16)挟まります。
+
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+
+      文章の途中に![](https://via.placeholder.com/24x24?text=24)画像が![](https://via.placeholder.com/24x24?text=24)挟まります。
+
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+
+      文章の途中に![](https://via.placeholder.com/48x48?text=48)画像が![](https://via.placeholder.com/48x48?text=48)挟まります。
+
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+      ここは普通の文章が入った段落です。
+    `
+  }
+} as Story;
 export const example = {
   ...template,
   name: "例",
