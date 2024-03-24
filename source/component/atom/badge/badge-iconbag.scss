@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  margin-inline-end: calc(var(--glob-blank-gap) * 0.75);
+  flex: 0 0 auto;
+}
