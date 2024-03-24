@@ -19,8 +19,8 @@
   &::after {
     inset: 0zu;
     border-radius: 100%;
-    box-shadow: inset 0zx 0zx 0zx 1zx hsl(0, 0%, 35%);
-    mix-blend-mode: overlay;
+    box-shadow: inset 0zx 0zx 0zx 1zx hsl(0, 0%, 85%);
+    mix-blend-mode: multiply;
     position: absolute;
     content: "";
   }
