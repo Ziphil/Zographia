@@ -6,7 +6,7 @@
 .root {
   width: 1.125em;
   height: 1.125em;
-  border-radius: 1em;
+  border-radius: 100%;
   display: inline-block;
   overflow: hidden;
   position: relative;
@@ -15,6 +15,13 @@
     margin-block: -0.0625em;
     inset-block-end: -0.125em;
     position: relative;
+  }
+  &::after {
+    inset: 0zu;
+    border-radius: 100%;
+    box-shadow: inset 0zx 0zx 0zx 1zx rgba(black, 0.1);
+    position: absolute;
+    content: "";
   }
 }
 
