@@ -44,6 +44,14 @@ export const withAddon = {
     )
   }
 } as Story;
+export const disabled = {
+  ...template,
+  name: "無効",
+  args: {
+    defaultValue: "全ての lorem ipsum は、生まれながらにして οὗ μέρος οὐθέν であり、рожьць ѩжє ꙗдѣахѫ свиниѩ について平等である。",
+    disabled: true
+  }
+} as Story;
 export const error = {
   ...template,
   name: "エラー",
