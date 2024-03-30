@@ -15,18 +15,9 @@ export function useTrans(scope?: string): TransCallbacks {
     const message = (rawMessage === "<empty>") ? "" : rawMessage;
     return message;
   }, [intl, scope]);
-  const transDate = useCallback(function (date: Dayjs | Date | string | number | null | undefined): string {
+  const transDate = useCallback(function (date: Dayjs | Date | string | number | null | undefined, style?: "datetime" | "date" | "shortDate" | "time"): string {
     if (date !== null && date !== undefined) {
-      const format = intl.formatMessage({id: "common.dateFormat"});
-      const locale = intl.locale;
-      return dayjs(date).locale(locale).format(format);
-    } else {
-      return intl.formatMessage({id: "common.dateUndefined"});
-    }
-  }, [intl]);
-  const transShortDate = useCallback(function (date: Dayjs | Date | string | number | null | undefined): string {
-    if (date !== null && date !== undefined) {
-      const format = intl.formatMessage({id: "common.shortDateFormat"});
+      const format = intl.formatMessage({id: `common.dateFormat.${style ?? "datetime"}`});
       const locale = intl.locale;
       return dayjs(date).locale(locale).format(format);
     } else {
@@ -45,12 +36,10 @@ export function useTrans(scope?: string): TransCallbacks {
     trans,
     transNode: trans,
     transDate,
-    transShortDate,
     transNumber
   }), [
     trans,
     transDate,
-    transShortDate,
     transNumber
   ]);
 }
@@ -62,7 +51,6 @@ type TransCallback = {
 type TransCallbacks = {
   trans: TransCallback,
   transNode: (id: string, values?: Record<string, ReactNode | ((parts: Array<ReactNode>) => ReactNode)>) => ReactNode,
-  transDate: (date: Dayjs | Date | string | number | null | undefined) => string,
-  transShortDate: (date: Date | number | string | null | undefined) => string,
+  transDate: (date: Dayjs | Date | string | number | null | undefined, style?: "datetime" | "date" | "shortDate" | "time") => string,
   transNumber: (number: number | null | undefined, digit?: number) => string
 };
