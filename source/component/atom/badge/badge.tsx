@@ -13,6 +13,7 @@ export const Badge = createWithRef(
     scheme = "primary",
     variant = "light",
     size = "medium",
+    animate = false,
     children,
     ...rest
   }: {
@@ -20,6 +21,7 @@ export const Badge = createWithRef(
     scheme?: LeveledColorScheme,
     variant?: "solid" | "light",
     size?: "small" | "medium",
+    animate?: boolean,
     children?: ReactNode,
     className?: string,
     ref: ForwardedRef<HTMLElement>
@@ -28,7 +30,7 @@ export const Badge = createWithRef(
     const Is = is as any;
 
     return (
-      <Is styleName="root" {...data({scheme, variant, size})} {...rest}>
+      <Is styleName="root" {...data({scheme, variant, size, animate})} {...rest}>
         {children}
       </Is>
     );

@@ -41,4 +41,29 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  position: relative;
+  z-index: 0;
+  &[data-animate] {
+    &::after {
+      inset: 0zu;
+      border-radius: 1000px;
+      background-color: var(--background-color);
+      animation: 2s indicator infinite;
+      position: absolute;
+      content: "";
+      z-index: -1;
+    }
+  }
+}
+
+
+@keyframes indicator {
+  from {
+    box-shadow: 0zu 0zu 0zu 0zu var(--background-color);
+    opacity: 0.75;
+  }
+  to {
+    box-shadow: 0zu 0zu 0zu 2zu var(--background-color);
+    opacity: 0;
+  }
 }

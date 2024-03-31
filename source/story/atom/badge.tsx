@@ -41,6 +41,15 @@ export const sizeSmall = {
     children: "1,492"
   }
 } as Story;
+export const animate = {
+  ...template,
+  name: "アニメーション",
+  args: {
+    variant: "solid",
+    animate: true,
+    children: "1,492"
+  }
+} as Story;
 export const shortChild = {
   ...template,
   name: "短い内容",
