@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  margin-inline: 2zu;
+  flex: 0 0 auto;
+  &[data-position="top"] {
+    margin-block-start: 2zu;
+    margin-block-end: 0zu;
+    order: 5;
+  }
+  &[data-position="bottom"] {
+    margin-block-end: 2zu;
+    margin-block-start: 0zu;
+    order: 15;
+  }
+}
