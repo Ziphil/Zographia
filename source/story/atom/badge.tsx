@@ -33,6 +33,21 @@ export const variantSolid = {
     children: "1,492"
   }
 } as Story;
+export const sizeSmall = {
+  ...template,
+  name: "サイズ: 小さい",
+  args: {
+    size: "small",
+    children: "1,492"
+  }
+} as Story;
+export const shortChild = {
+  ...template,
+  name: "短い内容",
+  args: {
+    children: "."
+  }
+} as Story;
 export const withIcon = {
   ...template,
   name: "アイコン付き",
