@@ -6,33 +6,27 @@ import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, data} from "/source/module/data";
 
 
-export const Badge = createWithRef(
-  require("./badge.scss"), "Badge",
+export const Indicator = createWithRef(
+  require("./indicator.scss"), "Indicator",
   function ({
-    is = "span",
     scheme = "primary",
-    variant = "light",
-    size = "medium",
+    disabled = false,
     animate = false,
     children,
     ...rest
   }: {
-    is?: string,
     scheme?: LeveledColorScheme,
-    variant?: "solid" | "light",
-    size?: "small" | "medium",
+    disabled?: boolean,
     animate?: boolean,
     children?: ReactNode,
     className?: string,
-    ref: ForwardedRef<HTMLElement>
+    ref: ForwardedRef<HTMLDivElement>
   } & AdditionalProps): ReactElement {
 
-    const Is = is as any;
-
     return (
-      <Is styleName="root" {...data({scheme, variant, size, animate})} {...rest}>
+      <div styleName="root" {...data({scheme, disabled, animate})} {...rest}>
         {children}
-      </Is>
+      </div>
     );
 
   }

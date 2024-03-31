@@ -1,18 +1,27 @@
 //
 
-import {ComponentProps, ReactElement} from "react";
-import {InputAddon} from "/source/component/atom/input";
+import {ForwardedRef, ReactElement, ReactNode} from "react";
 import {createWithRef} from "/source/component/create";
+import {AdditionalProps, data} from "/source/module";
 
 
 export const TextareaAddon = createWithRef(
-  null, "TextareaAddon",
+  require("./textarea-addon.scss"), "TextareaAddon",
   function ({
+    position,
+    children,
     ...rest
-  }: Omit<ComponentProps<typeof InputAddon>, "position">): ReactElement {
+  }: {
+    position: "top" | "bottom",
+    children?: ReactNode,
+    className?: string,
+    ref: ForwardedRef<HTMLSpanElement>
+  } & AdditionalProps): ReactElement {
 
     return (
-      <InputAddon position="left" {...rest}/>
+      <span styleName="root" {...data({position})} {...rest}>
+        {children}
+      </span>
     );
 
   }

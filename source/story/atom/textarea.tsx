@@ -40,8 +40,16 @@ export const withAddon = {
   args: {
     defaultValue: "全ての lorem ipsum は、生まれながらにして οὗ μέρος οὐθέν であり、рожьць ѩжє ꙗдѣахѫ свиниѩ について平等である。",
     children: (
-      <TextareaAddon><GeneralIcon icon={faSearch}/></TextareaAddon>
+      <TextareaAddon position="top"><GeneralIcon icon={faSearch}/></TextareaAddon>
     )
+  }
+} as Story;
+export const disabled = {
+  ...template,
+  name: "無効",
+  args: {
+    defaultValue: "全ての lorem ipsum は、生まれながらにして οὗ μέρος οὐθέν であり、рожьць ѩжє ꙗдѣахѫ свиниѩ について平等である。",
+    disabled: true
   }
 } as Story;
 export const error = {

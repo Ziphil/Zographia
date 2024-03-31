@@ -50,7 +50,7 @@ export const Textarea = createWithRef(
     }, [onSet, onChange]);
 
     return (
-      <div styleName="root" className={className} {...data({error})}>
+      <div styleName="root" className={className} {...data({fontFamily, disabled, error})}>
         <textarea
           styleName="input"
           value={value}

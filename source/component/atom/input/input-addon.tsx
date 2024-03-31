@@ -17,7 +17,7 @@ export const InputAddon = createWithRef(
     hasGap?: boolean,
     children?: ReactNode,
     className?: string,
-    ref: ForwardedRef<HTMLDivElement>
+    ref: ForwardedRef<HTMLSpanElement>
   } & AdditionalProps): ReactElement {
 
     return (

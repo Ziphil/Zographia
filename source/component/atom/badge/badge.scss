@@ -10,24 +10,50 @@
       &[data-variant="solid"] {
         --text-color: #{single-color("white")};
         --background-color: #{leveled-color($scheme, 5)};
+        --indicator-background-color: #{leveled-color($scheme, 5, 0.7)};
       }
       &[data-variant="light"] {
         --text-color: #{single-color("text-light")};
         --background-color: #{leveled-color($scheme, 1)};
+        --indicator-background-color: #{leveled-color($scheme, 1, 0.7)};
       }
     }
+  }
+  &[data-size="medium"] {
+    --padding-inline: 1.5zu;
+    --font-size: 3.5zu;
+  }
+  &[data-size="small"] {
+    --padding-inline: 1zu;
+    --font-size: 3zu;
   }
 }
 
 .root {
   @include normal-font;
+  min-width: calc(1lh + 0.5zu * 2);
   padding-block: 0.5zu;
-  padding-inline: 1.5zu; 
-  font-size: 3.5zu;
+  padding-inline: var(--padding-inline); 
+  font-size: var(--font-size);
   line-height: 1;
   color: var(--text-color);
   background-color: var(--background-color);
   border-radius: 1000px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  &[data-animate] {
+    animation: 1s indicator infinite ease;
+  }
+}
+
+
+@keyframes indicator {
+  from {
+    box-shadow: 0zu 0zu 0zu 0zu var(--indicator-background-color);
+  }
+  to {
+    box-shadow: 0zu 0zu 0zu 2zu transparent;
+  }
 }

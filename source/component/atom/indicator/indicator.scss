@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+@use "sass:math" as *;
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    @include schemify using ($scheme) {
+      --background-color: #{leveled-color($scheme, 5)};
+      --indicator-background-color: #{leveled-color($scheme, 5, 0.7)};
+    }
+  }
+}
+
+.root {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  &:not([data-disabled]) {
+    &::after {
+      width: 2zu;
+      height: 2zu;
+      inset-block-start: -1zu;
+      inset-inline-end: -1zu;
+      border-radius: 2zu;
+      background-color: var(--background-color);
+      content: "";
+      position: absolute;
+    }
+    &[data-animate]::after {
+      animation: 1s indicator infinite ease;
+    }
+  }
+}
+
+
+@keyframes indicator {
+  from {
+    box-shadow: 0zu 0zu 0zu 0zu var(--indicator-background-color);
+  }
+  to {
+    box-shadow: 0zu 0zu 0zu 1.5zu transparent;
+  }
+}
