@@ -10,11 +10,13 @@ export const Indicator = createWithRef(
   require("./indicator.scss"), "Indicator",
   function ({
     scheme = "primary",
+    disabled = false,
     animate = false,
     children,
     ...rest
   }: {
     scheme?: LeveledColorScheme,
+    disabled?: boolean,
     animate?: boolean,
     children?: ReactNode,
     className?: string,
@@ -22,7 +24,7 @@ export const Indicator = createWithRef(
   } & AdditionalProps): ReactElement {
 
     return (
-      <div styleName="root" {...data({scheme, animate})} {...rest}>
+      <div styleName="root" {...data({scheme, disabled, animate})} {...rest}>
         {children}
       </div>
     );
