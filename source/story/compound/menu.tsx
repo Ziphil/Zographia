@@ -2,7 +2,8 @@
 
 import {action} from "@storybook/addon-actions";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
-import {Menu, MenuItem} from "/source/component";
+import {Menu, MenuItem, MenuSeparator} from "/source/component";
+import {createChildren} from "/source/util/children";
 
 
 type Meta = RawMeta<typeof Menu>;
@@ -15,6 +16,24 @@ export default {
 } as Meta;
 
 const template = {
+} as Story;
+
+export const border = {
+  ...template,
+  name: "ボーダー",
+  args: {
+    trigger: <button>表示</button>,
+    triggerType: "click",
+    children: createChildren(<>
+      <MenuItem onClick={action("onItemClick.0")}>選択肢1</MenuItem>
+      <MenuItem onClick={action("onItemClick.1")}>選択肢2</MenuItem>
+      <MenuItem onClick={action("onItemClick.2")}>選択肢3</MenuItem>
+      <MenuSeparator/>
+      <MenuItem onClick={action("onItemClick.3")}>選択肢4</MenuItem>
+      <MenuItem onClick={action("onItemClick.4")}>選択肢5</MenuItem>
+      <MenuItem onClick={action("onItemClick.5")}>選択肢6</MenuItem>
+    </>)
+  }
 } as Story;
 
 export const triggerTypeClick = {
