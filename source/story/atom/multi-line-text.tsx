@@ -41,6 +41,14 @@ export const lineHeightWide = {
     children: "長いテキスト".repeat(50)
   }
 } as Story;
+export const lineHeightNormalFixed = {
+  ...template,
+  name: "行間: 普通固定値",
+  args: {
+    lineHeight: "normalFixed",
+    children: "長いテキスト".repeat(50)
+  }
+} as Story;
 export const maxLineCount = {
   ...template,
   name: "最大行数",

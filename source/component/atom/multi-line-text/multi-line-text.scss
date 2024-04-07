@@ -17,6 +17,15 @@
   &[data-line-height="wide"] {
     @include line-height(var(--glob-line-height-wide));
   }
+  &[data-line-height="normalFixed"] {
+    @include fixed-line-height(calc(1em + (var(--glob-line-height) - 1) * var(--glob-font-size)));
+  }
+  &[data-line-height="narrowFixed"] {
+    @include fixed-line-height(calc(1em + (var(--glob-line-height-narrow) - 1) * var(--glob-font-size)));
+  }
+  &[data-line-height="wideFixed"] {
+    @include fixed-line-height(calc(1em + (var(--glob-line-height-wide) - 1) * var(--glob-font-size)));
+  }
   &[data-justify] {
     text-align: justify;
   }
