@@ -11,9 +11,6 @@
   &[data-line-height="narrow"] {
     @include line-height(var(--glob-line-height-narrow));
   }
-  &[data-line-height="narrowest"] {
-    @include line-height(var(--glob-line-height-narrowest));
-  }
   &[data-line-height="wide"] {
     @include line-height(var(--glob-line-height-wide));
   }

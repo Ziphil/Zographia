@@ -58,8 +58,8 @@ export const DEFAULT_COLOR_DEFINITIONS = {
 
 export const DEFAULT_STYLE_DEFINITIONS = {
   fontFamily: {
-    main: "'Fira Sans', 'Noto Sans', 'Noto Sans JP', sans-serif",
-    bold: "'Fira Sans', 'Noto Sans', 'Noto Sans JP', sans-serif",
+    main: "'FiraGO', 'Noto Sans', 'Noto Sans JP', sans-serif",
+    bold: "'FiraGO', 'Noto Sans', 'Noto Sans JP', sans-serif",
     monospace: "'Fira Mono', 'Noto Sans Mono', 'Noto Sans JP', monospace"
   },
   fontSize: ["16px", "14px"],
