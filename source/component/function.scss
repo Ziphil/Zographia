@@ -86,6 +86,13 @@
   }
 }
 
+@mixin line-cramp($line-count) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line-count;
+  overflow: hidden;
+}
+
 @mixin control-group-vars {
   --left-border-radius: #{var(--glob-border-radius)};
   --right-border-radius: #{var(--glob-border-radius)};
