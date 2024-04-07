@@ -73,17 +73,42 @@
   &::before {
     width: zu(0);
     height: zu(0);
-    margin-block-start: calc((1 - #{$line-height}) * 0.5em);
+    margin-block-start: calc((1em - #{$line-height} * 1em) * 0.5);
     display: block;
     content: "";
   }
   &::after {
     width: zu(0);
     height: zu(0);
-    margin-block-end: calc((1 - #{$line-height}) * 0.5em);
+    margin-block-end: calc((1em - #{$line-height} * 1em) * 0.5);
     display: block;
     content: "";
   }
+}
+
+@mixin fixed-line-height($line-height) {
+  line-height: $line-height;
+  &::before {
+    width: zu(0);
+    height: zu(0);
+    margin-block-start: calc((1em - #{$line-height}) * 0.5);
+    display: block;
+    content: "";
+  }
+  &::after {
+    width: zu(0);
+    height: zu(0);
+    margin-block-end: calc((1em - #{$line-height}) * 0.5);
+    display: block;
+    content: "";
+  }
+}
+
+@mixin line-cramp($line-count) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line-count;
+  overflow: hidden;
 }
 
 @mixin control-group-vars {

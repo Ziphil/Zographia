@@ -6,10 +6,12 @@
 .root {
   @include theme("light") {
     --text-color: #{single-color("text-light")};
+    --icon-color: #{leveled-color("gray", 5)};
     --background-color: #{single-color("white")};
     --focus-background-color: #{leveled-color("gray", 0)};
     @include schemify using ($scheme) {
       --text-color: #{leveled-color($scheme, 5)};
+      --icon-color: #{leveled-color($scheme, 5)};
       --background-color: #{single-color("white")};
       --focus-background-color: #{leveled-color($scheme, 0)};
     }

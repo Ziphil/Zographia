@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --border-color: #{leveled-color("gray", 1)};
+  }
+}
+
+.root {
+  margin-block: 0.5zu;
+  border-block-start: solid 1zx var(--border-color);
+}
