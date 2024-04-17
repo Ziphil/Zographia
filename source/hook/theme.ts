@@ -16,7 +16,7 @@ export function useChangeTheme(): (theme: string) => void {
   return changeTheme;
 }
 
-export function useDefaultTheme(initialTheme: string): void {
+export function useInitializeTheme(initialTheme: string): void {
   const changeTheme = useChangeTheme();
   useEffect(() => {
     const theme = localStorage.getItem("zp-theme") ?? initialTheme;
