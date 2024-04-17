@@ -6,54 +6,24 @@ import {StyleDefinitions} from "/source/module/style";
 
 
 export const DEFAULT_COLOR_DEFINITIONS = {
-  primary: createColorDefinition("hsl(30, 80%, 50%)", {
-    dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.91, saturation: 0.3}
-  }),
-  secondary: createColorDefinition("hsl(15, 75%, 55%)", {
-    dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.93, saturation: 0.3}
-  }),
-  blue: createColorDefinition("hsl(220, 75%, 50%)", {
-    dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.93, saturation: 0.3}
-  }),
-  red: createColorDefinition("hsl(0, 65%, 55%)", {
-    dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.94, saturation: 0.3}
-  }),
-  green: createColorDefinition("hsl(140, 55%, 45%)", {
-    dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.93, saturation: 0.3}
-  }),
-  yellow: createColorDefinition("hsl(60, 70%, 50%)", {
-    dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.9, saturation: 0.3}
-  }),
-  purple: createColorDefinition("hsl(280, 55%, 55%)", {
-    dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.94, saturation: 0.3}
-  }),
-  cyan: createColorDefinition("hsl(190, 70%, 50%)", {
-    dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.93, saturation: 0.3}
-  }),
-  orange: createColorDefinition("hsl(30, 80%, 50%)", {
-    dark: {mix: 0.5, saturation: -0.1},
-    light: {mix: 0.91, saturation: 0.3}
-  }),
-  gray: createColorDefinition("hsl(30, 5%, 55%)", {
-    dark: {mix: 0.55, saturation: -0.1},
-    light: {mix: 0.92, saturation: 0.2}
-  }),
-  white: createColor("hsl(30, 100%, 100%)"),
-  black: createColor("hsl(30, 0%, 0%)"),
-  textLight: createColor("hsl(30, 30%, 10%)"),
-  textDark: createColor("hsl(30, 100%, 98%)"),
-  backgroundLight: createColor("hsl(30, 30%, 99%)"),
-  stainLight: createColor("hsla(30, 30%, 50%)"),
-  backgroundDark: createColor("hsl(30, 50%, 15%)"),
-  stainDark: createColor("hsla(30, 50%, 0%)")
+  primary: createColorDefinition("oklch(70% 40% 58)", "oklch(35% 20% 58)"),
+  secondary: createColorDefinition("oklch(65% 45% 38)", "oklch(35% 20% 38)"),
+  blue: createColorDefinition("oklch(55% 50% 260)", "oklch(35% 20% 260)"),
+  red: createColorDefinition("oklch(55% 50% 15)", "oklch(35% 20% 15)"),
+  green: createColorDefinition("oklch(60% 35% 150)", "oklch(35% 20% 150)"),
+  yellow: createColorDefinition("oklch(75% 40% 110)", "oklch(35% 20% 110)"),
+  purple: createColorDefinition("oklch(55% 50% 310)", "oklch(35% 20% 310)"),
+  cyan: createColorDefinition("oklch(70% 30% 215)", "oklch(35% 20% 215)"),
+  orange: createColorDefinition("oklch(70% 40% 55)", "oklch(35% 20% 55)"),
+  gray: createColorDefinition("oklch(65% 2% 58)", "oklch(35% 2% 58)"),
+  white: createColor("white"),
+  black: createColor("black"),
+  textLight: createColor("oklch(22% 5% 58)"),
+  textDark: createColor("oklch(99% 2% 58)"),
+  backgroundLight: createColor("oklch(99% 0% 58)"),
+  stainLight: createColor("oklch(63% 18% 58)"),
+  backgroundDark: createColor("oklch(30% 10% 58)"),
+  stainDark: createColor("black")
 } as const;
 
 export const DEFAULT_STYLE_DEFINITIONS = {
