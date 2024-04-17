@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import Color from "colorjs.io";
-import {DeepPartial} from "ts-essentials";
 import type {DEFAULT_COLOR_DEFINITIONS} from "/source/module/default";
 
 
@@ -18,13 +17,13 @@ export type ColorLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 export type ColorDefinition = Record<ColorLevel, Color>;
 export type ColorDefinitions = Record<LeveledColorScheme, ColorDefinition> & Record<SingleColorScheme, Color>;
-export type PartialColorDefinitions = DeepPartial<ColorDefinitions>;
+export type PartialColorDefinitions = Partial<ColorDefinitions>;
 
 export function createColorDefinition(colorString: string, darkColorString: string): ColorDefinition {
   const color = new Color(colorString);
   const lightRange = color.range("white", {space: "oklch"});
   const darkRange = color.range(darkColorString, {space: "oklch"});
-  const definition = {
+  const colorDefinition = {
     9: darkRange(4 / 4),
     8: darkRange(3 / 4),
     7: darkRange(2 / 4),
@@ -36,7 +35,7 @@ export function createColorDefinition(colorString: string, darkColorString: stri
     1: lightRange(4 / 5.6),
     0: lightRange(5 / 5.6)
   };
-  return definition;
+  return colorDefinition;
 }
 
 export function createColor(colorString: string): Color {
