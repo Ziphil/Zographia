@@ -14,7 +14,7 @@ export const Textarea = createWithRef(
     fontFamily = "main",
     autoComplete = "off",
     autoCapitalize = "off",
-    spellCheck = true,
+    spellCheck = false,
     autoFocus,
     error,
     readonly,
