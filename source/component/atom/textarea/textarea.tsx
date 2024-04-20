@@ -13,6 +13,8 @@ export const Textarea = createWithRef(
     name,
     fontFamily = "main",
     autoComplete = "off",
+    autoCapitalize = "off",
+    spellCheck = false,
     autoFocus,
     error,
     readonly,
@@ -30,6 +32,8 @@ export const Textarea = createWithRef(
     name?: string,
     fontFamily?: "main" | "monospace",
     autoComplete?: string,
+    autoCapitalize?: string,
+    spellCheck?: boolean,
     autoFocus?: boolean,
     error?: boolean,
     readonly?: boolean,
@@ -57,6 +61,9 @@ export const Textarea = createWithRef(
           defaultValue={defaultValue}
           name={name}
           autoComplete={autoComplete}
+          autoCapitalize={autoCapitalize}
+          autoCorrect={(spellCheck) ? "on" : "off"}
+          spellCheck={spellCheck}
           autoFocus={autoFocus}
           readOnly={readonly}
           required={required}

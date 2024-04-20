@@ -32,7 +32,9 @@ export const Input = createWithRef(
     name,
     type = "text",
     placeholder,
-    autoComplete,
+    autoComplete = "off",
+    autoCapitalize = "off",
+    spellCheck = false,
     autoFocus,
     error,
     readonly,
@@ -54,6 +56,8 @@ export const Input = createWithRef(
     type?: InputType,
     placeholder?: string,
     autoComplete?: string,
+    autoCapitalize?: string,
+    spellCheck?: boolean,
     autoFocus?: boolean,
     error?: boolean,
     readonly?: boolean,
@@ -126,6 +130,9 @@ export const Input = createWithRef(
           type={toHtmlInputType(type)}
           placeholder={placeholder}
           autoComplete={autoComplete}
+          autoCapitalize={autoCapitalize}
+          autoCorrect={(spellCheck) ? "on" : "off"}
+          spellCheck={spellCheck}
           autoFocus={autoFocus}
           readOnly={readonly}
           required={required}

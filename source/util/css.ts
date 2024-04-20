@@ -1,6 +1,6 @@
 //
 
-import qixColor from "color";
+import Color from "colorjs.io";
 import {toKebabCase} from "/source/module/case";
 import {ColorDefinitions} from "/source/module/color";
 import {Device, resolveResponsiveValue} from "/source/module/responsive";
@@ -10,14 +10,13 @@ import {StyleDefinitions} from "/source/module/style";
 export function getColorDefinitionsVarCss(definitions: ColorDefinitions): string {
   const varCss = [];
   for (const [scheme, definition] of Object.entries(definitions)) {
-    if (typeof definition === "string") {
-      const colorObject = qixColor(definition);
-      const colorArray = colorObject.rgb().array();
+    if (definition instanceof Color) {
+      const color = definition;
+      const colorArray = [color.srgb.r * 255, color.srgb.g * 255, color.srgb.b * 255];
       varCss.push(`--glob-color-${toKebabCase(scheme)}: ${colorArray.join(", ")};`);
     } else {
       for (const [level, color] of Object.entries(definition)) {
-        const colorObject = qixColor(color);
-        const colorArray = colorObject.rgb().array();
+        const colorArray = [color.srgb.r * 255, color.srgb.g * 255, color.srgb.b * 255];
         varCss.push(`--glob-color-${toKebabCase(scheme)}-${level}: ${colorArray.join(", ")};`);
       }
     }

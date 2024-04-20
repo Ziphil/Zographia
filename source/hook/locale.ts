@@ -44,7 +44,7 @@ export function useChangeLocale(): Dispatch<Locale> {
   return changeLocale;
 }
 
-export function useDefaultLocale(initialLocale: Locale): void {
+export function useInitializeLocale(initialLocale: Locale): void {
   const changeLocale = useChangeLocale();
   useEffect(() => {
     const locale = localStorage.getItem("zp-locale") ?? initialLocale;

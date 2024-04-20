@@ -1,5 +1,6 @@
 //
 
+import Color from "colorjs.io";
 import {useContext} from "react";
 import {
   ColorDefinitions,
@@ -30,13 +31,13 @@ export function useColorDefinitions(): ColorDefinitions {
   return colorDefinitions;
 }
 
-export function useLeveledColor(scheme: LeveledColorScheme, level: ColorLevel, alpha?: number): string {
+export function useLeveledColor(scheme: LeveledColorScheme, level: ColorLevel, alpha?: number): Color {
   const {colorDefinitions} = useContext(rootContext);
   const color = getLeveledColor(colorDefinitions, scheme, level, alpha);
   return color;
 }
 
-export function useSingleColor(scheme: SingleColorScheme, alpha?: number): string {
+export function useSingleColor(scheme: SingleColorScheme, alpha?: number): Color {
   const {colorDefinitions} = useContext(rootContext);
   const color = getSingleColor(colorDefinitions, scheme, alpha);
   return color;

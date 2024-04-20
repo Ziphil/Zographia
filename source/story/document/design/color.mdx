@@ -12,43 +12,43 @@ import {DEFAULT_COLOR_DEFINITIONS} from "/source/module/default";
 <ColorPalette style={{marginBlockStart: "20px"}}>
   <ColorItem
     title="primary"
-    colors={DEFAULT_COLOR_DEFINITIONS.primary}
+    colors={Object.fromEntries(Object.entries(DEFAULT_COLOR_DEFINITIONS.primary).map(([level, color]) => [level, color.to("srgb").toString({format: "hex"})]))}
   />
   <ColorItem
     title="secondary"
-    colors={DEFAULT_COLOR_DEFINITIONS.secondary}
+    colors={Object.fromEntries(Object.entries(DEFAULT_COLOR_DEFINITIONS.secondary).map(([level, color]) => [level, color.to("srgb").toString({format: "hex"})]))}
   />
   <ColorItem
     title="blue"
-    colors={DEFAULT_COLOR_DEFINITIONS.blue}
+    colors={Object.fromEntries(Object.entries(DEFAULT_COLOR_DEFINITIONS.blue).map(([level, color]) => [level, color.to("srgb").toString({format: "hex"})]))}
   />
   <ColorItem
     title="red"
-    colors={DEFAULT_COLOR_DEFINITIONS.red}
+    colors={Object.fromEntries(Object.entries(DEFAULT_COLOR_DEFINITIONS.red).map(([level, color]) => [level, color.to("srgb").toString({format: "hex"})]))}
   />
   <ColorItem
     title="green"
-    colors={DEFAULT_COLOR_DEFINITIONS.green}
+    colors={Object.fromEntries(Object.entries(DEFAULT_COLOR_DEFINITIONS.green).map(([level, color]) => [level, color.to("srgb").toString({format: "hex"})]))}
   />
   <ColorItem
     title="yellow"
-    colors={DEFAULT_COLOR_DEFINITIONS.yellow}
+    colors={Object.fromEntries(Object.entries(DEFAULT_COLOR_DEFINITIONS.yellow).map(([level, color]) => [level, color.to("srgb").toString({format: "hex"})]))}
   />
   <ColorItem
     title="purple"
-    colors={DEFAULT_COLOR_DEFINITIONS.purple}
+    colors={Object.fromEntries(Object.entries(DEFAULT_COLOR_DEFINITIONS.purple).map(([level, color]) => [level, color.to("srgb").toString({format: "hex"})]))}
   />
   <ColorItem
     title="cyan"
-    colors={DEFAULT_COLOR_DEFINITIONS.cyan}
+    colors={Object.fromEntries(Object.entries(DEFAULT_COLOR_DEFINITIONS.cyan).map(([level, color]) => [level, color.to("srgb").toString({format: "hex"})]))}
   />
   <ColorItem
     title="orange"
-    colors={DEFAULT_COLOR_DEFINITIONS.orange}
+    colors={Object.fromEntries(Object.entries(DEFAULT_COLOR_DEFINITIONS.orange).map(([level, color]) => [level, color.to("srgb").toString({format: "hex"})]))}
   />
   <ColorItem
     title="gray"
-    colors={DEFAULT_COLOR_DEFINITIONS.gray}
+    colors={Object.fromEntries(Object.entries(DEFAULT_COLOR_DEFINITIONS.gray).map(([level, color]) => [level, color.to("srgb").toString({format: "hex"})]))}
   />
 </ColorPalette>
 
@@ -56,22 +56,22 @@ import {DEFAULT_COLOR_DEFINITIONS} from "/source/module/default";
 <ColorPalette style={{marginBlockStart: "20px"}}>
   <ColorItem
     title="white"
-    colors={[DEFAULT_COLOR_DEFINITIONS.white]}
+    colors={[DEFAULT_COLOR_DEFINITIONS.white.to("srgb").toString({format: "hex"})]}
   />
   <ColorItem
     title="black"
-    colors={[DEFAULT_COLOR_DEFINITIONS.black]}
+    colors={[DEFAULT_COLOR_DEFINITIONS.black.to("srgb").toString({format: "hex"})]}
   />
   <ColorItem
     title="text"
-    colors={{light: DEFAULT_COLOR_DEFINITIONS.textLight, dark: DEFAULT_COLOR_DEFINITIONS.textDark}}
+    colors={{light: DEFAULT_COLOR_DEFINITIONS.textLight.to("srgb").toString({format: "hex"}), dark: DEFAULT_COLOR_DEFINITIONS.textDark.to("srgb").toString({format: "hex"})}}
   />
   <ColorItem
     title="background"
-    colors={{light: DEFAULT_COLOR_DEFINITIONS.backgroundLight, dark: DEFAULT_COLOR_DEFINITIONS.backgroundDark}}
+    colors={{light: DEFAULT_COLOR_DEFINITIONS.backgroundLight.to("srgb").toString({format: "hex"}), dark: DEFAULT_COLOR_DEFINITIONS.backgroundDark.to("srgb").toString({format: "hex"})}}
   />
   <ColorItem
     title="stain"
-    colors={{light: DEFAULT_COLOR_DEFINITIONS.stainLight, dark: DEFAULT_COLOR_DEFINITIONS.stainDark}}
+    colors={{light: DEFAULT_COLOR_DEFINITIONS.stainLight.to("srgb").toString({format: "hex"}), dark: DEFAULT_COLOR_DEFINITIONS.stainDark.to("srgb").toString({format: "hex"})}}
   />
 </ColorPalette>
