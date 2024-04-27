@@ -31,3 +31,17 @@ export const variousText = {
     children: "あいうカキク漢字 ABJOQabfpy ÉÃëç أَنْتَ μῆνιν ἄειδε Ἄϊδι"
   }
 } as Story;
+
+export const testOverflow = {
+  ...template,
+  name: "[テスト] はみ出し",
+  render: () => {
+    return (
+      <div style={{fontSize: "200%"}}>
+        <SingleLineText>
+          ÉǞО̄ أَنيٍ
+        </SingleLineText>
+      </div>
+    );
+  }
+} as Story;

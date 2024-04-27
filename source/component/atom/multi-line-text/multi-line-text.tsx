@@ -28,7 +28,9 @@ export const MultiLineText = createWithRef(
 
     return (
       <Is styleName="root" style={getStyle(maxLineCount)} {...data({justify, lineHeight, maxLineCount})} {...rest}>
-        {children}
+        <span styleName="inner">
+          {children}
+        </span>
       </Is>
     );
 
