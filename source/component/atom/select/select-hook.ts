@@ -3,6 +3,7 @@
 import {
   FloatingContext,
   autoUpdate,
+  flip,
   useClick,
   useDismiss,
   useFloating,
@@ -30,7 +31,7 @@ export type SelectFloatingSpec = Pick<ReturnType<typeof useFloating>, "refs" | "
 
 export function useSelectFloating(): SelectFloatingSpec {
   const [open, setOpen] = useState(false);
-  const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement: "bottom-start", whileElementsMounted: autoUpdate, middleware: [fitWidth()]});
+  const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement: "bottom-start", whileElementsMounted: autoUpdate, middleware: [fitWidth(), flip()]});
   const {isMounted: mounted, status} = useTransitionStatus(context, {duration: 100});
   return {
     refs,
