@@ -64,3 +64,17 @@ export const variousText = {
     children: "あいうカキク漢字 ABJOQabfpy ÉÃëç أَنْتَ μῆνιν ἄειδε Ἄϊδι\n".repeat(50)
   }
 } as Story;
+
+export const testOverflow = {
+  ...template,
+  name: "[テスト] はみ出し",
+  render: () => {
+    return (
+      <div style={{fontSize: "200%"}}>
+        <MultiLineText lineHeight="narrowFixed" maxLineCount={2}>
+          ÉǞО̄ أَنيٍ
+        </MultiLineText>
+      </div>
+    );
+  }
+} as Story;

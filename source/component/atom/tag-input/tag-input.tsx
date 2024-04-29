@@ -1,8 +1,6 @@
 //
 
-import {
-  useMergeRefs
-} from "@floating-ui/react";
+import {useMergeRefs} from "@floating-ui/react";
 import {
   ChangeEvent,
   FocusEvent,
@@ -70,7 +68,7 @@ export const TagInput = createWithRef(
     const {setActiveIndex, getReferenceProps} = interactionSpec;
 
     const updateSuggestionSpecs = useDebouncedCallback(async function (value: string): Promise<void> {
-      if (suggest !== undefined && value) {
+      if (suggest !== undefined) {
         const suggestionSpecs = await suggest(value);
         startTransition(() => {
           setSuggestionSpecs(suggestionSpecs);

@@ -14,6 +14,7 @@ export const Markdown = create(
   require("./markdown.scss"), "Markdown",
   function ({
     compact = false,
+    skipHtml = false,
     allowedElements = null,
     disallowedElements = null,
     components = {},
@@ -24,6 +25,7 @@ export const Markdown = create(
     ...rest
   }: {
     compact?: boolean,
+    skipHtml?: boolean,
     allowedElements?: Array<string> | null,
     disallowedElements?: Array<string> | null,
     components?: NonNullable<MarkdownOption["components"]>,
@@ -40,7 +42,7 @@ export const Markdown = create(
           <ReactMarkdown
             allowedElements={allowedElements}
             disallowedElements={disallowedElements}
-            skipHtml={true}
+            skipHtml={skipHtml}
             components={{li: MarkdownListItem, table: MarkdownTable, ...components}}
             urlTransform={transformUrl}
             rehypePlugins={rehypePlugins}

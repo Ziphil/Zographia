@@ -93,7 +93,7 @@ export const Input = createWithRef(
     }, [onSet]);
 
     const updateSuggestionSpecs = useDebouncedCallback(async function (value: string): Promise<void> {
-      if (suggest !== undefined && value) {
+      if (suggest !== undefined) {
         const suggestionSpecs = await suggest(value);
         startTransition(() => {
           setSuggestionSpecs(suggestionSpecs);
