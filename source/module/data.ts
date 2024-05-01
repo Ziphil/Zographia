@@ -1,6 +1,6 @@
 //
 
-import {AriaAttributes} from "react";
+import {AriaAttributes, CSSProperties} from "react";
 import {ToKebabCase, toKebabCase} from "/source/module/case";
 
 
@@ -38,6 +38,6 @@ export type AriaName = ExtractAriaName<keyof AriaAttributes>;
 export type AriaObject<N extends AriaName> = {[K in N]: AriaAttributes[`aria-${K}`]};
 export type AriaProps<N extends AriaName = AriaName> = {[K in N as `aria-${K}`]: AriaAttributes[`aria-${K}`]};
 
-export type AdditionalProps = DataProps & {[K in string as `aria-${K}`]: AriaAttributes[keyof AriaAttributes]};
+export type AdditionalProps = DataProps & {[K in string as `aria-${K}`]: AriaAttributes[keyof AriaAttributes]} & {style?: CSSProperties};
 
 type ExtractAriaName<K extends keyof AriaAttributes> = K extends `aria-${infer N}` ? N : never;

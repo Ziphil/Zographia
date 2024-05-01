@@ -40,3 +40,4 @@ export * from "./compound/menu";
 export * from "./compound/pagination";
 export * from "./compound/tab-list";
 export * from "./compound/toast";
+export * from "./compound/truncate";

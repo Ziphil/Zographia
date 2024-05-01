@@ -29,6 +29,9 @@ toast:
   label:
     viewport: "Увєдомјенја"
     provider: "Увєдомјенје"
+truncate:
+  show: "Show more"
+  hide: "Collapse"
 
 test:
   plural: "{value, plural, one {# слово} few {# слова} other {# слов}}"

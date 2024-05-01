@@ -29,6 +29,9 @@ toast:
   label:
     viewport: "Notifications"
     provider: "Notification"
+truncate:
+  show: "Show more"
+  hide: "Collapse"
 
 test:
   plural: "{value, plural, one {# word} other {# words}}"

@@ -29,6 +29,9 @@ toast:
   label:
     viewport: "Sciigoj"
     provider: "Sciigo"
+truncate:
+  show: "Montri pli"
+  hide: "Faldi"
 
 test:
   plural: "{value, plural, one {# vorto} other {# vortoj}}"
