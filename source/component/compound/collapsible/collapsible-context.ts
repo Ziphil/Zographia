@@ -3,7 +3,7 @@
 import {RefObject, createContext} from "react";
 
 
-export type TruncateContextValue = {
+export type CollapsibleContextValue = {
   ref: RefObject<HTMLDivElement>,
   needTruncation: boolean,
   show: boolean,
@@ -11,11 +11,11 @@ export type TruncateContextValue = {
   handleClick: () => void
 };
 
-export const truncateContext = createContext<TruncateContextValue>({
+export const collapsibleContext = createContext<CollapsibleContextValue>({
   ref: {current: null},
   needTruncation: false,
   show: false,
   scrollHeight: 0,
   handleClick: () => null
 });
-export const TruncateContextProvider = truncateContext["Provider"];
+export const CollapsibleContextProvider = collapsibleContext["Provider"];

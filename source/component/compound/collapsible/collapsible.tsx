@@ -1,13 +1,13 @@
 //
 
 import {ReactElement, ReactNode, Ref, useCallback, useEffect, useMemo, useRef, useState} from "react";
-import {TruncateContextProvider} from "/source/component/compound/truncate/truncate-context";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
+import {CollapsibleContextProvider} from "./collapsible-context";
 
 
-export const Truncate = createWithRef(
-  require("./truncate.scss"), "Truncate",
+export const Collapsible = createWithRef(
+  require("./collapsible.scss"), "Collapsible",
   function ({
     children,
     ...rest
@@ -46,9 +46,9 @@ export const Truncate = createWithRef(
 
     return (
       <div styleName="root" {...rest}>
-        <TruncateContextProvider value={useMemo(() => ({ref, needTruncation, show, scrollHeight, handleClick}), [ref, needTruncation, show, scrollHeight, handleClick])}>
+        <CollapsibleContextProvider value={useMemo(() => ({ref, needTruncation, show, scrollHeight, handleClick}), [ref, needTruncation, show, scrollHeight, handleClick])}>
           {children}
-        </TruncateContextProvider>
+        </CollapsibleContextProvider>
       </div>
     );
 

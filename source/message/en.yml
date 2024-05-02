@@ -29,7 +29,7 @@ toast:
   label:
     viewport: "Notifications"
     provider: "Notification"
-truncate:
+collapsible:
   show: "Show more"
   hide: "Collapse"
 

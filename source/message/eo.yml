@@ -29,7 +29,7 @@ toast:
   label:
     viewport: "Sciigoj"
     provider: "Sciigo"
-truncate:
+collapsible:
   show: "Montri pli"
   hide: "Faldi"
 

@@ -29,7 +29,7 @@ toast:
   label:
     viewport: "Увєдомјенја"
     provider: "Увєдомјенје"
-truncate:
+collapsible:
   show: "Show more"
   hide: "Collapse"
 

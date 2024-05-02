@@ -7,11 +7,11 @@ import {GeneralIcon} from "/source/component/atom/general-icon";
 import {createWithRef} from "/source/component/create";
 import {useTrans} from "/source/hook";
 import {AdditionalProps, data} from "/source/module/data";
-import {truncateContext} from "./truncate-context";
+import {collapsibleContext} from "./collapsible-context";
 
 
-export const TruncateButton = createWithRef(
-  require("./truncate-button.scss"), "TruncateButton",
+export const CollapsibleButton = createWithRef(
+  require("./collapsible-button.scss"), "CollapsibleButton",
   function ({
     children,
     ...rest
@@ -21,9 +21,9 @@ export const TruncateButton = createWithRef(
     ref: Ref<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
 
-    const {trans} = useTrans("truncate");
+    const {trans} = useTrans("collapsible");
 
-    const {needTruncation, show, handleClick} = useContext(truncateContext);
+    const {needTruncation, show, handleClick} = useContext(collapsibleContext);
 
     return (
       <Button styleName="root" scheme="gray" variant="simple" onClick={handleClick} {...data({show, needTruncation})} {...rest}>

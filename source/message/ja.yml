@@ -29,7 +29,7 @@ toast:
   label:
     viewport: "通知"
     provider: "通知"
-truncate:
+collapsible:
   show: "もっと見る"
   hide: "隠す"
 
