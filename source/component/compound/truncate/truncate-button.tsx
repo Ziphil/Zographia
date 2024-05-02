@@ -1,7 +1,7 @@
 //
 
 import {faAngleDown, faAngleUp} from "@fortawesome/sharp-regular-svg-icons";
-import {MouseEvent, ReactElement, ReactNode, Ref, useCallback, useContext} from "react";
+import {ReactElement, ReactNode, Ref, useContext} from "react";
 import {Button} from "/source/component/atom/button";
 import {GeneralIcon} from "/source/component/atom/general-icon";
 import {createWithRef} from "/source/component/create";
@@ -23,15 +23,7 @@ export const TruncateButton = createWithRef(
 
     const {trans} = useTrans("truncate");
 
-    const {ref, needTruncation, show, setShow, setScrollHeight} = useContext(truncateContext);
-
-    const handleClick = useCallback(function (event: MouseEvent<HTMLButtonElement>) {
-      const element = ref.current;
-      if (element) {
-        setScrollHeight(element.scrollHeight);
-        setShow((show) => !show);
-      }
-    }, [ref, setShow, setScrollHeight]);
+    const {needTruncation, show, handleClick} = useContext(truncateContext);
 
     return (
       <Button styleName="root" scheme="gray" variant="simple" onClick={handleClick} {...data({show, needTruncation})} {...rest}>

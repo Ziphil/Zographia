@@ -1,6 +1,6 @@
 //
 
-import {ReactElement, ReactNode, Ref, useEffect, useMemo, useRef, useState} from "react";
+import {ReactElement, ReactNode, Ref, useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {TruncateContextProvider} from "/source/component/compound/truncate/truncate-context";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
@@ -23,17 +23,30 @@ export const Truncate = createWithRef(
 
     const ref = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    const handleClick = useCallback(function (): void {
+      const element = ref.current;
+      if (element) {
+        setScrollHeight(element.scrollHeight);
+        setShow((show) => !show);
+      }
+    }, [ref]);
+
+    const updateInnerSize = useCallback(function (): void {
       const element = ref.current;
       console.log({element, clientHeight: element?.clientHeight, scrollHeight: element?.scrollHeight});
       if (element) {
-        setNeedTruncation(element.clientHeight + 1 < element.scrollHeight);
+        setNeedTruncation(element.clientHeight + 8 < element.scrollHeight);
+        setScrollHeight(element.scrollHeight);
       }
-    }, [children]);
+    }, [ref]);
+
+    useEffect(() => {
+      updateInnerSize();
+    }, [children, updateInnerSize]);
 
     return (
       <div styleName="root" {...rest}>
-        <TruncateContextProvider value={useMemo(() => ({ref, needTruncation, show, setShow, scrollHeight, setScrollHeight}), [ref, needTruncation, show, setShow, scrollHeight, setScrollHeight])}>
+        <TruncateContextProvider value={useMemo(() => ({ref, needTruncation, show, scrollHeight, handleClick}), [ref, needTruncation, show, scrollHeight, handleClick])}>
           {children}
         </TruncateContextProvider>
       </div>

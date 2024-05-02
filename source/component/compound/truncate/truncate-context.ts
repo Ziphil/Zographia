@@ -1,23 +1,21 @@
 //
 
-import {Dispatch, RefObject, SetStateAction, createContext} from "react";
+import {RefObject, createContext} from "react";
 
 
 export type TruncateContextValue = {
   ref: RefObject<HTMLDivElement>,
   needTruncation: boolean,
   show: boolean,
-  setShow: Dispatch<SetStateAction<boolean>>,
   scrollHeight: number,
-  setScrollHeight: Dispatch<SetStateAction<number>>
+  handleClick: () => void
 };
 
 export const truncateContext = createContext<TruncateContextValue>({
   ref: {current: null},
   needTruncation: false,
   show: false,
-  setShow: () => null,
   scrollHeight: 0,
-  setScrollHeight: () => null
+  handleClick: () => null
 });
 export const TruncateContextProvider = truncateContext["Provider"];
