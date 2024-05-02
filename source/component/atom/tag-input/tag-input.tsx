@@ -91,11 +91,12 @@ export const TagInput = createWithRef(
         const value = inputElement.value.trim();
         if (value) {
           onSet?.([...values, value]);
+          setOpen(false);
           event.preventDefault();
           requestAnimationFrame(() => inputElement.value = "");
         }
       }
-    }, [values, onSet]);
+    }, [values, setOpen, onSet]);
 
     const handleKeyDownForRemove = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
       if (event.key === "Backspace") {
