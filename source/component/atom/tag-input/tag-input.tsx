@@ -141,12 +141,6 @@ export const TagInput = createWithRef(
 
     return (
       <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
-        {values.map((value, index) => (
-          <Tag styleName="tag" key={index} variant={tagVariant}>
-            {value}
-            <TagCloseButton onClick={() => removeTag(index)}/>
-          </Tag>
-        ))}
         <input
           styleName="input"
           autoFocus={autoFocus}
@@ -162,6 +156,12 @@ export const TagInput = createWithRef(
             onBlur: handleBlur
           })}
         />
+        {values.map((value, index) => (
+          <Tag styleName="tag" key={index} variant={tagVariant}>
+            {value}
+            <TagCloseButton onClick={() => removeTag(index)}/>
+          </Tag>
+        ))}
         {children}
         {(suggest !== undefined) && (
           <InputMenuPane floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
