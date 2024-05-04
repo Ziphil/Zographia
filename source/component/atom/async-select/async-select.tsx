@@ -68,11 +68,11 @@ export const AsyncSelect = create(
       if (!controlled) {
         setInnerValue(nextValue);
       }
-      onSet?.(nextValue);
       afterUpdateValueRef.current = true;
       if (inputElementRef.current !== null) {
         inputElementRef.current.value = "";
       }
+      onSet?.(nextValue);
     }, [controlled, onSet]);
 
     const updateOptions = useDebouncedCallback(async function (value: string): Promise<void> {
@@ -99,6 +99,11 @@ export const AsyncSelect = create(
     }, [options, activeIndex, updateValue, setOpen, setActiveIndex]);
 
     const handleMenuFocusSet = useCallback(function (menuFocus: boolean): void {
+      if (!menuFocus) {
+        if (inputElementRef.current !== null) {
+          inputElementRef.current.value = "";
+        }
+      }
     }, []);
 
     const handleFocus = useCallback(function (event: FocusEvent<HTMLInputElement>): void {
@@ -109,11 +114,7 @@ export const AsyncSelect = create(
     }, [setOpen]);
 
     const handleBlur = useCallback(function (event: FocusEvent<HTMLInputElement>): void {
-      setOpen(false);
-      if (inputElementRef.current !== null) {
-        inputElementRef.current.value = "";
-      }
-    }, [setOpen]);
+    }, []);
 
     return (
       <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
