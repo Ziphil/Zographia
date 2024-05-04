@@ -5,7 +5,7 @@ import {RefObject, createContext} from "react";
 
 export type CollapsibleContextValue = {
   ref: RefObject<HTMLDivElement>,
-  needTruncation: boolean,
+  needTruncation: boolean | undefined,
   show: boolean,
   scrollHeight: number,
   handleClick: () => void

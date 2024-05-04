@@ -17,7 +17,7 @@ export const Collapsible = createWithRef(
     ref: Ref<HTMLDivElement>
   } & AdditionalProps): ReactElement {
 
-    const [needTruncation, setNeedTruncation] = useState(false);
+    const [needTruncation, setNeedTruncation] = useState<boolean | undefined>(undefined);
     const [show, setShow] = useState(false);
     const [scrollHeight, setScrollHeight] = useState(0);
 

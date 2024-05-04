@@ -4,8 +4,11 @@
 
 
 .root {
-  overflow-y: hidden;
-  &[data-need-truncation] {
+  &[data-need-truncation="unknown"] {
+    overflow-y: hidden;
+  }
+  &[data-need-truncation="true"] {
+    overflow-y: hidden;
     transition: 0.1s max-height;
     mask-repeat: no-repeat no-repeat;
     &[data-show] {

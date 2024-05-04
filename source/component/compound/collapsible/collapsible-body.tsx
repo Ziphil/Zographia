@@ -19,9 +19,10 @@ export const CollapsibleBody = create(
   } & AdditionalProps): ReactElement {
 
     const {ref, needTruncation, show, scrollHeight} = useContext(collapsibleContext);
+    const needTruncationString = (needTruncation === undefined) ? "unknown" : (needTruncation) ? "true" : "false";
 
     return (
-      <div styleName="root" ref={ref} style={{maxHeight: (show) ? `${scrollHeight}px` : height}} {...data({needTruncation, show})} {...rest}>
+      <div styleName="root" ref={ref} style={{maxHeight: (show) ? `${scrollHeight}px` : height}} {...data({needTruncation: needTruncationString, show})} {...rest}>
         {children}
       </div>
     );
