@@ -74,3 +74,15 @@ export const testHook: Story = {
     );
   }
 };
+export const testLabel: Story = {
+  ...template,
+  name: "[テスト] ラベル内",
+  render: () => {
+    const [values, setValues] = useState(["タグ", "ねこねこ", "うさうさ"]);
+    return (
+      <label>
+        <TagInput values={values} suggest={suggest} onSet={setValues}/>
+      </label>
+    );
+  }
+};

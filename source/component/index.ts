@@ -34,6 +34,7 @@ export * from "./atom/visually-hidden";
 export * from "./compound/alert";
 export * from "./compound/callout";
 export * from "./compound/card";
+export * from "./compound/collapsible";
 export * from "./compound/dialog";
 export * from "./compound/list";
 export * from "./compound/menu";

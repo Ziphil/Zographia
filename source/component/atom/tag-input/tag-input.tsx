@@ -91,11 +91,12 @@ export const TagInput = createWithRef(
         const value = inputElement.value.trim();
         if (value) {
           onSet?.([...values, value]);
+          setOpen(false);
           event.preventDefault();
           requestAnimationFrame(() => inputElement.value = "");
         }
       }
-    }, [values, onSet]);
+    }, [values, setOpen, onSet]);
 
     const handleKeyDownForRemove = useCallback(function (event: KeyboardEvent<HTMLInputElement>): void {
       if (event.key === "Backspace") {
@@ -141,12 +142,6 @@ export const TagInput = createWithRef(
 
     return (
       <div styleName="root" className={className} ref={refs.setReference} {...data({error})}>
-        {values.map((value, index) => (
-          <Tag styleName="tag" key={index} variant={tagVariant}>
-            {value}
-            <TagCloseButton onClick={() => removeTag(index)}/>
-          </Tag>
-        ))}
         <input
           styleName="input"
           autoFocus={autoFocus}
@@ -162,6 +157,12 @@ export const TagInput = createWithRef(
             onBlur: handleBlur
           })}
         />
+        {values.map((value, index) => (
+          <Tag styleName="tag" key={index} variant={tagVariant}>
+            {value}
+            <TagCloseButton onClick={() => removeTag(index)}/>
+          </Tag>
+        ))}
         {children}
         {(suggest !== undefined) && (
           <InputMenuPane floatingSpec={floatingSpec} interactionSpec={interactionSpec}>
