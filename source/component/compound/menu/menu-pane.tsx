@@ -1,7 +1,7 @@
 //
 
 import {FloatingContext, FloatingFocusManager, FloatingPortal} from "@floating-ui/react";
-import {CSSProperties, ForwardedRef, ReactElement, ReactNode, useCallback, useState} from "react";
+import {ForwardedRef, ReactElement, ReactNode, useCallback, useState} from "react";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps, data} from "/source/module/data";
 
@@ -28,7 +28,6 @@ export const MenuPane = createWithRef(
     onFocusSet?: (focus: boolean) => unknown,
     children?: ReactNode,
     className?: string,
-    style?: CSSProperties,
     ref: ForwardedRef<HTMLDivElement>
   } & AdditionalProps): ReactElement | null {
 
