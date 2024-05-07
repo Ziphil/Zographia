@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-closing-bracket-location */
 
-import {Placement, useFloating, useTransitionStatus} from "@floating-ui/react";
+import {Placement, flip, useFloating, useTransitionStatus} from "@floating-ui/react";
 import {Children, Fragment, ReactElement, ReactNode, cloneElement, useMemo, useState} from "react";
 import {isElement} from "react-is";
 import {create} from "/source/component/create";
@@ -29,7 +29,7 @@ export const Menu = create(
 
     const [open, setOpen] = useState(false);
 
-    const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement});
+    const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement, middleware: [flip()]});
     const {isMounted: mounted, status} = useTransitionStatus(context, {duration: 100});
     const {
       listRef,
