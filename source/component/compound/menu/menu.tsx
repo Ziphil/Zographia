@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-closing-bracket-location */
 
-import {Placement, flip, useFloating, useTransitionStatus} from "@floating-ui/react";
+import {Placement, autoUpdate, flip as flipMiddleware, inline as inlineMiddleware, useFloating, useTransitionStatus} from "@floating-ui/react";
 import {Children, Fragment, ReactElement, ReactNode, cloneElement, useMemo, useState} from "react";
 import {isElement} from "react-is";
 import {create} from "/source/component/create";
@@ -16,20 +16,24 @@ export const Menu = create(
   function ({
     trigger,
     triggerType = "click",
+    triggerRest = null,
     placement = "bottom-start",
+    inline = false,
     children,
     className
   }: {
     trigger?: ReactElement,
     triggerType?: "click" | "focus" | "hover",
+    triggerRest?: number | null,
     placement?: Placement,
+    inline?: boolean,
     children?: ReactNode,
     className?: string
   } & AdditionalProps): ReactElement {
 
     const [open, setOpen] = useState(false);
 
-    const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement, middleware: [flip()]});
+    const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement, whileElementsMounted: autoUpdate, middleware: [flipMiddleware(), inline && inlineMiddleware()]});
     const {isMounted: mounted, status} = useTransitionStatus(context, {duration: 100});
     const {
       listRef,
@@ -37,7 +41,7 @@ export const Menu = create(
       getReferenceProps,
       getFloatingProps,
       getItemProps
-    } = useMenuInteraction(context, triggerType);
+    } = useMenuInteraction(context, triggerType, triggerRest);
 
     return (
       <Fragment>
