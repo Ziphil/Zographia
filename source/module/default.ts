@@ -28,9 +28,9 @@ export const DEFAULT_COLOR_DEFINITIONS = {
 
 export const DEFAULT_STYLE_DEFINITIONS = {
   fontFamily: {
-    main: "'FiraGO', 'Noto Sans', 'Noto Sans JP', sans-serif",
-    bold: "'FiraGO', 'Noto Sans', 'Noto Sans JP', sans-serif",
-    monospace: "'Fira Mono', 'Noto Sans Mono', 'Noto Sans JP', monospace"
+    main: "'Noto Sans Display', 'Noto Sans JP', sans-serif",
+    bold: "'Noto Sans Display', 'Noto Sans JP', sans-serif",
+    monospace: "'Noto Sans Mono', 'Noto Sans JP', monospace"
   },
   fontSize: ["16px", "14px"],
   pageHorizontalPadding: [`${10 / 4}em`, `${4 / 4}em`]

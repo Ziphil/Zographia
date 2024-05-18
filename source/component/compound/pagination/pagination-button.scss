@@ -24,7 +24,7 @@
   }
   &[data-current] {
     @include bold-font;
-    border: solid 1zx var(--highlight-border-color);
+    background-color: var(--highlight-background-color);
   }
   &:hover:not(:disabled) {
     color: var(--hover-text-color);

@@ -1,18 +1,15 @@
-/* eslint-disable react/jsx-closing-bracket-location */
+//
 
 import {Placement, autoUpdate, flip as flipMiddleware, inline as inlineMiddleware, useFloating, useTransitionStatus} from "@floating-ui/react";
-import {Children, Fragment, ReactElement, ReactNode, cloneElement, useMemo, useState} from "react";
-import {isElement} from "react-is";
+import {Fragment, ReactElement, ReactNode, cloneElement, useState} from "react";
 import {create} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
-import {MenuContextProvider} from "./menu-context";
-import {useMenuInteraction} from "./menu-hook";
-import {MenuItem} from "./menu-item";
-import {MenuPane} from "./menu-pane";
+import {usePopoverInteraction} from "./popover-hook";
+import {PopoverPane} from "./popover-pane";
 
 
-export const Menu = create(
-  require("./menu.scss"), "Menu",
+export const Popover = create(
+  require("./popover.scss"), "Popover",
   function ({
     trigger,
     triggerType = "click",
@@ -35,20 +32,14 @@ export const Menu = create(
 
     const {refs, floatingStyles, context} = useFloating({open, onOpenChange: setOpen, placement, whileElementsMounted: autoUpdate, middleware: [flipMiddleware(), inline && inlineMiddleware()]});
     const {isMounted: mounted, status} = useTransitionStatus(context, {duration: 100});
-    const {
-      listRef,
-      activeIndex,
-      getReferenceProps,
-      getFloatingProps,
-      getItemProps
-    } = useMenuInteraction(context, triggerType, triggerRest);
+    const {getReferenceProps, getFloatingProps} = usePopoverInteraction(context, triggerType, triggerRest);
 
     return (
       <Fragment>
         {(trigger !== undefined) && (
           cloneElement(trigger, {ref: refs.setReference, ...getReferenceProps()})
         )}
-        <MenuPane
+        <PopoverPane
           className={className}
           open={open}
           mounted={mounted}
@@ -58,33 +49,10 @@ export const Menu = create(
           ref={refs.setFloating}
           {...getFloatingProps()}
         >
-          <MenuContextProvider value={useMemo(
-            () => ({setOpen, listRef, activeIndex, getItemProps}),
-            [setOpen, listRef, activeIndex, getItemProps]
-          )}>
-            {transformChildren(children)}
-          </MenuContextProvider>
-        </MenuPane>
+          {children}
+        </PopoverPane>
       </Fragment>
     );
 
   }
 );
-
-
-function transformChildren(children: ReactNode): Array<ReactElement> | null | undefined {
-  let index = -1;
-  const nextChildren = Children.map(children, (child) => {
-    if (isElement(child)) {
-      if (child.type === MenuItem) {
-        index ++;
-        return cloneElement(child, {index});
-      } else {
-        return child;
-      }
-    } else {
-      return undefined;
-    }
-  });
-  return nextChildren;
-};

@@ -2,7 +2,7 @@
 //
 
 import {useMergeRefs} from "@floating-ui/react";
-import {CSSProperties, ComponentProps, ForwardedRef, MouseEvent, ReactElement, ReactNode, useCallback, useContext} from "react";
+import {ComponentProps, ForwardedRef, MouseEvent, ReactElement, ReactNode, useCallback, useContext} from "react";
 import {createWithRef} from "/source/component/create";
 import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, aria, data} from "/source/module/data";
@@ -22,7 +22,6 @@ export const MenuItem = createWithRef(
     onClick?: (event: MouseEvent<HTMLButtonElement>) => unknown,
     children?: ReactNode,
     className?: string,
-    style?: CSSProperties,
     ref: ForwardedRef<HTMLButtonElement>
   } & AdditionalProps): ReactElement {
 
