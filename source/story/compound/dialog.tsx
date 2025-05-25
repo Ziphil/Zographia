@@ -1,12 +1,15 @@
 /* eslint-disable react/jsx-closing-tag-location, react-hooks/rules-of-hooks */
 
-import {faCat, faRabbit} from "@fortawesome/sharp-regular-svg-icons";
+import {faCat, faCheck, faClose, faRabbit} from "@fortawesome/sharp-regular-svg-icons";
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
 import {Fragment} from "react";
 import {
+  Button,
+  ButtonIconbag,
   Dialog,
   DialogBody,
   DialogCloseButton,
+  DialogFooter,
   DialogOutsideButton,
   DialogOutsideButtonContainer,
   DialogOutsideButtonIconbag,
@@ -63,6 +66,48 @@ export const basic = {
     )
   }
 } as Story;
+export const basicWithFooter = {
+  ...template,
+  name: "基本＋フッター",
+  args: {
+    open: true,
+    children: (
+      <DialogPane>
+        <DialogCloseButton/>
+        <DialogOutsideButtonContainer>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faCat}/></DialogOutsideButtonIconbag>
+            ボタン 1
+          </DialogOutsideButton>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faRabbit}/></DialogOutsideButtonIconbag>
+            ボタン 2
+          </DialogOutsideButton>
+        </DialogOutsideButtonContainer>
+        <DialogBody>
+          <MultiLineText>
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+          </MultiLineText>
+        </DialogBody>
+        <DialogFooter>
+          <Button scheme="gray" variant="light">
+            <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
+            キャンセル
+          </Button>
+          <Button>
+            <ButtonIconbag><GeneralIcon icon={faCheck}/></ButtonIconbag>
+            確認
+          </Button>
+        </DialogFooter>
+      </DialogPane>
+    )
+  }
+} as Story;
 export const long = {
   ...template,
   name: "長い内容",
@@ -86,6 +131,43 @@ export const long = {
             {Array.from({length: 50}).map((dummy, index) => <Fragment key={index}>行 {index + 1}<br/></Fragment>)}
           </MultiLineText>
         </DialogBody>
+      </DialogPane>
+    )
+  }
+} as Story;
+export const longWithFooter = {
+  ...template,
+  name: "長い内容＋フッター",
+  args: {
+    open: true,
+    children: (
+      <DialogPane>
+        <DialogCloseButton/>
+        <DialogOutsideButtonContainer>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faCat}/></DialogOutsideButtonIconbag>
+            ボタン 1
+          </DialogOutsideButton>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faRabbit}/></DialogOutsideButtonIconbag>
+            ボタン 2
+          </DialogOutsideButton>
+        </DialogOutsideButtonContainer>
+        <DialogBody>
+          <MultiLineText>
+            {Array.from({length: 50}).map((dummy, index) => <Fragment key={index}>行 {index + 1}<br/></Fragment>)}
+          </MultiLineText>
+        </DialogBody>
+        <DialogFooter>
+          <Button scheme="gray" variant="light">
+            <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
+            キャンセル
+          </Button>
+          <Button>
+            <ButtonIconbag><GeneralIcon icon={faCheck}/></ButtonIconbag>
+            確認
+          </Button>
+        </DialogFooter>
       </DialogPane>
     )
   }
@@ -119,6 +201,49 @@ export const full = {
             ここにダイアログの内容が入ります。
           </MultiLineText>
         </DialogBody>
+      </DialogPane>
+    )
+  }
+} as Story;
+export const fullWithFooter = {
+  ...template,
+  name: "大きい＋フッター",
+  args: {
+    height: "full",
+    open: true,
+    children: (
+      <DialogPane>
+        <DialogCloseButton/>
+        <DialogOutsideButtonContainer>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faCat}/></DialogOutsideButtonIconbag>
+            ボタン 1
+          </DialogOutsideButton>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faRabbit}/></DialogOutsideButtonIconbag>
+            ボタン 2
+          </DialogOutsideButton>
+        </DialogOutsideButtonContainer>
+        <DialogBody>
+          <MultiLineText>
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+          </MultiLineText>
+        </DialogBody>
+        <DialogFooter>
+          <Button scheme="gray" variant="light">
+            <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
+            キャンセル
+          </Button>
+          <Button>
+            <ButtonIconbag><GeneralIcon icon={faCheck}/></ButtonIconbag>
+            確認
+          </Button>
+        </DialogFooter>
       </DialogPane>
     )
   }

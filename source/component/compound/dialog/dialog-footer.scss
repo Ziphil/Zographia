@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --border-color: #{leveled-color("gray", 1)};
+  }
+}
+
+.root {
+  padding-block: var(--footer-padding-block);
+  padding-inline: var(--pane-padding-inline);
+  column-gap: 3zu;
+  border-bottom-left-radius: var(--glob-border-radius);
+  border-bottom-right-radius: var(--glob-border-radius);
+  border-block-start: solid 1zx var(--border-color);
+  background-color: var(--footer-background-color);
+  background-image: var(--glob-noise-background-image);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+}

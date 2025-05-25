@@ -33,7 +33,6 @@ export const Collapsible = createWithRef(
 
     const updateInnerSize = useCallback(function (): void {
       const element = ref.current;
-      console.log({element, clientHeight: element?.clientHeight, scrollHeight: element?.scrollHeight});
       if (element) {
         setNeedTruncation(element.clientHeight + 8 < element.scrollHeight);
         setScrollHeight(element.scrollHeight);
