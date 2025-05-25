@@ -4,12 +4,15 @@
 
 
 .root {
+  @include theme("light") {
+    --footer-background-color: #{single-color("white")};
+  }
   &[data-height="fit"] {
     --pane-max-width: 160zu;
     --pane-height: auto;
     --pane-padding-block: 6zu;
     --pane-padding-inline: 6zu;
-    --footer-padding-block: 4zu;
+    --footer-padding-block: 3zu;
     --overlay-padding-block-end: 6zu;
     --overlay-padding-inline: var(--glob-page-horizontal-padding);
   }
@@ -19,7 +22,7 @@
       --pane-max-width: 240zu;
       --pane-padding-block: 8zu;
       --pane-padding-inline: 8zu;
-      --footer-padding-block: 4zu;
+      --footer-padding-block: 3zu;
       --overlay-padding-block-end: 6zu;
       --overlay-padding-inline: var(--glob-page-horizontal-padding);
     }
@@ -27,7 +30,7 @@
       --pane-max-width: 100%;
       --pane-padding-block: 8zu;
       --pane-padding-inline: var(--glob-page-horizontal-padding);
-      --footer-padding-block: 4zu;
+      --footer-padding-block: 3zu;
       --overlay-padding-block-end: 0zu;
       --overlay-padding-inline: 0zu;
     }

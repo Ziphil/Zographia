@@ -205,3 +205,46 @@ export const full = {
     )
   }
 } as Story;
+export const fullWithFooter = {
+  ...template,
+  name: "大きい＋フッター",
+  args: {
+    height: "full",
+    open: true,
+    children: (
+      <DialogPane>
+        <DialogCloseButton/>
+        <DialogOutsideButtonContainer>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faCat}/></DialogOutsideButtonIconbag>
+            ボタン 1
+          </DialogOutsideButton>
+          <DialogOutsideButton>
+            <DialogOutsideButtonIconbag><GeneralIcon icon={faRabbit}/></DialogOutsideButtonIconbag>
+            ボタン 2
+          </DialogOutsideButton>
+        </DialogOutsideButtonContainer>
+        <DialogBody>
+          <MultiLineText>
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+            ここにダイアログの内容が入ります。
+          </MultiLineText>
+        </DialogBody>
+        <DialogFooter>
+          <Button scheme="gray" variant="light">
+            <ButtonIconbag><GeneralIcon icon={faClose}/></ButtonIconbag>
+            キャンセル
+          </Button>
+          <Button>
+            <ButtonIconbag><GeneralIcon icon={faCheck}/></ButtonIconbag>
+            確認
+          </Button>
+        </DialogFooter>
+      </DialogPane>
+    )
+  }
+} as Story;
