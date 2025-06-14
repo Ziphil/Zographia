@@ -51,6 +51,7 @@
   padding-inline: 2zu;
   padding-block: calc(2zu - extrusion(var(--line-height)));
   line-height: var(--line-height);
+  white-space: pre-wrap;
   flex: 1 1 auto;
   align-self: stretch;
   order: 10;
