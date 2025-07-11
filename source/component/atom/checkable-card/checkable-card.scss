@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --border-color: #{leveled-color("gray", 1)};
+    &:has(input:checked) {
+      --border-color: #{leveled-color("primary", 5)};
+    }
+  }
+}
+
+.root {
+  padding-inline: 3zu;
+  padding-block: 3zu;
+  column-gap: 2zu;
+  border: solid 1zx var(--border-color);
+  border-radius: var(--glob-border-radius);
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
