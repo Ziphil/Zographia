@@ -1,17 +1,17 @@
 /* eslint-disable react/jsx-closing-tag-location, react-hooks/rules-of-hooks */
 
 import {Meta as RawMeta, StoryObj as RawStory} from "@storybook/react";
-import {CheckableContainer, CheckableLabel, Checkbox, Radio} from "/source/component";
+import {CheckableCard, CheckableCardBody, Checkbox, Radio} from "/source/component";
 import {createChildren} from "/source/util/children";
 
 
-type Meta = RawMeta<typeof CheckableContainer>;
-type Story = RawStory<typeof CheckableContainer>;
+type Meta = RawMeta<typeof CheckableCard>;
+type Story = RawStory<typeof CheckableCard>;
 
 export default {
-  title: "Atom/CheckableContainer",
-  component: CheckableContainer,
-  subcomponents: {CheckableLabel}
+  title: "Atom/CheckableCard",
+  component: CheckableCard,
+  subcomponents: {CheckableCardBody}
 } as Meta;
 
 const template = {
@@ -23,7 +23,11 @@ export const withCheckbox = {
   args: {
     children: createChildren(<>
       <Checkbox/>
-      <CheckableLabel>ラベル</CheckableLabel>
+      <CheckableCardBody>
+        ラベル<br/>
+        2 行目<br/>
+        3 行目
+      </CheckableCardBody>
     </>)
   }
 } as Story;
@@ -33,7 +37,11 @@ export const withRadio = {
   args: {
     children: createChildren(<>
       <Radio/>
-      <CheckableLabel>ラベル</CheckableLabel>
+      <CheckableCardBody>
+        ラベル<br/>
+        2 行目<br/>
+        3 行目
+      </CheckableCardBody>
     </>)
   }
 } as Story;

@@ -4,6 +4,7 @@ export * from "./atom/async-select";
 export * from "./atom/avatar";
 export * from "./atom/badge";
 export * from "./atom/button";
+export * from "./atom/checkable-card";
 export * from "./atom/checkable-container";
 export * from "./atom/checkbox";
 export * from "./atom/control-container";
