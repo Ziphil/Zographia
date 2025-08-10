@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  padding-block: 0.5zu;
+  font-size: 3.5zu;
+  color: var(--button-text-color);
+  border-radius: var(--glob-border-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  transition: 0.1s color;
+  z-index: 1;
+  &:hover {
+    color: var(--hover-button-text-color);
+  }
+  &:focus-visible {
+    outline: solid 2zx var(--focus-color);
+  }
+  &:disabled {
+    visibility: hidden;
+    cursor: default;
+  }
+}
