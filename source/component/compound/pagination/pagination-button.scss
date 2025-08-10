@@ -30,7 +30,6 @@
     color: var(--hover-text-color);
   }
   &:focus-visible {
-    outline: none;
     outline: solid 2zx var(--focus-color);
     z-index: 1;
   }
