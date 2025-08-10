@@ -13,8 +13,9 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  transition: 0.1s color;
+  opacity: 1;
   z-index: 1;
+  transition: 0.1s color, 0.1s opacity;
   &:hover {
     color: var(--hover-button-text-color);
   }
@@ -22,7 +23,7 @@
     outline: solid 2zx var(--focus-color);
   }
   &:disabled {
-    visibility: hidden;
+    opacity: 0;
     cursor: default;
   }
 }
