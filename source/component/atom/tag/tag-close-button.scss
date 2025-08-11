@@ -5,6 +5,7 @@
 
 .root {
   margin-inline-start: var(--glob-blank-gap);
+  color: var(--close-color);
   flex: 0 0 auto;
   cursor: pointer;
 }

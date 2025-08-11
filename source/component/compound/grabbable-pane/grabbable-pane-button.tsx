@@ -1,7 +1,7 @@
 //
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleDown, faAngleUp} from "@fortawesome/sharp-regular-svg-icons";
+import {faArrowDown, faArrowUp} from "@fortawesome/sharp-regular-svg-icons";
 import {MouseEvent, ReactElement, Ref} from "react";
 import {createWithRef} from "/source/component/create";
 import {AdditionalProps} from "/source/module/data";
@@ -24,7 +24,7 @@ export const GrabbablePaneButton = createWithRef(
 
     return (
       <button styleName="root" type="button" disabled={disabled} onClick={onClick} {...rest}>
-        <FontAwesomeIcon icon={(position === "top") ? faAngleUp : faAngleDown}/>
+        <FontAwesomeIcon icon={(position === "top") ? faArrowUp : faArrowDown}/>
       </button>
     );
 

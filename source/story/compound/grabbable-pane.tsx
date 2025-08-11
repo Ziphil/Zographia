@@ -92,3 +92,29 @@ export const withDisabledButton = {
     </>)
   }
 } as Story;
+export const dragging = {
+  ...template,
+  name: "ドラッグ中",
+  args: {
+    dragging: true,
+    children: createChildren(<>
+      <GrabbablePaneGripContainer>
+        <GrabbablePaneButton position="top"/>
+        <GrabbablePaneGrip/>
+        <GrabbablePaneButton position="bottom"/>
+      </GrabbablePaneGripContainer>
+      <GrabbablePaneBody>
+        <MultiLineText justify={true}>
+          ここのカード本文が入ります。
+          ここのカード本文が入ります。
+          ここのカード本文が入ります。
+          あいうカキク漢字 ABJOQabfpy ÉÃëç أَنْتَ μῆνιν ἄειδε Ἄϊδι。
+          あいうカキク漢字 ABJOQabfpy ÉÃëç أَنْتَ μῆνιν ἄειδε Ἄϊδι。
+          ここのカード本文が入ります。
+          ここのカード本文が入ります。
+          ここのカード本文が入ります。
+        </MultiLineText>
+      </GrabbablePaneBody>
+    </>)
+  }
+} as Story;
