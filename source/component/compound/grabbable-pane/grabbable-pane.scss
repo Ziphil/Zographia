@@ -21,6 +21,7 @@
   border: solid 1zx var(--border-color);
   display: flex;
   z-index: 0;
+  transition: 0.1s box-shadow;
   &[data-dragging] {
     box-shadow: var(--glob-floating-shadow-setting) var(--floating-shadow-color);
     z-index: 1;
