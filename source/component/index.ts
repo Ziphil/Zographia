@@ -37,6 +37,7 @@ export * from "./compound/callout";
 export * from "./compound/card";
 export * from "./compound/collapsible";
 export * from "./compound/dialog";
+export * from "./compound/grabbable-pane";
 export * from "./compound/list";
 export * from "./compound/menu";
 export * from "./compound/pagination";

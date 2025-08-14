@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+@use "/source/component/function.scss" as *;
+
+
+.root {
+  @include theme("light") {
+    --background-color: #{single-color("background-light")};
+    --border-color: #{leveled-color("gray", 1)};
+    --grip-color: #{leveled-color("gray", 5)};
+    --button-text-color: #{leveled-color("gray", 5)};
+    --hover-button-text-color: #{leveled-color("gray", 6)};
+    --focus-color: #{leveled-color("gray", 5, var(--glob-focus-alpha))};
+    --floating-shadow-color: #{leveled-color("gray", 5, 0.2)};
+  }
+}
+
+.root {
+  background-color: var(--background-color);
+  border-radius: var(--glob-border-radius);
+  border: solid 1zx var(--border-color);
+  display: flex;
+  z-index: 0;
+  transition: 0.1s box-shadow;
+  &[data-dragging] {
+    box-shadow: var(--glob-floating-shadow-setting) var(--floating-shadow-color);
+    z-index: 1;
+  }
+}

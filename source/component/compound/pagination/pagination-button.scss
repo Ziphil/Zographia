@@ -21,16 +21,16 @@
   }
   &:not([data-numeric]) {
     min-width: 7zu;
+    border: solid 1zx var(--border-color);
   }
   &[data-current] {
     @include bold-font;
-    background-color: var(--highlight-background-color);
+    border: solid 1zx var(--border-color);
   }
   &:hover:not(:disabled) {
     color: var(--hover-text-color);
   }
   &:focus-visible {
-    outline: none;
     outline: solid 2zx var(--focus-color);
     z-index: 1;
   }

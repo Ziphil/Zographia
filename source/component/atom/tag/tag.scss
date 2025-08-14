@@ -10,10 +10,12 @@
       &[data-variant="solid"] {
         --text-color: #{single-color("white")};
         --background-color: #{leveled-color($scheme, 5)};
+        --close-color: #{leveled-color($scheme, 2)};
       }
       &[data-variant="light"] {
         --text-color: #{single-color("text-light")};
         --background-color: #{leveled-color($scheme, 1)};
+        --close-color: #{leveled-color($scheme, 4)};
       }
     }
   }

@@ -37,7 +37,7 @@ export const Modal = create(
     const actualOnOpenSet = (onOpenSet !== undefined) ? onOpenSet : setInnerOpen;
 
     const {refs, context} = useFloating({open: actualOpen, onOpenChange: actualOnOpenSet});
-    const {isMounted: mounted, status} = useTransitionStatus(context, {duration: 100});
+    const {isMounted: mounted, status} = useTransitionStatus(context, {duration: 200});
     const dismiss = useDismiss(context, {outsidePressEvent: "mousedown"});
     const role = useRole(context);
     const {getFloatingProps} = useInteractions([dismiss, role]);
