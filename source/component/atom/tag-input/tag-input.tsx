@@ -22,6 +22,7 @@ import {Tag, TagCloseButton} from "/source/component/atom/tag";
 import {createWithRef} from "/source/component/create";
 import {useEnterDown} from "/source/hook/click";
 import {useDebouncedCallback} from "/source/hook/debounce";
+import {LeveledColorScheme} from "/source/module/color";
 import {AdditionalProps, aria, data} from "/source/module/data";
 
 
@@ -29,6 +30,7 @@ export const TagInput = createWithRef(
   require("./tag-input.scss"), "TagInput",
   function ({
     values,
+    tagScheme = "primary",
     tagVariant = "light",
     autoFocus,
     error,
@@ -43,6 +45,7 @@ export const TagInput = createWithRef(
     ...rest
   }: {
     values: Array<string>,
+    tagScheme?: LeveledColorScheme,
     tagVariant?: "solid" | "light",
     autoFocus?: boolean,
     error?: boolean,
@@ -158,7 +161,7 @@ export const TagInput = createWithRef(
           })}
         />
         {values.map((value, index) => (
-          <Tag styleName="tag" key={index} variant={tagVariant}>
+          <Tag styleName="tag" key={index} scheme={tagScheme} variant={tagVariant}>
             {value}
             <TagCloseButton onClick={() => removeTag(index)}/>
           </Tag>
