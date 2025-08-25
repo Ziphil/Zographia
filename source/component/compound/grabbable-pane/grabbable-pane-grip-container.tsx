@@ -2,7 +2,7 @@
 
 import {ReactElement, ReactNode, Ref} from "react";
 import {createWithRef} from "/source/component/create";
-import {AdditionalProps} from "/source/module/data";
+import {AdditionalProps, aria} from "/source/module/data";
 
 
 export const GrabbablePaneGripContainer = createWithRef(
@@ -17,7 +17,7 @@ export const GrabbablePaneGripContainer = createWithRef(
   } & AdditionalProps): ReactElement {
 
     return (
-      <div styleName="root" {...rest}>
+      <div styleName="root" {...rest} {...aria({hidden: true})}>
         {children}
       </div>
     );
