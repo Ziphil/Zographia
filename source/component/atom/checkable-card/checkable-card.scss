@@ -7,7 +7,7 @@
   @include theme("light") {
     --border-color: #{leveled-color("gray", 1)};
     &:has(input:checked) {
-      --border-color: #{leveled-color("primary", 5)};
+      --border-color: #{leveled-color("primary", 3)};
     }
   }
 }

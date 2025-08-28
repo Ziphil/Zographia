@@ -45,6 +45,32 @@ export const withIcon = {
     </>)
   }
 } as Story;
+export const disabled = {
+  ...template,
+  name: "無効",
+  args: {
+    trigger: <button>表示</button>,
+    triggerType: "click",
+    children: createChildren(<>
+      <MenuItem disabled={true} onClick={action("onItemClick.0")}>
+        <MenuItemIconbag><GeneralIcon icon={faCat}/></MenuItemIconbag>
+        選択肢 1
+      </MenuItem>
+      <MenuItem onClick={action("onItemClick.1")}>
+        <MenuItemIconbag><GeneralIcon icon={faExclamation}/></MenuItemIconbag>
+        選択肢 2
+      </MenuItem>
+      <MenuItem disabled={true} scheme="blue" onClick={action("onItemClick.2")}>
+        <MenuItemIconbag><GeneralIcon icon={faCat}/></MenuItemIconbag>
+        選択肢 3
+      </MenuItem>
+      <MenuItem scheme="red" onClick={action("onItemClick.3")}>
+        <MenuItemIconbag><GeneralIcon icon={faExclamation}/></MenuItemIconbag>
+        選択肢 4
+      </MenuItem>
+    </>)
+  }
+} as Story;
 export const border = {
   ...template,
   name: "ボーダー",

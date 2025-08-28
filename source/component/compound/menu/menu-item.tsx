@@ -13,12 +13,14 @@ export const MenuItem = createWithRef(
   require("./menu-item.scss"), "MenuItem",
   function ({
     scheme = null,
+    disabled,
     onClick,
     children,
     ref,
     ...restAndInternal
   }: {
     scheme?: LeveledColorScheme | null,
+    disabled?: boolean,
     onClick?: (event: MouseEvent<HTMLButtonElement>) => unknown,
     children?: ReactNode,
     className?: string,
@@ -40,6 +42,7 @@ export const MenuItem = createWithRef(
         styleName="root"
         type="button"
         role="option"
+        disabled={disabled}
         ref={mergedRef}
         {...getItemProps({
           tabIndex: activeIndex === index ? 0 : -1,

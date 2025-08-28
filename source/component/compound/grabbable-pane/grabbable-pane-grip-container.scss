@@ -4,9 +4,19 @@
 
 
 .root {
+  inset-block: 1zu;
+  inset-inline-start: -2zu;
+  width: 3.5zu;
+  border: solid 1zx var(--border-color);
+  border-radius: var(--glob-border-radius);
+  background-color: var(--grip-container-background-color);
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  position: relative;
-  z-index: 0;
+  position: absolute;
+  box-sizing: border-box;
+  opacity: var(--grip-container-opacity);
+  pointer-events: var(--grip-container-pointer-events);
+  transition: 0.1s opacity;
+  z-index: 1;
 }
