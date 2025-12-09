@@ -66,6 +66,7 @@
   }
   .input:disabled +& {
     cursor: inherit;
+    opacity: 0.5;
   }
 }
 
