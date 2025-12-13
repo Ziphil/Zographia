@@ -8,18 +8,23 @@ import {AdditionalProps} from "/source/module/data";
 export const ControlContainer = createWithRef(
   require("./control-container.scss"), "ControlContainer",
   function ({
+    label = true,
     children,
+    ref,
     ...rest
   }: {
+    label?: boolean,
     children?: ReactNode,
     className?: string,
-    ref: ForwardedRef<HTMLLabelElement>
+    ref: ForwardedRef<HTMLElement>
   } & AdditionalProps): ReactElement {
 
+    const Is = (label) ? "label" : "div";
+
     return (
-      <label styleName="root" {...rest}>
+      <Is styleName="root" ref={ref as any} {...rest}>
         {children}
-      </label>
+      </Is>
     );
 
   }

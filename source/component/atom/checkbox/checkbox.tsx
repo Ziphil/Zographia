@@ -14,6 +14,7 @@ export const Checkbox = createWithRef(
     checked,
     defaultChecked,
     name,
+    value,
     error,
     required,
     disabled,
@@ -27,6 +28,7 @@ export const Checkbox = createWithRef(
     checked?: true | false | "indeterminate",
     defaultChecked?: true | false,
     name?: string,
+    value?: string,
     error?: boolean,
     required?: boolean,
     disabled?: boolean,
@@ -61,6 +63,7 @@ export const Checkbox = createWithRef(
           checked={(checked !== undefined) ? checked === true : undefined}
           defaultChecked={defaultChecked}
           name={name}
+          value={value}
           required={required}
           disabled={disabled}
           id={id}

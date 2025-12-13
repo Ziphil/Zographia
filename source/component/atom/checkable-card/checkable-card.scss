@@ -6,15 +6,15 @@
 .root {
   @include theme("light") {
     --border-color: #{leveled-color("gray", 1)};
-    &:has(input:checked) {
+    &:has(>* >input:checked) {
       --border-color: #{leveled-color("primary", 3)};
     }
   }
 }
 
 .root {
-  padding-inline: 3zu;
-  padding-block: 3zu;
+  padding-inline: 2.5zu;
+  padding-block: 2.5zu;
   column-gap: 2zu;
   border: solid 1zx var(--border-color);
   border-radius: var(--glob-border-radius);

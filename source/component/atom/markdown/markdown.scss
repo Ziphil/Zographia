@@ -47,6 +47,18 @@
   text-decoration: line-through;
 }
 
+.inner sup {
+  font-size: 80%;
+  vertical-align: 0.3906em;
+  line-height: 0;
+}
+
+.inner sub {
+  font-size: 80%;
+  vertical-align: -0.2969em;
+  line-height: 0;
+}
+
 .inner code {
   padding-inline: 1zu;
   font-size: 3.5zu;

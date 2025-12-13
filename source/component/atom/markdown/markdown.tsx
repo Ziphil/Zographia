@@ -4,6 +4,7 @@ import {Element as HastElement} from "hast";
 import {ReactElement} from "react";
 import ReactMarkdown, {Options as MarkdownOption} from "react-markdown";
 import remarkGfm from "remark-gfm";
+import type {Pluggable} from "unified";
 import {create} from "/source/component/create";
 import {AdditionalProps, data} from "/source/module/data";
 import {MarkdownListItem} from "./markdown-list-item";
@@ -30,8 +31,8 @@ export const Markdown = create(
     disallowedElements?: Array<string> | null,
     components?: NonNullable<MarkdownOption["components"]>,
     transformUrl?: (url: string, key: string, node: Readonly<HastElement>) => string | null,
-    rehypePlugins?: NonNullable<MarkdownOption["rehypePlugins"]>,
-    remarkPlugins?: NonNullable<MarkdownOption["remarkPlugins"]>,
+    rehypePlugins?: Array<Pluggable>,
+    remarkPlugins?: Array<Pluggable>,
     children: string,
     className?: string
   } & AdditionalProps): ReactElement | null {
