@@ -26,6 +26,7 @@ export const LoadingIcon = createWithRef(
         title={trans("loading")}
         spin={true}
         {...rest}
+        style={rest.style as any}
       />
     );
 

@@ -36,6 +36,7 @@ export const GeneralIcon = createWithRef(
         rotation={rotation === 0 ? undefined : rotation}
         spin={spin}
         {...rest}
+        style={rest.style as any}
       />
     );
 
