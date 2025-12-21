@@ -16,6 +16,8 @@ export const Button = createWithRef(
     variant = "solid",
     size = "medium",
     type = "button",
+    value,
+    name,
     reactive = true,
     disabled,
     loading,
@@ -31,6 +33,8 @@ export const Button = createWithRef(
     variant?: "solid" | "light" | "underline" | "simple" | "unstyledUnderline" | "unstyledSimple",
     size?: "small" | "medium" | "large",
     type?: "submit" | "reset" | "button",
+    value?: string,
+    name?: string,
     reactive?: boolean,
     disabled?: boolean,
     loading?: boolean,
@@ -69,6 +73,8 @@ export const Button = createWithRef(
       <button
         styleName={getStyleName(variant)}
         type={type}
+        name={name}
+        value={value}
         disabled={disabled}
         onClick={handleClick}
         onKeyDown={onKeyDown}
