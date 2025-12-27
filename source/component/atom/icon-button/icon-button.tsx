@@ -16,6 +16,8 @@ export const IconButton = createWithRef(
     scheme = "primary",
     variant = "solid",
     type = "button",
+    value,
+    name,
     label,
     reactive = true,
     disabled,
@@ -31,6 +33,8 @@ export const IconButton = createWithRef(
     scheme?: LeveledColorScheme,
     variant?: "solid" | "light",
     type?: "submit" | "reset" | "button",
+    value?: string,
+    name?: string,
     label: string,
     reactive?: boolean,
     disabled?: boolean,
@@ -70,6 +74,8 @@ export const IconButton = createWithRef(
       <button
         styleName="root"
         type={type}
+        name={name}
+        value={value}
         disabled={disabled}
         onClick={handleClick}
         onKeyDown={onKeyDown}

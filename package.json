@@ -1,6 +1,6 @@
 {
   "name": "zographia",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "author": "Ziphil",
   "description": "Versatile component library",
   "homepage": "https://github.com/Ziphil/Zographia",
@@ -41,12 +41,12 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.4",
     "@formatjs/intl-pluralrules": "^5.2.12",
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/pro-regular-svg-icons": "^6.5.1",
-    "@fortawesome/pro-solid-svg-icons": "^6.5.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "@fortawesome/sharp-regular-svg-icons": "^6.5.1",
-    "@fortawesome/sharp-solid-svg-icons": "^6.5.1",
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/pro-regular-svg-icons": "^7.1.0",
+    "@fortawesome/pro-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.1",
+    "@fortawesome/sharp-regular-svg-icons": "^7.1.0",
+    "@fortawesome/sharp-solid-svg-icons": "^7.1.0",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.5",
@@ -130,6 +130,6 @@
     "recoil": "^0.7.7"
   },
   "volta": {
-    "node": "18.19.0"
+    "node": "20.18.0"
   }
 }
