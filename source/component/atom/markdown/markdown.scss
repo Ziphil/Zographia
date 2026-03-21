@@ -35,31 +35,31 @@
   flex-direction: column;
 }
 
-.inner em,
-.inner strong {
+.inner:not([data-unstyled~="em"]) em,
+.inner:not([data-unstyled~="em"]) strong {
   font-weight: normal;
   font-style: italic;
 }
 
-.inner del {
+.inner:not([data-unstyled~="del"]) del {
   font-weight: inherit;
   font-style: inherit;
   text-decoration: line-through;
 }
 
-.inner sup {
+.inner:not([data-unstyled~="sup"]) sup {
   font-size: 80%;
   vertical-align: 0.3906em;
   line-height: 0;
 }
 
-.inner sub {
+.inner:not([data-unstyled~="sub"]) sub {
   font-size: 80%;
   vertical-align: -0.2969em;
   line-height: 0;
 }
 
-.inner code {
+.inner:not([data-unstyled~="code"]) code {
   padding-inline: 1zu;
   font-size: 3.5zu;
   font-family: var(--glob-font-family-monospace);
@@ -70,7 +70,7 @@
   border-radius: var(--glob-border-radius);
 }
 
-.inner img {
+.inner:not([data-unstyled~="img"]) img {
   width: auto;
   height: auto;
   max-width: 50cqw;
@@ -84,7 +84,7 @@
   }
 }
 
-.inner :is(h1, h2) {
+.inner:not([data-unstyled~="h2"]) :is(h1, h2) {
   @include bold-font;
   font-size: 6zu;
   color: var(--heading-text-color);
@@ -94,7 +94,7 @@
   }
 }
 
-.inner :is(h3, h4, h5, h6) {
+.inner:not([data-unstyled~="h3"]) :is(h3, h4, h5, h6) {
   @include bold-font;
   font-size: 5zu;
   color: var(--heading-text-color);
@@ -104,18 +104,18 @@
   }
 }
 
-.inner :is(h1, h2) +:is(h3, h4, h5, h6) {
+.inner:not([data-unstyled~="h3"]) :is(h1, h2) +:is(h3, h4, h5, h6) {
   margin-block-start: calc(0zu - extrusion(var(--line-height)) * (1 - 4 / 5)) !important;
 }
 
-.inner p {
+.inner:not([data-unstyled~="p"]) p {
 }
 
-.inner ol {
+.inner:not([data-unstyled~="ol"]) ol {
   counter-reset: ordered-list;
 }
 
-.inner blockquote {
+.inner:not([data-unstyled~="blockquote"]) blockquote {
   padding-inline-start: 2zu;
   row-gap: calc(var(--row-gap) - extrusion(var(--line-height)) * 2);
   border-inline-start: solid 4zx var(--blockquote-border-color);
@@ -123,7 +123,7 @@
   flex-direction: column;
 }
 
-.inner pre {
+.inner:not([data-unstyled~="pre"]) pre {
   margin-block: extrusion(var(--line-height));
   padding-block: calc(2zu - extrusion(var(--pre-line-height)));
   padding-inline: 2zu;
@@ -142,11 +142,11 @@
   }
 }
 
-.inner :global(.table-wrapper) {
+.inner:not([data-unstyled~="table"]) :global(.table-wrapper) {
   margin-block: extrusion(var(--line-height));
 }
 
-.inner table {
+.inner:not([data-unstyled~="table"]) table {
   border-radius: var(--glob-border-radius);
   border-spacing: 0zu;
   border-collapse: separate;
@@ -154,38 +154,38 @@
   white-space: nowrap;
 }
 
-.inner td,
-.inner th {
+.inner:not([data-unstyled~="td"]) td,
+.inner:not([data-unstyled~="td"]) th {
   padding-block: calc(1.5zu - extrusion(var(--line-height)));
   padding-inline: 2zu;
   border-block-end: solid 1zx var(--table-border-color);
   border-inline-end: solid 1zx var(--table-border-color);
 }
 
-.inner th {
+.inner:not([data-unstyled~="td"]) th {
   background-color: var(--block-background-color);
 }
 
-.inner thead tr:first-child >* {
+.inner:not([data-unstyled~="td"]) thead tr:first-child >* {
   border-block-start: solid 1zx var(--table-border-color);
 }
 
-.inner tr >*:first-child {
+.inner:not([data-unstyled~="td"]) tr >*:first-child {
   border-inline-start: solid 1zx var(--table-border-color);
 }
 
-.inner thead tr:first-child >*:first-child {
+.inner:not([data-unstyled~="td"]) thead tr:first-child >*:first-child {
   border-start-start-radius: var(--glob-border-radius);
 }
 
-.inner thead tr:first-child >*:last-child {
+.inner:not([data-unstyled~="td"]) thead tr:first-child >*:last-child {
   border-start-end-radius: var(--glob-border-radius);
 }
 
-.inner tbody tr:last-child >*:first-child {
+.inner:not([data-unstyled~="td"]) tbody tr:last-child >*:first-child {
   border-end-start-radius: var(--glob-border-radius);
 }
 
-.inner tbody tr:last-child >*:last-child {
+.inner:not([data-unstyled~="td"]) tbody tr:last-child >*:last-child {
   border-end-end-radius: var(--glob-border-radius);
 }

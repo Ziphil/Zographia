@@ -246,6 +246,14 @@ export const inlineImage = {
     `
   }
 } as Story;
+export const unstyled = {
+  ...template,
+  name: "非スタイリング",
+  args: {
+    unstyledElements: ["h2", "h3", "pre"],
+    children: markdownString
+  }
+} as Story;
 export const example = {
   ...template,
   name: "例",

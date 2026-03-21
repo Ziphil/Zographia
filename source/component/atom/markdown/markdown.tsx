@@ -18,6 +18,7 @@ export const Markdown = create(
     skipHtml = false,
     allowedElements = null,
     disallowedElements = null,
+    unstyledElements = [],
     components = {},
     transformUrl,
     rehypePlugins = [],
@@ -29,6 +30,7 @@ export const Markdown = create(
     skipHtml?: boolean,
     allowedElements?: Array<string> | null,
     disallowedElements?: Array<string> | null,
+    unstyledElements?: Array<string>,
     components?: NonNullable<MarkdownOption["components"]>,
     transformUrl?: (url: string, key: string, node: Readonly<HastElement>) => string | null,
     rehypePlugins?: Array<Pluggable>,
@@ -39,7 +41,7 @@ export const Markdown = create(
 
     return (
       <div styleName="root" {...data({compact})} {...rest}>
-        <div styleName="inner">
+        <div styleName="inner" className="markdown-inner" data-unstyled={unstyledElements.join(" ")}>
           <ReactMarkdown
             allowedElements={allowedElements}
             disallowedElements={disallowedElements}

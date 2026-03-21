@@ -3,22 +3,23 @@
 @use "/source/component/function.scss" as *;
 
 
-.root {
+:global(.markdown-inner):not([data-unstyled~="li"]) .root {
   column-gap: var(--glob-blank-gap);
   list-style: none;
   display: flex;
   align-items: baseline;
 }
 
-.icon {
+:global(.markdown-inner):not([data-unstyled~="li"]) .icon {
   color: var(--marker-color);
   flex: 0 0 auto;
-  ol >li >& {
-    display: none;
-  }
 }
 
-.number {
+:global(.markdown-inner):not([data-unstyled~="li"]) ol >li >.icon {
+  display: none;
+}
+
+:global(.markdown-inner):not([data-unstyled~="li"]) .number {
   width: 4zu;
   font-size: 3zu;
   inset-block-end: 2zx;
@@ -35,11 +36,12 @@
     content: counter(ordered-list);
     counter-increment: ordered-list;
   }
-  ul >li >& {
-    display: none;
-  }
 }
 
-.main {
+:global(.markdown-inner):not([data-unstyled~="li"]) ul >li >.icon {
+  display: none;
+}
+
+:global(.markdown-inner):not([data-unstyled~="li"]) .main {
   flex: 1 1 auto;
 }

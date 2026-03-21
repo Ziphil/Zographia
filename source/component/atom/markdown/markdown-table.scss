@@ -3,6 +3,6 @@
 @use "/source/component/function.scss" as *;
 
 
-.root {
+:global(.markdown-inner):not([data-unstyled~="table"]) .root {
   overflow-x: auto;
 }
