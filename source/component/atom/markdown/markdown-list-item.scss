@@ -38,7 +38,7 @@
   }
 }
 
-:global(.markdown-inner):not([data-unstyled~="li"]) ul >li >.icon {
+:global(.markdown-inner):not([data-unstyled~="li"]) ul >li >.number {
   display: none;
 }
 
