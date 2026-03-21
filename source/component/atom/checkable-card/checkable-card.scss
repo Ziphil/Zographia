@@ -6,6 +6,7 @@
 .root {
   @include theme("light") {
     --border-color: #{leveled-color("gray", 1)};
+    --background-color: #{single-color("white")};
     &:has(>* >input:checked) {
       --border-color: #{leveled-color("primary", 3)};
     }
@@ -18,6 +19,7 @@
   column-gap: 2zu;
   border: solid 1zx var(--border-color);
   border-radius: var(--glob-border-radius);
+  background-color: oklch(from var(--background-color) l c h / 0.5);
   display: flex;
   align-items: flex-start;
   cursor: pointer;
