@@ -19,7 +19,7 @@
       "Bash(git branch)",
       "Bash(git branch:*)",
       "Bash(git add:*)",
-      "Bash(git stash:*)",
+      "Bash(git stash:*)"
     ],
     "deny": [
       "Read(./variable.env)",
