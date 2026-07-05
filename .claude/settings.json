@@ -20,7 +20,6 @@
       "Bash(git branch:*)",
       "Bash(git add:*)",
       "Bash(git stash:*)",
-      "Read(//D/Documents/Application/Components/**)"
     ],
     "deny": [
       "Read(./variable.env)",
